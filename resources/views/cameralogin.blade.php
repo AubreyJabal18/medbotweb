@@ -34,7 +34,7 @@
             </div>
             
             <p class="flex flex-row text-[#919191] font-bold font-roboto text-[10px] md:text-[12px] justify-self-center mt-8 md:mt-20 md:mb-2">Don't have an account? &nbsp;<u href="#" class="flex flex-row font-roboto text-blue-400 hover:text-[#5b86e5] text-[10px] md:text-[12px] justify-self-center">Register here</u></p>
-            <img src="{{asset('images/model.png')}}" class="hidden flex absolute flex-col place-self-end w-[65px] md:w-[120px] h-[80px] md:h-[150px] translate-x-[0px] md:-translate-x-[30px] translate-y-[277px] md:translate-y-[280px] md:block ">
+            <img src="{{asset('images/model.png')}}" class="hidden flex absolute flex-col place-self-end w-[65px] md:w-[120px] h-[80px] md:h-[150px] translate-x-[0px] md:-translate-x-[100px] translate-y-[277px] md:translate-y-[425px] md:block ">
 
         </div>
       
