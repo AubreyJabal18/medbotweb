@@ -6,7 +6,15 @@ module.exports = {
     "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        'roboto': ['Roboto', 'sans-serif']
+        
+      },
+      backgroundImage: {
+      'gradient-136': 'linear-gradient (136deg, var(--tw-gradient-stops))'
+      },
+    },
   },
   plugins: [],
 }
