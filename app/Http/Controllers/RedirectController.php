@@ -15,4 +15,7 @@ class RedirectController extends Controller
     public function redirectToCameraLogin(){
         return view('cameralogin');
     }
+    public function redirectToUploadLogin(){
+        return view('uploadlogin');
+    }
 }
