@@ -7,11 +7,9 @@ use Illuminate\Http\Request;
 class RedirectController extends Controller
 {
     public function redirectToHomepage(){
-        $string = 'rerere';
-        return view('welcome',[
-            'string1' => $string
-        ]);
+        return view('homepage');
     }
+
     public function redirectToCameraLogin(){
         return view('cameralogin');
     }
