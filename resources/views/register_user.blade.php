@@ -92,10 +92,10 @@
                                <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="municipality" value="{{old('municipality')}}">
                                     <option disabled selected hidden>Select a Municipality</option>
                                     <option value="boac">Boac</option>
-                                    <option value="Buenavista">Buenavista</option>
+                                    <option value="buenavista">Buenavista</option>
                                     <option value="gasan">Gasan</option>
                                     <option value="mogpog">Mogpog</option>
-                                    <option value="santa cruz">Santa Cruz</option>
+                                    <option value="santacruz">Santa Cruz</option>
                                     <option value="torrijos">Torrijos</option>
                                 </select>
                                 <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
@@ -109,13 +109,482 @@
                             <div class="relative">
                                <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="barangay" value="{{old('barangay')}}">
                                     <option disabled selected hidden>Select a barangay</option>
+                                    <option value="agot">Agot</option>
+                                    <option value="agumaymayan">Agumaymayan</option>
+                                    <option value="amoingon">Amoingon</option>
+                                    <option value="apitong">Apitong</option>
+                                    <option value="balagasan">Balagasan</option>
+                                    <option value="balaring">Balaring</option>
+                                    <option value="balimbing">Balimbing</option>
+                                    <option value="balogo">Balogo</option>
+                                    <option value="bamban">Bamban</option>
+                                    <option value="bangbangalon">Bangbangalon</option>
+                                    <option value="bantad">Bantad</option>
+                                    <option value="bantay">Bantay</option>
+                                    <option value="bayuti">Bayuti</option>
+                                    <option value="binunga">Binunga</option>
+                                    <option value="boi">Boi</option>
+                                    <option value="boton">Boton</option>
+                                    <option value="buliasnin">Buliasnin</option>
+                                    <option value="bunganay">Bunganay</option>
+                                    <option value="caganhao">Caganhao</option>
+                                    <option value="canat">Canat</option>
+                                    <option value="catubugan">Catubugan</option>
+                                    <option value="cawit">Cawit</option>
+                                    <option value="daig">Daig</option>
+                                    <option value="daypay">Daypay</option>
+                                    <option value="duyay">Duyay</option>
+                                    <option value="hinapulan">Hinapulan</option>
                                     <option value="ihatub">Ihatub</option>
+                                    <option value="isok I">Isok I</option>
+                                    <option value="isok II poblacion">Isok II Poblacion</option>
+                                    <option value="laylay">Laylay</option>
+                                    <option value="lupac">Lupac</option>
+                                    <option value="mahinhin">Mahinhin</option>
+                                    <option value="mainit">Mainit</option>
+                                    <option value="malbog">Malbog</option>
+                                    <option value="maligaya">Maligaya</option>
+                                    <option value="malusak">Malusak</option>
+                                    <option value="mansiwat">Mansiwat</option>
+                                    <option value="mataas na Bayan">Mataas na Bayan</option>
+                                    <option value="maybo">Maybo</option>
+                                    <option value="mercado">Mercado</option>
+                                    <option value="murallon">Murallon</option>
+                                    <option value="ogbac">Ogbac</option>
+                                    <option value="pawa">Pawa</option>
+                                    <option value="pili">Pili</option>
+                                    <option value="poctoy">Poctoy</option>
+                                    <option value="poras">Poras</option>
+                                    <option value="puting buhangin">Puting Buhangin</option>
+                                    <option value="puyog">Puyog</option>
+                                    <option value="sabong">Sabong</option>
+                                    <option value="san Miguel">San Miguel</option>
+                                    <option value="santol">Santol</option>
+                                    <option value="sawi">Sawi</option>
+                                    <option value="tabi">Tabi</option>
+                                    <option value="tabigue">Tabigue</option>
+                                    <option value="tagwak">Tagwak</option>
+                                    <option value="tambunan">Tambunan</option>
+                                    <option value="tampus,">Tampus,</option>
+                                    <option value="tanza">Tanza</option>
+                                    <option value="tugos">Tugos</option>
+                                    <option value="tumagabok">Tumagabok</option>
+                                    <option value="tumapon">Tumapon</option>
+
+                                    <option value="Bagacay">Bagacay</option>
+                                    <option value="Bagtingon">Bagtingon</option>
+                                    <option value="Barangay I">Barangay I</option>
+                                    <option value="Barangay II">Barangay II</option>
+                                    <option value="Barangay III">Barangay III</option>
+                                    <option value="Barangay IV">Barangay IV</option>
+                                    <option value="Bicas-bicas">Bicas-bicas</option>
+                                    <option value="Caigangan">Caigangan</option>
+                                    <option value="Daykitin">Daykitin</option>
+                                    <option value="Libas">Libas</option>
+                                    <option value="Malbog">Malbog</option>
+                                    <option value="Sihi">Sihi</option>
+                                    <option value="Timbo">Timbo</option>
+                                    <option value="Tungib-Lipata">Tungib-Lipata</option>
+                                    <option value="Yook">Yook</option>
+
+                                    <option value="Antipolo">Antipolo</option>
+                                    <option value="Bachao Ibaba">Bachao Ibaba</option>
+                                    <option value="Bachao Ilaya">Bachao Ilaya</option>
+                                    <option value="Bacongbacong">Bacongbacong</option>
+                                    <option value="Bahi">Bahi</option>
+                                    <option value="Bangbang">Bangbang</option>
+                                    <option value="Banot">Banot</option>
+                                    <option value="Banuyo">Banuyo</option>
+                                    <option value="Barangay I">Barangay I</option>
+                                    <option value="Barangay II">Barangay II</option>
+                                    <option value="Barangay III">Barangay III</option>
+                                    <option value="Bognuyan">Bognuyan</option>
+                                    <option value="Cabugao">Cabugao</option>
+                                    <option value="Dawis">Dawis</option>
+                                    <option value="Dili">Dili</option>
+                                    <option value="Libtangin">Libtangin</option>
+                                    <option value="Mahunig">Mahunig</option>
+                                    <option value="Mangiliol">Mangiliol</option>
+                                    <option value="Masiga">Masiga</option>
+                                    <option value="Matandang Gasan">Matandang Gasan</option>
+                                    <option value="Pangi">Pangi</option>
+                                    <option value="Pingan">Pingan</option>
+                                    <option value="Tabionan">Tabionan</option>
+                                    <option value="Tapuyan">Tapuyan</option>
+                                    <option value="Tiguion">Tiguion</option>
+
+                                    <option value="Anapog-Sibucao">Anapog-Sibucao</option>
+                                    <option value="Argao">Argao</option>
+                                    <option value="Balanacan">Balanacan</option>
+                                    <option value="Banto">Banto</option>
+                                    <option value="Bintakay">Bintakay</option>
+                                    <option value="Bocboc">Bocboc</option>
+                                    <option value="Butansapa">Butansapa</option>
+                                    <option value="Candahon">Candahon</option>
+                                    <option value="Capayang">Capayang</option>
+                                    <option value="Danao">Danao</option>
+                                    <option value="Dulong Bayan">Dulong Bayan</option>
+                                    <option value="Gitnang Bayan">Gitnang Bayan</option>
+                                    <option value="Guisian">Guisian</option>
+                                    <option value="Hinadharan">Hinadharan</option>
+                                    <option value="Hinanggayon">Hinanggayon</option>
+                                    <option value="Ino">Ino</option>
+                                    <option value="Janagdong">Janagdong</option>
+                                    <option value="Lamesa">Lamesa</option>
+                                    <option value="Laon">Laon</option>
+                                    <option value="Magapua">Magapua</option>
+                                    <option value="Malayak">Malayak</option>
+                                    <option value="Malusak">Malusak</option>
+                                    <option value="Mampaitan">Mampaitan</option>
+                                    <option value="Mangyan-Mababad">Mangyan-Mababad</option>
+                                    <option value="Market Site">Market Site</option>
+                                    <option value="Mataas na Bayan">Mataas na Bayan</option>
+                                    <option value="Mendez">Mendez</option>
+                                    <option value="Nangka I">Nangka I</option>
+                                    <option value="Nangka II">Nangka II</option>
+                                    <option value="Paye">Paye</option>
+                                    <option value="Pili">Pili</option>
+                                    <option value="Puting Buhangin">Puting Buhangin</option>
+                                    <option value="Sayao">Sayao</option>
+                                    <option value="Silangan">Silangan</option>
+                                    <option value="Sumangga">Sumangga</option>
+                                    <option value="Tarug">Tarug</option>
+                                    <option value="Villa Mendez">Villa Mendez</option>
+
+                                    <option value="Alobo">Alobo</option>
+                                    <option value="Angas">Angas</option>
+                                    <option value="Aturan">Aturan</option>
+                                    <option value="Bagong Silang Poblacion">Bagong Silang Poblacion</option>
+                                    <option value="Baguidbirin">Baguidbirin</option>
+                                    <option value="Baliis">Baliis</option>
+                                    <option value="Balogo">Balogo</option>
+                                    <option value="Banahaw Poblacion">Banahaw Poblacion</option>
+                                    <option value="Bangcuangan">Bangcuangan</option>
+                                    <option value="Banogbog">Banogbog</option>
+                                    <option value="Biga">Biga</option>
+                                    <option value="Botilao">Botilao</option>
+                                    <option value="Buyabod">Buyabod</option>
+                                    <option value="Dating Bayan">Dating Bayan</option>
+                                    <option value="Devilla">Devilla</option>
+                                    <option value="Dolores">Dolores</option>
+                                    <option value="Haguimit">Haguimit</option>
+                                    <option value="Hupi">Hupi</option>
+                                    <option value="Ipil">Ipil</option>
+                                    <option value="Jolo">Jolo</option>
+                                    <option value="Kaganhao">Kaganhao</option>
+                                    <option value="Kalangkang">Kalangkang</option>
+                                    <option value="Kamandugan">Kamandugan</option>
+                                    <option value="Kasily">Kasily</option>
+                                    <option value="Kilo-kilo">Kilo-kilo</option>
+                                    <option value="Kiñaman">Kiñaman</option>
+                                    <option value="Labo">Labo</option>
+                                    <option value="Lamesa">Lamesa</option>
+                                    <option value="Landy">Landy</option>
+                                    <option value="Lapu-lapu Poblacion">Lapu-lapu Poblacion</option>
+                                    <option value="Libjo">Libjo</option>
+                                    <option value="Lipa">Lipa</option>
+                                    <option value="Lusok">Lusok</option>
+                                    <option value="Maharlika Poblacion">Maharlika Poblacion</option>
+                                    <option value="Makulapnit">Makulapnit</option>
+                                    <option value="Maniwaya">Maniwaya</option>
+                                    <option value="Manlibunan">Manlibunan</option>
+                                    <option value="Masaguisi">Masaguisi</option>
+                                    <option value="Masalukot">Masalukot</option>
+                                    <option value="Matalaba">Matalaba</option>
+                                    <option value="Mongpong">Mongpong</option>
+                                    <option value="Morales">Morales</option>
+                                    <option value="Napo">Napo</option>
+                                    <option value="Pag-asa Poblacion">Pag-asa Poblacion</option>
+                                    <option value="Pantayin">Pantayin</option>
+                                    <option value="Polo">Polo</option>
+                                    <option value="Pulong-Parang">Pulong-Parang</option>
+                                    <option value="Punong">Punong</option>
+                                    <option value="San Antonio">San Antonio</option>
+                                    <option value="San Isidro">San Isidro</option>
+                                    <option value="Tagum">Tagum</option>
+                                    <option value="Tamayo">Tamayo</option>
+                                    <option value="Tambangan">Tambangan</option>
+                                    <option value="Tawiran">Tawiran</option>
+                                    <option value="Taytay">Taytay</option>
+
+                                    <option value="Bangwayin">Bangwayin</option>
+                                    <option value="Bayakbakin">Bayakbakin</option>
+                                    <option value="Bolo">Bolo</option>
+                                    <option value="Bonliw">Bonliw</option>
+                                    <option value="Buangan">Buangan</option>
+                                    <option value="Cabuyo">Cabuyo</option>
+                                    <option value="Cagpo">Cagpo</option>
+                                    <option value="Dampulan">Dampulan</option>
+                                    <option value="Kay Duke">Kay Duke</option>
+                                    <option value="Mabuhay">Mabuhay</option>
+                                    <option value="Makawayan">Makawayan</option>
+                                    <option value="Malibago">Malibago</option>
+                                    <option value="Malinao">Malinao</option>
+                                    <option value="Maranlig">Maranlig</option>
+                                    <option value="Marlangga">Marlangga</option>
+                                    <option value="Matuyatuya">Matuyatuya</option>
+                                    <option value="Nangka">Nangka</option>
+                                    <option value="Pakaskasan">Pakaskasan</option>
+                                    <option value="Payanas">Payanas</option>
+                                    <option value="Poblacion">Poblacion</option>
+                                    <option value="Poctoy">Poctoy</option>
+                                    <option value="Sibuyao">Sibuyao</option>
+                                    <option value="Suha">Suha</option>
+                                    <option value="Talawan">Talawan</option>
+                                    <option value="Tigwi">Tigwi</option>
                                 </select>
                                 <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                     <img src="{{asset('images/register/menu-down (1).svg')}}" alt="Dropdown Icon" class="h-5 w-5 text-gray-700">
                                 </div>
                             </div>
                         </div>
+
+                        <script>
+                            const barangayOptions = {
+                                boac:['Agot',
+                                    'Agumaymayan',
+                                    'Amoingon',
+                                    'Apitong',
+                                    'Balagasan',
+                                    'Balaring',
+                                    'Balimbing',
+                                    'Balogo',
+                                    'Bamban',
+                                    'Bangbangalon',
+                                    'Bantad',
+                                    'Bantay',
+                                    'Bayuti',
+                                    'Binunga',
+                                    'Boi',
+                                    'Boton',
+                                    'Buliasnin',
+                                    'Bunganay',
+                                    'Caganhao',
+                                    'Canat',
+                                    'Catubugan',
+                                    'Cawit',
+                                    'Daig',
+                                    'Daypay',
+                                    'Duyay',
+                                    'Hinapulan',
+                                    'Ihatub',
+                                    'Isok I',
+                                    'Ison II Poblacion',
+                                    'Laylay',
+                                    'Lupac',
+                                    'Mahinhin',
+                                    'Mainit',
+                                    'Malbog',
+                                    'Maligaya',
+                                    'Malusak',
+                                    'Mansiwat',
+                                    'Mataas na Bayan',
+                                    'Maybo',
+                                    'Mercado',
+                                    'Murallon',
+                                    'Ogbac',
+                                    'Pawa',
+                                    'Pili',
+                                    'Poctoy',
+                                    'Poras',
+                                    'Puting Buhangin',
+                                    'Puyog',
+                                    'Sabong',
+                                    'San Miguel',
+                                    'Santol',
+                                    'Sawi',
+                                    'Tabi',
+                                    'Tabigue',
+                                    'Tagwak',
+                                    'Tambunan',
+                                    'Tampus',
+                                    'Tanza',
+                                    'Tugos',
+                                    'Tumagabok',
+                                    'Tumapon'
+                                ],
+
+                                buenavista:[
+                                    'Bagacay',
+                                    'Bagtingon',
+                                    'Barangay I',
+                                    'Barangay II',
+                                    'Barangay III',
+                                    'Barangay IV',
+                                    'Bicas-bicas',
+                                    'Caigangan',
+                                    'Daykitin',
+                                    'Libas',
+                                    'Malbog',
+                                    'Sihi',
+                                    'Timbo',
+                                    'Tungib-Lipata',
+                                    'Yook' 
+                                ],
+                                gasan:[
+                                    'Antipolo',
+                                    'Bachao Ibaba',
+                                    'Bachao Ilaya',
+                                    'Bacongbacong',
+                                    'Bahi',
+                                    'Bangbang',
+                                    'Banot',
+                                    'Banuyo',
+                                    'Barangay I',
+                                    'Barangay II',
+                                    'Barangay III',
+                                    'Bognuyan',
+                                    'Cabugao',
+                                    'Dawis',
+                                    'Dili',
+                                    'Libtangin',
+                                    'Mahunig',
+                                    'Mangiliol',
+                                    'Masiga',
+                                    'Matandang Gasan',
+                                    'Pangi',
+                                    'Pinggan',
+                                    'Tabionan',
+                                    'Tapuyan',
+                                    'Tiguion'
+                                ],
+                                mogpog:[
+                                    'Anapog-Sibucao',
+                                    'Argao',
+                                    'Balanacan',
+                                    'Banto',
+                                    'Bintakay',
+                                    'Bocboc',
+                                    'Butansapa',
+                                    'Candahon',
+                                    'Capayang',
+                                    'Danao',
+                                    'Dulong Bayan',
+                                    'Gitnang Bayan',
+                                    'Guisian',
+                                    'Hinadharan',
+                                    'Hinanggayon',
+                                    'Ino',
+                                    'Janagdong',
+                                    'Lamesa',
+                                    'Laon',
+                                    'Magapua',
+                                    'Malayak',
+                                    'Malusak',
+                                    'Mampaitan',
+                                    'Mangyan-Mababad',
+                                    'Market Site',
+                                    'Mataas na Bayan',
+                                    'Mendez',
+                                    'Nangka I',
+                                    'Nangka II',
+                                    'Paye',
+                                    'Pili',
+                                    'Puting Buhangin',
+                                    'Sayao',
+                                    'Silangan',
+                                    'Sumangga',
+                                    'Tarug',
+                                    'Villa Mendez'
+                                ],
+                                santacruz:[
+                                    'Alobo',
+                                    'Angas',
+                                    'Aturan',
+                                    'Bagon Silang Poblacion',
+                                    'Baguidbirin',
+                                    'Baliis',
+                                    'Balogo',
+                                    'Banahaw Poblacion',
+                                    'Bangcuangan',
+                                    'Banogbog',
+                                    'Biga',
+                                    'Botilao',
+                                    'Buyabod',
+                                    'Dating Bayan',
+                                    'Devilla',
+                                    'Dolores',
+                                    'Haguimit',
+                                    'Hupi',
+                                    'Ipil',
+                                    'Jolo',
+                                    'Kaganhao',
+                                    'Kalangkang',
+                                    'Kamandungan',
+                                    'Kasily',
+                                    'Kilo-kilo',
+                                    'Kiñaman',
+                                    'Labo',
+                                    'Lamesa',
+                                    'Landy',
+                                    'Lapu-lapu Poblacion',
+                                    'Libjo',
+                                    'Lipa',
+                                    'Lusok',
+                                    'Maharlika Poblacion',
+                                    'Makulapnit',
+                                    'Maniwaya',
+                                    'Manlibunan',
+                                    'Masaguisi',
+                                    'Masalukot',
+                                    'Matalaba',
+                                    'Mongpong',
+                                    'Morales',
+                                    'Napo',
+                                    'Pag-asa Poblacion',
+                                    'Pantayin',
+                                    'Polo',
+                                    'Pulong-parang',
+                                    'Punong',
+                                    'San Antonio',
+                                    'San Isidro',
+                                    'Tagum',
+                                    'Tamayo',
+                                    'Tambangan',
+                                    'Tawiran',
+                                    'Taytay'
+                                ],
+                                torrijos:[
+                                    'Bangwayin',
+                                    'Bayakbakin',
+                                    'Bolo',
+                                    'Bonliw',
+                                    'Buangan',
+                                    'Cabuyo',
+                                    'Cagpo',
+                                    'Dampulan',
+                                    'Kay Duke',
+                                    'Mabuhay',
+                                    'Makawayan',
+                                    'Malibago',
+                                    'Malinao',
+                                    'Maranlig',
+                                    'Marlangga',
+                                    'Matuyatuya',
+                                    'Nangka',
+                                    'Pakaskasan',
+                                    'Payanas',
+                                    'Poblacion',
+                                    'Poctoy',
+                                    'Sibuyao',
+                                    'Suha',
+                                    'Talawan',
+                                    'Tigwi'
+                                ]
+                            };
+
+                            const minucipalitySelect = document.getElementById ("municipality");
+                            const barangaySelect = document.getElementById ("barangay");
+
+                            function populateBarangay() {
+                                const selectMunicipality =municipalitySelect.value;
+                                barangaySelect.innerHTML = "<option disabled selected hidden>Select a Barangay</option>";
+                                
+                                if (barangayOptions[selectMunicipality]) {
+                                    const selectBarangays = barangayOptions[selectMunicipality];
+                                }
+                            }
+
     
                         <div class="grid flex flex-col items-start space-y-0.5">
                             <label class=" text-gray-700 text-sm font-normal" for="cn">Contact Number</label>
