@@ -13,7 +13,7 @@ submitButton.addEventListener('click', function(){
         return;
     }
     if(!/^[a-zA-Z]+$/.test(firstNameField.value)){
-        alert('Name should only be letters');
+        alert('First Name should only be letters');
         return;
     }
 
@@ -27,7 +27,7 @@ submitButton.addEventListener('click', function(){
         return;
     }
     if(!/^[a-zA-Z]+$/.test(lastNameField.value)){
-        alert('Name should only be letters');
+        alert('Last Name should only be letters');
         return;
     }
 });
