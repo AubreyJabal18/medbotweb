@@ -33,4 +33,4 @@ Route::get('/uploadlogin', [RedirectController::class, 'redirectToUploadLogin'])
 
 Route::get('/register/professional', [RedirectController::class, 'redirectToRegisterProfessional']);
 
-Route::get('/register/professional/process', [RegisterController::class, 'registerProfessional']);
+Route::post('/register/professional/process', [RegisterController::class, 'registerProfessional']);
