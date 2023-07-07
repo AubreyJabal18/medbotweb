@@ -11,9 +11,9 @@ class RedirectController extends Controller
     }
 
     public function redirectToCameraLogin(){
-        return view('cameralogin');
+        return view('login_camera');
     }
     public function redirectToUploadLogin(){
-        return view('uploadlogin');
+        return view('login_upload');
     }
 }
