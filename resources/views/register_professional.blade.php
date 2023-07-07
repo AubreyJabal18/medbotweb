@@ -39,7 +39,7 @@
                     <p class="font-roboto font-bold text-base text-black ">Create an account</p>
                     <p class="font-roboto font-normal text-base text-black ">Register as Professional? <a href="#" class="text-[#5B86E5]">Click here</a></p>
                 </div>
-                <form action="/register/professional/process" method="POST" enctype="multipart/form-data">
+                <form action="/register/professional/process" method="POST" enctype="multipart/form-data" id="form">
                     <div class="grid grid-cols-1 gap-4 items-start mt-4 md:grid-cols-2 lg:grid-cols-3">
                         
                         <div class="grid flex flex-col justify-center items-center md:col-span-2 lg:row-span-5 lg:col-span-1"> 
@@ -137,7 +137,7 @@
                     </div>
 
                 <div class="flex justify-center items-center my-7 md:items-center md:my-10">
-                    <input type="checkbox" id="agree" class=" checked:bg-black w-4 h-4">
+                    <input type="checkbox" id="terms" class=" checked:bg-black w-4 h-4">
                     <span class="ml-2 text-sm text-black text-center">I agree to the <a href="#" class="text-[#7A9DEA] underline underline-offset-2">Terms and Condition</a></span>
                 </div>
 

@@ -5,10 +5,11 @@ const suffixField = document.getElementById('suffix');
 const honorrificField = document.getElementById('honorrific');
 const sexField = document.getElementById('sex');
 const birthdayField = document.getElementById('birthday')
-const municipality = document.getElementById('municipality');
+const municipalityField = document.getElementById('municipality');
 const barangayField = document.getElementById('barangay');
 const contactNumberField = document.getElementById('contact');
 const emailField = document.getElementById('email');
+const licenseField = document.getElementById('license')
 const form = document.getElementById('form');
 const terms = document.getElementById('terms');
 
@@ -84,14 +85,14 @@ submitButton.addEventListener('click', function(){
         return;
     }
     
-    if(contactField.value.length === 0){
+    if(contactNumberField.value.length === 0){
         alert('Enter your contact number');
         submitButton.disabled = false;
         return;
     }
-    
-    if(!/^\d{11}$/.test(contactField.value)){
-        alert('Enter your valid');
+
+    if(!/^\d{11}$/.test(contactNumberField.value)){
+        alert('Enter your valid 11-digit contact number');
         submitButton.disabled = false;
         return;
     }
