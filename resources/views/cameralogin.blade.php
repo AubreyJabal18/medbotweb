@@ -34,7 +34,7 @@
             </div>
             
             <p class="flex flex-row text-[#919191] font-bold font-roboto text-[10px] md:text-[13px] justify-self-center mt-8 md:mt-24 mb-2 ">Don't have an account? &nbsp;<u href="#" class="flex flex-row font-roboto text-blue-500 hover:text-blue-700 text-[10px] md:text-[13px] justify-self-center">Register here</u></p>
-            <img src="{{asset('images/login/modelleftsideview.png')}}" alt=" " class="hidden absolute -bottom-4 -right-36 self-start w-[270px] h-[250px] md:block">
+            <img src="{{asset('images/login/modelleftsideview.png')}}" alt=" " class="hidden absolute -bottom-4 -right-32 self-start w-[240px] h-[250px] md:block">
 
 
 
