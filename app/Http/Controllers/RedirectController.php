@@ -22,10 +22,6 @@ class RedirectController extends Controller
         return view('register_professional');
     }
 
-    public function redirectToRegisterProfessional(){
-        return view('register_professional');
-    }
-
     public function redirectToDashboard(){
         return view('dashboard');
     }
