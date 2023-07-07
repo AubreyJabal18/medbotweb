@@ -40,7 +40,7 @@
                     <p class="font-roboto font-normal text-base text-black ">Register as Professional? <a href="#" class="text-[#5B86E5]">Click here</a></p>
                 </div>
 
-                <form action="/register_user" method="POST" enctype="multipart/form-data">
+                <form action="/register/user/process" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="grid grid-cols-1 gap-4 items-start mt-4 md:grid-cols-2 lg:grid-cols-3">
                     
@@ -135,7 +135,7 @@
                     </div>
 
                     <div class="flex justify-center items-center my-2 md:my-0">
-                        <button class="flex items-center justify-center border rounded-full w-28 h-11 bg-[#47B0E1] font-roboto font-medium text-base text-white md:w-32 md:h-12">Register</button>
+                        <button type="button" id="submit-button" class="flex items-center justify-center border rounded-full w-28 h-11 bg-[#47B0E1] font-roboto font-medium text-base text-white md:w-32 md:h-12">Register</button>
                     </div>
 
                     <div class="flex justify-center items-center mt-2 md:my-7">
@@ -159,5 +159,6 @@
     </div>
 
     <script src="{{ asset('/js/barangay.js') }}"></script>
+    <script src="{{ asset('/js/validate.js') }}"></script>
 </body>
 </html>
