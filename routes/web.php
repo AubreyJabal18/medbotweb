@@ -17,6 +17,6 @@ use App\Http\Controllers\RedirectController;
 
 Route::get('/', [RedirectController::class, 'redirectToHomepage']);
 
-Route::get('/cameralogin', [RedirectController::class, 'redirectToCameraLogin']);
+Route::get('/camera/login', [RedirectController::class, 'redirectToCameraLogin']);
 
-Route::get('/uploadlogin', [RedirectController::class, 'redirectToUploadLogin']);
+Route::get('/upload/login', [RedirectController::class, 'redirectToUploadLogin']);
