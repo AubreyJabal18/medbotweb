@@ -12,6 +12,7 @@ class RegisterController extends Controller
 {
 
     public function registerUser(Request $request){
+       dd($request->all()); 
         $validator = Validator::make($request->all(),[
             'first_name' => 'required|alpha',
             'last_name' => 'required|alpha',

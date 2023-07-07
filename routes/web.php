@@ -27,7 +27,7 @@ Route::get('/dashboard', [RedirectController::class, 'redirectToDashboard']);
 
 Route::get('/get/qrcode', [FetchController::class, 'getQrCode']);
 
-Route::get('/register/user/process', [RegisterController::class, 'registerUser']);
+Route::post('/register/user/process', [RegisterController::class, 'registerUser']);
 
 Route::get('/uploadlogin', [RedirectController::class, 'redirectToUploadLogin']);
 
