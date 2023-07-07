@@ -54,7 +54,7 @@ submitButton.addEventListener('click', function(){
     }
 
        
-    if(honorrificNameField.value.length == 0){
+    if(honorrificField.value.length == 0){
         alert('Honorrific is required');
         submitButton.disabled = false;
         return;
