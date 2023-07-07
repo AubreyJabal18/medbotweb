@@ -89,14 +89,14 @@
                         <div class="grid flex flex-col items-start space-y-0.5">
                             <label class=" text-gray-700 text-sm font-normal" for="municipality">Municipality</label>
                             <div class="relative">
-                               <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="municipality" value="{{old('municipality')}}">
+                               <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="municipality" name="municipality" value="{{old('municipality')}}">
                                     <option disabled selected hidden>Select a Municipality</option>
-                                    <option value="boac">Boac</option>
+                                    <option value="Boac">Boac</option>
                                     <option value="Buenavista">Buenavista</option>
-                                    <option value="gasan">Gasan</option>
-                                    <option value="mogpog">Mogpog</option>
-                                    <option value="santa cruz">Santa Cruz</option>
-                                    <option value="torrijos">Torrijos</option>
+                                    <option value="Gasan">Gasan</option>
+                                    <option value="Mogpog">Mogpog</option>
+                                    <option value="Sta. Cruz">Santa Cruz</option>
+                                    <option value="Torrijos">Torrijos</option>
                                 </select>
                                 <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                     <img src="{{asset('images/register/menu-down (1).svg')}}" alt="Dropdown Icon" class="h-5 w-5 text-gray-700">
@@ -107,16 +107,15 @@
                         <div class="grid flex flex-col items-start space-y-0.5">
                             <label class=" text-gray-700 text-sm font-normal" for="barangay">Barangay</label>
                             <div class="relative">
-                               <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="barangay" value="{{old('barangay')}}">
+                                <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="barangay" name="barangay" value="{{old('barangay')}}">
                                     <option disabled selected hidden>Select a barangay</option>
-                                    <option value="ihatub">Ihatub</option>
                                 </select>
                                 <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                     <img src="{{asset('images/register/menu-down (1).svg')}}" alt="Dropdown Icon" class="h-5 w-5 text-gray-700">
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="grid flex flex-col items-start space-y-0.5">
                             <label class=" text-gray-700 text-sm font-normal" for="cn">Contact Number</label>
                             <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="cn" type="text" placeholder="Contact Number" name="contact" value="{{old('contact')}}">
@@ -158,5 +157,7 @@
             </div>
         </div>
     </div>
+
+    <script src="{{ asset('/js/barangay.js') }}"></script>
 </body>
 </html>
