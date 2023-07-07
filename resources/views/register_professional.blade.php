@@ -39,7 +39,6 @@
                     <p class="font-roboto font-bold text-base text-black ">Create an account</p>
                     <p class="font-roboto font-normal text-base text-black ">Register as Professional? <a href="#" class="text-[#5B86E5]">Click here</a></p>
                 </div>
-                
                 <form action="/register/professional/process" method="POST" enctype="multipart/form-data">
                     <div class="grid grid-cols-1 gap-4 items-start mt-4 md:grid-cols-2 lg:grid-cols-3">
                         
