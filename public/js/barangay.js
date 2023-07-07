@@ -229,7 +229,6 @@ const torrijos_barangays = [
     'Tigwi'
 ]; 
 
-console.log('sss');
 const municipalityDropdown = document.getElementById('municipality');
 const barangayDropdown = document.getElementById('barangay');
 
