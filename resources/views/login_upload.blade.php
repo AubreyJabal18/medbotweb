@@ -37,23 +37,23 @@
             </div>
 
             <div class="flex flex-row items-center place-self-center mt-2 md:mt-4">
-                <button class="flex justify-items-center bg-[#e8def8]  hover:bg-blue-300 h-5 md:h-6 w-19 md:w-15 border-slate-400 border-[1px] rounded-s-full md:rounded-s-full font-roboto text-[10px] md:text-[12px] font-light ">
+                <a href="/login/camera" class="flex justify-items-center bg-[#e8def8]  hover:bg-blue-300 h-5 md:h-6 w-19 md:w-15 border-slate-400 border-[1px] rounded-s-full md:rounded-s-full font-roboto text-[10px] md:text-[12px] font-light ">
                     <div class="flex flex-row" >
                         <img src="{{asset('images/login/select.svg')}}" alt=" " class="flex mr-2 md:mr-2 ml-1 md:ml-1 my-auto md:my-1 h-2 md:h-3 w-3 md:w-3 ">
                     <div class="flex flex-row mr-2 md:mr-2 my-auto md:my-auto mt-1">
                         Camera</div>    
                     </div>
-                </button>
-                <button class="flex justify-items-center h-5 md:h-6 w-19 md:w-15 bg-white hover:bg-blue-300 border-slate-400 border-[1px] rounded-e-full md:rounded-e-ful font-roboto text-[10px] md:text-[12px] font-light">
+                </a>
+                <a href="/login/upload" class="flex justify-items-center h-5 md:h-6 w-19 md:w-15 bg-white hover:bg-blue-300 border-slate-400 border-[1px] rounded-e-full md:rounded-e-ful font-roboto text-[10px] md:text-[12px] font-light">
                     <div class="flex flex-row">
                         <img src="{{asset('images/login/select.svg')}}" aly=" "  class="flex mr-2 md:mr-2 ml-1 md:ml-1 my-auto md:my-1 h-2 md:h-3 w-3 md:w-3">
                     <div class="flex flex-row mr-2 md:mr-2 my-auto md:my-auto mt-1">
                         Upload</div>   
                     </div>
-                </button>
+                </a>
             </div>
             
-            <p class="flex flex-row text-[#919191] font-bold font-roboto text-[10px] md:text-[13px] justify-self-center mt-8 md:mt-24 mb-2 ">Don't have an account? &nbsp;<u href="#" class="flex flex-row font-roboto text-blue-500 hover:text-blue-700 text-[10px] md:text-[13px] justify-self-center">Register here</u></p>
+            <p class="flex flex-row text-[#919191] font-bold font-roboto text-[10px] md:text-[13px] justify-self-center mt-8 md:mt-24 mb-2 ">Don't have an account? &nbsp;<a href="/register/user" class="flex flex-row font-roboto text-blue-500 hover:text-blue-700 text-[10px] md:text-[13px] justify-self-center underline">Register here</a></p>
 
         </div>
       

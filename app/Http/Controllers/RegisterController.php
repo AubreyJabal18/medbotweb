@@ -76,7 +76,7 @@ class RegisterController extends Controller
             $user->save();
         }
 
-        $data = $user->id.' '.$password;
+        $data = 'medbot'.$user->id.' '.$password;
         $path = '../public/storage/qrcodes/'.$user->id.'.png';
 
         $qrcode = QrCode::size(120)->margin(1)->format('png')->generate($data, $path);

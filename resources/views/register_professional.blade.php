@@ -37,7 +37,7 @@
 
                 <div class="w-full flex flex-col my-4 md:px-4">
                     <p class="font-roboto font-bold text-base text-black ">Create an account</p>
-                    <p class="font-roboto font-normal text-base text-black ">Register as Professional? <a href="#" class="text-[#5B86E5]">Click here</a></p>
+                    <p class="font-roboto font-normal text-base text-black ">Register as User? <a href="/register/user" class="text-[#5B86E5]">Click here</a></p>
                 </div>
                 <form action="/register/professional/process" method="POST" enctype="multipart/form-data" id="form">
                     <div class="grid grid-cols-1 gap-4 items-start mt-4 md:grid-cols-2 lg:grid-cols-3">
@@ -45,7 +45,7 @@
                         <div class="grid flex flex-col justify-center items-center md:col-span-2 lg:row-span-5 lg:col-span-1"> 
                             <img src="{{asset('images/register/Profile pic.svg')}}" alt="" id="profile-placeholder" class="h-20 w-20 mx-auto rounded-full cursor-pointer hover:brightness-50">
                             <p class="font-roboto text-gray-700 text-sm font-normal mt-2">Profile Picture</p>
-                            <input type="file" class="hidden" id="profile" name="profile" accept="image/.png,.jpeg,.jpg">
+                            <input type="file" class="hidden" id="profile" name="profile" accept="image/.png,image/.jpeg,image/.jpg">
                         </div> 
                         
                         
@@ -146,7 +146,7 @@
                 </div>
 
                 <div class="flex justify-center items-center mt-2 md:my-7">
-                    <p class="font-roboto text-sm font-medium text-[#2D3748] md:text-base">Already have an account? <a href="#" class="text-[#5B86E5] underline underline-offset-4">Login here</a></p>
+                    <p class="font-roboto text-sm font-medium text-[#2D3748] md:text-base">Already have an account? <a href="/login/upload" class="text-[#5B86E5] underline underline-offset-4">Login here</a></p>
                 </div>
 
             </div>
