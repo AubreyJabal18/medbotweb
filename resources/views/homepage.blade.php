@@ -15,8 +15,8 @@
 
         <!-- Navbar -->
         <div class="flex flex-row justify-center items-center space-x-10 px-8 py-5 md:justify-end">
-            <a href="#" class="border border-white rounded-lg bg-[#5198F8] font-roboto font-medium text-base text-white px-5 py-2 md:text-sm">REGISTER</a>
-            <a href="#" class="border border-white rounded-lg bg-[#5EDAD5] font-roboto font-medium text-base text-white px-5 py-2 md:text-sm">LOGIN</a>
+            <a href="/register/user" class="border border-white rounded-lg bg-[#5198F8] font-roboto font-medium text-base text-white px-5 py-2 md:text-sm">REGISTER</a>
+            <a href="/login/upload" class="border border-white rounded-lg bg-[#5EDAD5] font-roboto font-medium text-base text-white px-5 py-2 md:text-sm">LOGIN</a>
         </div>
 
         <!-- Hero -->
@@ -30,7 +30,7 @@
         <div class="flex flex-row space-y-4 px-4 mt-6">
             <div class="flex flex-col space-y-5 items-center md:space-y-10">
                 <p class="font-roboto font-normal text-center text-base text-white md:text-3xl">"We are here to assist you by offering solutions for your vital sign requirements, transforming the way you monitor your vital sign measurements."</p>
-                <button href="#" class="relative border border-white rounded-lg bg-[#5EDAD5] font-roboto font-semibold tracking-wide text-sm text-white px-4 py-3 md:text-base md:px-12 md:py-5">GET STARTED</button>
+                <button href="/register/user" class="relative border border-white rounded-lg bg-[#5EDAD5] font-roboto font-semibold tracking-wide text-sm text-white px-4 py-3 md:text-base md:px-12 md:py-5">GET STARTED</button>
             </div>
             <img src="{{asset('images/homepage/medbot.svg')}}" alt="" class="h-3/4 w-3/4 md:-translate-y-24">
         </div> 
@@ -71,7 +71,7 @@
                 <p class="font-roboto font-bold text-[#1F2937] text-xl">Monitoring</p>
             </div>
             <p class="font-roboto font-normal text-base text-[#6B7280] text-justify">
-                The enhanced Medbot is like a special friend that can watch your body signs all the time and tell you if anything looks funny. Even doctors can check on your numbers from far away and help if something’s not right.
+                The enhanced Medbot is like a special friend that can watch your body signs all the time and tell you if anything looks funny. Even doctors can check on your numbers from far away and help if something is not right.
             </p>
         </div>
     </div>

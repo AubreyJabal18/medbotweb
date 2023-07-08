@@ -37,7 +37,7 @@
 
                 <div class="w-full flex flex-col my-4 md:px-4">
                     <p class="font-roboto font-bold text-base text-black ">Create an account</p>
-                    <p class="font-roboto font-normal text-base text-black ">Register as Professional? <a href="#" class="text-[#5B86E5]">Click here</a></p>
+                    <p class="font-roboto font-normal text-base text-black ">Register as Professional? <a href="/register/professional" class="text-[#5B86E5]">Click here</a></p>
                 </div>
 
                 <form action="/register/user/process" method="POST" enctype="multipart/form-data" id="form">
@@ -139,7 +139,7 @@
                     </div>
 
                     <div class="flex justify-center items-center mt-2 md:my-7">
-                        <p class="font-roboto text-sm font-medium text-[#2D3748] md:text-base">Already have an account? <a href="#" class="text-[#5B86E5] underline underline-offset-4">Login here</a></p>
+                        <p class="font-roboto text-sm font-medium text-[#2D3748] md:text-base">Already have an account? <a href="/login/upload" class="text-[#5B86E5] underline underline-offset-4">Login here</a></p>
                     </div>
                 </form>
             </div>
