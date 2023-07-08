@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class FetchController extends Controller
 {
     public function getQrCode(Request $request){
-        $path = '../public/qrcodes/'.$request->id.'.png';
+        $path = '../public/storage/qrcodes/'.$request->id.'.png';
         return response()->download($path);
     }
 }

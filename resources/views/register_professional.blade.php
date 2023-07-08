@@ -52,12 +52,12 @@
                             @csrf
                             <div class="grid flex flex-col items-start space-y-0.5">
                                 <label class=" text-gray-700 text-sm font-normal" for="firstname">First Name</label>
-                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstname" type="text" placeholder="First Name" name="firstname" value="{{old('firstname')}}">
+                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstname" type="text" placeholder="First Name" name="first_name" value="{{old('firstname')}}">
                             </div>
 
                             <div class="grid flex flex-col items-start space-y-0.5">
                                 <label class=" text-gray-700 text-sm font-normal" for="lastname">Last Name</label>
-                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="lastname" id="lastname" type="text" placeholder="Last Name" value="{{old('lastname')}}">
+                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="last_name" id="lastname" type="text" placeholder="Last Name" value="{{old('lastname')}}">
                             </div>
 
                             <div class="grid flex flex-col items-start space-y-0.5">
@@ -66,8 +66,8 @@
                             </div>
 
                             <div class="grid flex flex-col items-start space-y-0.5">
-                                <label class=" text-gray-700 text-sm font-normal" for="honorrific">Honorrific</label>
-                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="honorrific" type="text" placeholder="Honorrific" name="honorific" value="{{old('honorific')}}">
+                                <label class=" text-gray-700 text-sm font-normal" for="honorific">Honorific</label>
+                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="honorific" type="text" placeholder="Honorific" name="honorific" value="{{old('honorific')}}">
                             </div>
 
                             <div class="grid flex flex-col items-start space-y-0.5">
