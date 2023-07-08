@@ -66,7 +66,6 @@
     </div>
 
     <script src="{{asset('/js/login_upload.js')}}"></script>
-    <script src="{{asset('/js/login_upload.js')}}"></script>
 </body>
 
 </html>
