@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\RedirectController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\FetchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +21,17 @@ Route::get('/', [RedirectController::class, 'redirectToHomepage']);
 
 Route::get('/login/camera', [RedirectController::class, 'redirectToCameraLogin']);
 
+Route::get('/register/user', [RedirectController::class, 'redirectToRegisterUser']);
+
+Route::get('/dashboard', [RedirectController::class, 'redirectToDashboard']);
+
+Route::get('/get/qrcode', [FetchController::class, 'getQrCode']);
+
+Route::post('/register/user/process', [RegisterController::class, 'registerUser']);
+
 Route::get('/login/upload', [RedirectController::class, 'redirectToUploadLogin']);
+
+Route::get('/register/professional', [RedirectController::class, 'redirectToRegisterProfessional']);
+
+Route::post('/register/professional/process', [RegisterController::class, 'registerProfessional']);
+

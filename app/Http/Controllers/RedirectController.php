@@ -13,6 +13,19 @@ class RedirectController extends Controller
     public function redirectToCameraLogin(){
         return view('login_camera');
     }
+
+    public function redirectToRegisterUser(){
+        return view('register_user');
+    }
+    
+    public function redirectToRegisterProfessional(){
+        return view('register_professional');
+    }
+
+    public function redirectToDashboard(){
+        return view('dashboard');
+    }
+  
     public function redirectToUploadLogin(){
         return view('login_upload');
     }
