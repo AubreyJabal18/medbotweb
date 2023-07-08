@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camera Login</title>
+    <title>Upload Login</title>
     @vite('resources/css/app.css')
 </head>
 <body>
@@ -30,7 +30,12 @@
             <img src="{{asset('images/login/home.svg')}}" alt=" " class="absolute self-start left-5 top-5 w-3 md:w-6 h-3 md:h-6 md:top-6">  
             <p class="flex flex-col items-center font-roboto font-bold text-lg md:text-3xl text-neutral-500 mt-3 md:mt-4">Welcome !
             <p class="flex flex-col font-roboto items-center font-bold text-sm md:text-lg  text-neutral-500 mt-4 md:mt-6">Scan your QR Code</p></p>
-            <div class="flex items-center w-3/4 md:w-[65%] h-[70%] md:h-[50%]  bg-[#d9d9d9]  rounded-xl mt-5 "></div>    
+            
+            <div class="flex items-center justify-center w-3/4 md:w-[65%] h-[70%] md:h-[50%] border-2 border-neutral-700 rounded-xl mt-5 ">
+                <img src="{{asset('images/login/upload.png')}}" alt="" class="w-32 md:w-40 h-32 md:h-40 ">
+            
+            </div>
+
             <div class="flex flex-row items-center place-self-center mt-2 md:mt-4">
                 <button class="flex justify-items-center bg-[#e8def8]  hover:bg-blue-300 h-5 md:h-6 w-19 md:w-15 border-slate-400 border-[1px] rounded-s-full md:rounded-s-full font-roboto text-[10px] md:text-[12px] font-light ">
                     <div class="flex flex-row" >
