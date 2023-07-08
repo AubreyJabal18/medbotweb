@@ -32,9 +32,12 @@
             <p class="flex flex-col font-roboto items-center font-bold text-sm md:text-lg  text-neutral-500 mt-4 md:mt-6">Scan your QR Code</p></p>
             
             <div class="flex items-center justify-center w-3/4 md:w-[65%] h-[70%] md:h-[50%] border-2 border-neutral-700 rounded-xl mt-5 ">
-                <img src="{{asset('images/login/upload.png')}}" alt="" class="w-32 md:w-40 h-32 md:h-40 ">
-            
+                <img id="upload-placeholder" src="{{asset('images/login/upload.png')}}" alt="" class="w-32 md:w-40 h-32 md:h-40 cursor-pointer">
             </div>
+            <form action="/login/upload/process" method="POST" enctype="multipart/form-data" class="hidden" id='form' name='form'>
+                @csrf
+                <input type="file" class="hidden" id="qrcode" name="qrcode" accept="image/png,image/jpeg,image/jpg">
+            </form>
 
             <div class="flex flex-row items-center place-self-center mt-2 md:mt-4">
                 <a href="/login/camera" class="flex justify-items-center bg-[#e8def8]  hover:bg-blue-300 h-5 md:h-6 w-19 md:w-15 border-slate-400 border-[1px] rounded-s-full md:rounded-s-full font-roboto text-[10px] md:text-[12px] font-light ">
@@ -46,7 +49,7 @@
                 </a>
                 <a href="/login/upload" class="flex justify-items-center h-5 md:h-6 w-19 md:w-15 bg-white hover:bg-blue-300 border-slate-400 border-[1px] rounded-e-full md:rounded-e-ful font-roboto text-[10px] md:text-[12px] font-light">
                     <div class="flex flex-row">
-                        <img src="{{asset('images/login/select.svg')}}" aly=" "  class="flex mr-2 md:mr-2 ml-1 md:ml-1 my-auto md:my-1 h-2 md:h-3 w-3 md:w-3">
+                        <img src="{{asset('images/login/select.svg')}}" alt=" "  class="flex mr-2 md:mr-2 ml-1 md:ml-1 my-auto md:my-1 h-2 md:h-3 w-3 md:w-3">
                     <div class="flex flex-row mr-2 md:mr-2 my-auto md:my-auto mt-1">
                         Upload</div>   
                     </div>
@@ -62,7 +65,8 @@
 
     </div>
 
-
+    <script src="{{asset('/js/login_upload.js')}}"></script>
+    <script src="{{asset('/js/login_upload.js')}}"></script>
 </body>
 
 </html>
