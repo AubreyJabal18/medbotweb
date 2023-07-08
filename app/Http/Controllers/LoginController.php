@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Libern\QRCodeReader\QRCodeReader;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    //
     public function loginByUpload(Request $request){
       
         $QRCodeReader = new QRCodeReader();
@@ -33,9 +33,14 @@ class LoginController extends Controller
             flash()->addSuccess('Login successfully');
             return redirect()->intended('dashboard');
         }
+    }
 
-        dd($credentials[0]);
-
+    public function logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        flash()->addSuccess('Logout successfully');
+        return redirect('/');
     }
 
 }
