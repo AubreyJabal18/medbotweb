@@ -19,7 +19,7 @@ use App\Http\Controllers\FetchController;
 
 Route::get('/', [RedirectController::class, 'redirectToHomepage']);
 
-Route::get('/cameralogin', [RedirectController::class, 'redirectToCameraLogin']);
+Route::get('/login/camera', [RedirectController::class, 'redirectToCameraLogin']);
 
 Route::get('/register/user', [RedirectController::class, 'redirectToRegisterUser']);
 
@@ -29,7 +29,7 @@ Route::get('/get/qrcode', [FetchController::class, 'getQrCode']);
 
 Route::post('/register/user/process', [RegisterController::class, 'registerUser']);
 
-Route::get('/uploadlogin', [RedirectController::class, 'redirectToUploadLogin']);
+Route::get('/login/upload', [RedirectController::class, 'redirectToUploadLogin']);
 
 Route::get('/register/professional', [RedirectController::class, 'redirectToRegisterProfessional']);
 
