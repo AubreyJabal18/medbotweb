@@ -2,14 +2,14 @@ const submitButton = document.getElementById('submit-button');
 const firstNameField = document.getElementById('firstname');
 const lastNameField = document.getElementById('lastname');
 const suffixField = document.getElementById('suffix');
-const honorrificField = document.getElementById('honorrific');
+const honorificField = document.getElementById('honorific');
 const sexField = document.getElementById('sex');
 const birthdayField = document.getElementById('birthday')
 const municipalityField = document.getElementById('municipality');
 const barangayField = document.getElementById('barangay');
 const contactNumberField = document.getElementById('contact');
 const emailField = document.getElementById('email');
-const licenseField = document.getElementById('license')
+const licenseField = document.getElementById('license');
 const form = document.getElementById('form');
 const terms = document.getElementById('terms');
 
@@ -55,8 +55,8 @@ submitButton.addEventListener('click', function(){
     }
 
        
-    if(honorrificField.value.length == 0){
-        alert('Honorrific is required');
+    if(honorificField.value.length == 0){
+        alert('Honorific is required');
         submitButton.disabled = false;
         return;
     }
@@ -68,7 +68,7 @@ submitButton.addEventListener('click', function(){
     }
     
     if(birthdayField.value == ''){
-        alert('Select your birthday');
+        alert('Select your birthdate');
         submitButton.disabled = false;
         return;
     }
@@ -118,7 +118,7 @@ submitButton.addEventListener('click', function(){
     firstNameField.value = toTitleCase(firstNameField.value);
     lastNameField.value = toTitleCase(lastNameField.value);
     suffixField.value = toTitleCase(suffixField.value);
-    honorrificField.value = toTitleCase(honorrificField.value)
+    honorificField.value = toTitleCase(honorificField.value)
     
     form.submit();
 })

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 trait Upload
 {
-    public function UploadFile(UploadedFile $file, $filename, $folder, $disk = 'public')
+    public function uploadFile(UploadedFile $file, $filename, $folder, $disk = 'public')
     {
         return $file->storeAs(
             $folder,

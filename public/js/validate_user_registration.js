@@ -61,13 +61,14 @@ submitButton.addEventListener('click', function(){
     }
 
     if(sexField.value == 'null'){
-        alert('Select your gender');
+        alert('Select your sex');
         submitButton.disabled = false;
         return;
     }
 
     if (birthdayField.value ==''){
-        alert('Select your birthday');
+        alert('Select your birthdate');
+        submitButton.disabled = false;
         return;
     }
 
@@ -104,6 +105,7 @@ submitButton.addEventListener('click', function(){
     if(!terms.checked) {
         alert("Please accept the Terms and Conditions");
         form.terms.focus();
+        submitButton.disabled = false;
         return;
     }
 
