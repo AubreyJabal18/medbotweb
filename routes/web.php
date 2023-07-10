@@ -38,6 +38,8 @@ Route::post('/register/professional/process', [RegisterController::class, 'regis
 
 Route::post('/login/upload/process', [LoginController::class, 'loginByUpload']);
 
+Route::post('/login/camera/process', [LoginController::class, 'loginByCamera']);
+
 Route::get('/logout',[LoginController::class, 'logout']);
 
 Route::post('/login/camera/process',[LoginController::class, 'loginByCamera']);

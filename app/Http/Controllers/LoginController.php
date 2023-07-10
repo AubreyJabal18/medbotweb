@@ -35,6 +35,10 @@ class LoginController extends Controller
         }
     }
 
+    public function loginByCamera(Request $request){
+        dd($request->all());
+    }
+    
     public function logout(Request $request){
         Auth::logout();
         $request->session()->invalidate();
