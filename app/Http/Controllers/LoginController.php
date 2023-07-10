@@ -42,5 +42,6 @@ class LoginController extends Controller
         flash()->addSuccess('Logout successfully');
         return redirect('/');
     }
+    
 
 }
