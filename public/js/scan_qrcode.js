@@ -3,6 +3,7 @@ const qrcodeDataField = document.getElementById('qrcode');
 const loginForm = document.getElementById('login-form');
 
 function onScanSuccess(decodedText, decodedResult) {
+    html5QrCode.stop()
     console.log(`Code matched = ${decodedText}`, decodedResult);
     qrcodeDataField.value = decodedText;
     loginForm.submit();
