@@ -35,8 +35,8 @@
             </button>
 
             <form action="/login/camera/process" method="POST" class="hidden" id="login-form">
-                @csrf 
-                <input type="text" placeholder="Enter encrypted qrcode" id="qrcode" name="qrcode" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" style="display: none;" required="">
+                @csrf
+                <input type="text" placeholder="Enter encrypted qrcode" id="qrcode" name="qrcode" required="">
             </form> 
 
                     
