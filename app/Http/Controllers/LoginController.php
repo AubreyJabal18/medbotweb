@@ -34,7 +34,6 @@ class LoginController extends Controller
     }
 
     public function loginByUpload(Request $request){
-      
         $QRCodeReader = new QRCodeReader();
         $qrcode_text = $QRCodeReader->decode($request->file('qrcode'));
         $qrcode_data = explode(' ', $qrcode_text);
@@ -58,18 +57,29 @@ class LoginController extends Controller
             flash()->addSuccess('Login successfully');
             return redirect()->intended('dashboard');
         }
+        else {
+            flash()->addError('SORRY, your credentials does not match in our records.');
+            return back();
+        }
     }
      
 
     public function loginByCamera(Request $request){  
-          
-        $qrdata = $request->qrcode;
-        $decrypted = $this->decrypt($qrdata);
-        $credentials = $this->authenticateQRCodeData($decrypted);
-        if(!$credentials){
-            flash()->addError('Invalid QR Code');
-            return redirect()->back();
+        $qrcode_data = explode(' ', $request->qrcode);
+        $type = $qrcode_data[0];
+
+        if($type != 'medbot'){
+            flash()->addError('Invalid QRCode');
+            return back();
         }
+
+        $id = $qrcode_data[1];
+        $password = $qrcode_data[2];
+
+        $credentials = [
+            'id' => $id,
+            'password' => $password
+        ];
 
         if(Auth::attempt($credentials)) {
             $request->session()->regenerate();
