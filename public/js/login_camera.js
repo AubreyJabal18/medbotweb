@@ -1,4 +1,3 @@
-
 const html5QrCode = new Html5Qrcode('camera-placeholder');
       const qrCodeSuccessCallback = (decodedText, decodedResult) => {
           console.log(decodedText);

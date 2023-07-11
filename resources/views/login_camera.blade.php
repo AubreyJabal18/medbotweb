@@ -27,14 +27,11 @@
             <p class="flex font-roboto items-center font-bold text-sm md:text-sm lg:text-lg text-neutral-500 mt-4 md:mt-6">Scan your QR Code</p></p>
     
 
-            <div id="camera-placeholder"  class="flex justify-center w-3/4 md:w-[70%] lg:w-[70%] h-[35%] md:h-[50%] lg:h-[50%] rounded-xl mt-5 ">          
+            <div id="camera-placeholder"  class="flex justify-center w-3/4 md:w-[70%] lg:w-[70%] h-[35%] md:h-[50%] lg:h-[50%] rounded-xl mt-3 md:mt-3 lg:mt-4">          
             </div>  
                 
-            <button type="button" id="swap-camera" class="flex flex-row items-center justify-center mt-4 px-2 py-1 rounded-full border border-slate-400 font-roboto font-normal text-gray-800 text-sm md:mt-0 lg:hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48" class="h-4 w-4 mr-2">
-                    <path d="M480-266q72 0 121-50.5T650-440q0-5-.5-8t-2.5-8h-60q-1 5 1 8t2 8q0 45-33 79.5T480-326H351q18 27 53.5 43.5T480-266ZM310-416h55q1-5 3-12t2-12q0-44 32.5-75t77.5-31h131q-23-27-57.5-43.5T480-606q-73 0-121.5 47T310-440q0 5 .5 12t-.5 12ZM140-120q-24 0-42-18t-18-42v-513q0-23 18-41.5t42-18.5h147l73-87h240l73 87h147q23 0 41.5 18.5T880-693v513q0 24-18.5 42T820-120H140Zm680-60v-513H645l-73-87H388l-73 87H140v513h680ZM480-480Z"/>
-                </svg>
-                Swap Camera
+            <button type="button" id="swap-camera" class="flex flex-row items-center justify-center mt-2 px-1 py-1 rounded-full border border-slate-400 font-roboto font-normal text-gray-800 text-[10px] md:text-[10px] md:mt-1 lg:hidden">
+                <img src="{{asset('images/login/swap_camera.svg')}}" alt=" " class="w-3 h-3 md:w-4 md:h-4">
             </button>
 
             <form action="/login/camera/process" method="POST" class="hidden" id="login-form">
@@ -65,7 +62,8 @@
             </div>
             
             <p class="w-full absolute bottom-3 text-center text-[#919191] font-bold font-roboto text-[10px] md:text-[13px]">Don't have an account? &nbsp;<span><a href="/register/user" class="font-roboto text-blue-500 hover:text-blue-700 text-[10px] md:text-[13px] justify-self-center underline">Register here</a></span></p>
-            <img src="{{asset('images/login/modelleftsideview.png')}}" alt=" " class="hidden absolute md:block md:bottom-5 md:-right-9 md:w-[180px] md:h-[170px] lg:w-[200px] lg:h-[190px]">
+            
+            <img src="{{asset('images/login/modelleftsideview.png')}}" alt=" " class="hidden absolute md:block md:-bottom-6 md:-right-7 lg:-right-8 md:w-[160px] md:h-[160px] lg:w-[200px] lg:h-[190px]">
 
         </div>
 
