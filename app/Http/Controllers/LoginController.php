@@ -8,30 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    private function decrypt($encrypted) {
-        $password = 'medbot';
-        $decrypted=openssl_decrypt($encrypted,'AES-128-ECB',$password);
-        return $decrypted;
-    }
-    
-    private function authenticateQRCodeData($data){
-        if(str_contains($data,'medbot')) {
-            $qrcode_data = explode(':',$data);
-
-            $id = $qrcode_data[1];
-            $password = $qrcode_data[2];
-
-            $credentials = [
-                'id' => $id,
-                'password' => $password
-            ]; 
-            return $credentials;
-        }
-        else{
-            return false;
-        }
-
-    }
 
     public function loginByUpload(Request $request){
         $QRCodeReader = new QRCodeReader();
@@ -80,7 +56,7 @@ class LoginController extends Controller
             'id' => $id,
             'password' => $password
         ];
-
+        
         if(Auth::attempt($credentials)) {
             $request->session()->regenerate();
             flash()->addSuccess('Login successfully');
@@ -94,12 +70,19 @@ class LoginController extends Controller
 
     
     public function logout(Request $request){
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        flash()->addSuccess('Logout successfully');
+        if (Auth::logout()){
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            flash()->addSuccess('Logout successfully');
+            return redirect('/');
+            }
+        else {    
+        flash()->addError('Please Login First');
         return redirect('/');
-    }
-    
+        }
+        
+    }    
+
+
 
 }

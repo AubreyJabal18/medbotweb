@@ -14,10 +14,6 @@ class RedirectController extends Controller
         return view('homepage');
     }
 
-    public function redirectToCameraLogin(){
-        return view('login_camera');
-    }
-
     public function redirectToRegisterUser(){
         return view('register_user');
     }
@@ -32,7 +28,7 @@ class RedirectController extends Controller
                 return view('dashboard');
             }
             else if(Auth::user()->type == 'professional'){
-                return view('dashboard');
+                return view('dashboard_professional');
             }
             else{
                 flash()->addError('Unknown User Type');
@@ -46,5 +42,10 @@ class RedirectController extends Controller
   
     public function redirectToUploadLogin(){
         return view('login_upload');
+    }
+
+    
+    public function redirectToCameraLogin(){
+        return view('login_camera');
     }
 }
