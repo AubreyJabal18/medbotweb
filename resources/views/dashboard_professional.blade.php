@@ -11,7 +11,7 @@
     
     <div class="flex flex-col w-screen pb-10">
 
-        <div class="flex flex-col bg-gradient-to-r from-[#0B60D1] to-[#305ab9] bg-cover bg-no-repeat relative pb-5 md:pb-6 lg:pb-0">
+        <div class=" flex-col bg-gradient-to-r from-[#0B60D1] to-[#305ab9] bg-cover bg-no-repeat relative pb-5 md:pb-6 lg:pb-0">
             <div class="flex flex-row justify-between items-center px-4 py-3 md:px-10">
                 <div class="flex flex-row space-x-4 items-center">
                     <img src={{asset('images/dashboard/logo.png')}} alt="" class="h-8 w-8 md:h-12 md:w-12">
@@ -48,12 +48,12 @@
                     </p>
                     
                     
-                    <img src="{{asset('images/login/modelleftsideview.png')}}" alt="" class="absolute self-end md:h-[50%] md:w-[30%] lg:h-[55%] lg:w-[20%] md:right-2 lg:right-8 md:top-[38%] lg:top-[33%] hidden md:block">
+                    <img src="{{asset('images/login/modelleftsideview.png')}}" alt="" class="absolute self-end md:h-[50%] md:w-[30%] lg:h-[55%] lg:w-[20%] md:right-2 lg:right-12 md:top-[38%] lg:top-[33%] hidden md:block">
                 </div>
             </div> 
         </div>
         
-        <div class="flex flex-col px-4 items-center space-y-5 lg:flex-row lg:justify-evenly lg:items-start lg:space-y-0">
+        <div class="w-full flex flex-col items-center space-y-5 lg:flex-row lg:justify-evenly lg:items-start lg:space-y-0">
             <div class="w-[90%] flex flex-col items-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-[45%]">
                 <p class="font-roboto text-semibold text-black/80 text-base mb-2 md:text-xl">Recent Patients</p>
                 <div class="table w-full">
@@ -75,11 +75,10 @@
                             <div class="table-cell text-center py-1">Normal</div>
                         </div>
                     </div>
-                  </div>
+                </div>
             </div>
-            
-            {{-- STATISTICS --}}
-            <div class="w-[90%] flex flex-col items-center p-2 rounded-xl drop-shadow-none shadow-lg h-96 border  border-gray-300  md:w-4/5 lg:w-[45%] px-4 ">
+
+            <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-[45%]">
                 <div class="flex font-roboto flex-row self-start space-x-10 ">
                     <p class="flex font-bold text-black/80 text-xl md:text-2xl lg:text-2xl mt-1">Statistics</p>
                     
@@ -89,39 +88,33 @@
                     </button>  
                 </div>
                 <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-xl  text-[#151515] mt-4 md:mt-4 lg:mt-4 px-4 text-center">Users Using Enhanced Med-Bot</p>
-                <div class="absolute items-center self-center drop-shadow-lg shadow-lg h-[55%] w-[80%] rounded-lg bg-white top-28 md:top-28 "></div>
-
+                <div class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></div>
             </div>
         </div>
 
-            <div class="flex pl-2 md:pl-6 lg:pl-10 pt-5 md:pt-6 lg:pt-10 self-center md:self-start">
-                <p class="flex font-bold text-lg md:text-xl lg:text-2xl">Patient's Demographic Profile</p>
-            </div>            
-            <div class="flex pl-3 md:pl-8 lg:pl-16  md:pt-2 lg:pt-2 items-center justify-center space-x-2 self-center md:self-start">
-                <button class="flex flex-row items-center h-7 md:h-8 lg:h-8 w-28 md:w-32 lg:w-32 bg-[#F2F2F2] rounded-2xl mt-1 border-2  border-[#969696]">
-                    <p class="flex text-sm md:text-lg lg:text-lg text-slate-500  ml-2 ">Municipality</p>
-                    <img src="{{asset('images/dashboard/dropdown.png')}}" alt="" class="flex flex-row h-2 w-2 lg:h-2 lg:w-2 mt-0.5 md:mt-0.5 lg:mt-0.5 ml-2 md:ml-2 lg:ml-1.5">
-                </button>
-    
-                 <button class="flex flex-row items-center h-7 md:h-8 lg:h-8 w-24 md:w-28 lg:w-28 bg-[#F2F2F2] rounded-2xl mt-1 border-2  border-[#969696]">
-                     <p class="flex text-sm md:text-lg lg:text-lg text-slate-500  ml-2 ">Barangay</p>
-                    <img src="{{asset('images/dashboard/dropdown.png')}}" alt="" class="flex flex-row h-2 w-2 lg:h-2 lg:w-2 mt-0.5 md:mt-0.5 lg:mt-0.5 ml-3 md:ml-3.5 lg:ml-3">
-                 </button>     
+        <div class="flex flex-row justify-between items-center p-5">
+            <p class="flex font-bold text-lg md:text-xl lg:text-2xl">Patient's Demographic Profile</p>
+            <div class="flex flex-row justify-end items-center space-x-4">
+                <select class="shadow border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  id="municipality" name="municipality">
+                    <option disabled selected hidden value="null">Select a Municipality</option>
+                    <option value="Boac">Boac</option>
+                    <option value="Buenavista">Buenavista</option>
+                    <option value="Gasan">Gasan</option>
+                    <option value="Mogpog">Mogpog</option>
+                    <option value="Sta. Cruz">Santa Cruz</option>
+                    <option value="Torrijos">Torrijos</option>
+                </select>
+                <select class="shadow border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  id="municipality" name="barangay">
+                    <option disabled selected hidden value="null">Select a Barangay</option>
+                </select>
             </div>
-            <div class="flex flex-row items-center rounded-xl drop-shadow-none shadow-lg space-x-8 py-6 px-8"> 
-                <div class="flex h-52 md:h-72 lg:h-96 border border-gray-300 w-[45%] md:w-4/5 lg:w-[45%]  self-start md:self-start rounded-2xl  ">
-                <div class="flex h-52  md:h-72 lg:h-96 border  border-gray-300 w-[45%] md:w-4/5 lg:w-[45%] self-end md:self-end rounded-2xl ml-6">
-            </div>
+        </div>           
+        <div class="flex flex-row items-center justify-center rounded-xl drop-shadow-none shadow-lg space-x-8 py-6 px-8"> 
+            <div class="flex h-52 md:h-72 lg:h-96 border border-gray-300 w-[45%] md:w-4/5 lg:w-[40%] rounded-2xl  "> </div>
+            <div class="flex h-52  md:h-72 lg:h-96 border  border-gray-300 w-[45%] md:w-4/5 lg:w-[40%] rounded-2xl"> </div>
+        </div>
             
-
-
-
-
-
-
-
-            </div>
-        </div>
+    </div>
         
 
  
