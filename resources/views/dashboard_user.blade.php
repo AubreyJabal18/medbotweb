@@ -28,7 +28,7 @@
             </div>
 
             <div class="flex flex-col justify-center py-10 px-10">
-                <p class="font-roboto font-medium text-black md:text-white text-2xl md:ml-3 md:text-2xl">Welcome back Aubrey,</p>
+                <p class="font-roboto font-medium text-black md:text-white text-2xl md:ml-3 md:text-2xl text-center md:text-left">Welcome back Aubrey,</p>
                 <div class="flex flex-row lg:space-x-60 py-4 px-7">
                     <p class="font-roboto font-normal text-justify text-xl text-black md:text-white md:ml-3 md:text-xl">
                         Go ahead and take a look at the results of your vital signs measurement! Your health and progress are our top priority.

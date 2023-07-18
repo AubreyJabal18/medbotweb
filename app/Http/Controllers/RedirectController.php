@@ -23,7 +23,7 @@ class RedirectController extends Controller
     }
 
     public function redirectToDashboard(){
-        return view('dashboard');
+        return view('dashboard_user');
     }
   
     public function redirectToUploadLogin(){
