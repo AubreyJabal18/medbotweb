@@ -31,12 +31,21 @@
                 
             </div>
 
-            <div class="flex flex-col items-center justify-center bg-[#F3EFEF]/50 py-2 md:py-4 lg:py-5 px-4 md:flex-row md:justify-between md:px-10">
+            <div class="flex flex-col items-center justify-center bg-[#F3EFEF]/50 py-2 md:py-4 lg:py-5 md:flex-row md:justify-between px-10">
                 <p class="font-roboto font-semibold text-[#A03B3B] text-lg md:text-2xl">Dashboard</p>
-                <div class="flex flex-row items-center relative w-3/5 md:w-2/5">
-                    <input type="text" class="w-full bg-[#DDD9D9]/50 border-none rounded-2xl outline-none px-5 lg:mr-3 py-1 md:py-2 lg:py-2 placeholder:text-[#B87070]" placeholder="Search for user">
-                    <img src="{{asset('images/dashboard/search.png')}}" alt="" class="absolute right-3 md:right-4 lg:right-8 scale-125">
-                </div>
+                
+                <form action="/search/process" role="search" method="GET" enctype="multipart/form-data" id='form' name='form' class="flex w-full md:w-2/5 lg:w-2/5">
+                    <div class="flex flex-row items-center relative w-[100%] md:w-[100%]">
+                        <input type="search" id="search" name="search" class="w-full bg-[#DDD9D9]/50 border-none rounded-2xl outline-none px-8 lg:px-10 lg:mr-3 py-1 md:py-2 lg:py-2 placeholder:text-[#B87070] " placeholder="Search for user">
+                        <button class="absolute right-3 md:right-4 lg:right-8" id="search_button" name="search_button" type="button">
+                            <img src="{{asset('images/dashboard/search.png')}}" alt="" >
+                        </button>
+                        
+                    </div>     
+                </form>
+
+                
+                
             </div>
 
             <div class="flex flex-col justify-center py-8 px-4">
@@ -79,23 +88,58 @@
             </div>
 
             <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-[45%]">
-                <div class="flex font-roboto flex-row self-start space-x-10 ">
+                <div class="flex flex-col md:flex-row font-roboto self-start md:space-x-10">
                     <p class="flex font-bold text-black/80 text-xl md:text-2xl lg:text-2xl mt-1">Statistics</p>
                     
-                    <button class="flex h-6 w-15 md:h-8 md:w-18 lg:h-6 lg:w-18 border-2 rounded-full border-[#969696] mt-2 px-2 space-x-2 md:space-x-3 lg:space-x-4 bg-[#F2F2F2]">
-                        <p class="flex text-sm md:text-sm lg:text-sm text-slate-500 py-0 md:py-1 lg:py-0 lg:ml-2">Week</p>
-                        <img src="{{asset('images/dashboard/calendar.png')}}" alt="" class="flex flex-row h-3 w-3 lg:h-3 lg:w-3 mt-1 md:mt-2 lg:mt-1">
-                    </button>  
+                    <div class="flex h-6 w-15 md:h-6 md:w-18 lg:h-6 lg:w-18 border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white  ">
+                        <select class="flex text-sm md:text-sm lg:text-sm text-slate-500 py-0 lg:ml-2 focus:outline-none" id="select" name="select">
+                            <option disabled selected hidden value="null" >Select</option>
+                            <option value="yearly" >Yearly</option> 
+                            <option value="monthly" >Monthly</option>
+                            <option value="weekly" >Weekly</option>
+                        </select>    
+                        <input class="hidden" type="number" min="1900" max="2050" value="2023" id="year" name="year">
+                        <input class="hidden" type="month" id="month" name="month">
+                        <input class="hidden" type="week" id="week" name="week">
+                    </div> 
+             
                 </div>
-                <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-xl  text-[#151515] mt-4 md:mt-4 lg:mt-4 px-4 text-center">Users Using Enhanced Med-Bot</p>
+                <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-xl  text-[#151515] mt-4 md:mt-4 lg:mt-4 px-4 text-center">Patient's Using Enhanced Med-Bot</p>
                 <div class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></div>
             </div>
         </div>
+        <div class="flex flex-col items-center justify-center md:justify-start md:flex-row space-x-6 px-5 ">
+            <p class="flex text-lg md:text-xl lg:text-2xl font-roboto font-bold pt-8 pl-5">Measurement's Statistics</p>
+            <div class="flex h-8 w-18 md:h-8 md:w-18 lg:h-8 lg:w-18 border-2 rounded-full border-[#969696] mt-2 md:mt-8 px-3 bg-white ">
+                <select class="flex text-lg md:text-lg lg:text-xl text-slate-500 lg:ml-2 focus:outline-none" id="measure_select" name="measure_select">
+                    <option disabled selected hidden value="null" >Select</option>
+                    <option value="yearly" >Yearly</option> 
+                    <option value="monthly" >Monthly</option>
+                    <option value="weekly" >Weekly</option>
+                </select>    
+                <input class="hidden" type="number" min="1900" max="2050" value="2023" id="measure_year" name="measure_year">
+                <input class="hidden" type="month" id="measure_month" name="measure_month">
+                <input class="hidden" type="week" id="measure_week" name="measure_week">
+            </div> 
+        </div>
+        
+        <div class="flex flex-row justify-center py-5 md:px-12">
+            <div class="drop-shadow-lg shadow-lg h-96 w-4/5 lg:w-3/5 lg:h-96 rounded-xl bg-white border-2">
+                <div class="flex flex-row md:flex-col items-center py-2 px-2 space-x-3 focus:outline-none md:items-start md:space-y-3 md:py-24 ">
+                    <button class="flex font-robot text-base md:text-xl lg:text-xl bg-[#0B60D1] text-white md:ml-3 h-8 md:h-9 w-12 md:w-14 border-2 rounded-2xl items-center justify-center">BP</button>
+                    <button class="flex font-robot text-base md:text-xl lg:text-xl bg-[#0B60D1] text-white h-8 md:h-9 w-12 md:w-14 border-2 rounded-2xl items-center justify-center">BS</button>
+                    <button class="flex font-robot text-base md:text-lg lg:text-xl bg-[#0B60D1] text-white h-8 md:h-9 w-14 md:w-14 border-2 rounded-2xl items-center justify-center">Temp</button>
+                    <button class="flex font-robot text-base md:text-xl lg:text-xl bg-[#0B60D1] text-white h-8 md:h-9 w-14 border-2 rounded-2xl items-center justify-center">PR</button>
+                </div>
+                <div class="absolute h-[82%] w-[90%] md:h-[90%] md:w-[70%] lg:h-[92%] lg:w-[86%] bg-white drop-shadow-lg shadow-lg border-2 left-[5%] md:left-[17%] lg:left-[12%] top-[14%] md:top-[5%] lg:top-[4%] rounded-2xl"></div>
+            </div>
+        </div>
 
-        <div class="flex flex-row justify-between items-center p-5">
-            <p class="flex font-bold text-lg md:text-xl lg:text-2xl">Patient's Demographic Profile</p>
-            <div class="flex flex-row justify-end items-center space-x-4">
-                <select class="shadow border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  id="municipality" name="municipality">
+        <div class="flex flex-col md:flex-row md:justify-between items-center py-5 px-5">
+            <p class="flex font-bold text-lg md:text-xl lg:text-2xl self-center md:self-start md:mt-2 mb-2 font-roboto">Patient's Demographic Profile</p>
+            
+            <div class="flex flex-col md:flex-row justify-center md:justify-end items-center md:space-x-4 pr-6">
+                <select class="shadow border rounded px-3 h-9 md:h-10 text-sm md:text-lg rounded-2xl text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  id="municipality" name="municipality">
                     <option disabled selected hidden value="null">Select a Municipality</option>
                     <option value="Boac">Boac</option>
                     <option value="Buenavista">Buenavista</option>
@@ -104,20 +148,21 @@
                     <option value="Sta. Cruz">Santa Cruz</option>
                     <option value="Torrijos">Torrijos</option>
                 </select>
-                <select class="shadow border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  id="municipality" name="barangay">
+                <select class="shadow border rounded-2xl px-3 mt-2 md:mt-0 h-9 md:h-10 text-sm md:text-lg text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  id="barangay" name="barangay">
                     <option disabled selected hidden value="null">Select a Barangay</option>
                 </select>
             </div>
         </div>           
-        <div class="flex flex-row items-center justify-center rounded-xl drop-shadow-none shadow-lg space-x-8 py-6 px-8"> 
-            <div class="flex h-52 md:h-72 lg:h-96 border border-gray-300 w-[45%] md:w-4/5 lg:w-[40%] rounded-2xl  "> </div>
-            <div class="flex h-52  md:h-72 lg:h-96 border  border-gray-300 w-[45%] md:w-4/5 lg:w-[40%] rounded-2xl"> </div>
+        <div class="flex flex-col md:flex-row items-center justify-center rounded-xl md:space-x-8 py-4 px-4 "> 
+            <div class="flex h-72 md:h-72 lg:h-96 border border-gray-300 w-[90%] md:w-4/5 lg:w-[40%] rounded-2xl bg-white drop-shadow-lg shadow-lg "> </div>
+            <div class="flex h-72 md:h-72 lg:h-96 border border-gray-300 w-[90%] md:w-4/5 lg:w-[40%] rounded-2xl mt-4 md:mt-0 bg-white drop-shadow-lg shadow-lg"> </div>
         </div>
             
     </div>
-        
 
- 
+    <script src="{{ asset('/js/barangay.js') }}"></script>
+    <script src="{{asset('/js/dashboard_professional.js')}}"></script>
+    
 
 
     @if(Session::has('id'))

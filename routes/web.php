@@ -42,5 +42,6 @@ Route::post('/login/camera/process', [LoginController::class, 'loginByCamera']);
 
 Route::get('/logout',[LoginController::class, 'logout']);
 
+Route::get('search/process', [ProfDashboardController::class, 'getUserInfo']);
 
 
