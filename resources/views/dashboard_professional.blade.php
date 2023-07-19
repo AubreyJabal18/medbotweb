@@ -62,8 +62,10 @@
             </div> 
         </div>
         
-        <div class="w-full flex flex-col items-center space-y-5 lg:flex-row lg:justify-evenly lg:items-start lg:space-y-0">
-            <div class="w-[90%] flex flex-col items-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-[45%]">
+        <p class="flex font-bold font-roboto text-black/80 text-xl md:text-xl lg:text-2xl py-5 md:py-7 lg:py-4 justify-center md:justify-start md:px-10">Statistics</p>
+
+        <div class="w-full flex flex-col lg:flex-row items-center space-y-5 lg:space-y-0 lg:justify-evenly space-x-2 lg:px-4">
+            <div class="w-[90%] flex flex-col items-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-[60%]">
                 <p class="font-roboto text-semibold text-black/80 text-base mb-2 md:text-xl">Recent Patients</p>
                 <div class="table w-full">
                     <div class="table-header-group">
@@ -86,79 +88,187 @@
                     </div>
                 </div>
             </div>
+            <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 w-full px-2 md:px-6">
+                <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-full ">
+                    <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-2xl  text-[#151515]  px-4 text-center">Patients that Used Enhanced Med-Bot</p>
+                    <div class="flex flex-col md:flex-row font-roboto self-center md:space-x-10 pt-2 ">
+                                
+                        <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
+                            <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="muni"> <option disabled selected hidden value="null">Select a Municipality</option>
+                                <option value="All">All</option>
+                                <option value="Boac">Boac</option>
+                                <option value="Buenavista">Buenavista</option>
+                                <option value="Gasan">Gasan</option>
+                                <option value="Mogpog">Mogpog</option>
+                                <option value="Sta. Cruz">Santa Cruz</option>
+                                <option value="Torrijos">Torrijos</option></select>
+    
+                            <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="select" name="select">
+                                <option disabled selected hidden value="null" >Select an option</option>
+                                <option value="yearly" >Yearly</option> 
+                                <option value="monthly" >Monthly</option>
+                                <option value="weekly" >Weekly</option>
+                            </select>  
+                        </div> 
+                            <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="year" name="year">
+                            <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="month" name="month">
+                            <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="week" name="week">
+                    </div>
+                    <div class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></div>
+                </div>
 
-            <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-[45%]">
-                <div class="flex flex-col md:flex-row font-roboto self-start md:space-x-10">
-                    <p class="flex font-bold text-black/80 text-xl md:text-2xl lg:text-2xl mt-1">Statistics</p>
-                    
-                    <div class="flex h-6 w-15 md:h-6 md:w-18 lg:h-6 lg:w-18 border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white  ">
-                        <select class="flex text-sm md:text-sm lg:text-sm text-slate-500 py-0 lg:ml-2 focus:outline-none" id="select" name="select">
-                            <option disabled selected hidden value="null" >Select</option>
+                <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-full">
+                    <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-2xl  text-[#151515]  px-4 text-center">Patients Registered to Enhanced Med-Bot</p>
+                    <div class="flex flex-col md:flex-row font-roboto self-center md:space-x-10 pt-2 ">
+                                
+                        <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
+                            <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="muni"> <option disabled selected hidden value="null">Select a Municipality</option>
+                                <option value="All">All</option>
+                                <option value="Boac">Boac</option>
+                                <option value="Buenavista">Buenavista</option>
+                                <option value="Gasan">Gasan</option>
+                                <option value="Mogpog">Mogpog</option>
+                                <option value="Sta. Cruz">Santa Cruz</option>
+                                <option value="Torrijos">Torrijos</option></select>
+    
+                            <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="select" name="select">
+                                <option disabled selected hidden value="null" >Select an option</option>
+                                <option value="yearly" >Yearly</option> 
+                                <option value="monthly" >Monthly</option>
+                                <option value="weekly" >Weekly</option>
+                            </select>  
+                        </div> 
+                            <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="year" name="year">
+                            <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="month" name="month">
+                            <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="week" name="week">
+                    </div>         
+                    <div class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col items-center justify-center md:justify-start md:flex-row space-x-6 px-5">
+            <p class="flex text-lg md:text-xl lg:text-2xl font-roboto font-bold pt-8 pl-5 pb-4">Patient's Record Summary</p>
+        </div>
+        
+        <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 w-full px-2 md:px-6">
+            <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-full ">
+                <p class="flex font-roboto font-normal self-center leading-normal text-lg md:text-xl lg:text-2xl  text-[#151515] px-2 text-center">Patients Readings</p>
+                <div class="flex flex-col md:flex-row font-roboto self-center md:space-x-10 pt-2 ">
+                                
+                    <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
+                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="muni"> <option disabled selected hidden value="null">Select a Municipality</option>
+                            <option value="All">All</option>
+                            <option value="Boac">Boac</option>
+                            <option value="Buenavista">Buenavista</option>
+                            <option value="Gasan">Gasan</option>
+                            <option value="Mogpog">Mogpog</option>
+                            <option value="Sta. Cruz">Santa Cruz</option>
+                            <option value="Torrijos">Torrijos</option></select>
+
+                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="measure_select" name="measure_select">
+                            <option disabled selected hidden value="null" >Select an option</option>
                             <option value="yearly" >Yearly</option> 
                             <option value="monthly" >Monthly</option>
                             <option value="weekly" >Weekly</option>
-                        </select>    
-                        <input class="hidden" type="number" min="1900" max="2050" value="2023" id="year" name="year">
-                        <input class="hidden" type="month" id="month" name="month">
-                        <input class="hidden" type="week" id="week" name="week">
+                        </select>  
                     </div> 
-             
-                </div>
-                <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-xl  text-[#151515] mt-4 md:mt-4 lg:mt-4 px-4 text-center">Patient's Using Enhanced Med-Bot</p>
+                        <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="measure_year" name="measure_year">
+                        <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="measure_month" name="measure_month">
+                        <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="measure_week" name="measure_week">
+                </div> 
+                                              
+                <div class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></div>
+                
+            </div>
+
+            <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-full">
+                <p class="flex font-roboto font-normal self-center leading-normal text-lg md:text-xl lg:text-2xl  text-[#151515]  px-2 text-center">Pervasiveness</p>
+                <div class="flex flex-col md:flex-row font-roboto self-center md:space-x-10 pt-2 ">
+                                
+                    <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
+                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="muni"> <option disabled selected hidden value="null">Select a Municipality</option>
+                            <option value="All">All</option>
+                            <option value="Boac">Boac</option>
+                            <option value="Buenavista">Buenavista</option>
+                            <option value="Gasan">Gasan</option>
+                            <option value="Mogpog">Mogpog</option>
+                            <option value="Sta. Cruz">Santa Cruz</option>
+                            <option value="Torrijos">Torrijos</option></select>
+
+                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="measure_select" name="measure_select">
+                            <option disabled selected hidden value="null" >Select an option</option>
+                            <option value="yearly" >Yearly</option> 
+                            <option value="monthly" >Monthly</option>
+                            <option value="weekly" >Weekly</option>
+                        </select>  
+                    </div> 
+                        <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="measure_year" name="measure_year">
+                        <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="measure_month" name="measure_month">
+                        <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="measure_week" name="measure_week">
+                    </div> 
+                
                 <div class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></div>
             </div>
         </div>
-        <div class="flex flex-col items-center justify-center md:justify-start md:flex-row space-x-6 px-5 ">
-            <p class="flex text-lg md:text-xl lg:text-2xl font-roboto font-bold pt-8 pl-5">Measurement's Statistics</p>
-            <div class="flex h-8 w-18 md:h-8 md:w-18 lg:h-8 lg:w-18 border-2 rounded-full border-[#969696] mt-2 md:mt-8 px-3 bg-white ">
-                <select class="flex text-lg md:text-lg lg:text-xl text-slate-500 lg:ml-2 focus:outline-none" id="measure_select" name="measure_select">
-                    <option disabled selected hidden value="null" >Select</option>
-                    <option value="yearly" >Yearly</option> 
-                    <option value="monthly" >Monthly</option>
-                    <option value="weekly" >Weekly</option>
-                </select>    
-                <input class="hidden" type="number" min="1900" max="2050" value="2023" id="measure_year" name="measure_year">
-                <input class="hidden" type="month" id="measure_month" name="measure_month">
-                <input class="hidden" type="week" id="measure_week" name="measure_week">
-            </div> 
+        <div class="flex flex-col md:flex-row  items-center py-2 pt-8 px-5">
+            <p class="flex font-bold text-lg md:text-xl lg:text-2xl self-center md:self-start  pb-2 pl-6 font-roboto">Patient's Demographic Profile</p>
+            
+        </div>           
+        <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 w-full px-2 md:px-6">
+            <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-3/5 space-y-2  ">
+                <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-2xl  text-[#151515]  px-4 text-center">Patient's Count by Age</p>         
+                    <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
+                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="muni"> <option disabled selected hidden value="null">Select a Municipality</option>
+                            <option value="All">All</option>
+                            <option value="Boac">Boac</option>
+                            <option value="Buenavista">Buenavista</option>
+                            <option value="Gasan">Gasan</option>
+                            <option value="Mogpog">Mogpog</option>
+                            <option value="Sta. Cruz">Santa Cruz</option>
+                            <option value="Torrijos">Torrijos</option></select>
+                        </div>   
+                <div class="mt-4 flex drop-shadow-lg shadow-lg h-80 w-full rounded-lg bg-white "></div>
+            </div>
+
+            <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-3/5 space-y-2 ">
+                <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-2xl  text-[#151515]  px-4 text-center">Patient's Count by Sex</p>
+                    <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
+                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="muni"> <option disabled selected hidden value="null">Select a Municipality</option>
+                            <option value="All">All</option>
+                            <option value="Boac">Boac</option>
+                            <option value="Buenavista">Buenavista</option>
+                            <option value="Gasan">Gasan</option>
+                            <option value="Mogpog">Mogpog</option>
+                            <option value="Sta. Cruz">Santa Cruz</option>
+                            <option value="Torrijos">Torrijos</option></select>
+
+                </div>         
+                <div class="mt-4 flex drop-shadow-lg shadow-lg h-80 w-full rounded-lg bg-white"></div>
+            </div>
+
+            <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-3/5 space-y-2 ">
+                <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-2xl  text-[#151515] px-4 text-center">Patient's Count by Location</p>
+                <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2 ">
+                    <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="muni"> <option disabled selected hidden value="null">Select a Municipality</option>
+                        <option value="All">All</option>
+                        <option value="Boac">Boac</option>
+                        <option value="Buenavista">Buenavista</option>
+                        <option value="Gasan">Gasan</option>
+                        <option value="Mogpog">Mogpog</option>
+                        <option value="Sta. Cruz">Santa Cruz</option>
+                        <option value="Torrijos">Torrijos</option></select>
+                </div>
+                <div class="mt-4 flex drop-shadow-lg shadow-lg h-80 w-full rounded-lg bg-white"></div>
+            </div>         
         </div>
         
-        <div class="flex flex-row justify-center py-5 md:px-12">
-            <div class="drop-shadow-lg shadow-lg h-96 w-4/5 lg:w-3/5 lg:h-96 rounded-xl bg-white border-2">
-                <div class="flex flex-row md:flex-col items-center py-2 px-2 space-x-3 focus:outline-none md:items-start md:space-y-3 md:py-24 ">
-                    <button class="flex font-robot text-base md:text-xl lg:text-xl bg-[#0B60D1] text-white md:ml-3 h-8 md:h-9 w-12 md:w-14 border-2 rounded-2xl items-center justify-center">BP</button>
-                    <button class="flex font-robot text-base md:text-xl lg:text-xl bg-[#0B60D1] text-white h-8 md:h-9 w-12 md:w-14 border-2 rounded-2xl items-center justify-center">BS</button>
-                    <button class="flex font-robot text-base md:text-lg lg:text-xl bg-[#0B60D1] text-white h-8 md:h-9 w-14 md:w-14 border-2 rounded-2xl items-center justify-center">Temp</button>
-                    <button class="flex font-robot text-base md:text-xl lg:text-xl bg-[#0B60D1] text-white h-8 md:h-9 w-14 border-2 rounded-2xl items-center justify-center">PR</button>
-                </div>
-                <div class="absolute h-[82%] w-[90%] md:h-[90%] md:w-[70%] lg:h-[92%] lg:w-[86%] bg-white drop-shadow-lg shadow-lg border-2 left-[5%] md:left-[17%] lg:left-[12%] top-[14%] md:top-[5%] lg:top-[4%] rounded-2xl"></div>
-            </div>
-        </div>
-
-        <div class="flex flex-col md:flex-row md:justify-between items-center py-5 px-5">
-            <p class="flex font-bold text-lg md:text-xl lg:text-2xl self-center md:self-start md:mt-2 mb-2 font-roboto">Patient's Demographic Profile</p>
-            
-            <div class="flex flex-col md:flex-row justify-center md:justify-end items-center md:space-x-4 pr-6">
-                <select class="shadow border rounded px-3 h-9 md:h-10 text-sm md:text-lg rounded-2xl text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  id="municipality" name="municipality">
-                    <option disabled selected hidden value="null">Select a Municipality</option>
-                    <option value="Boac">Boac</option>
-                    <option value="Buenavista">Buenavista</option>
-                    <option value="Gasan">Gasan</option>
-                    <option value="Mogpog">Mogpog</option>
-                    <option value="Sta. Cruz">Santa Cruz</option>
-                    <option value="Torrijos">Torrijos</option>
-                </select>
-                <select class="shadow border rounded-2xl px-3 mt-2 md:mt-0 h-9 md:h-10 text-sm md:text-lg text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  id="barangay" name="barangay">
-                    <option disabled selected hidden value="null">Select a Barangay</option>
-                </select>
-            </div>
-        </div>           
-        <div class="flex flex-col md:flex-row items-center justify-center rounded-xl md:space-x-8 py-4 px-4 "> 
-            <div class="flex h-72 md:h-72 lg:h-96 border border-gray-300 w-[90%] md:w-4/5 lg:w-[40%] rounded-2xl bg-white drop-shadow-lg shadow-lg "> </div>
-            <div class="flex h-72 md:h-72 lg:h-96 border border-gray-300 w-[90%] md:w-4/5 lg:w-[40%] rounded-2xl mt-4 md:mt-0 bg-white drop-shadow-lg shadow-lg"> </div>
-        </div>
-            
     </div>
+
+    </div>
+
+        
+ 
 
     <script src="{{ asset('/js/barangay.js') }}"></script>
     <script src="{{asset('/js/dashboard_professional.js')}}"></script>
