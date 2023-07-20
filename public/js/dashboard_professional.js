@@ -2,10 +2,18 @@ const selectField = document.getElementById('select');
 const yearField = document.getElementById('year')
 const monthField = document.getElementById('month');
 const weekField = document.getElementById('week');
-const measure_selectField = document.getElementById('measure_select');
-const measure_yearField = document.getElementById('measure_year')
-const measure_monthField = document.getElementById('measure_month');
-const measure_weekField = document.getElementById('measure_week');
+const registered_selectField = document.getElementById('registered_select');
+const registered_yearField = document.getElementById('registered_year')
+const registered_monthField = document.getElementById('registered_month');
+const registered_weekField = document.getElementById('registered_week');
+const reading_selectField = document.getElementById('reading_select');
+const reading_yearField = document.getElementById('reading_year')
+const reading_monthField = document.getElementById('reading_month');
+const reading_weekField = document.getElementById('reading_week');
+const pervasiveness_selectField = document.getElementById('pervasiveness_select');
+const pervasiveness_yearField = document.getElementById('pervasiveness_year')
+const pervasiveness_monthField = document.getElementById('pervasiveness_month');
+const pervasiveness_weekField = document.getElementById('pervasiveness_week');
 const searchField = document.getElementById('search');
 const search_buttonField = document.getElementById('search_button');
 const form = document.getElementById('form');
@@ -31,27 +39,73 @@ selectField.addEventListener('change', function(){
         weekField.classList.add('hidden')
     }
  
-});  
+}); 
 
-measure_selectField.addEventListener('change', function(){
-    if(measure_selectField.value == 'yearly'){
-        measure_yearField.classList.remove('hidden')
+registered_selectField.addEventListener('change', function(){
+    if(registered_selectField.value == 'yearly'){
+        registered_yearField.classList.remove('hidden')
     }
         else{
-            measure_yearField.classList.add('hidden')   
+            registered_yearField.classList.add('hidden')   
         }
     
-    if(measure_selectField.value == 'monthly'){
-        measure_monthField.classList.remove('hidden')
+    if(registered_selectField.value == 'monthly'){
+        registered_monthField.classList.remove('hidden')
    }
         else{
-            measure_monthField.classList.add('hidden')
+            registered_monthField.classList.add('hidden')
         }
-    if(measure_selectField.value == 'weekly'){
-        measure_weekField.classList.remove('hidden')
+    if(registered_selectField.value == 'weekly'){
+        registered_weekField.classList.remove('hidden')
     }
         else{
-            measure_weekField.classList.add('hidden')
+            registered_weekField.classList.add('hidden')
+        }
+
+});
+
+reading_selectField.addEventListener('change', function(){
+    if(reading_selectField.value == 'yearly'){
+        reading_yearField.classList.remove('hidden')
+    }
+        else{
+            reading_yearField.classList.add('hidden')   
+        }
+
+    if(reading_selectField.value == 'monthly'){
+        reading_monthField.classList.remove('hidden')
+    }
+        else{
+            reading_monthField.classList.add('hidden')
+        }
+    if(reading_selectField.value == 'weekly'){
+        reading_weekField.classList.remove('hidden')
+    }
+    else{
+        reading_weekField.classList.add('hidden')
+    }
+ 
+});
+
+pervasiveness_selectField.addEventListener('change', function(){
+    if(pervasiveness_selectField.value == 'yearly'){
+        pervasiveness_yearField.classList.remove('hidden')
+    }
+        else{
+            pervasiveness_yearField.classList.add('hidden')   
+        }
+    
+    if(pervasiveness_selectField.value == 'monthly'){
+        pervasiveness_monthField.classList.remove('hidden')
+   }
+        else{
+            pervasiveness_monthField.classList.add('hidden')
+        }
+    if(pervasiveness_selectField.value == 'weekly'){
+        pervasiveness_weekField.classList.remove('hidden')
+    }
+        else{
+            pervasiveness_weekField.classList.add('hidden')
         }
 
 });
