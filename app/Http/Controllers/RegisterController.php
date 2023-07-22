@@ -17,8 +17,8 @@ class RegisterController extends Controller
 
     public function registerUser(Request $request){
         $validator = Validator::make($request->all(),[
-            'first_name' => 'required|alpha',
-            'last_name' => 'required|alpha',
+            'first_name' => 'required|regex:/^[a-zA-Z ]+$/',
+            'last_name' => 'required|regex:/^[a-zA-Z ]+$/',
             'suffix' => 'nullable',
             'sex' => 'required',
             'birthday' => 'required|before:now',
@@ -91,8 +91,8 @@ class RegisterController extends Controller
 
     public function registerProfessional(Request $request){
         $validator = Validator::make($request->all(),[
-            'first_name' => 'required|alpha',
-            'last_name' => 'required|alpha',
+            'first_name' => 'required|regex:/^[a-zA-Z ]+$/',
+            'last_name' => 'required|regex:/^[a-zA-Z ]+$/',
             'suffix' => 'nullable',
             'honorific' => 'required|alpha',
             'sex' => 'required',

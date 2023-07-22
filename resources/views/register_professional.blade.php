@@ -85,8 +85,8 @@
                             </div>
 
                             <div class="grid flex flex-col items-start space-y-0.5">
-                                <label class=" text-gray-700 text-sm font-normal" for="dob">Date of birth (MM/DD/YY)</label>
-                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="birthday" type="date" placeholder="Select a date" name="birthday" value="{{old('birthjday')}}">
+                                <label class=" text-gray-700 text-sm font-normal" for="birthday">Date of birth (MM/DD/YY)</label>
+                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="birthday" type="date" placeholder="Select a date" name="birthday" value="{{old('birthday')}}">
                             </div>
 
                             <div class="grid flex flex-col items-start space-y-0.5">
