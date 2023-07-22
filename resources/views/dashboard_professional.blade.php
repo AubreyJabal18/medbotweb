@@ -140,7 +140,7 @@
                 <div class="flex flex-col md:flex-row font-roboto self-center md:space-x-10 pt-2 ">
                                 
                     <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
-                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="muni"> <option disabled selected hidden value="null">Select a Municipality</option>
+                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="muni"> 
                             <option value="All">All</option>
                             <option value="Boac">Boac</option>
                             <option value="Buenavista">Buenavista</option>
@@ -170,7 +170,7 @@
                 <div class="flex flex-col md:flex-row font-roboto self-center md:space-x-10 pt-2 ">
                                 
                     <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
-                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="muni"> <option disabled selected hidden value="null">Select a Municipality</option>
+                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="muni">
                             <option value="All">All</option>
                             <option value="Boac">Boac</option>
                             <option value="Buenavista">Buenavista</option>
@@ -202,7 +202,7 @@
             <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-3/5 space-y-2  ">
                 <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-2xl  text-[#151515]  px-4 bg-violet-100 w-full justify-center">Patient's Count by Age</p>         
                     <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
-                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="muni"> <option disabled selected hidden value="null">Select a Municipality</option>
+                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="muni"> 
                             <option value="All">All</option>
                             <option value="Boac">Boac</option>
                             <option value="Buenavista">Buenavista</option>
@@ -219,7 +219,7 @@
             <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-3/5 space-y-2 ">
                 <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-2xl  text-[#151515]  px-4 bg-violet-100 w-full justify-center">Patient's Count by Sex</p>
                     <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
-                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="muni"> <option disabled selected hidden value="null">Select a Municipality</option>
+                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="muni"> 
                             <option value="All">All</option>
                             <option value="Boac">Boac</option>
                             <option value="Buenavista">Buenavista</option>
@@ -237,7 +237,7 @@
             <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-3/5 space-y-2 ">
                 <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-2xl  text-[#151515] px-4 bg-violet-100 w-full justify-center">Patient's Count by Location</p>
                 <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2 ">
-                    <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="muni"> <option disabled selected hidden value="null">Select a Municipality</option>
+                    <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="muni"> 
                         <option value="All">All</option>
                         <option value="Boac">Boac</option>
                         <option value="Buenavista">Buenavista</option>
