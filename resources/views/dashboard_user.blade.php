@@ -7,7 +7,6 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-    
     @if(Session::has('id'))
         <script>
             const id = {{session()->get('id')}};
