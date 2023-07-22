@@ -15,6 +15,7 @@ module.exports = {
       'gradient-136': 'linear-gradient (136deg, var(--tw-gradient-stops))',
       'homepage-accent': "url('/images/homepage/homepage-top-banner.png')",
       },
+
     },
   },
   plugins: [],

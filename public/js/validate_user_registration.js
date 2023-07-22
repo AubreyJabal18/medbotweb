@@ -32,7 +32,7 @@ submitButton.addEventListener('click', function(){
         submitButton.disabled = false;
         return;
     }
-    if(!/^[a-zA-Z]+$/.test(firstNameField.value)){
+    if(!/^[a-zA-Z\s]+$/.test(firstNameField.value)){
         alert('First Name should only be letters');
         submitButton.disabled = false;
         return;
@@ -48,7 +48,7 @@ submitButton.addEventListener('click', function(){
         submitButton.disabled = false;
         return;
     }
-    if(!/^[a-zA-Z]+$/.test(lastNameField.value)){
+    if(!/^[a-zA-Z\s]+$/.test(lastNameField.value)){
         alert('Last Name should only be letters');
         submitButton.disabled = false;
         return;

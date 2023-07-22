@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use App\Traits\Upload;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -16,8 +17,8 @@ class RegisterController extends Controller
 
     public function registerUser(Request $request){
         $validator = Validator::make($request->all(),[
-            'first_name' => 'required|alpha',
-            'last_name' => 'required|alpha',
+            'first_name' => 'required|regex:/^[a-zA-Z ]+$/',
+            'last_name' => 'required|regex:/^[a-zA-Z ]+$/',
             'suffix' => 'nullable',
             'sex' => 'required',
             'birthday' => 'required|before:now',
@@ -81,6 +82,7 @@ class RegisterController extends Controller
 
         $qrcode = QrCode::size(120)->margin(1)->format('png')->generate($data, $path);
 
+        Auth::login($user);
         flash()->addSuccess('Registered Successfully');
         return redirect('/dashboard')->with([
             'id' => $user->id
@@ -89,8 +91,8 @@ class RegisterController extends Controller
 
     public function registerProfessional(Request $request){
         $validator = Validator::make($request->all(),[
-            'first_name' => 'required|alpha',
-            'last_name' => 'required|alpha',
+            'first_name' => 'required|regex:/^[a-zA-Z ]+$/',
+            'last_name' => 'required|regex:/^[a-zA-Z ]+$/',
             'suffix' => 'nullable',
             'honorific' => 'required|alpha',
             'sex' => 'required',
@@ -158,6 +160,7 @@ class RegisterController extends Controller
 
         $qrcode = QrCode::size(120)->margin(1)->format('png')->generate($data, $path);
 
+        Auth::login($user);
         flash()->addSuccess('Registered Successfully');
         return redirect('/dashboard')->with([
             'id' => $user->id

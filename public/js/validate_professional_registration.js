@@ -30,8 +30,8 @@ submitButton.addEventListener('click', function(){
         return;
     }
 
-    if(!/^[a-zA-Z]+$/.test(firstNameField.value)){
-        alert('First Name should only contain letters');
+    if(!/^[a-zA-Z\s]+$/.test(firstNameField.value)){
+        alert('First Name should only be letters');
         submitButton.disabled = false;
         return;
     }
@@ -42,8 +42,8 @@ submitButton.addEventListener('click', function(){
         return;
     }
 
-    if(!/^[a-zA-Z]+$/.test(lastNameField.value)){
-        alert('Last Name should only contain letters');
+    if(!/^[a-zA-Z\s]+$/.test(lastNameField.value)){
+        alert('Last Name should only be letters');
         submitButton.disabled = false;
         return;
     }
