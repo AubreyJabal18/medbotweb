@@ -1,7 +1,3 @@
-const selectField = document.getElementById('select');
-const yearField = document.getElementById('year')
-const monthField = document.getElementById('month');
-const weekField = document.getElementById('week');
 const registered_selectField = document.getElementById('registered_select');
 const registered_yearField = document.getElementById('registered_year')
 const registered_monthField = document.getElementById('registered_month');
@@ -17,29 +13,6 @@ const pervasiveness_weekField = document.getElementById('pervasiveness_week');
 const searchField = document.getElementById('search');
 const search_buttonField = document.getElementById('search_button');
 const form = document.getElementById('form');
-
-selectField.addEventListener('change', function(){
-    if(selectField.value == 'yearly'){
-        yearField.classList.remove('hidden')
-    }
-        else{
-            yearField.classList.add('hidden')   
-        }
-
-    if(selectField.value == 'monthly'){
-        monthField.classList.remove('hidden')
-    }
-        else{
-            monthField.classList.add('hidden')
-        }
-    if(selectField.value == 'weekly'){
-        weekField.classList.remove('hidden')
-    }
-    else{
-        weekField.classList.add('hidden')
-    }
- 
-}); 
 
 registered_selectField.addEventListener('change', function(){
     if(registered_selectField.value == 'yearly'){

@@ -95,10 +95,9 @@
                         <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
                        
                             <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="select" name="select">
-                                <option disabled selected hidden value="null" >Select an option</option>
-                                <option value="yearly" >Yearly</option> 
-                                <option value="monthly" >Monthly</option>
                                 <option value="weekly" >Weekly</option>
+                                <option value="monthly" >Monthly</option>
+                                <option value="yearly" >Yearly</option> 
                             </select>  
                         </div> 
                             <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="year" name="year">
@@ -116,10 +115,9 @@
                         <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
                            
                             <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="registered_select" name="registered_select">
-                                <option disabled selected hidden value="null" >Select an option</option>
-                                <option value="yearly" >Yearly</option> 
-                                <option value="monthly" >Monthly</option>
                                 <option value="weekly" >Weekly</option>
+                                <option value="monthly" >Monthly</option>
+                                <option value="yearly" >Yearly</option> 
                             </select>  
                         </div> 
                             <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="registered_year" name="registered_year">
@@ -149,13 +147,12 @@
                             <option value="Gasan">Gasan</option>
                             <option value="Mogpog">Mogpog</option>
                             <option value="Sta. Cruz">Santa Cruz</option>
-                            <option value="Torrijos">Torrijos</option></select>
-
+                            <option value="Torrijos">Torrijos</option>
+                        </select>
                         <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="reading_select" name="reading_select">
-                            <option disabled selected hidden value="null" >Select an option</option>
-                            <option value="yearly" >Yearly</option> 
-                            <option value="monthly" >Monthly</option>
                             <option value="weekly" >Weekly</option>
+                            <option value="monthly" >Monthly</option>
+                            <option value="yearly" >Yearly</option> 
                         </select>  
                     </div> 
                         <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="reading_year" name="reading_year">
@@ -183,10 +180,9 @@
                             <option value="Torrijos">Torrijos</option></select>
 
                         <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="pervasiveness_select" name="pervasiveness_select">
-                            <option disabled selected hidden value="null" >Select an option</option>
-                            <option value="yearly" >Yearly</option> 
-                            <option value="monthly" >Monthly</option>
                             <option value="weekly" >Weekly</option>
+                            <option value="monthly" >Monthly</option>
+                            <option value="yearly" >Yearly</option> 
                         </select>  
                     </div> 
                         <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="pervasiveness_year" name="pervasiveness_year">
