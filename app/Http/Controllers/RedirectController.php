@@ -25,7 +25,7 @@ class RedirectController extends Controller
     public function redirectToDashboard(){
         if(Auth::check()){
             if(Auth::user()->type == 'patient'){
-                return view('dashboard');
+                return view('dashboard_user');
             }
             else if(Auth::user()->type == 'professional'){
                 return view('dashboard_professional');
@@ -37,7 +37,6 @@ class RedirectController extends Controller
         }
         flash()->addError('Please Login First');
         return redirect('/');
-        
     }
   
     public function redirectToUploadLogin(){
