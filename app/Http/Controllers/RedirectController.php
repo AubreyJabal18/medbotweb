@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Reading;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,7 +35,12 @@ class RedirectController extends Controller
     public function redirectToDashboard(){
         if(Auth::check()){
             if(Auth::user()->type == 'patient'){
-                return view('dashboard_user');
+                $user = Auth::user();
+                $readings = Reading::where('user_id', 1)->latest()->get();
+                return view('dashboard_user',[
+                    'user' => $user,
+                    'readings' => $readings
+                ]);
             }
             else if(Auth::user()->type == 'professional'){
                 return view('dashboard_professional');
