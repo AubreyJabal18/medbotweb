@@ -19,7 +19,7 @@
                     <p class="font-roboto font-bold text-[#07DBDB] text-lg md:text-2xl text-shadow">ENHANCED MED-BOT</p>
                 </div>
                 <div class="flex flex-row space-x-4 items-center justify-end">
-                    <p class="hidden font-roboto font-normal text-white text-lg md:block">Rylene Grace Sacro</p>
+                    <p class="hidden font-roboto font-normal text-white text-lg md:block">{{ $user->first_name }} {{ $user->last_name }} {{ $user->suffix ? $user->suffix : '' }}</p>
                     <img src="{{asset('images/dashboard/profile.png')}}" alt="" class="h-8 w-8 md:h-12 md:w-12">
                 </div>
                 
@@ -48,7 +48,7 @@
             </div>
 
             <div class="flex flex-col justify-center py-8 px-4">
-                <p class="font-roboto font-medium text-white text-xl md:text-2xl lg:text-2xl md:ml-3 md:text-2xl">Hello Dr. Rylene Grace,</p>
+                <p class="font-roboto font-medium text-white text-xl md:text-2xl lg:text-2xl md:ml-3 md:text-2xl">Hello {{$user->honorific}} {{$user->last_name}},</p>
                 
                 <div class="flex flex-col lg:space-y-1 mb-[5%] md:mb-[10%] lg:mb-[10%] md:text-left md:mr-[20%] lg:mr-[30%]">
                     <p class="font-roboto font-normal text-white text-md md:text-xl lg:text-2xl mx-2 md:mx-8 lg:mx-8 mt-2 md:mt-3 lg:mt-3">
@@ -72,19 +72,21 @@
                             <div class="table-cell text-center py-1">Name</div>
                             <div class="table-cell text-center py-1">Sex</div>
                             <div class="table-cell text-center py-1">Address</div>
-                            <div class="table-cell text-center py-1">Date</div>
-                            <div class="table-cell text-center py-1">Status</div>
-                        </div>
+                            <div class="table-cell text-center py-1">Time Taken</div>
+                       </div>
                     </div>
-                    <div class="table-row-group">
-                        <div class="table-row font-roboto font-normal text-black text-sm md:text-base">
-                            <div class="table-cell text-center py-1">Aubrey Jabal</div>
-                            <div class="table-cell text-center py-1">Female</div>
-                            <div class="table-cell text-center py-1">Ihatub, Boac</div>
-                            <div class="table-cell text-center py-1">July 4, 2023</div>
-                            <div class="table-cell text-center py-1">Normal</div>
+
+                    @foreach($latest_readings as $reading)
+                        <div class="table-row-group">
+                            <div class="table-row font-roboto font-normal text-black text-sm md:text-base">
+                                <div class="table-cell text-center py-1">{{$reading->user->first_name}} {{$reading->user->last_name}}</div>
+                                <div class="table-cell text-center py-1">{{$reading->user->sex}}</div>
+                                <div class="table-cell text-center py-1">{{$reading->user->barangay}}, {{$reading->user->municipality}}</div>
+                                <div class="table-cell text-center py-1">{{\Carbon\Carbon::parse($reading->created_at)->format('M d, Y (H:i:s)')}}</div>
+                            </div>
                         </div>
-                    </div>
+                    @endforeach
+                    
                 </div>
             </div>
             <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 w-full px-2 md:px-6">

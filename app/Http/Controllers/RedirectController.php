@@ -43,7 +43,12 @@ class RedirectController extends Controller
                 ]);
             }
             else if(Auth::user()->type == 'professional'){
-                return view('dashboard_professional');
+                $user = Auth::user();
+                $latest_readings = Reading::with('user')->latest()->get()->unique('user_id');
+                return view('dashboard_professional', [
+                    'user' => $user,
+                    'latest_readings' => $latest_readings
+                ]);
             }
             else{
                 flash()->addError('Unknown User Type');
