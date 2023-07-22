@@ -15,10 +15,18 @@ class RedirectController extends Controller
     }
 
     public function redirectToRegisterUser(){
+        if(Auth::check()){
+            flash()->addError('Please logout first');
+            return redirect('/');
+        }
         return view('register_user');
     }
     
     public function redirectToRegisterProfessional(){
+        if(Auth::check()){
+            flash()->addError('Please logout first');
+            return redirect('/');
+        }
         return view('register_professional');
     }
 
@@ -40,11 +48,20 @@ class RedirectController extends Controller
     }
   
     public function redirectToUploadLogin(){
+        if(Auth::check()){
+            flash()->addError('Please logout first');
+            return redirect('/');
+        }
+
         return view('login_upload');
     }
 
     
     public function redirectToCameraLogin(){
+        if(Auth::check()){
+            flash()->addError('Please logout first');
+            return redirect('/');
+        }
         return view('login_camera');
     }
 }
