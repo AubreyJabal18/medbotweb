@@ -35,15 +35,10 @@ class RedirectController extends Controller
     public function redirectToDashboard(){
         if(Auth::check()){
             if(Auth::user()->type == 'patient'){
-                $user = Auth::user();
-                $readings = Reading::where('user_id', 1)->latest()->get();
-                return view('dashboard_user',[
-                    'user' => $user,
-                    'readings' => $readings
-                ]);
+                $this->redirectToUserDashboard();
             }
             else if(Auth::user()->type == 'professional'){
-                return view('dashboard_professional');
+                $this->redirectToProfessionalDashboard();
             }
             else{
                 flash()->addError('Unknown User Type');
@@ -70,5 +65,18 @@ class RedirectController extends Controller
             return redirect('/');
         }
         return view('login_camera');
+    }
+
+    private function redirectToProfessionalDashboard(){
+        return view('dashboard_professional');
+    }
+
+    private function redirectToUserDashboard(){
+        $user = Auth::user();
+        $readings = Reading::where('user_id', 1)->latest()->get();
+        return view('dashboard_user',[
+            'user' => $user,
+            'readings' => $readings
+        ]);
     }
 }
