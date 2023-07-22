@@ -68,15 +68,15 @@
                     <p class="font-bold text-xl lg:text-2xl">Blood Pressure</p>
                     
                     <div class="flex flex-row text-center justify-center gap-2">
-                        <p class="text-lg lg:text-xl mt-2 "> {{$readings ? $readings[0]->blood_presssure_systolic : '--'}}/{{$readings ? $readings[0]->blood_presssure_diastolic : '--'}} mmHg</p>
+                        <p class="text-lg lg:text-xl mt-2 "> {{$readings ? $readings[0]->blood_pressure_systolic : '--'}}/{{$readings ? $readings[0]->blood_pressure_diastolic : '--'}} mmHg</p>
                         
                         @if($readings)
                             @if($readings[0]->blood_pressure_rating == 'low')
                                 <img src="{{asset('images/dashboard/low.svg')}}" alt="Low Blood Pressure" title="Low Blood Pressure" class="w-8 h-8 mt-2">
                             @elseif($readings[0]->blood_pressure_rating == 'normal')
-                                <img src="{{asset('images/dashboard/normal.svg')}}" alt="Normal Blood Pressure" class="w-8 h-8 mt-2">
+                                <img src="{{asset('images/dashboard/normal.svg')}}" alt="Normal Blood Pressure" title="Normal Blood Pressure" class="w-8 h-8 mt-2">
                             @elseif($readings[0]->blood_pressure_rating == 'high')
-                                <img src="{{asset('images/dashboard/high.svg')}}" alt="High Blood Pressure" class="w-8 h-8 mt-2">
+                                <img src="{{asset('images/dashboard/high.svg')}}" alt="High Blood Pressure" title="High Blood Pressure" class="w-8 h-8 mt-2">
                             @endif
                         @endif
 
@@ -92,7 +92,16 @@
 
                     <div class="flex flex-row text-center justify-center gap-2">
                         <p class="text-lg lg:text-xl mt-2">{{$readings ? $readings[0]->blood_saturation : '--'}}%</p>
-                        <img src="{{asset('images/dashboard/normal.svg')}}" alt="Normal Blood Pressure" class="w-8 h-8 mt-2"> 
+
+                        @if($readings)
+                            @if($readings[0]->blood_saturation_rating == 'low')
+                                <img src="{{asset('images/dashboard/low.svg')}}" alt="Low Saturation" title="Low Saturation" class="w-8 h-8 mt-2">
+                            @elseif($readings[0]->blood_saturation_rating == 'normal')
+                                <img src="{{asset('images/dashboard/normal.svg')}}" alt="Normal Saturation" title="Normal Saturation" class="w-8 h-8 mt-2">
+                            @elseif($readings[0]->blood_saturation_rating == 'high')
+                                <img src="{{asset('images/dashboard/high.svg')}}" alt="High Saturation" title="High Saturation" class="w-8 h-8 mt-2">
+                            @endif
+                        @endif
                     </div>
                 </div>
             </div>
@@ -103,8 +112,18 @@
                     <p class="font-bold text-xl lg:text-2xl">Temperature</p>
 
                     <div class="flex flex-row text-center justify-center gap-2">
-                        <p class="text-lg lg:text-xl mt-2">37 °C</p>
-                        <img src="{{asset('images/dashboard/normal.svg')}}" alt="Normal Blood Pressure" class="w-8 h-8 mt-2">
+                        <p class="text-lg lg:text-xl mt-2">{{$readings ? $readings[0]->temperature : '--'}}°C</p>
+                        
+                        @if($readings)
+                            @if($readings[0]->temperature_rating == 'low')
+                                <img src="{{asset('images/dashboard/low.svg')}}" alt="Low Temperature " title="Low Temperature" class="w-8 h-8 mt-2">
+                            @elseif($readings[0]->temperature_rating == 'normal')
+                                <img src="{{asset('images/dashboard/normal.svg')}}" alt="Normal Temperature" title="Normal Temperature" class="w-8 h-8 mt-2">
+                            @elseif($readings[0]->temperature_rating == 'high')
+                                <img src="{{asset('images/dashboard/high.svg')}}" alt="High Temperature" title="High Temperature" class="w-8 h-8 mt-2">
+                            @endif
+                        @endif
+
                     </div>
                 </div>
             </div>
@@ -115,8 +134,17 @@
                     <p class="font-bold text-xl lg:text-2xl">Pulse Rate</p>
 
                     <div class="flex flex-row text-center justify-center gap-2">
-                        <p class="text-lg lg:text-xl mt-2">75 bpm</p>
-                        <img src="{{asset('images/dashboard/normal.svg')}}" alt="Normal Blood Pressure" class="w-8 h-8 mt-2"> 
+                        <p class="text-lg lg:text-xl mt-2">{{$readings ? $readings[0]->pulse_rate : '--'}} bpm</p>
+                        
+                        @if($readings)
+                            @if($readings[0]->pulse_rate_rating == 'low')
+                                <img src="{{asset('images/dashboard/low.svg')}}" alt="Low Pulse Rate " title="Low Pulse Rate" class="w-8 h-8 mt-2">
+                            @elseif($readings[0]->pulse_rate_rating == 'normal')
+                                <img src="{{asset('images/dashboard/normal.svg')}}" alt="Normal Pulse Rate" title="Normal Pulse Rate" class="w-8 h-8 mt-2">
+                            @elseif($readings[0]->pulse_rate_rating == 'high')
+                                <img src="{{asset('images/dashboard/high.svg')}}" alt="High Pulse Rate" title="High Pulse Rate" class="w-8 h-8 mt-2">
+                            @endif
+                        @endif
                     </div>
                 </div>
             </div> 
@@ -126,7 +154,7 @@
             <p class="font-roboto font-bold text-black text-lg lg:text-xl">PREVIOUS READING</p>
         
             <div class="flex flex-row py-2 px-10">
-                <p class="flex flex-row text-base lg:text-xl">Taken last 6/21/2023 3:30 pm</p>
+                <p class="flex flex-row text-base lg:text-xl">Taken last {{$readings[1] ? $readings[1]->created_at : '(No readings yet)'}}</p>
             </div>
         </div>
 
@@ -137,8 +165,17 @@
                     <p class="font-bold text-xl lg:text-2xl">Blood Pressure</p>
                     
                     <div class="flex flex-row text-center justify-center gap-2">
-                        <p class="text-lg lg:text-xl mt-2 "> 120/80 bpm</p>
-                        <img src="{{asset('images/dashboard/normal.svg')}}" alt="Normal Blood Pressure" class="w-8 h-8 mt-2"> 
+                        <p class="text-lg lg:text-xl mt-2 "> {{$readings[1] ? $readings[1]->blood_pressure_systolic : '--'}}/{{$readings[1] ? $readings[1]->blood_pressure_diastolic : '--'}} mmHg</p>
+                        
+                        @if($readings)
+                            @if($readings[0]->blood_pressure_rating == 'low')
+                                <img src="{{asset('images/dashboard/low.svg')}}" alt="Low Blood Pressure" title="Low Blood Pressure" class="w-8 h-8 mt-2">
+                            @elseif($readings[0]->blood_pressure_rating == 'normal')
+                                <img src="{{asset('images/dashboard/normal.svg')}}" alt="Normal Blood Pressure" title="Normal Blood Pressure" class="w-8 h-8 mt-2">
+                            @elseif($readings[0]->blood_pressure_rating == 'high')
+                                <img src="{{asset('images/dashboard/high.svg')}}" alt="High Blood Pressure" title="High Blood Pressure" class="w-8 h-8 mt-2">
+                            @endif
+                        @endif
                     </div>
                     
                 </div>
@@ -150,8 +187,17 @@
                     <p class="font-bold text-xl lg:text-2xl">Blood Saturation</p>
 
                     <div class="flex flex-row text-center justify-center gap-2">
-                        <p class="text-lg lg:text-xl mt-2">95%</p>
-                        <img src="{{asset('images/dashboard/normal.svg')}}" alt="Normal Blood Pressure" class="w-8 h-8 mt-2"> 
+                        <p class="text-lg lg:text-xl mt-2">{{$readings[1] ? $readings[1]->blood_saturation : '--'}}%</p>
+                        
+                        @if($readings)
+                            @if($readings[0]->blood_saturation_rating == 'low')
+                                <img src="{{asset('images/dashboard/low.svg')}}" alt="Low Saturation" title="Low Saturation" class="w-8 h-8 mt-2">
+                            @elseif($readings[0]->blood_saturation_rating == 'normal')
+                                <img src="{{asset('images/dashboard/normal.svg')}}" alt="Normal Saturation" title="Normal Saturation" class="w-8 h-8 mt-2">
+                            @elseif($readings[0]->blood_saturation_rating == 'high')
+                                <img src="{{asset('images/dashboard/high.svg')}}" alt="High Saturation" title="High Saturation" class="w-8 h-8 mt-2">
+                            @endif
+                        @endif
                     </div>
                 </div>
             </div>
@@ -162,8 +208,17 @@
                     <p class="font-bold text-xl lg:text-2xl">Temperature</p>
 
                     <div class="flex flex-row text-center justify-center gap-2">
-                        <p class="text-lg lg:text-xl mt-2">37 °C</p>
-                        <img src="{{asset('images/dashboard/normal.svg')}}" alt="Normal Blood Pressure" class="w-8 h-8 mt-2">
+                        <p class="text-lg lg:text-xl mt-2">{{$readings[1] ? $readings[1]->temperature : '--'}}°C</p>
+                        
+                        @if($readings)
+                            @if($readings[0]->temperature_rating == 'low')
+                                <img src="{{asset('images/dashboard/low.svg')}}" alt="Low Temperature " title="Low Temperature" class="w-8 h-8 mt-2">
+                            @elseif($readings[0]->temperature_rating == 'normal')
+                                <img src="{{asset('images/dashboard/normal.svg')}}" alt="Normal Temperature" title="Normal Temperature" class="w-8 h-8 mt-2">
+                            @elseif($readings[0]->temperature_rating == 'high')
+                                <img src="{{asset('images/dashboard/high.svg')}}" alt="High Temperature" title="High Temperature" class="w-8 h-8 mt-2">
+                            @endif
+                        @endif
                     </div>
                 </div>
             </div>
@@ -174,8 +229,17 @@
                     <p class="font-bold text-xl lg:text-2xl">Pulse Rate</p>
 
                     <div class="flex flex-row text-center justify-center gap-2">
-                        <p class="text-lg lg:text-xl mt-2">75 bpm</p>
-                        <img src="{{asset('images/dashboard/normal.svg')}}" alt="Normal Blood Pressure" class="w-8 h-8 mt-2"> 
+                        <p class="text-lg lg:text-xl mt-2">{{$readings[1] ? $readings[1]->pulse_rate : '--'}} bpm</p>
+                        
+                        @if($readings)
+                            @if($readings[0]->pulse_rate_rating == 'low')
+                                <img src="{{asset('images/dashboard/low.svg')}}" alt="Low Pulse Rate " title="Low Pulse Rate" class="w-8 h-8 mt-2">
+                            @elseif($readings[0]->pulse_rate_rating == 'normal')
+                                <img src="{{asset('images/dashboard/normal.svg')}}" alt="Normal Pulse Rate" title="Normal Pulse Rate" class="w-8 h-8 mt-2">
+                            @elseif($readings[0]->pulse_rate_rating == 'high')
+                                <img src="{{asset('images/dashboard/high.svg')}}" alt="High Pulse Rate" title="High Pulse Rate" class="w-8 h-8 mt-2">
+                            @endif
+                        @endif
                     </div>
                 </div>
             </div> 
