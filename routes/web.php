@@ -44,4 +44,5 @@ Route::get('/logout',[LoginController::class, 'logout']);
 
 Route::get('search/process', [ProfDashboardController::class, 'getUserInfo']);
 
+Route::get('/get/reading_trends', [FetchController::class, 'getReadingTrends']);
 
