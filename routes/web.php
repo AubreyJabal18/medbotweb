@@ -44,4 +44,11 @@ Route::get('/logout',[LoginController::class, 'logout']);
 
 Route::get('search/process', [ProfDashboardController::class, 'getUserInfo']);
 
+Route::get('/get/users', [FetchController::class, 'getUsers']);
+
+Route::get('/get/patient_uses', [FetchController::class, 'getPatientUses']);
+
+Route::get('/get/registers', [FetchController::class, 'getRegisters']);
+
+Route::get('/get/patient_registers', [FetchController::class, 'getPatientRegisters']);
 

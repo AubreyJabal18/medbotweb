@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Healthcare Professional Dashboard</title>
+    <script src="{{asset('/js/moment.js')}}"></script>
     @vite('resources/css/app.css')
 
 </head>
@@ -78,7 +79,7 @@
 
                     @foreach($latest_readings as $reading)
                         <div class="table-row-group">
-                            <div class="table-row font-roboto font-normal text-black text-sm md:text-base">
+                            <div class="table-row font-roboto font-normal text-black text-sm md:text-base ">
                                 <div class="table-cell text-center py-1">{{$reading->user->first_name}} {{$reading->user->last_name}}</div>
                                 <div class="table-cell text-center py-1">{{$reading->user->sex}}</div>
                                 <div class="table-cell text-center py-1">{{$reading->user->barangay}}, {{$reading->user->municipality}}</div>
@@ -96,18 +97,18 @@
                                 
                         <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
                        
-                            <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="select" name="select">
+                            <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="select" name="by">
                                 <option value="weekly" >Weekly</option>
                                 <option value="monthly" >Monthly</option>
                                 <option value="yearly" >Yearly</option> 
                             </select>  
                         </div> 
-                            <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="year" name="year">
-                            <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="month" name="month">
-                            <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="week" name="week">
+                            <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="year" name="value">
+                            <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="month" name="value">
+                            <input class=" flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="week" name="value">
                     </div>
-                    <img src="{{asset('images/login/e3.svg')}}" alt="" class="absolute place-self-start lg:h-[79%]  bottom-0 right-0 ">
-                    <div class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></div>
+                    <img src="{{asset('images/login/e3.svg')}}" alt="" class="absolute place-self-start lg:h-[50%]  bottom-0 right-0 ">
+                    <canvas id="patientUses" class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></canvas>
                 </div>
 
                 <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-full">
@@ -116,18 +117,18 @@
                                 
                         <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
                            
-                            <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="registered_select" name="registered_select">
+                            <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="registered_select" name="registered_by">
                                 <option value="weekly" >Weekly</option>
                                 <option value="monthly" >Monthly</option>
                                 <option value="yearly" >Yearly</option> 
                             </select>  
                         </div> 
-                            <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="registered_year" name="registered_year">
-                            <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="registered_month" name="registered_month">
-                            <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="registered_week" name="registered_week">
+                            <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="registered_year" name="registered_value">
+                            <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="registered_month" name="registered_value">
+                            <input class="flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="registered_week" name="registered_value">
                     </div>
-                    <img src="{{asset('images/login/e1.svg')}}" alt="" class="absolute place-self-start lg:h-[79%]  bottom-0 left-0">         
-                    <div class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></div>
+                    <img src="{{asset('images/login/e1.svg')}}" alt="" class="absolute place-self-start lg:h-[50%]  bottom-0 left-0">         
+                    <canvas id="patientRegisters" class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></canvas>
                 </div>
             </div>
         </div>
@@ -142,7 +143,7 @@
                 <div class="flex flex-col md:flex-row font-roboto self-center md:space-x-10 pt-2 ">
                                 
                     <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
-                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="muni"> 
+                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="reading_byMunicipality"> 
                             <option value="All">All</option>
                             <option value="Boac">Boac</option>
                             <option value="Buenavista">Buenavista</option>
@@ -151,19 +152,19 @@
                             <option value="Sta. Cruz">Santa Cruz</option>
                             <option value="Torrijos">Torrijos</option>
                         </select>
-                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="reading_select" name="reading_select">
+                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="reading_select" name="reading_by">
                             <option value="weekly" >Weekly</option>
                             <option value="monthly" >Monthly</option>
                             <option value="yearly" >Yearly</option> 
                         </select>  
                     </div> 
-                        <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="reading_year" name="reading_year">
-                        <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="reading_month" name="reading_month">
-                        <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="reading_week" name="reading_week">
+                        <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="reading_year" name="reading_value">
+                        <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="reading_month" name="reading_value">
+                        <input class="flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="reading_week" name="reading_value">
                 </div> 
                 <img src="{{asset('images/login/e1.svg')}}" alt="" class="absolute place-self-start lg:h-[79%]  bottom-0 left-0">
                 <img src="{{asset('images/login/e3.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 right-0">                     
-                <div class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></div>
+                <canvas class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></canvas>
                 
             </div>
 
@@ -189,7 +190,7 @@
                     </div> 
                         <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="pervasiveness_year" name="pervasiveness_year">
                         <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="pervasiveness_month" name="pervasiveness_month">
-                        <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="pervasiveness_week" name="pervasiveness_week">
+                        <input class="flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="pervasiveness_week" name="pervasiveness_week">
                     </div>
                 <img src="{{asset('images/login/e1.svg')}}" alt="" class="absolute place-self-start lg:h-[79%]  bottom-0 left-0">     
                 <img src="{{asset('images/login/e3.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 right-0">
@@ -261,10 +262,9 @@
     </div>
 
         
- 
-
-    <script src="{{ asset('/js/barangay.js') }}"></script>
+    <script src="{{asset('/js/chart.js')}}"></script>
     <script src="{{asset('/js/dashboard_professional.js')}}"></script>
+    <script src="{{asset('/js/professional_graphs.js')}}"></script>
     
 
 

@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
+use App\Models\User;
+use App\Models\Reading;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FetchController extends Controller
 {
@@ -10,4 +15,198 @@ class FetchController extends Controller
         $path = '../public/storage/qrcodes/'.$request->id.'.png';
         return response()->download($path);
     }
+
+    
+    // FOR PATIENTS USED MED-BOT
+
+    public function getUsers(){
+        $users = User::all();
+        return response()->json([
+            'users' => $users
+        ]);
+    }
+
+    public function getPatientUses(Request $request){
+        if($request->by == 'weekly'){
+            $year = substr($request->value, 0, 4);
+            $week = substr($request->value, 6, 2);
+            $dates = $this->getWeek($week, $year);
+            $users = Reading::with('user')
+                ->whereBetween('created_at', [$dates['start'], $dates['end']])
+                ->get()
+                ->countBy(function ($item) {
+                    return Carbon::parse($item->created_at)->format('Y-m-d');
+                })
+                ->toArray();
+            $period = CarbonPeriod::create($dates['start'], $dates['end']);
+            $uses = [];
+            foreach ($period as $date) {
+                $key = $date->format('Y-m-d');
+                $uses[$key] = array_key_exists($key, $users) ? $users[$key] : 0;
+            }
+            return response()->json([
+                'uses' => $uses
+            ]);
+        }
+        else if($request->by == 'monthly'){
+            $year = substr($request->value, 0, 4);
+            $month = substr($request->value, 5, 2);
+            $users = Reading::with('user')
+                ->whereMonth('created_at', $month)
+                ->whereYear('created_at', $year)
+                ->get()
+                ->countBy(function ($item) {
+                    return Carbon::parse($item->created_at)->format('Y-m-d');
+                })
+                ->toArray();
+            $dates = $this->getMonth($month, $year);
+            $period = CarbonPeriod::create($dates['start'], $dates['end']);
+            $uses = [];
+            foreach ($period as $date) {
+                $key = $date->format('Y-m-d');
+                $uses[$key] = array_key_exists($key, $users) ? $users[$key] : 0;
+            }
+            return response()->json([
+                'uses' => $uses
+            ]);
+        }
+        else {
+            $year = substr($request->value, 0, 4);
+            $users = Reading::with('user')
+                ->whereYear('created_at', $year)
+                ->get()
+                ->countBy(function ($item) {
+                    return Carbon::parse($item->created_at)->format('M');
+                })
+                ->toArray();
+            $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            $uses = [];
+            foreach($months as $month){
+                $uses[$month] = array_key_exists($month, $users) ? $users[$month] : 0;
+            }
+
+            return response()->json([
+                'uses' => $uses
+            ]);
+        }
+    }
+
+    // FOR PATIENTS REGISTERED TO MED-BOT
+
+    public function getRegisters(){
+        $users = User::all();
+        return response()->json([
+            'users' => $users
+        ]);
+    }
+
+
+    public function getPatientRegisters(Request $request){
+        if($request->registered_by == 'weekly'){
+            $year = substr($request->registered_value, 0, 4);
+            $week = substr($request->registered_value, 6, 2);
+            $dates = $this->getWeek($week, $year);
+            $users = User::where('type', 'patient')
+                ->whereBetween('created_at', [$dates['start'], $dates['end']])
+                ->get()
+                ->countBy(function ($item) {
+                    return Carbon::parse($item->created_at)->format('Y-m-d');
+                })
+                ->toArray();    
+            $period = CarbonPeriod::create($dates['start'], $dates['end']);
+            $registers = [];
+            foreach ($period as $date) {
+                $key = $date->format('Y-m-d');
+                $registers[$key] = array_key_exists($key, $users) ? $users[$key] : 0;
+            }
+            return response()->json([
+                'registers' => $registers
+            ]);
+        }
+        else if($request->registered_by == 'monthly'){
+            $year = substr($request->registered_value, 0, 4);
+            $month = substr($request->registered_value, 5, 2);
+            $users = User::where('type', 'patient')
+                ->whereMonth('created_at', $month)
+                ->whereYear('created_at', $year)
+                ->get()
+                ->countBy(function ($item) {
+                    return Carbon::parse($item->created_at)->format('Y-m-d');
+                })
+                ->toArray();
+            $dates = $this->getMonth($month, $year);
+            $period = CarbonPeriod::create($dates['start'], $dates['end']);
+            $registers = [];
+            foreach ($period as $date) {
+                $key = $date->format('Y-m-d');
+                $registers[$key] = array_key_exists($key, $users) ? $users[$key] : 0;
+            }
+            return response()->json([
+                'registers' => $registers
+            ]);
+        }
+        else {
+            $year = substr($request->registered_value, 0, 4);
+            $users = User::where('type', 'patient')
+                ->whereYear('created_at', $year)
+                ->get()
+                ->countBy(function ($item) {
+                    return Carbon::parse($item->created_at)->format('M');
+                })
+                ->toArray();
+            $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            $registers = [];
+            foreach($months as $month){
+                $registers[$month] = array_key_exists($month, $users) ? $users[$month] : 0;
+            }
+            return response()->json([
+                'registers' => $registers
+            ]);
+        }
+    
+    }
+    
+    private function getWeek($week, $year){
+        $date = Carbon::now();
+        $date->setISODate($year, $week);
+        $dates = [
+            'start' => $date->startOfWeek()->toDateString(),
+            'end' => $date->endOfWeek()->toDateString()
+        ];
+        return $dates;
+    }
+
+    private function getMonth($month, $year){
+        $date = Carbon::createFromDate($year, $month, 1);
+        $dates = [
+            'start' => $date->startOfMonth()->toDateString(),
+            'end' => $date->endOfMonth()->toDateString()
+        ];
+        return $dates;
+    }
+    
+    private function getYear($year){
+        $date = Carbon::createFromDate($year);
+        $dates = [
+            'start' => $date->startOfYear()->toDateString(),
+            'end' => $date->endOfYear()->toDateString()
+        ];
+        return $dates;
+    }
+
+    // FOR PATIENTS READINGS
+    public function getReadings(){
+        $users = Reading::all();
+        return response()->json([
+            'users' => $users
+        ]);
+    }
+
+
+   
+   
+
+
 }
+
+    
