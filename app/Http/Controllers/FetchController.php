@@ -16,9 +16,9 @@ class FetchController extends Controller
         return response()->download($path);
     }
 
+// FOR PROFESSIONAL DASHBOARD DATA//
     
-    // FOR PATIENTS USED MED-BOT
-
+    // FOR PATIENTS USED MED-BOT//
     public function getUsers(){
         $users = User::all();
         return response()->json([
@@ -91,15 +91,13 @@ class FetchController extends Controller
         }
     }
 
-    // FOR PATIENTS REGISTERED TO MED-BOT
-
+    // FOR PATIENTS REGISTERED TO MED-BOT//
     public function getRegisters(){
         $users = User::all();
         return response()->json([
             'users' => $users
         ]);
     }
-
 
     public function getPatientRegisters(Request $request){
         if($request->registered_by == 'weekly'){
@@ -165,9 +163,39 @@ class FetchController extends Controller
         }
     
     }
-    
+   
     private function getWeek($week, $year){
+        $date = Carbon::now();
+        $date->setISODate($year, $week);
+        $dates = [
+            'start' => $date->startOfWeek()->toDateString(),
+            'end' => $date->endOfWeek()->toDateString()
+        ];
+        return $dates;
+    }
+    
+    private function getMonth($month, $year){
+        $date = Carbon::createFromDate($year, $month, 1);
+        $dates = [
+            'start' => $date->startOfMonth()->toDateString(),
+            'end' => $date->endOfMonth()->toDateString()
+        ];
+        return $dates;
+    }
+   
+    // FOR PATIENTS READINGS
+    public function getReadings(){
+        $users = Reading::all();
+        return response()->json([
+            'users' => $users
+        ]);
+    }
 
+    
+
+// FOR USER DASHBOARD DATA//
+
+    // FOR READING TRENDS//
     public function getReadingTrends(Request $request){
         if($request->by == 'weekly'){
             $year = substr($request->value, 0, 4);
@@ -255,13 +283,8 @@ class FetchController extends Controller
         return $dates;
     }
 
-
-    private function getMonth($month, $year){
-        $date = Carbon::createFromDate($year, $month, 1);
-
     private function getStartAndEndDateFromMonth($month, $year){
         $date = Carbon::createFromDate($year, $month);
-
         $dates = [
             'start' => $date->startOfMonth()->toDateString(),
             'end' => $date->endOfMonth()->toDateString()
@@ -269,22 +292,6 @@ class FetchController extends Controller
         return $dates;
     }
 
-    private function getYear($year){
-        $date = Carbon::createFromDate($year);
-        $dates = [
-            'start' => $date->startOfYear()->toDateString(),
-            'end' => $date->endOfYear()->toDateString()
-        ];
-        return $dates;
-    }
-
-    // FOR PATIENTS READINGS
-    public function getReadings(){
-        $users = Reading::all();
-        return response()->json([
-            'users' => $users
-        ]);
-    }
 
 
 }
