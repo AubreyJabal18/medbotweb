@@ -52,3 +52,6 @@ Route::get('/get/registers', [FetchController::class, 'getRegisters']);
 
 Route::get('/get/patient_registers', [FetchController::class, 'getPatientRegisters']);
 
+Route::get('/get/reading_trends', [FetchController::class, 'getReadingTrends']);
+
+
