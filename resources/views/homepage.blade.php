@@ -11,7 +11,7 @@
     <!-- <div class="w-full flex flex-col relative bg-[url('../images/homepage-top-banner.png')] bg-contain bg-origin-border bg-no-repeat h-[900px] md:h-[1000px] overflow-hidden"> -->
     <div class="w-full flex flex-col relative overflow-hidden bg-homepage-accent bg-cover bg-origin-border bg-no-repeat h-[900px] md:bg-none md:h-fit">
 
-        <img src="{{asset('images/homepage/homepage-top-banner.svg')}}" alt="" class="absolute hidden -z-50 md:-translate-y-32 md:block">
+        <img src="{{asset('images/homepage/homepage-top-banner.svg')}}" alt="" class="absolute hidden -z-50 md:-translate-y-32 md:block w-screen">
 
         <!-- Navbar -->
         <div class="flex flex-row justify-center items-center space-x-10 px-8 py-5 md:justify-end">
