@@ -291,9 +291,6 @@ class FetchController extends Controller
         ];
         return $dates;
     }
-
-
-
 }
 
     

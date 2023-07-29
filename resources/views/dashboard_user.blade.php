@@ -249,82 +249,53 @@
             <p class="font-roboto font-bold text-black text-lg lg:text-xl">BROWSE RESULT</p>
         </div>
         
-        <div class="flex flex-col lg:flex-row justify-center pt-10 pb-10 px-10 gap-10">
-            <div class="flex flex-row justify-center py-5 w-full">
-                <div class="w-[90%] flex flex-col items-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-full relative">
-                    <p class="font-roboto font-normal leading-normal text-[#151515] text-lg lg:text-2xl md:text-xl px-2 py-2 my-2 justify-center bg-blue-200 w-full text-center">Reading Trends</p>
+        <div class="flex flex-col justify-center py-5 lg:px-32 w-full items-center">
+            <div class="w-[90%] flex flex-col items-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-full relative">
+                <p class="font-roboto font-normal leading-normal text-[#151515] text-lg lg:text-2xl md:text-xl px-2 py-2 my-2 justify-center bg-blue-200 w-full text-center">Reading Trends</p>
 
-                    <div class="flex flex-row lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2 py-2">
-                        <select class="shadow border px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="trends_select" name="by">
-                            <option value="weekly" >Weekly</option>
-                            <option value="monthly" >Monthly</option>
-                            <option value="yearly" >Yearly</option>
-                        </select>
-                    
-                        <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="trends_year" name="value">
-                        <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="trends_month" name="value">
-                        <input class="flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="trends_week" name="value">
-                    </div>
-
-                    <canvas id="reading-trends" class="mt-4 w-[96%] flex drop-shadow-lg shadow-lg rounded-lg bg-white z-10 h-fit">
-
-                    </canvas>
-
-                    <img src="{{asset('images/dashboard/dashboard_bg1.svg')}}" alt="" class="absolute lg:h-[70%] bottom-0 left-0">
-                    <img src="{{asset('images/dashboard/dashboard_bg2.svg')}}" alt="" class="absolute lg:h-60 bottom-0 right-0">  
-                </div> 
-            </div>
-
-            <div class="flex flex-row items-center justify-center py-5 w-full">
-                <div class="w-[90%] flex flex-col items-center p-2 rounded-xl drop-shadow-lg shadow-lg h-full border border-gray-300 md:w-4/5 lg:w-full relative">
-                    <p class="font-roboto font-normal leading-normal text-[#151515] text-lg lg:text-2xl md:text-xl px-2 py-2 my-2 justify-center bg-blue-200 w-full text-center">Reading Rating</p>
-
-                    <div class="flex flex-row lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2 py-2">
-                        <select class="shadow border px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="rating_select" name="by">
-                            <option value="weekly" >Weekly</option>
-                            <option value="monthly" >Monthly</option>
-                            <option value="yearly" >Yearly</option>
-                        </select>  
-                    
-                        <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="rating_year" name="value">
-                        <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="rating_month" name="value">
-                        <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="rating_week" name="value">
-                    </div>
-
-                    <div class="mt-4 w-[96%] flex drop-shadow-lg shadow-lg h-96 rounded-lg bg-white z-10">
-
-                    </div>
-
-                    <img src="{{asset('images/dashboard/dashboard_bg1.svg')}}" alt="" class="absolute lg:h-[70%] bottom-0 left-0">
-                    <img src="{{asset('images/dashboard/dashboard_bg2.svg')}}" alt="" class="absolute lg:h-60 bottom-0 right-0">
+                <div class="flex flex-row lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2 py-2">
+                    <select class="shadow border px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="trends_select" name="by">
+                        <option value="weekly" >Weekly</option>
+                        <option value="monthly" >Monthly</option>
+                        <option value="yearly" >Yearly</option>
+                    </select>
+                
+                    <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="trends_year" name="value">
+                    <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="trends_month" name="value">
+                    <input class="flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="trends_week" name="value">
                 </div>
-            </div>
+
+                <canvas id="reading-trends" class="mt-4 w-[96%] flex drop-shadow-lg shadow-lg rounded-lg bg-white z-10 h-fit">
+
+                </canvas>
+
+                <img src="{{asset('images/dashboard/dashboard_bg1.svg')}}" alt="" class="absolute lg:h-[70%] bottom-0 left-0">
+                <img src="{{asset('images/dashboard/dashboard_bg2.svg')}}" alt="" class="absolute lg:h-60 bottom-0 right-0">  
+            </div> 
         </div>
 
-        <div class="flex flex-row items-center justify-center pb-10 px-10">
-            <div class="flex flex-row items-center justify-center py-5 w-full">
-                <div class="w-[90%] flex flex-col items-center p-2 rounded-xl drop-shadow-lg shadow-lg h-full border border-gray-300 md:w-4/5 lg:w-full relative">
-                    <p class="font-roboto font-normal leading-normal text-[#151515] text-lg lg:text-2xl md:text-xl px-2 py-2 my-2 justify-center bg-blue-200 w-full text-center">Med-Bot Used</p>
+        <div class="flex flex-col items-center justify-center py-5 w-full lg:px-32">
+            <div class="w-[90%] flex flex-col items-center p-2 rounded-xl drop-shadow-lg shadow-lg h-full border border-gray-300 md:w-4/5 lg:w-full relative">
+                <p class="font-roboto font-normal leading-normal text-[#151515] text-lg lg:text-2xl md:text-xl px-2 py-2 my-2 justify-center bg-blue-200 w-full text-center">Reading Rating</p>
 
-                    <div class="flex flex-row lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2 py-2">
-                        <select class="shadow border px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="medbot_select" name="by">
-                            <option value="weekly" >Weekly</option>
-                            <option value="monthly" >Monthly</option>
-                            <option value="yearly" >Yearly</option>
-                        </select>  
-                    
-                        <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="medbot_year" name="value">
-                        <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="medbot_month" name="value">
-                        <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="medbot_week" name="value">
-                    </div>
-
-                    <div class="mt-4 w-[96%] flex drop-shadow-lg shadow-lg h-96 rounded-lg bg-white z-10">
-
-                    </div>
-
-                    <img src="{{asset('images/dashboard/dashboard_bg1.svg')}}" alt="" class="absolute lg:h-[70%] bottom-0 left-0">
-                    <img src="{{asset('images/dashboard/dashboard_bg2.svg')}}" alt="" class="absolute lg:h-60 bottom-0 right-0">
+                <div class="flex flex-row lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2 py-2">
+                    <select class="shadow border px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="rating_select" name="by">
+                        <option value="weekly" >Weekly</option>
+                        <option value="monthly" >Monthly</option>
+                        <option value="yearly" >Yearly</option>
+                    </select>  
+                
+                    <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="rating_year" name="value">
+                    <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="rating_month" name="value">
+                    <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="rating_week" name="value">
                 </div>
+
+                <div class="mt-4 w-[96%] flex drop-shadow-lg shadow-lg h-96 rounded-lg bg-white z-10">
+
+                </div>
+
+                <img src="{{asset('images/dashboard/dashboard_bg1.svg')}}" alt="" class="absolute lg:h-[70%] bottom-0 left-0">
+                <img src="{{asset('images/dashboard/dashboard_bg2.svg')}}" alt="" class="absolute lg:h-60 bottom-0 right-0">
             </div>
         </div>
     </div>
