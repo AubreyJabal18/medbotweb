@@ -21,7 +21,7 @@
                 </div>
                 <div class="flex flex-row space-x-4 items-center justify-end">
                     <p class="hidden font-roboto font-normal text-white text-lg md:block">{{ $user->first_name }} {{ $user->last_name }} {{ $user->suffix ? $user->suffix : '' }}</p>
-                    <img src="{{asset('images/dashboard/profile.png')}}" alt="" class="h-8 w-8 md:h-12 md:w-12">
+                    <img src="{{asset('images/dashboard/profile.png')}}" alt="" id="profile-menu" class="h-8 w-8 md:h-12 md:w-12">
                 </div>
                 
                 <img src="{{asset('images/dashboard/tri1.png')}}" alt="" class="absolute place-self-start w-2/5 md:w-2/5 lg:h-1/5 lg:w-2/5 left-0 top-[95%] md:top-[88%] lg:top-[85%]">
@@ -30,7 +30,34 @@
 
                 <img src="{{asset('images/dashboard/tri3.png')}}" alt="" class="absolute place-self-start w-2/5 md:w-1/5 md:h-1/5 lg:h-2/5 lg:w-1/5 left-[60%] md:left-[80%] lg:left-[80%] top-[91%] md:top-[84%] lg:top-[80%] ">
                 
+                <div id="menu" class=" hidden flex flex-col absolute z-50 w-3/4 md:w-1/5 h-full bg-white rounded-md drop-shadow-md top-16 right-2 px-8 py-4">
+                    <div class="flex flex-col items-center">
+                        <img src="{{asset('images/dashboard/profile.png')}}" alt="" class="w-16 h-16 m-2">
+                        <p class="font-roboto font-bold">{{ $user->first_name }} {{ $user->last_name }} {{ $user->suffix ? $user->suffix : '' }}</p>
+                        <p class="font-roboto">Patient</p> 
+                    </div>
+                    
+                    <div class="flex flex-col mt-8 ">
+                        <p class="font-roboto font-bold text-xl">General</p>
+                        
+                        <div class="flex flex-row mt-5 space-x-5">
+                            <img src="{{asset('images/dashboard/dashboard2.svg')}}" alt="" class="w-6">
+                            <p class="font-roboto">Dashboard</p>
+                        </div>
+
+                        <div class="flex flex-row mt-5 space-x-5">
+                            <img src="{{asset('images/dashboard/Account.svg')}}" alt="" class="w-6">
+                            <p class="font-roboto">Patients</p>
+                        </div>
+
+                        <div class="flex flex-row mt-5 space-x-5">
+                            <img src="{{asset('images/dashboard/dashboard2.svg')}}" alt="" class="w-6">
+                            <p class="font-roboto">Readings</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+
             <div class="flex flex-col items-center justify-center bg-[#F3EFEF]/50 py-2 md:py-4 lg:py-5 md:flex-row md:justify-between px-10">
                 <p class="font-roboto font-semibold text-[#A03B3B] text-lg md:text-2xl">Dashboard</p>
                 
@@ -265,7 +292,7 @@
     <script src="{{asset('/js/chart.js')}}"></script>
     <script src="{{asset('/js/dashboard_professional.js')}}"></script>
     <script src="{{asset('/js/professional_graphs.js')}}"></script>
-    
+    <script src="{{asset('/js/menu.js')}}"></script>
 
 
     @if(Session::has('id'))
