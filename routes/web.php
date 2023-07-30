@@ -54,4 +54,8 @@ Route::get('/get/patient_registers', [FetchController::class, 'getPatientRegiste
 
 Route::get('/get/reading_trends', [FetchController::class, 'getReadingTrends']);
 
+Route::get('/login/admin', [RedirectController::class, 'redirectToAdminLogin']);
+
+Route::post('/login/admin/process', [LoginController::class, 'loginAdmin']);
+
 

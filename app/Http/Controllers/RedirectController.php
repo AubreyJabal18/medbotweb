@@ -50,6 +50,12 @@ class RedirectController extends Controller
                     'latest_readings' => $latest_readings
                 ]);
             }
+            else if(Auth::user()->type == 'admin'){
+                $user = Auth::user();
+                return view('dashboard_admin', [
+                    'user' => $user
+                ]);
+            }
             else{
                 flash()->addError('Unknown User Type');
                 return back();
@@ -76,4 +82,13 @@ class RedirectController extends Controller
         }
         return view('login_camera');
     }
+
+    public function redirectToAdminLogin(){
+        if(Auth::check()){
+            flash()->addError('Please logout first');
+            return redirect('/');
+        }
+        return view('login_admin');
+    }
+
 }

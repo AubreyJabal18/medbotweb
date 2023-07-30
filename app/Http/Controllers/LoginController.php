@@ -83,6 +83,16 @@ class LoginController extends Controller
         
     }    
 
-
+    public function loginAdmin(Request $request){
+        $credentials = [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
+        if(Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            flash()->addSuccess('Login successfully');
+            return redirect()->intended('dashboard');
+        }
+    }
 
 }
