@@ -143,7 +143,7 @@
                 <div class="flex flex-col md:flex-row font-roboto self-center md:space-x-10 pt-2 ">
                                 
                     <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
-                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="reading_byMunicipality"> 
+                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="municipality" id="reading_byMunicipality"> 
                             <option value="All">All</option>
                             <option value="Boac">Boac</option>
                             <option value="Buenavista">Buenavista</option>
@@ -162,10 +162,25 @@
                         <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="reading_month" name="reading_value">
                         <input class="flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="reading_week" name="reading_value">
                 </div> 
-                <img src="{{asset('images/login/e1.svg')}}" alt="" class="absolute place-self-start lg:h-[79%]  bottom-0 left-0">
-                <img src="{{asset('images/login/e3.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 right-0">                     
-                <canvas class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></canvas>
+
+                                
+                <canvas class="mt-4 flex drop-shadow-lg shadow-lg h-72 w-full rounded-lg bg-white"></canvas>
                 
+                <div class="grid grid-cols-2 lg:grid-cols-4 pt-4 gap-y-1 gap-x-1 lg:gap-x-2">
+                   <button id="reading_bp" name="reading_bp" class="flex flex-row font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-8 py-1 bg-[#59AEDD] text-white">
+                    <img src="{{asset('images/dashboard/bp.png')}}" alt="Blood Pressure" class="flex h-6 w-7 mr-4">BP
+                   </button>
+                   <button id="reading_bs" name="reading_bs" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-6 py-1 bg-[#EB7373] text-white">
+                    <img src="{{asset('images/dashboard/bs.png')}}" alt="Blood Saturation" class="flex h-5 w-8 mr-6 mt-0.5">BS
+                   </button>
+                   <button id="reading_temp" name="reading_temp"
+                   class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-5 py-1 bg-[#697269] text-white">
+                    <img src="{{asset('images/dashboard/temp.png')}}" alt="Temperature" class="flex h-5 w-8 mr-3  mt-0.5">TEMP
+                   </button>
+                   <button id="reading_pr" name="reading_pr" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-8 py-1 bg-[#93D396] text-white">
+                    <img src="{{asset('images/dashboard/pr.png')}}" alt="Temperature" class="flex h-5 w-7 mr-6 mt-0.5">PR
+                </button>
+            </div>
             </div>
 
             <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-full">
@@ -192,9 +207,23 @@
                         <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="pervasiveness_month" name="pervasiveness_month">
                         <input class="flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="pervasiveness_week" name="pervasiveness_week">
                     </div>
-                <img src="{{asset('images/login/e1.svg')}}" alt="" class="absolute place-self-start lg:h-[79%]  bottom-0 left-0">     
-                <img src="{{asset('images/login/e3.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 right-0">
-                <div class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></div>
+                
+                <div class="mt-4 flex drop-shadow-lg shadow-lg h-72 w-full rounded-lg bg-white"></div>
+                <div class="grid grid-cols-2 lg:grid-cols-4 pt-4 gap-y-1 gap-x-1 lg:gap-x-2">
+                    <button id="pervasiveness_bp" name="pervasiveness_bp" class="flex flex-row font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-8 py-1 bg-[#59AEDD] text-white">
+                     <img src="{{asset('images/dashboard/bp.png')}}" alt="Blood Pressure" class="flex h-6 w-7 mr-4">BP
+                    </button>
+                    <button id="pervasiveness_bs" name="pervasiveness_bs" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-6 py-1 bg-[#EB7373] text-white">
+                     <img src="{{asset('images/dashboard/bs.png')}}" alt="Blood Saturation" class="flex h-5 w-8 mr-6 mt-0.5">BS
+                    </button>
+                    <button id="pervasiveness_temp" name="pervasiveness_temp"
+                    class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-5 py-1 bg-[#697269] text-white">
+                     <img src="{{asset('images/dashboard/temp.png')}}" alt="Temperature" class="flex h-5 w-8 mr-3  mt-0.5">TEMP
+                    </button>
+                    <button id="pervasiveness_pr" name="pervasiveness_pr" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-8 py-1 bg-[#93D396] text-white">
+                     <img src="{{asset('images/dashboard/pr.png')}}" alt="Temperature" class="flex h-5 w-7 mr-6 mt-0.5">PR
+                 </button>
+             </div>
             </div>
         </div>
         <div class="flex flex-col md:flex-row  items-center py-2 pt-12 px-5">

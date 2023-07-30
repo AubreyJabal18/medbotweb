@@ -185,12 +185,78 @@ class FetchController extends Controller
    
     // FOR PATIENTS READINGS
     public function getReadings(){
-        $users = Reading::all();
+        $users = User::all();
         return response()->json([
             'users' => $users
         ]);
     }
 
+    public function getPatientReadings(Request $request){
+        if($request->reading_by == 'weekly'){
+            $year = substr($request->reading_value, 0, 4);
+            $week = substr($request->reading_value, 6, 2);
+            $dates = $this->getWeek($week, $year);
+            $users = Reading::with('user')
+                ->where($request->municipality == 'All')
+                ->whereBetween('created_at', [$dates['start'], $dates['end']])
+                ->get()
+                ->countBy(function ($item) {
+                    return Carbon::parse($item->created_at)->format('Y-m-d');
+                })
+                ->toArray();
+            $period = CarbonPeriod::create($dates['start'], $dates['end']);
+            $patient_readings = [];
+            foreach ($period as $date) {
+                $key = $date->format('Y-m-d');
+                $patient_readings[$key] = array_key_exists($key, $users) ? $users[$key] : 0;
+            }
+            return response()->json([
+                'patient_readings' => $patient_readings
+            ]);
+        }
+        else if($request->reading_by == 'monthly'){
+            $year = substr($request->reading_value, 0, 4);
+            $month = substr($request->reading_value, 5, 2);
+            $users = User::where('type', 'patient')
+                ->whereMonth('created_at', $month)
+                ->whereYear('created_at', $year)
+                ->get()
+                ->countBy(function ($item) {
+                    return Carbon::parse($item->created_at)->format('Y-m-d');
+                })
+                ->toArray();
+            $dates = $this->getMonth($month, $year);
+            $period = CarbonPeriod::create($dates['start'], $dates['end']);
+            $patient_readings = [];
+            foreach ($period as $date) {
+                $key = $date->format('Y-m-d');
+                $patient_readings[$key] = array_key_exists($key, $users) ? $users[$key] : 0;
+            }
+            return response()->json([
+                'patient_readings' => $patient_readings
+            ]);
+        }
+        else {
+            $year = substr($request->reading_value, 0, 4);
+            $users = User::where('type', 'patient')
+                ->whereYear('created_at', $year)
+                ->get()
+                ->countBy(function ($item) {
+                    return Carbon::parse($item->created_at)->format('M');
+                })
+                ->toArray();
+            $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            $patient_readings = [];
+            foreach($months as $month){
+                $patient_readings[$month] = array_key_exists($month, $users) ? $users[$month] : 0;
+            }
+            return response()->json([
+                'patient_readings' => $patient_readings
+            ]);
+        }
+    
+    }
+   
     
 
 // FOR USER DASHBOARD DATA//
