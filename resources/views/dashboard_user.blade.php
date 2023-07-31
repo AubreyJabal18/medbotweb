@@ -78,7 +78,7 @@
             <p class="font-roboto font-bold text-black text-lg lg:text-xl">LATEST READING</p>
         
             <div class="flex flex-row py-2 px-10">
-                <p class="flex flex-row text-base lg:text-xl">Taken last {{$readings ? $readings[0]->created_at : '(No readings yet)'}}</p>
+                <p class="flex flex-row text-base lg:text-xl">Taken last {{count($readings) > 0 ? $readings[0]->created_at : '(No readings yet)'}}</p>
             </div>
         </div>
 
@@ -89,9 +89,9 @@
                     <p class="font-bold text-xl lg:text-2xl">Blood Pressure</p>
                     
                     <div class="flex flex-row text-center justify-center gap-2">
-                        <p class="text-lg lg:text-xl mt-2 "> {{$readings ? $readings[0]->blood_pressure_systolic : '--'}}/{{$readings ? $readings[0]->blood_pressure_diastolic : '--'}} mmHg</p>
+                        <p class="text-lg lg:text-xl mt-2 "> {{count($readings) > 0 ? $readings[0]->blood_pressure_systolic : '--'}}/{{count($readings) > 0 ? $readings[0]->blood_pressure_diastolic : '--'}} mmHg</p>
                         
-                        @if($readings)
+                        @if(count($readings) > 0)
                             @if($readings[0]->blood_pressure_rating == 'low')
                                 <img src="{{asset('images/dashboard/low.svg')}}" alt="Low Blood Pressure" title="Low Blood Pressure" class="w-8 h-8 mt-2">
                             @elseif($readings[0]->blood_pressure_rating == 'normal')
@@ -112,9 +112,9 @@
                     <p class="font-bold text-xl lg:text-2xl">Blood Saturation</p>
 
                     <div class="flex flex-row text-center justify-center gap-2">
-                        <p class="text-lg lg:text-xl mt-2">{{$readings ? $readings[0]->blood_saturation : '--'}}%</p>
+                        <p class="text-lg lg:text-xl mt-2">{{count($readings) > 0 ? $readings[0]->blood_saturation : '--'}}%</p>
 
-                        @if($readings)
+                        @if(count($readings) > 0)
                             @if($readings[0]->blood_saturation_rating == 'low')
                                 <img src="{{asset('images/dashboard/low.svg')}}" alt="Low Saturation" title="Low Saturation" class="w-8 h-8 mt-2">
                             @elseif($readings[0]->blood_saturation_rating == 'normal')
@@ -133,9 +133,9 @@
                     <p class="font-bold text-xl lg:text-2xl">Temperature</p>
 
                     <div class="flex flex-row text-center justify-center gap-2">
-                        <p class="text-lg lg:text-xl mt-2">{{$readings ? $readings[0]->temperature : '--'}}°C</p>
+                        <p class="text-lg lg:text-xl mt-2">{{count($readings) > 0 ? $readings[0]->temperature : '--'}}°C</p>
                         
-                        @if($readings)
+                        @if(count($readings) > 0)
                             @if($readings[0]->temperature_rating == 'low')
                                 <img src="{{asset('images/dashboard/low.svg')}}" alt="Low Temperature " title="Low Temperature" class="w-8 h-8 mt-2">
                             @elseif($readings[0]->temperature_rating == 'normal')
@@ -155,9 +155,9 @@
                     <p class="font-bold text-xl lg:text-2xl">Pulse Rate</p>
 
                     <div class="flex flex-row text-center justify-center gap-2">
-                        <p class="text-lg lg:text-xl mt-2">{{$readings ? $readings[0]->pulse_rate : '--'}} bpm</p>
+                        <p class="text-lg lg:text-xl mt-2">{{count($readings) > 0 ? $readings[0]->pulse_rate : '--'}} bpm</p>
                         
-                        @if($readings)
+                        @if(count($readings) > 0)
                             @if($readings[0]->pulse_rate_rating == 'low')
                                 <img src="{{asset('images/dashboard/low.svg')}}" alt="Low Pulse Rate " title="Low Pulse Rate" class="w-8 h-8 mt-2">
                             @elseif($readings[0]->pulse_rate_rating == 'normal')
@@ -175,7 +175,7 @@
             <p class="font-roboto font-bold text-black text-lg lg:text-xl">PREVIOUS READING</p>
         
             <div class="flex flex-row py-2 px-10">
-                <p class="flex flex-row text-base lg:text-xl">Taken last {{$readings[1] ? $readings[1]->created_at : '(No readings yet)'}}</p>
+                <p class="flex flex-row text-base lg:text-xl">Taken last {{count($readings) > 1 ? $readings[1]->created_at : '(No readings yet)'}}</p>
             </div>
         </div>
 
@@ -186,9 +186,9 @@
                     <p class="font-bold text-xl lg:text-2xl">Blood Pressure</p>
                     
                     <div class="flex flex-row text-center justify-center gap-2">
-                        <p class="text-lg lg:text-xl mt-2 "> {{$readings[1] ? $readings[1]->blood_pressure_systolic : '--'}}/{{$readings[1] ? $readings[1]->blood_pressure_diastolic : '--'}} mmHg</p>
+                        <p class="text-lg lg:text-xl mt-2 "> {{count($readings) > 1 ? $readings[1]->blood_pressure_systolic : '--'}}/{{count($readings) > 1 ? $readings[1]->blood_pressure_diastolic : '--'}} mmHg</p>
                         
-                        @if($readings)
+                        @if(count($readings) >= 1)
                             @if($readings[0]->blood_pressure_rating == 'low')
                                 <img src="{{asset('images/dashboard/low.svg')}}" alt="Low Blood Pressure" title="Low Blood Pressure" class="w-8 h-8 mt-2">
                             @elseif($readings[0]->blood_pressure_rating == 'normal')
@@ -208,9 +208,9 @@
                     <p class="font-bold text-xl lg:text-2xl">Blood Saturation</p>
 
                     <div class="flex flex-row text-center justify-center gap-2">
-                        <p class="text-lg lg:text-xl mt-2">{{$readings[1] ? $readings[1]->blood_saturation : '--'}}%</p>
+                        <p class="text-lg lg:text-xl mt-2">{{count($readings) > 1 ? $readings[1]->blood_saturation : '--'}}%</p>
                         
-                        @if($readings)
+                        @if(count($readings) > 1)
                             @if($readings[0]->blood_saturation_rating == 'low')
                                 <img src="{{asset('images/dashboard/low.svg')}}" alt="Low Saturation" title="Low Saturation" class="w-8 h-8 mt-2">
                             @elseif($readings[0]->blood_saturation_rating == 'normal')
@@ -229,9 +229,9 @@
                     <p class="font-bold text-xl lg:text-2xl">Temperature</p>
 
                     <div class="flex flex-row text-center justify-center gap-2">
-                        <p class="text-lg lg:text-xl mt-2">{{$readings[1] ? $readings[1]->temperature : '--'}}°C</p>
+                        <p class="text-lg lg:text-xl mt-2">{{count($readings) > 1 ? $readings[1]->temperature : '--'}}°C</p>
                         
-                        @if($readings)
+                        @if(count($readings) > 1)
                             @if($readings[0]->temperature_rating == 'low')
                                 <img src="{{asset('images/dashboard/low.svg')}}" alt="Low Temperature " title="Low Temperature" class="w-8 h-8 mt-2">
                             @elseif($readings[0]->temperature_rating == 'normal')
@@ -250,9 +250,9 @@
                     <p class="font-bold text-xl lg:text-2xl">Pulse Rate</p>
 
                     <div class="flex flex-row text-center justify-center gap-2">
-                        <p class="text-lg lg:text-xl mt-2">{{$readings[1] ? $readings[1]->pulse_rate : '--'}} bpm</p>
+                        <p class="text-lg lg:text-xl mt-2">{{count($readings) > 1 ? $readings[1]->pulse_rate : '--'}} bpm</p>
                         
-                        @if($readings)
+                        @if(count($readings) > 1)
                             @if($readings[0]->pulse_rate_rating == 'low')
                                 <img src="{{asset('images/dashboard/low.svg')}}" alt="Low Pulse Rate " title="Low Pulse Rate" class="w-8 h-8 mt-2">
                             @elseif($readings[0]->pulse_rate_rating == 'normal')
