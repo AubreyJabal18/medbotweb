@@ -336,19 +336,3 @@ registered_yearField.addEventListener('change', function(){
 })
 
 renderPatientRegistersChart('weekly', '2023-W29')
-
-async function getReadings(){
-    const response = await fetch('/get/readings');
-    const users = await response.json();
-    console.log(users['users'][0]);
-}
-
-getReadings();
-
-var patientReadingsChart = null;
-
-async function getPatientReadings(reading_by, reading_value){
-    const response = await fetch('/get/patient_readings?reading_by=' + registered_by + '&reading_value=' + registered_value + '&reading_byMunicipality=' + reading_byMunicipality)
-    const data = await response.json();
-    return data['patient_readings'];
-}
