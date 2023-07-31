@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <script src="{{asset('/js/moment.js')}}"></script>
     @vite('resources/css/app.css')
 </head>
 <body>
@@ -307,6 +308,5 @@
 
     <script src="{{asset('/js/chart.js')}}"></script>
     <script src="{{ asset('/js/dashboard_user.js') }}"></script>
-    <script src="{{ asset('/js/user_graphs.js') }}"></script>
 </body>
 </html>

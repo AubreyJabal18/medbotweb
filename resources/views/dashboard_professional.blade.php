@@ -86,16 +86,26 @@
                        </div>
                     </div>
 
-                    @foreach($latest_readings as $reading)
-                        <div class="table-row-group">
-                            <div class="table-row font-roboto font-normal text-black text-sm md:text-base ">
-                                <div class="table-cell text-center py-1">{{$reading->user->first_name}} {{$reading->user->last_name}}</div>
-                                <div class="table-cell text-center py-1">{{$reading->user->sex}}</div>
-                                <div class="table-cell text-center py-1">{{$reading->user->barangay}}, {{$reading->user->municipality}}</div>
-                                <div class="table-cell text-center py-1">{{\Carbon\Carbon::parse($reading->created_at)->format('M d, Y (H:i:s)')}}</div>
+                        @foreach($latest_readings as $reading)
+                            <div class="table-row-group">
+                                <div class="table-row font-roboto font-normal text-black text-sm md:text-base ">
+                                    <div class="table-cell text-center py-1">{{$reading->user->first_name}} {{$reading->user->last_name}}</div>
+                                    <div class="table-cell text-center py-1">{{$reading->user->sex}}</div>
+                                    <div class="table-cell text-center py-1">{{$reading->user->barangay}}, {{$reading->user->municipality}}</div>
+                                    <div class="table-cell text-center py-1">{{\Carbon\Carbon::parse($reading->created_at)->format('M d, Y (H:i:s)')}}</div>
+                                </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                        @for($i = count($latest_readings); $i <= 5; $i++)
+                            <div class="table-row-group">
+                                <div class="table-row font-roboto font-normal text-black text-sm md:text-base ">
+                                    <div class="table-cell text-center py-1">---</div>
+                                    <div class="table-cell text-center py-1">---</div>
+                                    <div class="table-cell text-center py-1">---</div>
+                                    <div class="table-cell text-center py-1">---</div>
+                                </div>
+                            </div>
+                        @endfor
                     
                 </div>
             </div>
@@ -116,7 +126,7 @@
                             <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="month" name="value">
                             <input class=" flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="week" name="value">
                     </div>
-                    <img src="{{asset('images/login/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-[50%]  bottom-0 right-0 ">
+                    <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-[50%]  bottom-0 right-0 ">
                     <canvas id="patientUses" class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></canvas>
                 </div>
 
@@ -136,7 +146,7 @@
                             <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="registered_month" name="registered_value">
                             <input class="flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="registered_week" name="registered_value">
                     </div>
-                    <img src="{{asset('images/login/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-[50%]  bottom-0 left-0">         
+                    <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-[50%]  bottom-0 left-0">         
                     <canvas id="patientRegisters" class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></canvas>
                 </div>
             </div>
@@ -252,8 +262,8 @@
                             <option value="Sta. Cruz">Santa Cruz</option>
                             <option value="Torrijos">Torrijos</option></select>
                         </div>
-                <img src="{{asset('images/login/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 left-0 ">
-                <img src="{{asset('images/login/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 right-0">         
+                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 left-0 ">
+                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 right-0">         
                 <div class="mt-4 flex drop-shadow-lg shadow-lg h-80 w-full rounded-lg bg-white "></div>
             </div>
 
@@ -270,8 +280,8 @@
                             <option value="Torrijos">Torrijos</option></select>
 
                 </div>
-                <img src="{{asset('images/login/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 left-0 ">
-                <img src="{{asset('images/login/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 right-0">         
+                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 left-0 ">
+                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 right-0">         
                 <div class="mt-4 flex drop-shadow-lg shadow-lg h-80 w-full rounded-lg bg-white"></div>
             </div>
 
@@ -287,8 +297,8 @@
                         <option value="Sta. Cruz">Santa Cruz</option>
                         <option value="Torrijos">Torrijos</option></select>
                 </div>
-                <img src="{{asset('images/login/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 left-0 ">
-                <img src="{{asset('images/login/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 right-0">
+                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 left-0 ">
+                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 right-0">
                 <div class="mt-4 flex drop-shadow-lg shadow-lg h-80 w-full rounded-lg bg-white"></div>
                 
           
@@ -302,7 +312,6 @@
         
     <script src="{{asset('/js/chart.js')}}"></script>
     <script src="{{asset('/js/dashboard_professional.js')}}"></script>
-    <script src="{{asset('/js/professional_graphs.js')}}"></script>
 
 </body>
 </html>
