@@ -22,7 +22,9 @@
             <div class="w-full h-fit flex flex-col bg-white rounded-3xl border-black px-4 py-4 z-10">
                 <div class="flex flex-col px-4 py-2 md:flex-row">
                     <div class="flex justify-end md:hidden">
-                        <img src="{{asset('images/register/home.svg')}}" alt="" class="h-6 w-6">
+                        <a href="/">
+                            <img src="{{asset('images/register/home.svg')}}" alt="" class="h-6 w-6">
+                        </a>
                     </div>
                     <div class="w-full flex flex-row justify-between">
                         <div class="w-full flex flex-row space-x-5 items-center">
@@ -30,7 +32,9 @@
                             <p class="font-roboto font-bold text-base text-[#5ECECD] text-shadow text-center">ENHANCED MED-BOT</p>
                         </div>   
                         <div class="hidden justify-end items-center md:flex">
-                            <img src="{{asset('images/register/home.svg')}}" alt="" class="h-6 w-6">
+                            <a href="/">
+                                <img src="{{asset('images/register/home.svg')}}" alt="" class="h-6 w-6">
+                            </a>
                         </div>  
                     </div>
                 </div>
