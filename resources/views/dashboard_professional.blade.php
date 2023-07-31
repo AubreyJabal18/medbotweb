@@ -66,7 +66,7 @@
                     </p>
                     
                     
-                    <img src="{{asset('images/login/modelleftsideview.png')}}" alt="" class="absolute self-end md:h-[50%] md:w-[30%] lg:h-[55%] lg:w-[20%] md:right-2 lg:right-12 md:top-[38%] lg:top-[33%] hidden md:block">
+                    <img src="{{asset('images/dashboard/model.png')}}" alt="" class="absolute self-end md:h-[50%] md:w-[30%] lg:h-[55%] lg:w-[20%] md:right-2 lg:right-12 md:top-[38%] lg:top-[33%] hidden md:block">
                 </div>
             </div> 
         </div>
@@ -116,7 +116,7 @@
                             <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="month" name="value">
                             <input class=" flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="week" name="value">
                     </div>
-                    <img src="{{asset('images/login/e3.svg')}}" alt="" class="absolute place-self-start lg:h-[50%]  bottom-0 right-0 ">
+                    <img src="{{asset('images/login/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-[50%]  bottom-0 right-0 ">
                     <canvas id="patientUses" class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></canvas>
                 </div>
 
@@ -136,7 +136,7 @@
                             <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="registered_month" name="registered_value">
                             <input class="flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="registered_week" name="registered_value">
                     </div>
-                    <img src="{{asset('images/login/e1.svg')}}" alt="" class="absolute place-self-start lg:h-[50%]  bottom-0 left-0">         
+                    <img src="{{asset('images/login/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-[50%]  bottom-0 left-0">         
                     <canvas id="patientRegisters" class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></canvas>
                 </div>
             </div>
@@ -177,17 +177,17 @@
                 
                 <div class="grid grid-cols-2 lg:grid-cols-4 pt-4 gap-y-1 gap-x-1 lg:gap-x-2">
                    <button id="reading_bp" name="reading_bp" class="flex flex-row font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-8 py-1 bg-[#59AEDD] text-white">
-                    <img src="{{asset('images/dashboard/bp.png')}}" alt="Blood Pressure" class="flex h-6 w-7 mr-4">BP
+                    <img src="{{asset('images/dashboard/blood_pressure.svg')}}" alt="Blood Pressure" class="flex h-6 w-7 mr-4">BP
                    </button>
                    <button id="reading_bs" name="reading_bs" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-6 py-1 bg-[#EB7373] text-white">
-                    <img src="{{asset('images/dashboard/bs.png')}}" alt="Blood Saturation" class="flex h-5 w-8 mr-6 mt-0.5">BS
+                    <img src="{{asset('images/dashboard/blood_saturation.svg')}}" alt="Blood Saturation" class="flex h-5 w-8 mr-6 mt-0.5">BS
                    </button>
                    <button id="reading_temp" name="reading_temp"
                    class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-5 py-1 bg-[#697269] text-white">
-                    <img src="{{asset('images/dashboard/temp.png')}}" alt="Temperature" class="flex h-5 w-8 mr-3  mt-0.5">TEMP
+                    <img src="{{asset('images/dashboard/temperature.svg')}}" alt="Temperature" class="flex h-5 w-8 mr-3  mt-0.5">TEMP
                    </button>
                    <button id="reading_pr" name="reading_pr" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-8 py-1 bg-[#93D396] text-white">
-                    <img src="{{asset('images/dashboard/pr.png')}}" alt="Temperature" class="flex h-5 w-7 mr-6 mt-0.5">PR
+                    <img src="{{asset('images/dashboard/pulse_rate.svg')}}" alt="Temperature" class="flex h-5 w-7 mr-6 mt-0.5">PR
                 </button>
             </div>
             </div>
@@ -220,17 +220,17 @@
                 <div class="mt-4 flex drop-shadow-lg shadow-lg h-72 w-full rounded-lg bg-white"></div>
                 <div class="grid grid-cols-2 lg:grid-cols-4 pt-4 gap-y-1 gap-x-1 lg:gap-x-2">
                     <button id="pervasiveness_bp" name="pervasiveness_bp" class="flex flex-row font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-8 py-1 bg-[#59AEDD] text-white">
-                     <img src="{{asset('images/dashboard/bp.png')}}" alt="Blood Pressure" class="flex h-6 w-7 mr-4">BP
+                     <img src="{{asset('images/dashboard/blood_pressure.svg')}}" alt="Blood Pressure" class="flex h-6 w-7 mr-4">BP
                     </button>
                     <button id="pervasiveness_bs" name="pervasiveness_bs" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-6 py-1 bg-[#EB7373] text-white">
-                     <img src="{{asset('images/dashboard/bs.png')}}" alt="Blood Saturation" class="flex h-5 w-8 mr-6 mt-0.5">BS
+                     <img src="{{asset('images/dashboard/blood_saturation.svg')}}" alt="Blood Saturation" class="flex h-5 w-8 mr-6 mt-0.5">BS
                     </button>
                     <button id="pervasiveness_temp" name="pervasiveness_temp"
                     class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-5 py-1 bg-[#697269] text-white">
-                     <img src="{{asset('images/dashboard/temp.png')}}" alt="Temperature" class="flex h-5 w-8 mr-3  mt-0.5">TEMP
+                     <img src="{{asset('images/dashboard/temperature.svg')}}" alt="Temperature" class="flex h-5 w-8 mr-3  mt-0.5">TEMP
                     </button>
                     <button id="pervasiveness_pr" name="pervasiveness_pr" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-8 py-1 bg-[#93D396] text-white">
-                     <img src="{{asset('images/dashboard/pr.png')}}" alt="Temperature" class="flex h-5 w-7 mr-6 mt-0.5">PR
+                     <img src="{{asset('images/dashboard/pulse_rate.svg')}}" alt="Temperature" class="flex h-5 w-7 mr-6 mt-0.5">PR
                  </button>
              </div>
             </div>
@@ -252,8 +252,8 @@
                             <option value="Sta. Cruz">Santa Cruz</option>
                             <option value="Torrijos">Torrijos</option></select>
                         </div>
-                <img src="{{asset('images/login/e1.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 left-0 ">
-                <img src="{{asset('images/login/e3.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 right-0">         
+                <img src="{{asset('images/login/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 left-0 ">
+                <img src="{{asset('images/login/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 right-0">         
                 <div class="mt-4 flex drop-shadow-lg shadow-lg h-80 w-full rounded-lg bg-white "></div>
             </div>
 
@@ -270,8 +270,8 @@
                             <option value="Torrijos">Torrijos</option></select>
 
                 </div>
-                <img src="{{asset('images/login/e1.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 left-0 ">
-                <img src="{{asset('images/login/e3.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 right-0">         
+                <img src="{{asset('images/login/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 left-0 ">
+                <img src="{{asset('images/login/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 right-0">         
                 <div class="mt-4 flex drop-shadow-lg shadow-lg h-80 w-full rounded-lg bg-white"></div>
             </div>
 
@@ -287,8 +287,8 @@
                         <option value="Sta. Cruz">Santa Cruz</option>
                         <option value="Torrijos">Torrijos</option></select>
                 </div>
-                <img src="{{asset('images/login/e1.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 left-0 ">
-                <img src="{{asset('images/login/e3.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 right-0">
+                <img src="{{asset('images/login/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 left-0 ">
+                <img src="{{asset('images/login/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 right-0">
                 <div class="mt-4 flex drop-shadow-lg shadow-lg h-80 w-full rounded-lg bg-white"></div>
                 
           

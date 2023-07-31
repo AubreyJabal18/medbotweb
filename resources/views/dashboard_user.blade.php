@@ -49,7 +49,7 @@
                     </p>
                     
                     
-                    <img src="{{asset('images/login/modelleftsideview.png')}}" alt="" class="absolute self-end md:h-[50%] md:w-[30%] lg:h-[55%] lg:w-[20%] md:right-2 lg:right-12 md:top-[38%] lg:top-[33%] hidden md:block">
+                    <img src="{{asset('images/dashboard/model.png')}}" alt="" class="absolute self-end md:h-[50%] md:w-[30%] lg:h-[55%] lg:w-[20%] md:right-2 lg:right-12 md:top-[38%] lg:top-[33%] hidden md:block">
                 </div>
             </div> 
         </div>
@@ -64,7 +64,7 @@
 
         <div class="place-items-center items-center justify-center grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-10 px-10 lg:gap-3 md:grid-cols-2 md:gap-5 mt-8">
             <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
-                <img src="{{asset('images/dashboard/Blood pressure.svg')}}" alt="" class="w-1/4 h-fit">
+                <img src="{{asset('images/dashboard/blood_pressure.svg')}}" alt="" class="w-1/4 h-fit">
                 <div class="flex flex-col text-center w-3/4">
                     <p class="font-bold text-xl lg:text-2xl">Blood Pressure</p>
                     
@@ -87,7 +87,7 @@
             </div>
 
             <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
-                <img src="{{asset('images/dashboard/Blood saturation.svg')}}" alt="" class="w-1/4 h-fit">
+                <img src="{{asset('images/dashboard/blood_saturation.svg')}}" alt="" class="w-1/4 h-fit">
                 <div class="flex flex-col text-center w-3/4">
                     <p class="font-bold text-xl lg:text-2xl">Blood Saturation</p>
 
@@ -108,7 +108,7 @@
             </div>
 
             <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
-                <img src="{{asset('images/dashboard/Temperature.svg')}}" alt="" class="w-1/4 h-fit">
+                <img src="{{asset('images/dashboard/temperature.svg')}}" alt="" class="w-1/4 h-fit">
                 <div class="flex flex-col text-center w-3/4">
                     <p class="font-bold text-xl lg:text-2xl">Temperature</p>
 
@@ -130,7 +130,7 @@
             </div>
 
             <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
-                <img src="{{asset('images/dashboard/Pulse rate.svg')}}" alt="" class="w-1/4 h-fit">
+                <img src="{{asset('images/dashboard/pulse_rate.svg')}}" alt="" class="w-1/4 h-fit">
                 <div class="flex flex-col text-center w-3/4">
                     <p class="font-bold text-xl lg:text-2xl">Pulse Rate</p>
 
@@ -161,7 +161,7 @@
 
         <div class="place-items-center items-center justify-center grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-10 px-10 lg:gap-3 md:grid-cols-2 md:gap-5 mt-8">
             <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
-                <img src="{{asset('images/dashboard/Blood pressure.svg')}}" alt="" class="w-1/4 h-fit">
+                <img src="{{asset('images/dashboard/blood_pressure.svg')}}" alt="" class="w-1/4 h-fit">
                 <div class="flex flex-col text-center w-3/4">
                     <p class="font-bold text-xl lg:text-2xl">Blood Pressure</p>
                     
@@ -183,7 +183,7 @@
             </div>
 
             <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
-                <img src="{{asset('images/dashboard/Blood saturation.svg')}}" alt="" class="w-1/4 h-fit">
+                <img src="{{asset('images/dashboard/blood_saturation.svg')}}" alt="" class="w-1/4 h-fit">
                 <div class="flex flex-col text-center w-3/4">
                     <p class="font-bold text-xl lg:text-2xl">Blood Saturation</p>
 
@@ -204,7 +204,7 @@
             </div>
 
             <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
-                <img src="{{asset('images/dashboard/Temperature.svg')}}" alt="" class="w-1/4 h-fit">
+                <img src="{{asset('images/dashboard/temperature.svg')}}" alt="" class="w-1/4 h-fit">
                 <div class="flex flex-col text-center w-3/4">
                     <p class="font-bold text-xl lg:text-2xl">Temperature</p>
 
@@ -225,7 +225,7 @@
             </div>
 
             <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
-                <img src="{{asset('images/dashboard/Pulse rate.svg')}}" alt="" class="w-1/4 h-fit">
+                <img src="{{asset('images/dashboard/pulse_rate.svg')}}" alt="" class="w-1/4 h-fit">
                 <div class="flex flex-col text-center w-3/4">
                     <p class="font-bold text-xl lg:text-2xl">Pulse Rate</p>
 
@@ -270,8 +270,8 @@
 
                 </canvas>
 
-                <img src="{{asset('images/dashboard/dashboard_bg1.svg')}}" alt="" class="absolute lg:h-[70%] bottom-0 left-0">
-                <img src="{{asset('images/dashboard/dashboard_bg2.svg')}}" alt="" class="absolute lg:h-60 bottom-0 right-0">  
+                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute lg:h-[70%] bottom-0 left-0">
+                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute lg:h-60 bottom-0 right-0">  
             </div> 
         </div>
 
@@ -295,8 +295,8 @@
 
                 </div>
 
-                <img src="{{asset('images/dashboard/dashboard_bg1.svg')}}" alt="" class="absolute lg:h-[70%] bottom-0 left-0">
-                <img src="{{asset('images/dashboard/dashboard_bg2.svg')}}" alt="" class="absolute lg:h-60 bottom-0 right-0">
+                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute lg:h-[70%] bottom-0 left-0">
+                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute lg:h-60 bottom-0 right-0">
             </div>
         </div>
 
