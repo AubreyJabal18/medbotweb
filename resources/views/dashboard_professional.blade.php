@@ -319,16 +319,10 @@
 
         
     <script src="{{asset('/js/chart.js')}}"></script>
-    <script src="{{asset('/js/dashboard_professional.js')}}"></script>
+    <script src="{{asset('/js/dashboard_admin.js')}}"></script>
     <script src="{{asset('/js/professional_graphs.js')}}"></script>
     <script src="{{asset('/js/menu.js')}}"></script>
 
-
-    @if(Session::has('id'))
-    <script>
-        const id = {{session()->get('id')}};
-        window.open('/get/qrcode?id='+id, '_self');
-    </script>
 @endif
 
 </body>

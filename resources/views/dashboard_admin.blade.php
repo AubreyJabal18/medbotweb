@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Healthcare Professional Dashboard</title>
+    <title>Admin Dashboard</title>
     <script src="{{asset('/js/moment.js')}}"></script>
     @vite('resources/css/app.css')
 
@@ -20,7 +20,7 @@
                     <p class="font-roboto font-bold text-[#07DBDB] text-lg md:text-2xl text-shadow">ENHANCED MED-BOT</p>
                 </div>
                 <div class="flex flex-row space-x-4 items-center justify-end">
-                    <p class="hidden font-roboto font-normal text-white text-lg md:block">{{ $user->first_name }} {{ $user->last_name }} {{ $user->suffix ? $user->suffix : '' }}</p>
+                    <p class="hidden font-roboto font-normal text-white text-lg md:block">{{ $user->first_name }}</p>
                     <img src="{{asset('images/dashboard/profile.png')}}" alt="" id="profile-menu" class="h-8 w-8 md:h-12 md:w-12">
                 </div>
                 
@@ -33,7 +33,7 @@
                 <div id="menu" class=" hidden flex flex-col absolute z-50 w-3/4 md:w-1/5 h-full bg-white rounded-md drop-shadow-md top-16 right-2 px-8 py-4">
                     <div class="flex flex-col items-center">
                         <img src="{{asset('images/dashboard/profile.png')}}" alt="" class="w-16 h-16 m-2">
-                        <p class="font-roboto font-bold">{{ $user->first_name }} {{ $user->last_name }} {{ $user->suffix ? $user->suffix : '' }}</p>
+                        <p class="font-roboto font-bold">{{ $user->first_name }}</p>
                         <p class="font-roboto">Patient</p> 
                     </div>
                     
@@ -52,7 +52,7 @@
 
                         <div class="flex flex-row mt-5 space-x-5">
                             <img src="{{asset('images/dashboard/dashboard2.svg')}}" alt="" class="w-6">
-                            <p class="font-roboto">Readings</p>
+                            <p class="font-roboto">Professional</p>
                         </div>
                     </div>
                 </div>
@@ -70,17 +70,15 @@
                         
                     </div>     
                 </form>
-
-                
-                
+             
             </div>
 
             <div class="flex flex-col justify-center py-8 px-4">
-                <p class="font-roboto font-medium text-white text-xl md:text-2xl lg:text-2xl md:ml-3 md:text-2xl">Hello {{$user->honorific}} {{$user->last_name}},</p>
+                <p class="font-roboto font-medium text-white text-xl md:text-2xl lg:text-2xl md:ml-3 md:text-2xl">Welcome, Administrator!</p>
                 
                 <div class="flex flex-col lg:space-y-1 mb-[5%] md:mb-[10%] lg:mb-[10%] md:text-left md:mr-[20%] lg:mr-[30%]">
                     <p class="font-roboto font-normal text-white text-md md:text-xl lg:text-2xl mx-2 md:mx-8 lg:mx-8 mt-2 md:mt-3 lg:mt-3">
-                        We sincerely appreciate your effort in reviewing the vital sign measurements history of patients. Your attention to their progress will greatly contribute to their well-being. 
+                        Feel free to explore the comprehensive statistical data captured by our Enhanced Med-Bot for valuable information and insights.
                     </p>
                     
                     
@@ -89,75 +87,92 @@
             </div> 
         </div>
         
-        <p class="flex font-bold font-roboto text-black/80 text-xl md:text-xl lg:text-2xl py-5 md:py-7 lg:py-4 justify-center md:justify-start md:px-10">Patient's Statistics</p>
+        <p class="flex font-bold font-roboto text-black/80 text-xl md:text-xl lg:text-2xl py-5 md:py-8 lg:py-4 justify-center lg:justify-start md:px-10">User's Statistics</p>
 
         <div class="w-full flex flex-col lg:flex-row items-center space-y-5 lg:space-y-0 lg:justify-evenly space-x-2 lg:px-4">
-            <div class="w-[90%] flex flex-col items-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-[60%]">
-                <p class="font-roboto text-semibold text-black/80 text-base mb-2 md:text-xl">Recent Patients</p>
+            <div class="w-[90%] flex flex-col items-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-[90%] lg:w-[80%]">
+                <div class="flex flex-col md:flex-row items-center justify-center md:self-start space-y-0.5 md:space-y-0 md:space-x-8 px-4 mb-3 w-full">
+                    <p class="font-roboto text-semibold text-black/80 text-base md:text-xl ">Users List</p>
+                    <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="select_user" name="by">
+                        <option value="patient" >Patient</option>
+                        <option value="professional" >Professional</option>
+                    </select>  
+                    <div class="flex flex-row items-center relative w-full py-2 md:ml-16">
+                        <input type="search" id="for_user" name="search" class="w-full bg-sky-100 border-none rounded-2xl outline-none px-8 lg:px-10 lg:mr-3 py-0 md:py-2 lg:py-2 placeholder:text-[#B87070]" placeholder="Search for Patient">
+                        <button class="absolute right-3 md:right-4 lg:right-8" id="search_button" name="search_button" type="button">
+                            <img src="{{asset('images/dashboard/search.png')}}" alt="" >
+                        </button>
+                    </div>    
+                </div>
                 <div class="table w-full">
                     <div class="table-header-group">
-                        <div class="table-row bg-gray-200 font-roboto font-semibold text-black text-sm md:text-base">
+                        <div class="table-row bg-gray-200 font-roboto font-semibold text-black text-xs md:text-sm lg:text-base">
                             <div class="table-cell text-center py-1">Name</div>
                             <div class="table-cell text-center py-1">Sex</div>
+                            <div class="table-cell text-center py-1 hidden md:block">Email</div>
                             <div class="table-cell text-center py-1">Address</div>
-                            <div class="table-cell text-center py-1">Time Taken</div>
-                       </div>
-                    </div>
-
-                    @foreach($latest_readings as $reading)
-                        <div class="table-row-group">
-                            <div class="table-row font-roboto font-normal text-black text-sm md:text-base ">
-                                <div class="table-cell text-center py-1">{{$reading->user->first_name}} {{$reading->user->last_name}}</div>
-                                <div class="table-cell text-center py-1">{{$reading->user->sex}}</div>
-                                <div class="table-cell text-center py-1">{{$reading->user->barangay}}, {{$reading->user->municipality}}</div>
-                                <div class="table-cell text-center py-1">{{\Carbon\Carbon::parse($reading->created_at)->format('M d, Y (H:i:s)')}}</div>
-                            </div>
+                            <div class="table-cell text-center py-1r-2 p">Status</div>
                         </div>
-                    @endforeach
-                    
-                </div>
-            </div>
-            <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 w-full px-2 md:px-6">
-                <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-full ">
-                    <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-xl  text-[#151515]  px-4 text-center bg-gray-200  ">Patients that Used Enhanced Med-Bot</p>
-                    <div class="flex flex-col md:flex-row font-roboto self-center md:space-x-10 pt-2 ">
-                                
-                        <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
-                       
-                            <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="select" name="by">
-                                <option value="weekly" >Weekly</option>
-                                <option value="monthly" >Monthly</option>
-                                <option value="yearly" >Yearly</option> 
-                            </select>  
-                        </div> 
-                            <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="year" name="value">
-                            <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="month" name="value">
-                            <input class=" flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="week" name="value">
                     </div>
-                    <img src="{{asset('images/login/e3.svg')}}" alt="" class="absolute place-self-start lg:h-[50%]  bottom-0 right-0 ">
-                    <canvas id="patientUses" class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></canvas>
-                </div>
 
-                <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-full">
-                    <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-xl  text-[#151515]  px-4 text-center bg-gray-200  ">Patients Registered to Enhanced Med-Bot</p>
-                    <div class="flex flex-col md:flex-row font-roboto self-center md:space-x-10 pt-2 ">
-                                
-                        <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
-                           
-                            <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="registered_select" name="registered_by">
-                                <option value="weekly" >Weekly</option>
-                                <option value="monthly" >Monthly</option>
-                                <option value="yearly" >Yearly</option> 
-                            </select>  
-                        </div> 
-                            <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="registered_year" name="registered_value">
-                            <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="registered_month" name="registered_value">
-                            <input class="flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="registered_week" name="registered_value">
+                    <div class="table-row-group">
+                        <div class="table-row font-roboto font-normal text-black text-sm md:text-base ">
+                            <div class="table-cell text-center py-1">Aubrey M. Jabal</div>
+                            <div class="table-cell text-center py-1">Female</div>
+                            <div class="table-cell text-center py-1 hidden md:block">aubreyjabal@gmail.com</div>
+                            <div class="table-cell text-center py-1">Ihatub, Boac, Marinduque</div>
+                            <div class="table-cell text-center py-1">Active</div>
+                        </div>
                     </div>
-                    <img src="{{asset('images/login/e1.svg')}}" alt="" class="absolute place-self-start lg:h-[50%]  bottom-0 left-0">         
-                    <canvas id="patientRegisters" class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></canvas>
                 </div>
             </div>
+        </div>
+            
+
+        <div class="flex flex-col lg:flex-row items-center justify-center space-y-4 lg:space-y-0 lg:space-x-6 w-full px-2 md:px-6 mt-4">
+            <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-full lg:w-full ">
+                <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-xl  text-[#151515]  px-4 text-center bg-gray-200  ">Users Count</p>      
+                <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 mt-4">
+                    <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="municipality" id="reading_byMunicipality"> 
+                        <option value="All">All</option>
+                        <option value="Boac">Boac</option>
+                        <option value="Buenavista">Buenavista</option>
+                        <option value="Gasan">Gasan</option>
+                        <option value="Mogpog">Mogpog</option>
+                        <option value="Sta. Cruz">Santa Cruz</option>
+                        <option value="Torrijos">Torrijos</option>
+                    </select>
+                </div> 
+                
+
+                <img src="{{asset('images/login/e3.svg')}}" alt="" class="absolute place-self-start lg:h-[50%]  bottom-0 right-0 ">
+                <canvas id="patientUses" class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></canvas>
+            </div>
+            
+            <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-full lg:w-full ">
+                <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-xl  text-[#151515]  px-4 text-center bg-gray-200  ">Users Who Used Enhanced Med-Bot</p>
+                <div class="flex flex-col md:flex-row font-roboto self-center md:space-x-10 pt-2 ">
+                            
+                    <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
+                    
+                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="select" name="by">
+                            <option value="weekly" >Weekly</option>
+                            <option value="monthly" >Monthly</option>
+                            <option value="yearly" >Yearly</option> 
+                        </select>  
+                    </div> 
+                        <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="year" name="value">
+                        <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="month" name="value">
+                        <input class=" flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="week" name="value">
+                </div>
+                <img src="{{asset('images/login/e3.svg')}}" alt="" class="absolute place-self-start lg:h-[50%]  bottom-0 right-0 ">
+                <canvas id="patientUses" class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></canvas>
+            </div>
+        </div>
+
+            
+    </div>
+
         </div>
 
         <div class="flex flex-col items-center justify-center md:justify-start md:flex-row space-x-6 px-5">
@@ -167,7 +182,7 @@
         <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 w-full px-2 md:px-6">
             <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-full ">
                 <p class="flex font-roboto font-normal self-center leading-normal text-lg md:text-xl lg:text-2xl  text-[#151515] px-2 justify-center bg-blue-200 w-full">Patients Readings</p>
-                <div class="flex flex-col md:flex-row font-roboto self-center md:space-x-10 pt-2 ">
+                <div class="flex flex-col lg:flex-row font-roboto self-center md:space-x-10 pt-2 ">
                                 
                     <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
                         <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="municipality" id="reading_byMunicipality"> 
@@ -212,7 +227,7 @@
 
             <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-full">
                 <p class="flex font-roboto font-normal self-center leading-normal text-lg md:text-xl lg:text-2xl  text-[#151515]  px-2 justify-center bg-blue-200 w-full">Pervasiveness</p>
-                <div class="flex flex-col md:flex-row font-roboto self-center md:space-x-10 pt-2 ">
+                <div class="flex flex-col lg:flex-row font-roboto self-center md:space-x-10 pt-2 ">
                                 
                     <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
                         <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="muni">
@@ -317,10 +332,11 @@
         
     </div>
 
-        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
     <script src="{{asset('/js/chart.js')}}"></script>
-    <script src="{{asset('/js/dashboard_professional.js')}}"></script>
-    <script src="{{asset('/js/professional_graphs.js')}}"></script>
+    <script src="{{asset('/js/dashboard_admin.js')}}"></script>
+   
     <script src="{{asset('/js/menu.js')}}"></script>
 
 
