@@ -22,7 +22,9 @@
             <div class="w-full h-fit flex flex-col bg-white rounded-3xl border-black px-4 py-4 z-10">
                 <div class="flex flex-col px-4 py-2 md:flex-row">
                     <div class="flex justify-end md:hidden">
-                        <img src="{{asset('images/register/home.svg')}}" alt="" class="h-6 w-6">
+                        <a href="/">
+                            <img src="{{asset('images/register/home.svg')}}" alt="" class="h-6 w-6">
+                        </a>
                     </div>
                     <div class="w-full flex flex-row justify-between">
                         <div class="w-full flex flex-row space-x-5 items-center">
@@ -30,7 +32,9 @@
                             <p class="font-roboto font-bold text-base text-[#5ECECD] text-shadow text-center">ENHANCED MED-BOT</p>
                         </div>   
                         <div class="hidden justify-end items-center md:flex">
-                            <img src="{{asset('images/register/home.svg')}}" alt="" class="h-6 w-6">
+                            <a href="/">
+                                <img src="{{asset('images/register/home.svg')}}" alt="" class="h-6 w-6">
+                            </a>
                         </div>  
                     </div>
                 </div>
@@ -47,17 +51,16 @@
                             <p class="font-roboto text-gray-700 text-sm font-normal mt-2">Profile Picture</p>
                             <input type="file" class="hidden" id="profile" name="profile" accept="image/.png,image/.jpeg,image/.jpg">
                         </div> 
-                        
-                        
+    
                             @csrf
                             <div class="grid flex flex-col items-start space-y-0.5">
                                 <label class=" text-gray-700 text-sm font-normal" for="firstname">First Name</label>
-                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstname" type="text" placeholder="First Name" name="first_name" value="{{old('firstname')}}">
+                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstname" type="text" placeholder="First Name" name="first_name" value="{{old('first_name')}}">
                             </div>
 
                             <div class="grid flex flex-col items-start space-y-0.5">
                                 <label class=" text-gray-700 text-sm font-normal" for="lastname">Last Name</label>
-                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="last_name" id="lastname" type="text" placeholder="Last Name" value="{{old('lastname')}}">
+                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="last_name" id="lastname" type="text" placeholder="Last Name" value="{{old('last_name')}}">
                             </div>
 
                             <div class="grid flex flex-col items-start space-y-0.5">

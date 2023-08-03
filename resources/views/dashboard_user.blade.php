@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <script src="{{asset('/js/moment.js')}}"></script>
     @vite('resources/css/app.css')
 </head>
 <body>
@@ -24,7 +25,7 @@
                 </div>
                 <div class="flex flex-row space-x-4 items-center justify-end">
                     <p class="hidden font-roboto font-normal text-white text-lg md:block">{{ $user->first_name }} {{ $user->last_name }} {{ $user->suffix ? $user->suffix : '' }}</p>
-                    <img src="{{asset('images/dashboard/profile.png')}}" alt="" id="profile-menu" class="h-8 w-8 md:h-12 md:w-12 cursor-pointer">
+                    <img src="{{asset('images/dashboard/profile.png')}}" alt="" id="profile-menu" class="h-8 w-8 cursor-pointer md:h-12 md:w-12 hover:brightness-75">
                 </div>
                 
                 <img src="{{asset('images/dashboard/tri1.png')}}" alt="" class="absolute place-self-start w-2/5 md:w-2/5 lg:h-1/5 lg:w-2/5 left-0 top-[95%] md:top-[88%] lg:top-[85%]">
@@ -33,27 +34,7 @@
 
                 <img src="{{asset('images/dashboard/tri3.png')}}" alt="" class="absolute place-self-start w-2/5 md:w-1/5 md:h-1/5 lg:h-2/5 lg:w-1/5 left-[60%] md:left-[80%] lg:left-[80%] top-[91%] md:top-[84%] lg:top-[80%] ">
                 
-                <div id="menu" class=" hidden flex flex-col absolute z-50 w-3/4 md:w-1/5 h-full bg-white rounded-md drop-shadow-md top-16 right-2 px-8 py-4">
-                    <div class="flex flex-col items-center">
-                        <img src="{{asset('images/dashboard/profile.png')}}" alt="" class="w-16 h-16 m-2">
-                        <p class="font-roboto font-bold">{{ $user->first_name }} {{ $user->last_name }} {{ $user->suffix ? $user->suffix : '' }}</p>
-                        <p class="font-roboto">Patient</p> 
-                    </div>
-                    
-                    <div class="flex flex-col mt-8 ">
-                        <p class="font-roboto font-bold text-xl">General</p>
-                        
-                        <div class="flex flex-row mt-5 space-x-5">
-                            <img src="{{asset('images/dashboard/dashboard2.svg')}}" alt="">
-                            <p class="font-roboto">Dashboard</p>
-                        </div>
-
-                        <div class="flex flex-row mt-5 space-x-5">
-                            <img src="{{asset('images/dashboard/dashboard2.svg')}}" alt="">
-                            <p class="font-roboto">Readings</p>
-                        </div>
-                    </div>
-                </div>
+                <x-menu_user :user="$user"/>
             </div>
 
             <div class="flex flex-col items-center justify-center bg-[#F3EFEF]/50 py-2 md:py-4 lg:py-5 md:flex-row md:justify-between px-10">
@@ -69,7 +50,7 @@
                     </p>
                     
                     
-                    <img src="{{asset('images/login/modelleftsideview.png')}}" alt="" class="absolute self-end md:h-[50%] md:w-[30%] lg:h-[55%] lg:w-[20%] md:right-2 lg:right-12 md:top-[38%] lg:top-[33%] hidden md:block">
+                    <img src="{{asset('images/dashboard/model.png')}}" alt="" class="absolute self-end md:h-[50%] md:w-[30%] lg:h-[55%] lg:w-[20%] md:right-2 lg:right-12 md:top-[38%] lg:top-[33%] hidden md:block">
                 </div>
             </div> 
         </div>
@@ -78,20 +59,20 @@
             <p class="font-roboto font-bold text-black text-lg lg:text-xl">LATEST READING</p>
         
             <div class="flex flex-row py-2 px-10">
-                <p class="flex flex-row text-base lg:text-xl">Taken last {{$readings ? $readings[0]->created_at : '(No readings yet)'}}</p>
+                <p class="flex flex-row text-base lg:text-xl">Taken last {{count($readings) > 0 ? $readings[0]->created_at : '(No readings yet)'}}</p>
             </div>
         </div>
 
         <div class="place-items-center items-center justify-center grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-10 px-10 lg:gap-3 md:grid-cols-2 md:gap-5 mt-8">
             <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
-                <img src="{{asset('images/dashboard/Blood pressure.svg')}}" alt="" class="w-1/4 h-fit">
+                <img src="{{asset('images/dashboard/blood_pressure.svg')}}" alt="" class="w-1/4 h-fit">
                 <div class="flex flex-col text-center w-3/4">
                     <p class="font-bold text-xl lg:text-2xl">Blood Pressure</p>
                     
                     <div class="flex flex-row text-center justify-center gap-2">
-                        <p class="text-lg lg:text-xl mt-2 "> {{$readings ? $readings[0]->blood_pressure_systolic : '--'}}/{{$readings ? $readings[0]->blood_pressure_diastolic : '--'}} mmHg</p>
+                        <p class="text-lg lg:text-xl mt-2 "> {{count($readings) > 0 ? $readings[0]->blood_pressure_systolic : '--'}}/{{count($readings) > 0 ? $readings[0]->blood_pressure_diastolic : '--'}} mmHg</p>
                         
-                        @if($readings)
+                        @if(count($readings) > 0)
                             @if($readings[0]->blood_pressure_rating == 'low')
                                 <img src="{{asset('images/dashboard/low.svg')}}" alt="Low Blood Pressure" title="Low Blood Pressure" class="w-8 h-8 mt-2">
                             @elseif($readings[0]->blood_pressure_rating == 'normal')
@@ -107,14 +88,14 @@
             </div>
 
             <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
-                <img src="{{asset('images/dashboard/Blood saturation.svg')}}" alt="" class="w-1/4 h-fit">
+                <img src="{{asset('images/dashboard/blood_saturation.svg')}}" alt="" class="w-1/4 h-fit">
                 <div class="flex flex-col text-center w-3/4">
                     <p class="font-bold text-xl lg:text-2xl">Blood Saturation</p>
 
                     <div class="flex flex-row text-center justify-center gap-2">
-                        <p class="text-lg lg:text-xl mt-2">{{$readings ? $readings[0]->blood_saturation : '--'}}%</p>
+                        <p class="text-lg lg:text-xl mt-2">{{count($readings) > 0 ? $readings[0]->blood_saturation : '--'}}%</p>
 
-                        @if($readings)
+                        @if(count($readings) > 0)
                             @if($readings[0]->blood_saturation_rating == 'low')
                                 <img src="{{asset('images/dashboard/low.svg')}}" alt="Low Saturation" title="Low Saturation" class="w-8 h-8 mt-2">
                             @elseif($readings[0]->blood_saturation_rating == 'normal')
@@ -128,14 +109,14 @@
             </div>
 
             <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
-                <img src="{{asset('images/dashboard/Temperature.svg')}}" alt="" class="w-1/4 h-fit">
+                <img src="{{asset('images/dashboard/temperature.svg')}}" alt="" class="w-1/4 h-fit">
                 <div class="flex flex-col text-center w-3/4">
                     <p class="font-bold text-xl lg:text-2xl">Temperature</p>
 
                     <div class="flex flex-row text-center justify-center gap-2">
-                        <p class="text-lg lg:text-xl mt-2">{{$readings ? $readings[0]->temperature : '--'}}°C</p>
+                        <p class="text-lg lg:text-xl mt-2">{{count($readings) > 0 ? $readings[0]->temperature : '--'}}°C</p>
                         
-                        @if($readings)
+                        @if(count($readings) > 0)
                             @if($readings[0]->temperature_rating == 'low')
                                 <img src="{{asset('images/dashboard/low.svg')}}" alt="Low Temperature " title="Low Temperature" class="w-8 h-8 mt-2">
                             @elseif($readings[0]->temperature_rating == 'normal')
@@ -150,14 +131,14 @@
             </div>
 
             <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
-                <img src="{{asset('images/dashboard/Pulse rate.svg')}}" alt="" class="w-1/4 h-fit">
+                <img src="{{asset('images/dashboard/pulse_rate.svg')}}" alt="" class="w-1/4 h-fit">
                 <div class="flex flex-col text-center w-3/4">
                     <p class="font-bold text-xl lg:text-2xl">Pulse Rate</p>
 
                     <div class="flex flex-row text-center justify-center gap-2">
-                        <p class="text-lg lg:text-xl mt-2">{{$readings ? $readings[0]->pulse_rate : '--'}} bpm</p>
+                        <p class="text-lg lg:text-xl mt-2">{{count($readings) > 0 ? $readings[0]->pulse_rate : '--'}} bpm</p>
                         
-                        @if($readings)
+                        @if(count($readings) > 0)
                             @if($readings[0]->pulse_rate_rating == 'low')
                                 <img src="{{asset('images/dashboard/low.svg')}}" alt="Low Pulse Rate " title="Low Pulse Rate" class="w-8 h-8 mt-2">
                             @elseif($readings[0]->pulse_rate_rating == 'normal')
@@ -175,20 +156,20 @@
             <p class="font-roboto font-bold text-black text-lg lg:text-xl">PREVIOUS READING</p>
         
             <div class="flex flex-row py-2 px-10">
-                <p class="flex flex-row text-base lg:text-xl">Taken last {{$readings[1] ? $readings[1]->created_at : '(No readings yet)'}}</p>
+                <p class="flex flex-row text-base lg:text-xl">Taken last {{count($readings) > 1 ? $readings[1]->created_at : '(No readings yet)'}}</p>
             </div>
         </div>
 
         <div class="place-items-center items-center justify-center grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-10 px-10 lg:gap-3 md:grid-cols-2 md:gap-5 mt-8">
             <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
-                <img src="{{asset('images/dashboard/Blood pressure.svg')}}" alt="" class="w-1/4 h-fit">
+                <img src="{{asset('images/dashboard/blood_pressure.svg')}}" alt="" class="w-1/4 h-fit">
                 <div class="flex flex-col text-center w-3/4">
                     <p class="font-bold text-xl lg:text-2xl">Blood Pressure</p>
                     
                     <div class="flex flex-row text-center justify-center gap-2">
-                        <p class="text-lg lg:text-xl mt-2 "> {{$readings[1] ? $readings[1]->blood_pressure_systolic : '--'}}/{{$readings[1] ? $readings[1]->blood_pressure_diastolic : '--'}} mmHg</p>
+                        <p class="text-lg lg:text-xl mt-2 "> {{count($readings) > 1 ? $readings[1]->blood_pressure_systolic : '--'}}/{{count($readings) > 1 ? $readings[1]->blood_pressure_diastolic : '--'}} mmHg</p>
                         
-                        @if($readings)
+                        @if(count($readings) >= 1)
                             @if($readings[0]->blood_pressure_rating == 'low')
                                 <img src="{{asset('images/dashboard/low.svg')}}" alt="Low Blood Pressure" title="Low Blood Pressure" class="w-8 h-8 mt-2">
                             @elseif($readings[0]->blood_pressure_rating == 'normal')
@@ -203,14 +184,14 @@
             </div>
 
             <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
-                <img src="{{asset('images/dashboard/Blood saturation.svg')}}" alt="" class="w-1/4 h-fit">
+                <img src="{{asset('images/dashboard/blood_saturation.svg')}}" alt="" class="w-1/4 h-fit">
                 <div class="flex flex-col text-center w-3/4">
                     <p class="font-bold text-xl lg:text-2xl">Blood Saturation</p>
 
                     <div class="flex flex-row text-center justify-center gap-2">
-                        <p class="text-lg lg:text-xl mt-2">{{$readings[1] ? $readings[1]->blood_saturation : '--'}}%</p>
+                        <p class="text-lg lg:text-xl mt-2">{{count($readings) > 1 ? $readings[1]->blood_saturation : '--'}}%</p>
                         
-                        @if($readings)
+                        @if(count($readings) > 1)
                             @if($readings[0]->blood_saturation_rating == 'low')
                                 <img src="{{asset('images/dashboard/low.svg')}}" alt="Low Saturation" title="Low Saturation" class="w-8 h-8 mt-2">
                             @elseif($readings[0]->blood_saturation_rating == 'normal')
@@ -224,14 +205,14 @@
             </div>
 
             <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
-                <img src="{{asset('images/dashboard/Temperature.svg')}}" alt="" class="w-1/4 h-fit">
+                <img src="{{asset('images/dashboard/temperature.svg')}}" alt="" class="w-1/4 h-fit">
                 <div class="flex flex-col text-center w-3/4">
                     <p class="font-bold text-xl lg:text-2xl">Temperature</p>
 
                     <div class="flex flex-row text-center justify-center gap-2">
-                        <p class="text-lg lg:text-xl mt-2">{{$readings[1] ? $readings[1]->temperature : '--'}}°C</p>
+                        <p class="text-lg lg:text-xl mt-2">{{count($readings) > 1 ? $readings[1]->temperature : '--'}}°C</p>
                         
-                        @if($readings)
+                        @if(count($readings) > 1)
                             @if($readings[0]->temperature_rating == 'low')
                                 <img src="{{asset('images/dashboard/low.svg')}}" alt="Low Temperature " title="Low Temperature" class="w-8 h-8 mt-2">
                             @elseif($readings[0]->temperature_rating == 'normal')
@@ -245,14 +226,14 @@
             </div>
 
             <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
-                <img src="{{asset('images/dashboard/Pulse rate.svg')}}" alt="" class="w-1/4 h-fit">
+                <img src="{{asset('images/dashboard/pulse_rate.svg')}}" alt="" class="w-1/4 h-fit">
                 <div class="flex flex-col text-center w-3/4">
                     <p class="font-bold text-xl lg:text-2xl">Pulse Rate</p>
 
                     <div class="flex flex-row text-center justify-center gap-2">
-                        <p class="text-lg lg:text-xl mt-2">{{$readings[1] ? $readings[1]->pulse_rate : '--'}} bpm</p>
+                        <p class="text-lg lg:text-xl mt-2">{{count($readings) > 1 ? $readings[1]->pulse_rate : '--'}} bpm</p>
                         
-                        @if($readings)
+                        @if(count($readings) > 1)
                             @if($readings[0]->pulse_rate_rating == 'low')
                                 <img src="{{asset('images/dashboard/low.svg')}}" alt="Low Pulse Rate " title="Low Pulse Rate" class="w-8 h-8 mt-2">
                             @elseif($readings[0]->pulse_rate_rating == 'normal')
@@ -290,8 +271,8 @@
 
                 </canvas>
 
-                <img src="{{asset('images/dashboard/dashboard_bg1.svg')}}" alt="" class="absolute lg:h-[70%] bottom-0 left-0">
-                <img src="{{asset('images/dashboard/dashboard_bg2.svg')}}" alt="" class="absolute lg:h-60 bottom-0 right-0">  
+                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute lg:h-[70%] bottom-0 left-0">
+                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute lg:h-60 bottom-0 right-0">  
             </div> 
         </div>
 
@@ -315,8 +296,8 @@
 
                 </div>
 
-                <img src="{{asset('images/dashboard/dashboard_bg1.svg')}}" alt="" class="absolute lg:h-[70%] bottom-0 left-0">
-                <img src="{{asset('images/dashboard/dashboard_bg2.svg')}}" alt="" class="absolute lg:h-60 bottom-0 right-0">
+                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute lg:h-[70%] bottom-0 left-0">
+                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute lg:h-60 bottom-0 right-0">
             </div>
         </div>
 
@@ -327,7 +308,5 @@
 
     <script src="{{asset('/js/chart.js')}}"></script>
     <script src="{{ asset('/js/dashboard_user.js') }}"></script>
-    <script src="{{ asset('/js/user_graphs.js') }}"></script>
-    <script src="{{asset('/js/menu.js')}}"></script>
 </body>
 </html>

@@ -9,9 +9,9 @@
 <body>
     
     <!-- <div class="w-full flex flex-col relative bg-[url('../images/homepage-top-banner.png')] bg-contain bg-origin-border bg-no-repeat h-[900px] md:h-[1000px] overflow-hidden"> -->
-    <div class="w-full flex flex-col relative overflow-hidden bg-homepage-accent bg-cover bg-origin-border bg-no-repeat h-[900px] md:bg-none md:h-fit">
+    <div class="w-full flex flex-col relative overflow-hidden bg-homepage-accent bg-cover bg-origin-border bg-no-repeat h-[900px] md:h-fit">
 
-        <img src="{{asset('images/homepage/homepage-top-banner.svg')}}" alt="" class="absolute hidden -z-50 md:-translate-y-32 md:block w-screen">
+        {{-- <img src="{{asset('images/homepage/homepage-top-banner.svg')}}" alt="" class="absolute hidden -z-50 md:-translate-y-32 lg:block w-screen"> --}}
 
         <!-- Navbar -->
         <div class="flex flex-row justify-center items-center space-x-10 px-8 py-5 md:justify-end">
@@ -20,16 +20,16 @@
         </div>
 
         <!-- Hero -->
-        <div class="h-fit flex flex-col space-y-2 mx-auto items-center mt-5 md:flex-row md:space-y-0 md:space-x-20">
+        <div class="h-fit flex flex-col mx-auto items-center md:flex-row">
             <img src="{{asset('images/homepage/logo2.svg')}}" alt="" class="h-[232px] w-[258px]">
-            <div class="flex flex-col space-y-5">
-                <p class="font-roboto font-bold text-3xl text-[#5ECECD] text-shadow text-center md:text-[64px]">ENHANCED MED-BOT</p>
-                <p class="font-roboto font-normal text-xl text-white text-center md:text-4xl">“Your Ultimate ALL-in-ONE Healthcare Buddy”</p>
+            <div class="flex flex-col items-center">
+                <p class="font-roboto font-bold text-3xl md:text-4xl text-[#5ECECD] text-shadow text-center lg:text-[64px]">ENHANCED MED-BOT</p>
+                <p class="font-roboto font-normal text-lg md:text-xl text-white text-center lg:text-4xl my-4">“Your Ultimate ALL-in-ONE Healthcare Buddy”</p>
             </div>
         </div>
         <div class="flex flex-row space-y-4 px-4 mt-6">
             <div class="flex flex-col space-y-5 items-center md:space-y-10">
-                <p class="font-roboto font-normal text-center text-base text-white md:text-3xl">"We are here to assist you by offering solutions for your vital sign requirements, transforming the way you monitor your vital sign measurements."</p>
+                <p class="font-roboto font-normal text-center text-base text-white md:text-2xl">"We are here to assist you by offering solutions for your vital sign requirements, transforming the way you monitor your vital sign measurements."</p>
                 <button href="/register/user" class="relative border border-white rounded-lg bg-[#5EDAD5] font-roboto font-semibold tracking-wide text-sm text-white px-4 py-3 md:text-base md:px-12 md:py-5">GET STARTED</button>
             </div>
             <img src="{{asset('images/homepage/medbot.svg')}}" alt="" class="h-3/4 w-3/4 md:-translate-y-24">
@@ -65,7 +65,7 @@
                 The enhanced Medbot cares a lot about how you feel when it checks your important vital signs. It uses special ways to get the readings without any trouble. It is also designed to be really comfy, so its users can have comfortable experience
             </p>
         </div>
-        <div class="grid flex flex-col space-y-5 py-4 px-9 rounded-xl shadow-xl">
+        <div class="grid flex flex-col space-y-5 py-4 px-9 rounded-xl shadow-xl z-50">
             <div class="flex flex-row space-x-3 items-center">
                 <img src="{{asset('images/homepage/feature_4.svg')}}" alt="" class="scale-75 md:scale-100">
                 <p class="font-roboto font-bold text-[#1F2937] text-xl">Monitoring</p>
@@ -74,11 +74,12 @@
                 The enhanced Medbot is like a special friend that can watch your body signs all the time and tell you if anything looks funny. Even doctors can check on your numbers from far away and help if something is not right.
             </p>
         </div>
+        
     </div>
-
-    <!-- Wave -->
-    <div>
-        <img src="{{asset('images/homepage/Wave.svg')}}" alt="" class=" mt-4">
-    </div>
+    
+    <div class="flex    ">
+        <img src="{{asset('images/homepage/Wave.svg')}}" alt="" class=" bottom-0 w-screen">
+    </div>   
+    
 </body>
 </html>`
