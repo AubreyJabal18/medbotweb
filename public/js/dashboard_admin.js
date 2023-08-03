@@ -1,133 +1,135 @@
-const selectField = document.getElementById('select');
-const yearField = document.getElementById('year')
-const monthField = document.getElementById('month');
-const weekField = document.getElementById('week');
-const registered_selectField = document.getElementById('registered_select');
-const registered_yearField = document.getElementById('registered_year')
-const registered_monthField = document.getElementById('registered_month');
-const registered_weekField = document.getElementById('registered_week');
-const reading_selectField = document.getElementById('reading_select');
-const reading_yearField = document.getElementById('reading_year')
-const reading_monthField = document.getElementById('reading_month');
-const reading_weekField = document.getElementById('reading_week');
-const pervasiveness_selectField = document.getElementById('pervasiveness_select');
-const pervasiveness_yearField = document.getElementById('pervasiveness_year')
-const pervasiveness_monthField = document.getElementById('pervasiveness_month');
-const pervasiveness_weekField = document.getElementById('pervasiveness_week');
-const searchField = document.getElementById('search');
-const search_buttonField = document.getElementById('search_button');
-const form = document.getElementById('form');
+const select_usedField = document.getElementById('select_used');
+const year_usedField = document.getElementById('year_used')
+const month_usedField = document.getElementById('month_used');
+const week_usedField = document.getElementById('week_used');
 
-const select_userField = document.getElementById("select_user");
-const for_userField = document.getElementById("for_user");
+select_usedField.addEventListener('change', function(){
+    if(select_usedField.value == 'yearly'){
+        year_usedField.classList.remove('hidden')
+    }
+        else{
+            year_usedField.classList.add('hidden')   
+        }
+    
+    if(select_usedField.value == 'monthly'){
+        month_usedField.classList.remove('hidden')
+   }
+        else{
+            month_usedField.classList.add('hidden')
+        }
+    if(select_usedField.value == 'weekly'){
+        week_usedField.classList.remove('hidden')
+    }
+        else{
+            week_usedField.classList.add('hidden')
+        }
+
+});
+
+
+const select_userField = document.getElementById('select_user');
+const for_userField = document.getElementById('for_user');
+
+const usersListField = document.getElementById('users-list');
+
 
 select_userField.addEventListener('change', function(){
-    if (select_userField.value == 'patient'){
-        for_userField.placeholder = 'Search for Patient'
-    } 
-   else {
-        for_userField.placeholder = 'Search for Professional'
-   }
-});
-
-
-selectField.addEventListener('change', function(){
-    if(selectField.value == 'yearly'){
-        yearField.classList.remove('hidden')
-    }
-        else{
-            yearField.classList.add('hidden')   
-        }
-    
-    if(selectField.value == 'monthly'){
-        monthField.classList.remove('hidden')
-   }
-        else{
-            monthField.classList.add('hidden')
-        }
-    if(selectField.value == 'weekly'){
-        weekField.classList.remove('hidden')
-    }
-        else{
-            weekField.classList.add('hidden')
-        }
-
-});
-
-registered_selectField.addEventListener('change', function(){
-    if(registered_selectField.value == 'yearly'){
-        registered_yearField.classList.remove('hidden')
-    }
-        else{
-            registered_yearField.classList.add('hidden')   
-        }
-    
-    if(registered_selectField.value == 'monthly'){
-        registered_monthField.classList.remove('hidden')
-   }
-        else{
-            registered_monthField.classList.add('hidden')
-        }
-    if(registered_selectField.value == 'weekly'){
-        registered_weekField.classList.remove('hidden')
-    }
-        else{
-            registered_weekField.classList.add('hidden')
-        }
-
-});
-
-reading_selectField.addEventListener('change', function(){
-    if(reading_selectField.value == 'yearly'){
-        reading_yearField.classList.remove('hidden')
-    }
-        else{
-            reading_yearField.classList.add('hidden')   
-        }
-
-    if(reading_selectField.value == 'monthly'){
-        reading_monthField.classList.remove('hidden')
-    }
-        else{
-            reading_monthField.classList.add('hidden')
-        }
-    if(reading_selectField.value == 'weekly'){
-        reading_weekField.classList.remove('hidden')
+    if(select_userField.value == 'patient'){
+        for_userField.placeholder = 'Search for Patient';
+        
     }
     else{
-        reading_weekField.classList.add('hidden')
+        for_userField.placeholder = 'Search for Professional'
     }
+})
+
+
+
+// async function getPatientList(){
+//     const response = await fetch('/get/patient_list');
+//     const users = await response.json();
+//     console.log(users['users'][0]);
+// }
+
+// getPatientList();
+
+// var patientUserTable = null;
+
+
+// axios.then(
+//     (response) =>{
+   
+//        this.setState({
+//          patient: response.data
+//        });
+//      }
+//    );
+
+
+const select_usersByMunicipalityField = document.getElementById('select-usersByMunicipality');
+
+select_usersByMunicipalityField.addEventListener('change', function(){
+    console.log(select_usersByMunicipalityField.value);
+})
+
+
+var usersCountChart = null;
  
-});
+async function getUsersCount(by, value){
+    const response = await fetch('/get/users_count?by=' + by + '&value=' + value)
+    const data = await response.json();
+    return data['users_count'];
+}
 
-pervasiveness_selectField.addEventListener('change', function(){
-    if(pervasiveness_selectField.value == 'yearly'){
-        pervasiveness_yearField.classList.remove('hidden')
-    }
-        else{
-            pervasiveness_yearField.classList.add('hidden')   
+function renderUsersCountChart(by, value){
+        getUsersCount(by, value).then((data) => {
+            if(by == 'All'){
+                labels = ['Boac', 'Gasan', 'Buenavista' , 'Torrijos', 'Sta.Cruz', 'Mogpog'];
+                count = [];
+                backgroundColors = [];
+                for (const [key, value] of Object.entries(data)) {
+                    labels.push(key);
+                    count.push(value);
+                }
+                for(let i = 0; i < uses.length; i++){
+                
+                }
+                const usersCountData = {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Count',
+                        backgroundColor: '#213E76',
+                        data: count,
+                    }]
+                };
+               
+                const usersCountConfig = {
+                    type: 'bar',
+                    data: usersCountData,
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        },
+                        legend: {
+                            display: false
+                        }
+                      },
+                };
+                if(usersCountChart != null){
+                    usersCountChart.destroy();
+                }
+                usersCountChart = new Chart(
+                    document.getElementById('users-count'),
+                    usersCountConfig
+                );
+            }
         }
-    
-    if(pervasiveness_selectField.value == 'monthly'){
-        pervasiveness_monthField.classList.remove('hidden')
-   }
-        else{
-            pervasiveness_monthField.classList.add('hidden')
-        }
-    if(pervasiveness_selectField.value == 'weekly'){
-        pervasiveness_weekField.classList.remove('hidden')
-    }
-        else{
-            pervasiveness_weekField.classList.add('hidden')
-        }
+    )
+                
+}        
 
-});
+ 
 
-searchField.addEventListener('change', function(){
-    form.submit();
-})
-
-search_buttonField.addEventListener('change', function(){
-    form.submit();
-})
    
