@@ -73,6 +73,14 @@ select_usersByMunicipalityField.addEventListener('change', function(){
 })
 
 
+async function getUsersByMunicipality(){
+    const response = await fetch('/get/users_count');
+    const users = await response.json();
+    console.log(users['users'][0]);
+}
+
+getUsersByMunicipality();
+
 var usersCountChart = null;
  
 async function getUsersCount(by, value){
@@ -124,7 +132,7 @@ function renderUsersCountChart(by, value){
                     document.getElementById('users-count'),
                     usersCountConfig
                 );
-            }
+            }    
         }
     )
                 

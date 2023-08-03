@@ -180,15 +180,23 @@
                 <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-xl  text-[#151515]  px-4 text-center bg-gray-200  ">Users Count by Municipality</p>      
                 <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 mt-4">
                     <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline"  id="select-usersByMunicipality" name="by"> 
-                        <option value="All" id="usersByAll" name="value">All</option>
-                        <option value="Boac" id="usersByBoac" name="value">Boac</option>
-                        <option value="Buenavista" id="usersByBuenavista" name="value">Buenavista</option>
-                        <option value="Gasan" id="usersByGasan" name="value">Gasan</option>
-                        <option value="Mogpog" id="usersByMogpog" name="value">Mogpog</option>
-                        <option value="Sta. Cruz" id="usersBySta.cruz" name="value">Santa Cruz</option>
-                        <option value="Torrijos" id="usersByTorrijos" name="value">Torrijos</option>
+                        <option value="All">All</option>
+                        <option value="Boac">Boac</option>
+                        <option value="Buenavista">Mogpog</option>
+                        <option value="Gasan">Santa Cruz</option>
+                        <option value="Mogpog">Torrijos</option>
+                        <option value="Sta. Cruz">Buenavista</option>
+                        <option value="Torrijos">Gasan</option>
                     </select>
-                </div> 
+                </div>
+                    <input type="hidden" id="all_count" name="value">
+                    <input type="hidden" id="boac_count" name="value">
+                    <input type="hidden" id="buenavista_count" name="value">
+                    <input type="hidden" id="gasan_count" name="value">
+                    <input type="hidden" id="mogpog_count" name="value"> 
+                    <input type="hidden" id="sta.cruz_count" name="value">
+                    <input type="hidden" id="torijjos_count" name="value">
+
                 <img src="{{asset('images/login/e3.svg')}}" alt="" class="absolute place-self-start lg:h-[50%]  bottom-0 right-0 ">
                 <canvas id="users-count" class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></canvas>
             </div>

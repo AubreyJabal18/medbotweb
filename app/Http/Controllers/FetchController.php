@@ -361,33 +361,33 @@ class FetchController extends Controller
 
  // FOR ADMIN DASHBOARD DATA//
 
-    public function getUsersCounts(){
+    public function getUsersByMunicipality(){
             $users = User::all();
-            dd($users);
             return response()->json([
                 'users' => $users
             ]);
+    
             
         }
     public function getUsersCount(Request $request){
-        if ($request->select_usersByMunicipality == 'Boac'){
-            $user = User::where('municipality', 'Boac')
+        if ($request->by == 'All'){
+            $user = User::where('type', 'patient')
                 ->get()
-                ->countBy(function ($item){
+                ->countBy(function ($item){  
                     return Carbon::parse($item->municipality);
                 })
-                ->toArray();    
-                $period = CarbonPeriod::create($dates['start'], $dates['end']);
-                $registers = [];
-                foreach ($period as $date) {
-                    $key = $date->format('Y-m-d');
-                    $registers[$key] = array_key_exists($key, $users) ? $users[$key] : 0;
+                ->toArray();      
+            $municipalities = ['Boac', 'Mogpog', 'Sta.Cruz', 'Torrijos', 'Buenavista', 'Gasan']; 
+            $users_count = [];
+                foreach ($municipalities as $municipality) {
+                    $users_count[$municipality] = array_key_exists($municipality, $user) ? $user[$municipality] : 0;
                 }
                 return response()->json([
-                    'registers' => $registers
+                    'users_count' => $users_count
                 ]);
+                dd($users_count);
             }
-            
+              
     }  
     
 }    // public function getPatientRegisters(Request $request){
