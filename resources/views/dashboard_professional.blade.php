@@ -9,6 +9,12 @@
 
 </head>
 <body>
+    @if(Session::has('id'))
+    <script>
+        const id = {{session()->get('id')}};
+        window.open('/get/qrcode?id='+id, '_self');
+    </script>
+    @endif
     
     <div class="flex flex-col w-screen pb-10">
         
@@ -103,7 +109,6 @@
                             <div class="table-cell text-center py-1">Time Taken</div>
                        </div>
                     </div>
-
                     @foreach($latest_readings as $reading)
                         <div class="table-row-group">
                             <div class="table-row font-roboto font-normal text-black text-sm md:text-base ">
@@ -114,8 +119,17 @@
                             </div>
                         </div>
                     @endforeach
-                    
                 </div>
+                    @for($i = count($latest_readings); $i <=4; $i++)
+                        <div class="table-row-group">
+                            <div class="table-row font-roboto font-normal text-black text-sm md:text-base ">
+                                <div class="table-cell text-center py-1">{{$reading->user->first_name}} {{$reading->user->last_name}}</div>
+                                <div class="table-cell text-center py-1">{{$reading->user->sex}}</div>
+                                <div class="table-cell text-center py-1">{{$reading->user->barangay}}, {{$reading->user->municipality}}</div>
+                                <div class="table-cell text-center py-1">{{\Carbon\Carbon::parse($reading->created_at)->format('M d, Y (H:i:s)')}}</div>
+                            </div>
+                        </div>
+                    @endfor
             </div>
             <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 w-full px-2 md:px-6">
                 <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-full ">
@@ -198,7 +212,7 @@
                     <img src="{{asset('images/dashboard/bp.png')}}" alt="Blood Pressure" class="flex h-6 w-7 mr-4">BP
                    </button>
                    <button id="reading_bs" name="reading_bs" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-6 py-1 bg-[#EB7373] text-white">
-                    <img src="{{asset('images/dashboard/bs.png')}}" alt="Blood Saturation" class="flex h-5 w-8 mr-6 mt-0.5">BS
+                    <img src="{{asset('images/dashboard/bs.png')}}" alt="Blood Saturation" class="flex h-5 w-8 mr-3 mt-0.5">SpO2
                    </button>
                    <button id="reading_temp" name="reading_temp"
                    class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-5 py-1 bg-[#697269] text-white">
@@ -241,7 +255,7 @@
                      <img src="{{asset('images/dashboard/bp.png')}}" alt="Blood Pressure" class="flex h-6 w-7 mr-4">BP
                     </button>
                     <button id="pervasiveness_bs" name="pervasiveness_bs" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-6 py-1 bg-[#EB7373] text-white">
-                     <img src="{{asset('images/dashboard/bs.png')}}" alt="Blood Saturation" class="flex h-5 w-8 mr-6 mt-0.5">BS
+                     <img src="{{asset('images/dashboard/bs.png')}}" alt="Blood Saturation" class="flex h-5 w-8 mr-3 mt-0.5">SpO2
                     </button>
                     <button id="pervasiveness_temp" name="pervasiveness_temp"
                     class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-5 py-1 bg-[#697269] text-white">
@@ -323,7 +337,7 @@
     <script src="{{asset('/js/professional_graphs.js')}}"></script>
     <script src="{{asset('/js/menu.js')}}"></script>
 
-@endif
+
 
 </body>
 </html>

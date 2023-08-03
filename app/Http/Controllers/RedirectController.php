@@ -52,9 +52,18 @@ class RedirectController extends Controller
             }
             else if(Auth::user()->type == 'admin'){
                 $user = Auth::user();
+                $users = User::where('type', 'patient')->orWhere('type', 'professional')->get();
+                $patient_count = User::where('type', 'patient')->count();
+                $professional_count = User::where('type', 'professional')->count();
+                $latest_users = User::where('type', 'patient')->orWhere('type', 'professional')->latest()->get();
                 return view('dashboard_admin', [
-                    'user' => $user
+                    'user' => $user,
+                    'users' => $users,
+                    'patient_count' => $patient_count,
+                    'professional_count' => $professional_count,
+                    'latest_users' => $latest_users
                 ]);
+               
             }
             else{
                 flash()->addError('Unknown User Type');
