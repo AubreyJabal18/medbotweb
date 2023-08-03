@@ -62,6 +62,4 @@ Route::get('get/patient_list', [FetchController::class, 'getUsersList']);
 
 Route::get('/get/count_reading', [FetchController::class, 'getCount']);
 
-Route::get('/get/usersCount', [FetchController::class, 'getUsersByMunicipality']);
-
 Route::get('/get/users_count', [FetchController::class, 'getUsersCount']);

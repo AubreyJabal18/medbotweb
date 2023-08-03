@@ -1,7 +1,96 @@
+const select_usersByMunicipalityField = document.getElementById('select-usersByMunicipality');
 const select_usedField = document.getElementById('select_used');
 const year_usedField = document.getElementById('year_used')
 const month_usedField = document.getElementById('month_used');
 const week_usedField = document.getElementById('week_used');
+
+select_usersByMunicipalityField.addEventListener('change', function(){
+    renderUsersCountChart(select_usersByMunicipalityField.value);
+    console.log(select_usersByMunicipalityField.value);
+})
+
+var usersCountChart = null;
+ 
+async function getUsersCount(municipality){
+    const response = await fetch('/get/users_count?municipality=' + municipality)
+    const data = await response.json();
+    return data['users_count'];
+}
+
+function renderUsersCountChart(municipality){
+        getUsersCount(municipality).then((data) => {
+            var patients = data['patient'];
+            var professionals = data['professional'];
+            if(municipality == 'All'){
+                var labels = [];
+                var patient_counts = [];
+                var professional_counts = [];
+                for (const [key, value] of Object.entries(patients)) {
+                    labels.push(key);
+                    patient_counts.push(value);
+                }
+                for (const [key, value] of Object.entries(professionals)) {
+                    professional_counts.push(value);
+                }
+            }
+            else{
+                var labels = [];
+                var patient_counts = [];
+                var professional_counts = [];
+                for (const [key, value] of Object.entries(patients)) {
+                    labels.push(key);
+                    patient_counts.push(value);
+                }
+                for (const [key, value] of Object.entries(professionals)) {
+                    professional_counts.push(value);
+                }
+            }
+
+            const usersCountData = {
+                labels: labels,
+                datasets: [{
+                    label: 'Patient',
+                    backgroundColor: '#213E76',
+                    data: patient_counts,
+                },{
+                    label: 'Professional',
+                    backgroundColor: '#FFFF00',
+                    data: professional_counts,
+                }]
+            };
+           
+            const usersCountConfig = {
+                type: 'bar',
+                data: usersCountData,
+                options: {
+                    scales: {
+                        x: {
+                            stacked: true
+                        },
+                        y: {
+                            beginAtZero: true,
+                            stacked: true
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                  },
+            };
+            if(usersCountChart != null){
+                usersCountChart.destroy();
+            }
+            usersCountChart = new Chart(
+                document.getElementById('users-count'),
+                usersCountConfig
+            );
+        }
+    )
+                
+}    
+
+renderUsersCountChart('All');
+
 
 select_usedField.addEventListener('change', function(){
     if(select_usedField.value == 'yearly'){
@@ -42,101 +131,6 @@ select_userField.addEventListener('change', function(){
         for_userField.placeholder = 'Search for Professional'
     }
 })
-
-
-
-// async function getPatientList(){
-//     const response = await fetch('/get/patient_list');
-//     const users = await response.json();
-//     console.log(users['users'][0]);
-// }
-
-// getPatientList();
-
-// var patientUserTable = null;
-
-
-// axios.then(
-//     (response) =>{
-   
-//        this.setState({
-//          patient: response.data
-//        });
-//      }
-//    );
-
-
-const select_usersByMunicipalityField = document.getElementById('select-usersByMunicipality');
-
-select_usersByMunicipalityField.addEventListener('change', function(){
-    console.log(select_usersByMunicipalityField.value);
-})
-
-
-async function getUsersByMunicipality(){
-    const response = await fetch('/get/users_count');
-    const users = await response.json();
-    console.log(users['users'][0]);
-}
-
-getUsersByMunicipality();
-
-var usersCountChart = null;
- 
-async function getUsersCount(by, value){
-    const response = await fetch('/get/users_count?by=' + by + '&value=' + value)
-    const data = await response.json();
-    return data['users_count'];
-}
-
-function renderUsersCountChart(by, value){
-        getUsersCount(by, value).then((data) => {
-            if(by == 'All'){
-                labels = ['Boac', 'Gasan', 'Buenavista' , 'Torrijos', 'Sta.Cruz', 'Mogpog'];
-                count = [];
-                backgroundColors = [];
-                for (const [key, value] of Object.entries(data)) {
-                    labels.push(key);
-                    count.push(value);
-                }
-                for(let i = 0; i < uses.length; i++){
-                
-                }
-                const usersCountData = {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Count',
-                        backgroundColor: '#213E76',
-                        data: count,
-                    }]
-                };
-               
-                const usersCountConfig = {
-                    type: 'bar',
-                    data: usersCountData,
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        },
-                        legend: {
-                            display: false
-                        }
-                      },
-                };
-                if(usersCountChart != null){
-                    usersCountChart.destroy();
-                }
-                usersCountChart = new Chart(
-                    document.getElementById('users-count'),
-                    usersCountConfig
-                );
-            }    
-        }
-    )
-                
-}        
 
  
 

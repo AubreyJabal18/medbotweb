@@ -11,12 +11,249 @@ use Illuminate\Support\Facades\DB;
 
 class FetchController extends Controller
 {
+
+    private $boac_barangays = [
+        'Agot',
+        'Agumaymayan',
+        'Amoingon',
+        'Apitong',
+        'Balagasan',
+        'Balaring',
+        'Balimbing',
+        'Balogo',
+        'Bamban',
+        'Bangbangalon',
+        'Bantad',
+        'Bantay',
+        'Bayuti',
+        'Binunga',
+        'Boi',
+        'Boton',
+        'Buliasnin',
+        'Bunganay',
+        'Caganhao',
+        'Canat',
+        'Catubugan',
+        'Cawit',
+        'Daig',
+        'Daypay',
+        'Duyay',
+        'Hinapulan',
+        'Ihatub',
+        'Isok I',
+        'Ison II Poblacion',
+        'Laylay',
+        'Lupac',
+        'Mahinhin',
+        'Mainit',
+        'Malbog',
+        'Maligaya',
+        'Malusak',
+        'Mansiwat',
+        'Mataas na Bayan',
+        'Maybo',
+        'Mercado',
+        'Murallon',
+        'Ogbac',
+        'Pawa',
+        'Pili',
+        'Poctoy',
+        'Poras',
+        'Puting Buhangin',
+        'Puyog',
+        'Sabong',
+        'San Miguel',
+        'Santol',
+        'Sawi',
+        'Tabi',
+        'Tabigue',
+        'Tagwak',
+        'Tambunan',
+        'Tampus',
+        'Tanza',
+        'Tugos',
+        'Tumagabok',
+        'Tumapon'
+    ];
+
+    private $buenavista_barangays = [
+        'Bagacay',
+        'Bagtingon',
+        'Barangay I',
+        'Barangay II',
+        'Barangay III',
+        'Barangay IV',
+        'Bicas-bicas',
+        'Caigangan',
+        'Daykitin',
+        'Libas',
+        'Malbog',
+        'Sihi',
+        'Timbo',
+        'Tungib-Lipata',
+        'Yook' 
+    ];
+
+    private $gasan_barangays = [
+        'Antipolo',
+        'Bachao Ibaba',
+        'Bachao Ilaya',
+        'Bacongbacong',
+        'Bahi',
+        'Bangbang',
+        'Banot',
+        'Banuyo',
+        'Barangay I',
+        'Barangay II',
+        'Barangay III',
+        'Bognuyan',
+        'Cabugao',
+        'Dawis',
+        'Dili',
+        'Libtangin',
+        'Mahunig',
+        'Mangiliol',
+        'Masiga',
+        'Matandang Gasan',
+        'Pangi',
+        'Pinggan',
+        'Tabionan',
+        'Tapuyan',
+        'Tiguion'
+    ];
+
+    private $mogpog_barangays = [
+        'Anapog-Sibucao',
+        'Argao',
+        'Balanacan',
+        'Banto',
+        'Bintakay',
+        'Bocboc',
+        'Butansapa',
+        'Candahon',
+        'Capayang',
+        'Danao',
+        'Dulong Bayan',
+        'Gitnang Bayan',
+        'Guisian',
+        'Hinadharan',
+        'Hinanggayon',
+        'Ino',
+        'Janagdong',
+        'Lamesa',
+        'Laon',
+        'Magapua',
+        'Malayak',
+        'Malusak',
+        'Mampaitan',
+        'Mangyan-Mababad',
+        'Market Site',
+        'Mataas na Bayan',
+        'Mendez',
+        'Nangka I',
+        'Nangka II',
+        'Paye',
+        'Pili',
+        'Puting Buhangin',
+        'Sayao',
+        'Silangan',
+        'Sumangga',
+        'Tarug',
+        'Villa Mendez'
+    ];
+
+    private $sta_cruz_barangays = [
+        'Alobo',
+        'Angas',
+        'Aturan',
+        'Bagon Silang Poblacion',
+        'Baguidbirin',
+        'Baliis',
+        'Balogo',
+        'Banahaw Poblacion',
+        'Bangcuangan',
+        'Banogbog',
+        'Biga',
+        'Botilao',
+        'Buyabod',
+        'Dating Bayan',
+        'Devilla',
+        'Dolores',
+        'Haguimit',
+        'Hupi',
+        'Ipil',
+        'Jolo',
+        'Kaganhao',
+        'Kalangkang',
+        'Kamandungan',
+        'Kasily',
+        'Kilo-kilo',
+        'Kiñaman',
+        'Labo',
+        'Lamesa',
+        'Landy',
+        'Lapu-lapu Poblacion',
+        'Libjo',
+        'Lipa',
+        'Lusok',
+        'Maharlika Poblacion',
+        'Makulapnit',
+        'Maniwaya',
+        'Manlibunan',
+        'Masaguisi',
+        'Masalukot',
+        'Matalaba',
+        'Mongpong',
+        'Morales',
+        'Napo',
+        'Pag-asa Poblacion',
+        'Pantayin',
+        'Polo',
+        'Pulong-parang',
+        'Punong',
+        'San Antonio',
+        'San Isidro',
+        'Tagum',
+        'Tamayo',
+        'Tambangan',
+        'Tawiran',
+        'Taytay'
+    ];
+
+    private $torrijos_barangays = [
+        'Bangwayin',
+        'Bayakbakin',
+        'Bolo',
+        'Bonliw',
+        'Buangan',
+        'Cabuyo',
+        'Cagpo',
+        'Dampulan',
+        'Kay Duke',
+        'Mabuhay',
+        'Makawayan',
+        'Malibago',
+        'Malinao',
+        'Maranlig',
+        'Marlangga',
+        'Matuyatuya',
+        'Nangka',
+        'Pakaskasan',
+        'Payanas',
+        'Poblacion',
+        'Poctoy',
+        'Sibuyao',
+        'Suha',
+        'Talawan',
+        'Tigwi'
+    ]; 
+
     public function getQrCode(Request $request){
         $path = '../public/storage/qrcodes/'.$request->id.'.png';
         return response()->download($path);
     }
 
-// FOR PROFESSIONAL DASHBOARD DATA//
+    // FOR PROFESSIONAL DASHBOARD DATA//
     
     // FOR PATIENTS USED MED-BOT//
     public function getUsers(){
@@ -359,100 +596,62 @@ class FetchController extends Controller
     }
 
 
- // FOR ADMIN DASHBOARD DATA//
+    // FOR ADMIN DASHBOARD DATA//
 
-    public function getUsersByMunicipality(){
-            $users = User::all();
-            return response()->json([
-                'users' => $users
-            ]);
-    
-            
-        }
     public function getUsersCount(Request $request){
-        if ($request->by == 'All'){
-            $user = User::where('type', 'patient')
+        $users_count = [];
+        if(ucwords($request->municipality) == 'All'){
+            $users = User::whereNot('type', 'admin')
                 ->get()
-                ->countBy(function ($item){  
-                    return Carbon::parse($item->municipality);
-                })
-                ->toArray();      
-            $municipalities = ['Boac', 'Mogpog', 'Sta.Cruz', 'Torrijos', 'Buenavista', 'Gasan']; 
-            $users_count = [];
-                foreach ($municipalities as $municipality) {
-                    $users_count[$municipality] = array_key_exists($municipality, $user) ? $user[$municipality] : 0;
-                }
-                return response()->json([
-                    'users_count' => $users_count
-                ]);
-                dd($users_count);
+                ->groupBy('type');
+            $municipalities = ['Boac', 'Buenavista', 'Gasan', 'Mogpog', 'Sta. Cruz', 'Torrijos'];
+            $patients = count($users) > 0 ? $users['patient']->countBy('municipality')->toArray() : [];
+            $professionals = count($users) > 0 ? $users['professional']->countBy('municipality')->toArray() : [];
+            foreach($municipalities as $municipalities){
+                $key = $municipalities;
+                $users_count['patient'][$key] = array_key_exists($key, $patients) ?  $patients[$key] : 0;
+                $users_count['professional'][$key] = array_key_exists($key, $professionals) ? $professionals[$key] : 0;
             }
-              
-    }  
+        }
+        else{
+            $users = User::whereNot('type', 'admin')
+                ->where('municipality',ucwords($request->municipality))
+                ->get()
+                ->groupBy('type');
+            if(ucwords($request->municipality) == 'Boac'){
+                $barangays = $this->boac_barangays;
+            }
+            else if(ucwords($request->municipality) == 'Buenavista'){
+                $barangays = $this->buenavista_barangays;
+            }
+            else if(ucwords($request->municipality) == 'Gasan'){
+                $barangays = $this->gasan_barangays;
+            }
+            else if(ucwords($request->municipality) == 'Mogpog'){
+                $barangays = $this->mogpog_barangays;
+            }
+            else if(ucwords($request->municipality) == 'Sta. Cruz'){
+                $barangays = $this->sta_cruz_barangays;
+            }
+            else if(ucwords($request->municipality) == 'Torrijos'){
+                $barangays = $this->torrijos_barangays;
+            }
+            else{
+                return response()->json([
+                    'users_count' => 'Bad Request'
+                ]);
+            }
+            $patients = count($users) > 0 ? $users['patient']->countBy('barangay')->toArray() : [];
+            $professionals = count($users) > 0 ? $users['professional']->countBy('barangay')->toArray() : [];
+            foreach($barangays as $barangay){
+                $key = $barangay;
+                $users_count['patient'][$key] = array_key_exists($key, $patients) ?  $patients[$key] : 0;
+                $users_count['professional'][$key] = array_key_exists($key, $professionals) ? $professionals[$key] : 0;
+            }
+        }
+        return response()->json([
+            'users_count' => $users_count
+        ]);
+    }
     
-}    // public function getPatientRegisters(Request $request){
-    //     if($request->registered_by == 'weekly'){
-    //         $year = substr($request->registered_value, 0, 4);
-    //         $week = substr($request->registered_value, 6, 2);
-    //         $dates = $this->getWeek($week, $year);
-    //         $users = User::where('type', 'patient')
-    //             ->whereBetween('created_at', [$dates['start'], $dates['end']])
-    //             ->get()
-    //             ->countBy(function ($item) {
-    //                 return Carbon::parse($item->created_at)->format('Y-m-d');
-    //             })
-    //             ->toArray();    
-    //         $period = CarbonPeriod::create($dates['start'], $dates['end']);
-    //         $registers = [];
-    //         foreach ($period as $date) {
-    //             $key = $date->format('Y-m-d');
-    //             $registers[$key] = array_key_exists($key, $users) ? $users[$key] : 0;
-    //         }
-    //         return response()->json([
-    //             'registers' => $registers
-    // //         ]);
-    // //     }
-    //     else if($request->registered_by == 'monthly'){
-    //         $year = substr($request->registered_value, 0, 4);
-    //         $month = substr($request->registered_value, 5, 2);
-    //         $users = User::where('type', 'patient')
-    //             ->whereMonth('created_at', $month)
-    //             ->whereYear('created_at', $year)
-    //             ->get()
-    //             ->countBy(function ($item) {
-    //                 return Carbon::parse($item->created_at)->format('Y-m-d');
-    //             })
-    //             ->toArray();
-    //         $dates = $this->getMonth($month, $year);
-    //         $period = CarbonPeriod::create($dates['start'], $dates['end']);
-    //         $registers = [];
-    //         foreach ($period as $date) {
-    //             $key = $date->format('Y-m-d');
-    //             $registers[$key] = array_key_exists($key, $users) ? $users[$key] : 0;
-    //         }
-    //         return response()->json([
-    //             'registers' => $registers
-    //         ]);
-    //     }
-    //     else {
-    //         $year = substr($request->registered_value, 0, 4);
-    //         $users = User::where('type', 'patient')
-    //             ->whereYear('created_at', $year)
-    //             ->get()
-    //             ->countBy(function ($item) {
-    //                 return Carbon::parse($item->created_at)->format('M');
-    //             })
-    //             ->toArray();
-    //         $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    //         $registers = [];
-    //         foreach($months as $month){
-    //             $registers[$month] = array_key_exists($month, $users) ? $users[$month] : 0;
-    //         }
-    //         return response()->json([
-    //             'registers' => $registers
-    //         ]);
-    //     }
-    
-    // }
-   
-
+} 
