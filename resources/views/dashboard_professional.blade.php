@@ -108,6 +108,16 @@
                         @endfor
                     
                 </div>
+                    @for($i = count($latest_readings); $i <=4; $i++)
+                        <div class="table-row-group">
+                            <div class="table-row font-roboto font-normal text-black text-sm md:text-base ">
+                                <div class="table-cell text-center py-1">{{$reading->user->first_name}} {{$reading->user->last_name}}</div>
+                                <div class="table-cell text-center py-1">{{$reading->user->sex}}</div>
+                                <div class="table-cell text-center py-1">{{$reading->user->barangay}}, {{$reading->user->municipality}}</div>
+                                <div class="table-cell text-center py-1">{{\Carbon\Carbon::parse($reading->created_at)->format('M d, Y (H:i:s)')}}</div>
+                            </div>
+                        </div>
+                    @endfor
             </div>
             <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 w-full px-2 md:px-6">
                 <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-full ">
