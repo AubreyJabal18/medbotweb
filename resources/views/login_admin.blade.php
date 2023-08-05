@@ -45,9 +45,9 @@
         
 
 
-        <img src="{{asset('images/login/modelrightsideview.png')}}" alt=" " class="block md:hidden absolute h-[20%] w-[38%] self-start top-[50%] -left-5">
+        <img src="{{asset('images/login/model_right.png')}}" alt=" " class="block md:hidden absolute h-[20%] w-[38%] self-start top-[50%] -left-5">
 
-        <img src="{{asset('images/login/modelleftsideview.png')}}" alt=" " class="hidden absolute md:block md:right-2 md:bottom-20 lg:bottom-12 md:right-0 lg:right-10 md:w-[22%] md:h-[25%] lg:w-[18%] lg:h-[30%] self-end">
+        <img src="{{asset('images/login/model.png')}}" alt=" " class="hidden absolute md:block md:right-2 md:bottom-20 lg:bottom-12 md:right-0 lg:right-10 md:w-[22%] md:h-[25%] lg:w-[18%] lg:h-[30%] self-end">
 
 
     </div>
