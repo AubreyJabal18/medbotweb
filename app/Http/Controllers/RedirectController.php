@@ -91,4 +91,17 @@ class RedirectController extends Controller
         return view('login_admin');
     }
 
+    public function redirectToReadings(){
+        if (Auth::check() && Auth::user()->type == 'patient'){
+            $user = Auth::user();
+            $readings = Reading::where('user_id', Auth::user()->id)->latest()->get();
+            return view('user_readings', [
+                'user'=> $user,
+                'readings' => $readings
+            ]);
+        }
+
+        flash()->addError('Please Login as a Patient');
+        return redirect('/');
+    }
 }

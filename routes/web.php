@@ -58,4 +58,6 @@ Route::get('/login/admin', [RedirectController::class, 'redirectToAdminLogin']);
 
 Route::post('/login/admin/process', [LoginController::class, 'loginAdmin']);
 
+Route::get('/dashboard/readings', [RedirectController::class, 'redirectToReadings']);
+
 
