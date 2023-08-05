@@ -65,3 +65,7 @@ Route::get('get/patient_list', [FetchController::class, 'getUsersList']);
 Route::get('/get/count_reading', [FetchController::class, 'getCount']);
 
 Route::get('/get/users_count', [FetchController::class, 'getUsersCount']);
+
+Route::get('/get/readings', [FetchController::class, 'getUserReadings']);
+
+Route::get('/get/authenticated', [FetchController::class, 'getAuthenticatedUser']);

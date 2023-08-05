@@ -6,6 +6,8 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Readings</title>
 	@vite('resources/css/app.css')
+
+	<link href="{{asset('/css/mermaid.min.css')}}" rel="stylesheet"/>
 </head>
 <body>
 	@if(Session::has('id'))
@@ -29,47 +31,53 @@
 			
 			<x-menu_user :user="$user"/>
 		</div>
+
+		<div class="flex items-center justify-center space-x-5">
+			<div class="flex flex-col items-center p-2 rounded-xl drop-shadow-lg shadow-lg border border-gray-300 h-[150px] w-[200px] space-y-2 bg-blue-200 ">
+            	<p class="flex font-roboto font-normal text-black text-sm md:text-base">Weekly Count</p>
+				
+				<div class="flex flex-row w-full h-fit items-center justify-evenly">
+					<img src="{{asset('images/dashboard/design_patient.png')}}" alt="" title="Healthcare Professional" class="w-24 h-24">
+					<p class="font-roboto font-bold text-black text-2xl lg:text-4xl">1</p>
+				</div>   
+              	    
+            </div>
+
+			<div class="flex flex-col items-center p-2 rounded-xl drop-shadow-lg shadow-lg border border-gray-300 h-[150px] w-[200px] space-y-2 bg-blue-200 ">
+            	<p class="flex font-roboto font-normal text-black text-sm md:text-base">Monthly Count</p>
+				
+				<div class="flex flex-row w-full h-fit items-center justify-evenly">
+					<img src="{{asset('images/dashboard/design_patient.png')}}" alt="" title="Healthcare Professional" class="w-24 h-24">
+					<p class="font-roboto font-bold text-black text-2xl lg:text-4xl">1</p>
+				</div>    
+              	    
+            </div>
+
+			<div class="flex flex-col items-center p-2 rounded-xl drop-shadow-lg shadow-lg border border-gray-300 h-[150px] w-[200px] space-y-2 bg-blue-200 ">
+            	<p class="flex font-roboto font-normal text-black text-sm md:text-base">Yearly Count</p>
+				
+				<div class="flex flex-row w-full h-fit items-center justify-evenly">
+					<img src="{{asset('images/dashboard/design_patient.png')}}" alt="" title="Healthcare Professional" class="w-24 h-24">
+					<p class="font-roboto font-bold text-black text-2xl lg:text-4xl">1</p>
+				</div>    
+              	    
+            </div>
+		</div>
+
+
 		
-		<div class="max-w-3xl mx-auto">
-			<h1 class="text-2xl font-semibold mb-4 text-white">Your Vital Readings</h1>
-			<table class="min-w-full divide-y divide-gray-200">
-				<thead class="bg-gray-50">
-				  <tr>
-					<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-					  Date
-					</th>
-					<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-					  Blood Pressure (mmHg)
-					</th>
-					<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-					  Blood Saturation (%)
-					</th>
-					<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-					  Temperature (°C)
-					</th>
-					<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-					  Pulse Rate (bpm)
-					</th>
-				  </tr>
-				</thead>
-				<tbody class="bg-white divide-y divide-gray-200">
-				  <!-- Replace the content below with actual data -->
-				  <tr>
-					<td class="px-6 py-4 whitespace-nowrap">2023-07-31</td>
-					<td class="px-6 py-4 whitespace-nowrap">120/80</td>
-					<td class="px-6 py-4 whitespace-nowrap">98%</td>
-					<td class="px-6 py-4 whitespace-nowrap">37.5</td>
-					<td class="px-6 py-4 whitespace-nowrap">70</td>
-				  </tr>
-				  <!-- Add more rows for additional readings -->
-				</tbody>
-			  </table>
-		  </div>
+		<div class="flex justify-center mt-10">
 
-
+			<div class="items-center justify-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 w-fit ">
+				<p class="text-2xl font-semibold mb-4 text-white text-center">Your Vital Readings</p>
+				<div id="test-table"></div>
+			</div>
+		</div>
 		
 	</div>
 
+	<script src="{{asset('/js/gridjs.umd.js')}}"></script>
+	<script src="{{asset('/js/test.js')}}"></script>
   
 </body>
 </html>

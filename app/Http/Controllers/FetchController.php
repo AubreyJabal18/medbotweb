@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Reading;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class FetchController extends Controller
 {
@@ -654,4 +655,27 @@ class FetchController extends Controller
         ]);
     }
     
+    public function getUserReadings(Request $request){
+        $formatted_readings = [];
+        $readings = Reading::where('user_id', $request->id)->get();
+        foreach($readings as $reading){
+            $temp_array = [
+                Carbon::parse($reading->created_at)->format('M d, Y'), 
+                $reading->blood_pressure_systolic.'/'.$reading->blood_pressure_diastolic, 
+                $reading->blood_saturation.'%',
+                $reading->temperature.'C',
+                $reading->pulse_rate.' bpm'];
+            array_push($formatted_readings, $temp_array);
+        }
+        return response()->json([
+            'readings' => $formatted_readings
+        ]);
+    }
+
+    public function getAuthenticatedUser(){
+        return response()->json([
+            'user' => Auth::user()->id
+        ]);
+    }
+
 } 
