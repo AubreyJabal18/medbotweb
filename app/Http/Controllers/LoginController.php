@@ -73,11 +73,11 @@ class LoginController extends Controller
         if (Auth::logout()){
             $request->session()->invalidate();
             $request->session()->regenerateToken();
-            flash()->addSuccess('Logout successfully');
             return redirect('/');
             }
         else {    
-        flash()->addError('Please Login First');
+            flash()->addSuccess('Logout successfully');
+            
         return redirect('/');
         }
         
@@ -92,6 +92,8 @@ class LoginController extends Controller
             $request->session()->regenerate();
             flash()->addSuccess('Login successfully');
             return redirect()->intended('dashboard');
+        }
+        else {
         }
     }
 

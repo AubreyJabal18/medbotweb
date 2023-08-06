@@ -6,6 +6,9 @@ use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\FetchController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DeleteController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -58,8 +61,22 @@ Route::get('/login/admin', [RedirectController::class, 'redirectToAdminLogin']);
 
 Route::post('/login/admin/process', [LoginController::class, 'loginAdmin']);
 
-Route::get('get/patient_list', [FetchController::class, 'getUsersList']);
+// Route::get('get/patient_list', [FetchController::class, 'getUsersList']);
 
-Route::get('/get/count_reading', [FetchController::class, 'getCount']);
+// Route::get('/get/count_reading', [FetchController::class, 'getCount']);
 
 Route::get('/get/users_count', [FetchController::class, 'getUsersCount']);
+
+Route::get('/get/sex_count', [FetchController::class, 'getPatientCountBySex']);
+
+Route::get('/get/location_count', [FetchController::class, 'getPatientCountByLocation']);
+
+Route::get('/patients', [RedirectController::class, 'redirectToPatientsInProfessionalDashboard']);
+
+Route::get('/get/patients', [FetchController::class, 'getPatientListInProfessionalDashboard']);
+
+Route::get('/patients/dashboard', [RedirectController::class, 'redirectToPatientPage']);
+
+Route::get('get/users_list', [FetchController::class, 'getUserListInAdminDashboard']);
+
+Route::post('/delete/user', [DeleteController::class, 'deleteUser']);

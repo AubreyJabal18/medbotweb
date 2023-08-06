@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Healthcare Professional Dashboard</title>
     <script src="{{asset('/js/moment.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('/css/mermaid.min.css')}}">
     @vite('resources/css/app.css')
 
 </head>
@@ -37,7 +38,7 @@
                 <p class="font-roboto font-semibold text-[#A03B3B] text-lg md:text-2xl">Dashboard</p>
                 <form action="/search/process" role="search" method="GET" enctype="multipart/form-data" id='form' name='form' class="flex w-full md:w-2/5 lg:w-2/5">
                     <div class="flex flex-row items-center relative w-[100%] md:w-[100%]">
-                        <input type="search" id="search" name="search" class="w-full bg-[#DDD9D9]/50 border-none rounded-2xl outline-none px-8 lg:px-10 lg:mr-3 py-1 md:py-2 lg:py-2 placeholder:text-[#B87070] " placeholder="Search for user">
+                        <input type="search" id="search" name="search" class="w-full bg-[#DDD9D9]/50 border-none rounded-2xl outline-none px-8 lg:px-10 lg:mr-3 py-1 md:py-2 lg:py-2 placeholder:text-[#B87070] " placeholder="Search for patient">
                         <button class="absolute right-3 md:right-4 lg:right-8" id="search_button" name="search_button" type="button">
                             <img src="{{asset('images/dashboard/search.png')}}" alt="" >
                         </button>
@@ -107,7 +108,7 @@
                         <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="month" name="value">
                         <input class=" flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="week" name="value">
                     </div>
-                    <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-[50%]  bottom-0 right-0 ">
+                    <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-[55%] lg:w-[90%] bottom-0 right-0 ">
                     <canvas id="patientUses" class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></canvas>
                 </div>
                 <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-full">
@@ -124,7 +125,7 @@
                         <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="registered_month" name="registered_value">
                         <input class="flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="registered_week" name="registered_value">
                     </div>
-                    <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-[50%]  bottom-0 left-0">         
+                    <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-[50%] lg:w-[90%] bottom-0 left-0">         
                     <canvas id="patientRegisters" class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></canvas>
                 </div>
             </div>
@@ -135,9 +136,9 @@
         <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 w-full px-2 md:px-6">
             <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-full ">
                 <p class="flex font-roboto font-normal self-center leading-normal text-lg md:text-xl lg:text-2xl  text-[#151515] px-2 justify-center bg-blue-200 w-full">Patients Readings</p>
-                <div class="flex flex-col md:flex-row font-roboto self-center md:space-x-10 pt-2 ">
+                <div class="flex flex-col lg:flex-row font-roboto self-center md:space-x-10 pt-2 ">
                                 
-                    <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
+                    <div class="flex flex-col lg:flex-row -center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
                         <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="municipality" id="reading_byMunicipality"> 
                             <option value="All">All</option>
                             <option value="Boac">Boac</option>
@@ -176,7 +177,7 @@
             </div>
             <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-full">
                 <p class="flex font-roboto font-normal self-center leading-normal text-lg md:text-xl lg:text-2xl  text-[#151515]  px-2 justify-center bg-blue-200 w-full">Pervasiveness</p>
-                <div class="flex flex-col md:flex-row font-roboto self-center md:space-x-10 pt-2 ">          
+                <div class="flex flex-col lg:flex-row font-roboto self-center md:space-x-10 pt-2 ">          
                     <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
                         <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="muni">
                             <option value="All">All</option>
@@ -217,11 +218,11 @@
         <div class="flex flex-col md:flex-row  items-center py-2 pt-12 px-5">
             <p class="flex font-bold text-lg md:text-xl lg:text-2xl self-center md:self-start  pb-2 pl-6 font-roboto">Patient's Demographic Profile</p>
         </div>           
-        <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 w-full px-2 md:px-6">
-            <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-3/5 space-y-2  ">
+        <div class="flex flex-col lg:flex-row items-center justify-center space-y-4 md:space-y-4 md:space-x-6 w-full px-2 md:px-6">
+            <div class=" flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 w-[90%]  md:w-[80%] lg:w-[70%]  space-y-2  ">
                 <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-2xl  text-[#151515]  px-4 bg-violet-100 w-full justify-center">Patient's Count by Age</p>         
                 <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
-                    <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="muni"> 
+                    <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="select-patientByMunicipalityAge" > 
                         <option value="All">All</option>
                         <option value="Boac">Boac</option>
                         <option value="Buenavista">Buenavista</option>
@@ -231,14 +232,14 @@
                         <option value="Torrijos">Torrijos</option>
                     </select>
                 </div>
-                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 left-0 ">
-                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 right-0">         
-                <div class="mt-4 flex drop-shadow-lg shadow-lg h-80 w-full rounded-lg bg-white "></div>
+                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-[50%] bottom-0 left-0 ">
+                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-[50%] bottom-0 right-0">         
+                <canvas id="patientsByAge" class="mt-4 flex drop-shadow-lg shadow-lg h-80 w-full rounded-lg bg-white "></canvas>
             </div>
-            <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-3/5 space-y-2 ">
+            <div class="w-[90%] flex flex-col items-center  p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300  md:w-[80%] lg:w-[70%] space-y-2 ">
                 <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-2xl  text-[#151515]  px-4 bg-violet-100 w-full justify-center">Patient's Count by Sex</p>
                 <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
-                    <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="muni"> 
+                    <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline"  id="select-patientByMunicipalitySex"> 
                         <option value="All">All</option>
                         <option value="Boac">Boac</option>
                         <option value="Buenavista">Buenavista</option>
@@ -248,14 +249,14 @@
                         <option value="Torrijos">Torrijos</option>
                     </select>
                 </div>
-                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 left-0 ">
-                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 right-0">         
-                <div class="mt-4 flex drop-shadow-lg shadow-lg h-80 w-full rounded-lg bg-white"></div>
+                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-[50%] bottom-0 left-0 ">
+                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-[50%] bottom-0 right-0">         
+                <canvas id="patientsBySex" class="mt-4 flex drop-shadow-lg shadow-lg h-80 w-full rounded-lg bg-white"></canvas>
             </div>
-            <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-3/5 space-y-2 ">
+            <div class="w-[90%] flex flex-col items-center  p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300  md:w-[80%] lg:w-[70%] space-y-2 ">
                 <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-2xl  text-[#151515] px-4 bg-violet-100 w-full justify-center">Patient's Count by Location</p>
                 <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2 ">
-                    <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="muni"> 
+                    <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="select-patientByMunicipalityLocation" > 
                         <option value="All">All</option>
                         <option value="Boac">Boac</option>
                         <option value="Buenavista">Buenavista</option>
@@ -265,14 +266,14 @@
                         <option value="Torrijos">Torrijos</option>
                     </select>
                 </div>
-                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 left-0 ">
-                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 right-0">
-                <div class="mt-4 flex drop-shadow-lg shadow-lg h-80 w-full rounded-lg bg-white"></div>
+                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-50 lg:w-[60%] bottom-0 left-0 ">
+                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-50 bottom-0 right-0">
+                <canvas id="patientsByLocation"class="mt-4 flex drop-shadow-lg shadow-lg h-80 w-full rounded-lg bg-white"></canvas>
             </div>         
         </div>
     </div>
      
-    <script src="{{asset('/js/chart.js')}}"></script>
+    <script src="{{asset('/js/chart.umd.min.js')}}"></script>
     <script src="{{asset('/js/dashboard_professional.js')}}"></script>
 
 </body>

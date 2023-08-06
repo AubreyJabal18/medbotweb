@@ -1,9 +1,9 @@
-const select_usersByMunicipalityField = document.getElementById('select-usersByMunicipality');
 const select_usedField = document.getElementById('select_used');
 const year_usedField = document.getElementById('year_used')
 const month_usedField = document.getElementById('month_used');
 const week_usedField = document.getElementById('week_used');
 
+const select_usersByMunicipalityField = document.getElementById('select-usersByMunicipality');
 select_usersByMunicipalityField.addEventListener('change', function(){
     renderUsersCountChart(select_usersByMunicipalityField.value);
     console.log(select_usersByMunicipalityField.value);
@@ -54,7 +54,7 @@ function renderUsersCountChart(municipality){
                     data: patient_counts,
                 },{
                     label: 'Professional',
-                    backgroundColor: '#FFFF00',
+                    backgroundColor: '#19FBC5',
                     data: professional_counts,
                 }]
             };
@@ -92,46 +92,101 @@ function renderUsersCountChart(municipality){
 renderUsersCountChart('All');
 
 
-select_usedField.addEventListener('change', function(){
-    if(select_usedField.value == 'yearly'){
-        year_usedField.classList.remove('hidden')
-    }
-        else{
-            year_usedField.classList.add('hidden')   
-        }
+// select_usedField.addEventListener('change', function(){
+//     if(select_usedField.value == 'yearly'){
+//         year_usedField.classList.remove('hidden')
+//     }
+//         else{
+//             year_usedField.classList.add('hidden')   
+//         }
     
-    if(select_usedField.value == 'monthly'){
-        month_usedField.classList.remove('hidden')
-   }
-        else{
-            month_usedField.classList.add('hidden')
-        }
-    if(select_usedField.value == 'weekly'){
-        week_usedField.classList.remove('hidden')
+//     if(select_usedField.value == 'monthly'){
+//         month_usedField.classList.remove('hidden')
+//    }
+//         else{
+//             month_usedField.classList.add('hidden')
+//         }
+//     if(select_usedField.value == 'weekly'){
+//         week_usedField.classList.remove('hidden')
+//     }
+//         else{
+//             week_usedField.classList.add('hidden')
+//         }
+
+// });
+
+//FOR USERS LIST TABLE//
+
+const users_tableField = document.getElementById('users-table');
+
+async function getUserListInAdminDashboard(){
+    const response = await fetch('/get/users_list')
+    const data = await response.json();
+    return data['users-list'];
     }
-        else{
-            week_usedField.classList.add('hidden')
-        }
+
+getUserListInAdminDashboard().then((data) => {
+        console.log(data);
+        new gridjs.Grid({
+            columns: ['Id', 'User', 'Type', 'Sex', 'Birthdate', 'Address', 'Email', 
+                {
+                    name: 'Action',
+                    formatter: (cell, row) => {
+                        return gridjs.h('button',{
+                            className: 'py-1 mb-4 px-2 border rounded-full rounded-md text-white bg-color',
+                            onClick: () => {
+                                openNoticeDeletePatientModal();
+                                activeId = row.cells[0].data;
+                                console.log(activeId);
+                            },
+                        }, 'Remove'   
+                    );
+                }
+                }    
+            ],
+            search: true,
+            autoWidth: true,
+            data: data,
+            pagination: {
+                limit: 5,
+                summary: false
+            },
+            sort: true, 
+    
+        }).render(users_tableField);
+    }
+)
+
+const confirmDeleteOverlay = document.getElementById('confirm-delete-overlay');
+const noticeDeletePatientModal = document.getElementById('notice-delete-patient');
+const cancelButton = document.getElementById('cancel-button');
+const deleteButton = document.getElementById('delete-button');
+const deleteForm = document.getElementById('delete-form');
+const deleteIdField = document.getElementById('delete-id');
+
+function openNoticeDeletePatientModal(){
+    if (confirmDeleteOverlay.classList.contains('hidden')){
+        confirmDeleteOverlay.classList.remove('hidden');
+        noticeDeletePatientModal.classList.remove('hidden');
+    }
+}
+
+function closeNoticeDeletePatientModal(){
+    if (!confirmDeleteOverlay.classList.contains('hidden')){
+        confirmDeleteOverlay.classList.add('hidden');
+        noticeDeletePatientModal.classList.add('hidden');
+    }
+}
+
+confirmDeleteOverlay.addEventListener('click', closeNoticeDeletePatientModal);
+cancelButton.addEventListener('click', closeNoticeDeletePatientModal);
+window.addEventListener('keydown', function(event){
+    if(event.key == 'Escape'){
+        closeNoticeDeletePatientModal();
+    }
+});
+
+deleteButton.addEventListener('click', function(){
 
 });
 
-
-const select_userField = document.getElementById('select_user');
-const for_userField = document.getElementById('for_user');
-
-const usersListField = document.getElementById('users-list');
-
-
-select_userField.addEventListener('change', function(){
-    if(select_userField.value == 'patient'){
-        for_userField.placeholder = 'Search for Patient';
-        
-    }
-    else{
-        for_userField.placeholder = 'Search for Professional'
-    }
-})
-
- 
-
-   
