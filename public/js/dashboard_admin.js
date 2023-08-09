@@ -1,3 +1,12 @@
+const confirmDeleteOverlay = document.getElementById('confirm-delete-overlay');
+const noticeDeletePatientModal = document.getElementById('notice-delete-patient');
+const cancelButton = document.getElementById('cancel-button');
+const deleteButton = document.getElementById('delete-button');
+const deleteForm = document.getElementById('delete-form');
+const deleteIdField = document.getElementById('delete-id');
+const deleteField = document.querySelectorAll('.delete');
+var activeCardId = -1;
+
 //FOR USERS LIST TABLE//
 
 const users_tableField = document.getElementById('users-table');
@@ -19,8 +28,7 @@ getUserListInAdminDashboard().then((data) => {
                             className: 'py-1 mb-4 px-2 border rounded-full rounded-md text-white bg-color',
                             onClick: () => {
                                 openNoticeDeletePatientModal();
-                                activeId = row.cells[0].data;
-                                console.log(activeId);
+                                activeCardId = row.cells[0].data;
                             },
                         }, 'Remove'   
                     );
@@ -40,32 +48,13 @@ getUserListInAdminDashboard().then((data) => {
     }
 )
 
-
 //FOR DELETING USER IN USERS LIST//
-
-const confirmDeleteOverlay = document.getElementById('confirm-delete-overlay');
-const noticeDeletePatientModal = document.getElementById('notice-delete-patient');
-const cancelButton = document.getElementById('cancel-button');
-const deleteButton = document.getElementById('delete-button');
-const deleteForm = document.getElementById('delete-form');
-const deleteIdField = document.getElementById('delete-id');
-const deleteField = document.querySelectorAll('.delete');
-var activeCardId = -1;
-
-
 
 function closeNoticeDeletePatientModal(){
     if (!confirmDeleteOverlay.classList.contains('hidden')){
         confirmDeleteOverlay.classList.add('hidden');
         noticeDeletePatientModal.classList.add('hidden');
     }
-}
-
-for(let i = 0; i < deleteField.length; i++){
-    deleteField[i].addEventListener('click', function(){
-        closeNoticeDeletePatientModal();
-        activeCardId = parseInt(this.getAttribute('data-id'));
-    });
 }
 
 function openNoticeDeletePatientModal(){
@@ -86,8 +75,7 @@ window.addEventListener('keydown', function(event){
 deleteButton.addEventListener('click', function(){
     deleteIdField.value = activeCardId;      
     deleteForm.submit();
-}
-);
+});
 
 //FOR USERS BY MUNICIPALITY GRAPH//
 
@@ -278,6 +266,7 @@ function renderUsersCountByUsedChart(by, value){
         };
         
         const usersCountByUsedConfig = { 
+            type: 'bar',    
             data: usersCountByUsedData,
             options: {
                 scales: {

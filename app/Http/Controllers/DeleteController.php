@@ -9,7 +9,6 @@ use App\Models\User;
 class DeleteController extends Controller
 {
     public function deleteUser(Request $request){
-        dd($request->all());
         $user = User::find($request->id);
        
         $user->delete();
