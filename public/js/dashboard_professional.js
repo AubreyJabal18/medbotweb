@@ -449,6 +449,26 @@ search_buttonField.addEventListener('change', function(){
     form.submit();
 })
    
+// PATIENTS COUNT BY AGE//
+
+const select_patientByMunicipalityAge = document.getElementById('select-patientByMunicipalityAge');
+
+select_patientByMunicipalityAge.addEventListener('change', function(){
+    console.log(select_patientByMunicipalityAge.value);
+})
+
+var patientCountByAge = null;
+
+async function getPatientCountByAge(municipality){
+    const response = await fetch ('get/age_count?municipality=' + municipality)
+    const data = await response.json();
+    return data = ['age_count'];
+
+// function renderPatientCountByAgeChart(municipality){
+//     getPatientCountByAge(municipality).then((data) =>)
+// }    
+
+}
 
 // PATIENTS COUNT BY SEX//
 
