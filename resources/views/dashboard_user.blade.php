@@ -15,10 +15,6 @@
         </script>
     @endif
 
-    @php
-        use Carbon\Carbon;
-    @endphp
-
     <div class="flex flex-col w-screen pb-10">
 
         <div class="relative flex-col bg-gradient-to-r from-[#0B60D1] to-[#305ab9] bg-cover bg-no-repeat pb-5 md:pb-6 lg:pb-0">
@@ -63,7 +59,7 @@
             <p class="font-roboto font-bold text-black text-lg lg:text-xl">LATEST READING</p>
         
             <div class="flex flex-row py-2 px-10">
-                <p class="flex flex-row text-base lg:text-xl">Taken last {{count($readings) > 0 ? Carbon::parse($readings[0]->created_at)->format('M d, Y g:i a') : '(No readings yet)'}}</p>
+                <p class="flex flex-row text-base lg:text-xl">Taken last {{count($readings) > 0 ? $readings[0]->created_at : '(No readings yet)'}}</p>
             </div>
         </div>
 
@@ -160,7 +156,7 @@
             <p class="font-roboto font-bold text-black text-lg lg:text-xl">PREVIOUS READING</p>
         
             <div class="flex flex-row py-2 px-10">
-                <p class="flex flex-row text-base lg:text-xl">Taken last {{count($readings) > 1 ? Carbon::parse ($readings[1]->created_at)->format('M d, Y g:i a') : '(No readings yet)'}}</p>
+                <p class="flex flex-row text-base lg:text-xl">Taken last {{count($readings) > 1 ? $readings[1]->created_at : '(No readings yet)'}}</p>
             </div>
         </div>
 
