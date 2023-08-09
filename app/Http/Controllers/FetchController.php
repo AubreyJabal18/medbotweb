@@ -661,7 +661,7 @@ class FetchController extends Controller
         foreach($readings as $reading){
             $temp_array = [
                 Carbon::parse($reading->created_at)->format('M d, Y'), 
-                $reading->blood_pressure_systolic.'/'.$reading->blood_pressure_diastolic,
+                $reading->blood_pressure_systolic.'/'.$reading->blood_pressure_diastolic, 
                 $reading->blood_saturation.'%',
                 $reading->temperature.'C',
                 $reading->pulse_rate.' bpm'];

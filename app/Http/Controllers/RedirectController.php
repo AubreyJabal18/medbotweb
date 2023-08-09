@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Reading;
 use Illuminate\Http\Request;
@@ -37,7 +36,7 @@ class RedirectController extends Controller
         if(Auth::check()){
             if(Auth::user()->type == 'patient'){
                 $user = Auth::user();
-                $readings = Reading::where('user_id', $user->id)->latest()->get();
+                $readings = Reading::where('user_id', 1)->latest()->get();
                 return view('dashboard_user',[
                     'user' => $user,
                     'readings' => $readings
@@ -105,21 +104,9 @@ class RedirectController extends Controller
         if (Auth::check() && Auth::user()->type == 'patient'){
             $user = Auth::user();
             $readings = Reading::where('user_id', Auth::user()->id)->latest()->get();
-            $now = Carbon::now();
-            $week_start = $now->startOfWeek()->toDateString();
-            $week_end = $now->endOfWeek()->toDateString();
-            $weeklyCount = Reading::where('user_id', Auth::user()->id)->whereBetween('created_at', [$week_start, $week_end])->get()->count();
-
-            $monthlyCount = Reading::where('user_id', Auth::user()->id)->whereMonth('created_at', $now->month)->whereYear('created_at', $now->year)->get()->count();
-
-            $yearlyCount = Reading::where('user_id', Auth::user()->id)->whereYear('created_at', $now->year)->get()->count();
-            
             return view('user_readings', [
                 'user'=> $user,
-                'readings' => $readings,
-                'weeklyCount' => $weeklyCount,
-                'monthlyCount' => $monthlyCount,
-                'yearlyCount' => $yearlyCount
+                'readings' => $readings
             ]);
         }
 
