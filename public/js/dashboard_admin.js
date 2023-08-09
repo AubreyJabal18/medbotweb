@@ -277,7 +277,7 @@ function renderUsersCountByUsedChart(by, value){
             }]
         };
         
-        const patientUsesConfig = { 
+        const usersCountByUsedConfig = { 
             data: usersCountByUsedData,
             options: {
                 scales: {
@@ -308,24 +308,24 @@ weekField.addEventListener('change', function(){
     monthField.value = '';
     yearField.value = '';
     console.log(weekField.value);
-    usersCountByUsedChart('weekly', weekField.value);
+    renderUsersCountByUsedChart('weekly', weekField.value);
 })
 
 monthField.addEventListener('change', function(){
     weekField.value = '';
     yearField.value = '';
     console.log(monthField.value);
-    usersCountByUsedChart('monthly', monthField.value);
+    renderUsersCountByUsedChart('monthly', monthField.value);
 })
 
 yearField.addEventListener('change', function(){
     weekField.value = '';
     monthField.value = '';
     console.log(yearield.value);
-    usersCountByUsedChart('yearly', yearField.value);
+    renderUsersCountByUsedChart('yearly', yearField.value);
 })
 
-usersCountByUsedChart('weekly', moment().year() + '-W' + moment().week())
+renderUsersCountByUsedChart('weekly', moment().year() + '-W' + moment().week())
 
 
 

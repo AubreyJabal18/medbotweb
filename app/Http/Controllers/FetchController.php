@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Reading;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Builder;
 
 class FetchController extends Controller
 {
@@ -815,11 +816,14 @@ class FetchController extends Controller
     //FOR COUNT OF USERS USED MEDBOT//
 
     public function getUsersCountByUsed(Request $request){
+        $users_count = [];
         if($request->by == 'weekly'){
             $year = substr($request->value, 0, 4);
             $week = substr($request->value, 6, 2);
             $dates = $this->getWeek($week, $year);
-            $users = Reading::with('user')
+            $patients = Reading::whereHas('user', function(Builder $query){
+                    $query->where('type','patient');
+                })
                 ->whereBetween('created_at', [$dates['start'], $dates['end']])
                 ->get()
                 ->countBy(function ($item) {
@@ -827,19 +831,33 @@ class FetchController extends Controller
                 })
                 ->toArray();
             $period = CarbonPeriod::create($dates['start'], $dates['end']);
-            $users_count = [];
+            $patients_count = [];
             foreach ($period as $date) {
                 $key = $date->format('Y-m-d');
-                $users_count[$key] = array_key_exists($key, $users) ? $users[$key] : 0;             
+                $patients_count[$key] = array_key_exists($key, $patients) ? $patients[$key] : 0;             
             }
-            return response()->json([
-                'users_count' => $users_count
-            ]);
+            $professionals = Reading::whereHas('user', function(Builder $query){
+                    $query->where('type','professional');
+                })
+                ->whereBetween('created_at', [$dates['start'], $dates['end']])
+                ->get()
+                ->countBy(function ($item) {
+                    return Carbon::parse($item->created_at)->format('Y-m-d');
+                })
+                ->toArray();
+            $period = CarbonPeriod::create($dates['start'], $dates['end']);
+            $professionals_count = [];
+            foreach ($period as $date) {
+                $key = $date->format('Y-m-d');
+                $professionals_count[$key] = array_key_exists($key, $professionals) ? $professionals[$key] : 0;             
+            }
         }
         else if($request->by == 'monthly'){
             $year = substr($request->value, 0, 4);
             $month = substr($request->value, 5, 2);
-            $users = Reading::with('user')
+            $patients = Reading::whereHas('user', function(Builder $query){
+                    $query->where('type','patient');
+                })
                 ->whereMonth('created_at', $month)
                 ->whereYear('created_at', $year)
                 ->get()
@@ -849,18 +867,34 @@ class FetchController extends Controller
                 ->toArray();
             $dates = $this->getMonth($month, $year);
             $period = CarbonPeriod::create($dates['start'], $dates['end']);
-            $users_count = [];
+            $patients_count = [];
             foreach ($period as $date) {
                 $key = $date->format('Y-m-d');
-                $users_count[$key] = array_key_exists($key, $users) ? $users[$key] : 0;             
+                $patients_count[$key] = array_key_exists($key, $patients) ? $patients[$key] : 0;             
             }
-            return response()->json([
-                'users_count' => $users_count
-            ]);
+            $professionals = Reading::whereHas('user', function(Builder $query){
+                    $query->where('type','professional');
+                })
+                ->whereMonth('created_at', $month)
+                ->whereYear('created_at', $year)
+                ->get()
+                ->countBy(function ($item) {
+                    return Carbon::parse($item->created_at)->format('Y-m-d');
+                })
+                ->toArray();
+            $dates = $this->getMonth($month, $year);
+            $period = CarbonPeriod::create($dates['start'], $dates['end']);
+            $professionals_count = [];
+            foreach ($period as $date) {
+                $key = $date->format('Y-m-d');
+                $professionals_count[$key] = array_key_exists($key, $professionals) ? $professionals[$key] : 0;             
+            }
         }
         else {
             $year = substr($request->value, 0, 4);
-            $users = Reading::with('user')
+            $patients = Reading::whereHas('user', function(Builder $query){
+                    $query->where('type','patient');
+                })
                 ->whereYear('created_at', $year)
                 ->get()
                 ->countBy(function ($item) {
@@ -868,15 +902,30 @@ class FetchController extends Controller
                 })
                 ->toArray();
             $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-            $users_count = [];
+            $patients_count = [];
             foreach ($months as $month) {
-                $users_count[$month] = array_key_exists($month, $users) ? $users[$month] : 0;          
+                $patients_count[$month] = array_key_exists($month, $patients) ? $patients[$month] : 0;          
             }
-            dd($users_count);
-            return response()->json([
-                'users_count' => $users_count
-            ]);
+            $professionals = Reading::whereHas('user', function(Builder $query){
+                    $query->where('type','professional');
+                })
+                ->whereYear('created_at', $year)
+                ->get()
+                ->countBy(function ($item) {
+                    return Carbon::parse($item->created_at)->format('M');
+                })
+                ->toArray();
+            $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            $professionals_count = [];
+            foreach ($months as $month) {
+                $professionals_count[$month] = array_key_exists($month, $professionals) ? $professionals[$month] : 0;          
+            }
         }
+        $users_count['patient'] = $patients_count;
+        $users_count['professional'] = $professionals_count;
+        return response()->json([
+            'users_count' => $users_count
+        ]);
     }
 }
     // public function getProfessionalListInAdminDashboard(Request $request){
