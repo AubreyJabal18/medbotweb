@@ -181,32 +181,29 @@
                             
                     <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
                     
-                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="select_used" name="by_used">
+                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="select" name="by">
                             <option value="weekly" >Weekly</option>
                             <option value="monthly" >Monthly</option>
                             <option value="yearly" >Yearly</option> 
                         </select>  
                     </div> 
-                        <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="year_used" name="value_used">
-                        <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="month_used" name="value_used">
-                        <input class=" flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="week_used" name="value_used">
+                        <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="year" name="value">
+                        <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="month" name="value">
+                        <input class=" flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="week" name="value">
                 </div>
                 <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 left-0 lg:w-[60% ] ">
                 <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 right-0">
-                <canvas id="countReadings" class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></canvas>
+                <canvas id="countUsed" class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></canvas>
             </div>
         </div>
     </div>
 
-    <div id="confirm-delete-overlay" class=" hidden fixed w-full h-100 inset-0 z-10 overflow-hidden flex justify-center items-center brightness-50 backdrop-blur-sm">
-    </div>
-
-    <div id="notice-delete-patient" class="hidden flex flex-col border-2 w-[80%] md:w-[50%] lg:w-[30%] h-[25%] md:h-[25%] rounded-xl items-center  bg-white drop-shadow-lg shadow-lg z-50">
+    <div id="notice-delete-patient" class="hidden fixed flex-col border-2 w-[80%] md:w-[50%] lg:w-[30%] h-[25%] md:h-[25%] rounded-xl items-center  bg-white drop-shadow-lg shadow-lg z-50 top-[40%] left-[10%] md:left-[25%] lg:left-[35%]">
         <div class="flex flex-col md:flex-row space-x-6 space-y-2 md:space-y-0 items-center  md:py-6 lg:py-7 md:px-6">
             <img src="{{asset('images/dashboard/remove_icon.png')}}" alt="" class="flex w-16 md:w-16 md:h-16 lg:w-16 self-center  ">
             <p class="flex font-roboto text-black/80 font-light px-2 md:px-1 text-sm md:text-base lg:text-lg pb-4 md:pb-6">Do you really want to remove this patient?</p>
         </div>
-        <div class="flex flex-row self-end space-x-2  px-2 md:px-4">
+        <div class="flex flex-row justify-end space-x-2  px-2 md:px-4">
             <button id="cancel-button" class="flex flex items-center justify-center font-roboto font-normal text-neutral-500 md:hover:rounded-lg hover:text-white hover:bg-neutral-400 py-1 px-4 text-sm lg:text-base">Cancel</button>
             <button id="delete-button" class="flex items-center justify-center font-roboto font-normal text-white rounded-lg bg-red-500 md:hover:bg-red-600 py-1 px-3 text-sm  lg:text-base">Delete</button>
         </div>    
@@ -217,6 +214,8 @@
         </form>
     </div>
 
+    <div id="confirm-delete-overlay" class=" hidden fixed w-full h-100 inset-0 z-10 overflow-hidden flex justify-center items-center brightness-50 backdrop-blur-sm">
+    </div>
 
     <script src="{{asset('/js/chart.umd.min.js')}}"></script>
     <script src="{{asset('/js/gridjs.umd.js')}}"></script>

@@ -812,6 +812,73 @@ class FetchController extends Controller
         ]);
     }
 
+    //FOR COUNT OF USERS USED MEDBOT//
+
+    public function getUsersCountByUsed(Request $request){
+        if($request->by == 'weekly'){
+            $year = substr($request->value, 0, 4);
+            $week = substr($request->value, 6, 2);
+            $dates = $this->getWeek($week, $year);
+            $users = Reading::with('user')
+                ->whereBetween('created_at', [$dates['start'], $dates['end']])
+                ->get()
+                ->countBy(function ($item) {
+                    return Carbon::parse($item->created_at)->format('Y-m-d');
+                })
+                ->toArray();
+            $period = CarbonPeriod::create($dates['start'], $dates['end']);
+            $users_count = [];
+            foreach ($period as $date) {
+                $key = $date->format('Y-m-d');
+                $users_count[$key] = array_key_exists($key, $users) ? $users[$key] : 0;             
+            }
+            return response()->json([
+                'users_count' => $users_count
+            ]);
+        }
+        else if($request->by == 'monthly'){
+            $year = substr($request->value, 0, 4);
+            $month = substr($request->value, 5, 2);
+            $users = Reading::with('user')
+                ->whereMonth('created_at', $month)
+                ->whereYear('created_at', $year)
+                ->get()
+                ->countBy(function ($item) {
+                    return Carbon::parse($item->created_at)->format('Y-m-d');
+                })
+                ->toArray();
+            $dates = $this->getMonth($month, $year);
+            $period = CarbonPeriod::create($dates['start'], $dates['end']);
+            $users_count = [];
+            foreach ($period as $date) {
+                $key = $date->format('Y-m-d');
+                $users_count[$key] = array_key_exists($key, $users) ? $users[$key] : 0;             
+            }
+            return response()->json([
+                'users_count' => $users_count
+            ]);
+        }
+        else {
+            $year = substr($request->value, 0, 4);
+            $users = Reading::with('user')
+                ->whereYear('created_at', $year)
+                ->get()
+                ->countBy(function ($item) {
+                    return Carbon::parse($item->created_at)->format('M');
+                })
+                ->toArray();
+            $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            $users_count = [];
+            foreach ($months as $month) {
+                $users_count[$month] = array_key_exists($month, $users) ? $users[$month] : 0;          
+            }
+            dd($users_count);
+            return response()->json([
+                'users_count' => $users_count
+            ]);
+        }
+    }
+}
     // public function getProfessionalListInAdminDashboard(Request $request){
     //     $formatted_professionals =[];
     //     $professionals = User::where('type', 'professional')->get();
@@ -830,4 +897,73 @@ class FetchController extends Controller
     //     ]);
     // }
     
-} 
+
+    //FOR USERS COUNT BY USED ENHANCED MED-BOT//
+
+   
+    // public function getUsersCountByUsed(Request $request){
+    //     if($request->by == 'weekly'){
+    //         $year = substr($request->value, 0, 4);
+    //         $week = substr($request->value, 6, 2);
+    //         $dates = $this->getWeek($week, $year);
+    //         $users = Reading::with('user')
+    //             ->whereBetween('created_at', [$dates['start'], $dates['end']])
+    //             ->get()
+    //             ->countBy(function ($item) {
+    //                 return Carbon::parse($item->created_at)->format('Y-m-d');
+    //             })
+    //             ->toArray();
+    //         $period = CarbonPeriod::create($dates['start'], $dates['end']);
+    //         $users_count = [];
+    //         foreach ($period as $date) {
+    //             $key = $date->format('Y-m-d');
+    //             $users_count[$key] = array_key_exists($key, $users) ? $users[$key] : 0;
+    //         }
+    //         dd($users_count);
+    //         return response()->json([
+    //             'users_count' => $users_count
+    //         ]);
+    //     }
+    //     else if($request->by == 'monthly'){
+    //         $year = substr($request->value, 0, 4);
+    //         $month = substr($request->value, 5, 2);
+    //         $users = Reading::with('user')
+    //             ->whereMonth('created_at', $month)
+    //             ->whereYear('created_at', $year)
+    //             ->get()
+    //             ->countBy(function ($item) {
+    //                 return Carbon::parse($item->created_at)->format('Y-m-d');
+    //             })
+    //             ->toArray();
+    //         $dates = $this->getMonth($month, $year);
+    //         $period = CarbonPeriod::create($dates['start'], $dates['end']);
+    //         $used_count = [];
+    //         foreach ($period as $date) {
+    //             $key = $date->format('Y-m-d');
+    //             $users_count[$key] = array_key_exists($key, $users) ? $users[$key] : 0;
+    //         }
+    //         return response()->json([
+    //             'users_count' => $users_count
+    //         ]);
+    //     }
+    //     else {
+    //         $year = substr($request->value, 0, 4);
+    //         $users = Reading::with('user')
+    //             ->whereYear('created_at', $year)
+    //             ->get()
+    //             ->countBy(function ($item) {
+    //                 return Carbon::parse($item->created_at)->format('M');
+    //             })
+    //             ->toArray();
+    //         $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    //         $users_count = [];
+    //         foreach($months as $month){
+    //             $users_count[$month] = array_key_exists($month, $users) ? $users[$month] : 0;
+    //         }
+
+    //         return response()->json([
+    //             'users_count' => $users_count
+    //         ]);
+    //     }
+    // }
+

@@ -609,3 +609,10 @@ function renderPatientCountByLocationChart(municipality){
             
 } 
 renderPatientCountByLocationChart('All');   
+
+
+
+
+
+
+

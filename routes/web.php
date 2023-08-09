@@ -61,8 +61,6 @@ Route::get('/login/admin', [RedirectController::class, 'redirectToAdminLogin']);
 
 Route::post('/login/admin/process', [LoginController::class, 'loginAdmin']);
 
-// Route::get('get/patient_list', [FetchController::class, 'getUsersList']);
-
 // Route::get('/get/count_reading', [FetchController::class, 'getCount']);
 
 Route::get('/get/users_count', [FetchController::class, 'getUsersCount']);
@@ -79,4 +77,6 @@ Route::get('/patients/dashboard', [RedirectController::class, 'redirectToPatient
 
 Route::get('get/users_list', [FetchController::class, 'getUserListInAdminDashboard']);
 
-Route::post('/delete/user', [DeleteController::class, 'deleteUser']);
+Route::post('/delete', [DeleteController::class, 'deleteUser']);
+
+Route::get('/get/used_count', [FetchController::class, 'getUsersCountByUsed']);
