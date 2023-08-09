@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Reading;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 
 class FetchController extends Controller
@@ -494,8 +495,141 @@ class FetchController extends Controller
         }
     
     }
-   
+//    FOR PATIENT COUNT BY SEX//
+
+    public function getPatientCountBySex(Request $request){
+        $sex_count = [];
+        if(ucwords($request->municipality) == 'All'){
+            $users = User::where('type', 'patient')
+                ->get()
+                ->groupBy('sex');
+            $municipalities = ['Boac', 'Buenavista', 'Gasan', 'Mogpog', 'Sta. Cruz', 'Torrijos'];
+            $females = $users->has('female') ? $users['female']->countBy('municipality')->toArray() : [];
+            $males = $users->has('male') ? $users['male']->countBy('municipality')->toArray() : [];
+            foreach($municipalities as $municipalities){
+                $key = $municipalities;
+                $sex_count['female'][$key] = array_key_exists($key, $females) ?  $females[$key] : 0;
+                $sex_count['male'][$key] = array_key_exists($key, $males) ?  $males[$key] : 0;
+            }
+            
+        }
+        
+        else{
+            $users = User::where('type', 'patient')
+                ->where('municipality',ucwords($request->municipality))
+                ->get()
+                ->groupBy('sex');
+            if(ucwords($request->municipality) == 'Boac'){
+                $barangays = $this->boac_barangays;
+            }
+            else if(ucwords($request->municipality) == 'Buenavista'){
+                $barangays = $this->buenavista_barangays;
+            }
+            else if(ucwords($request->municipality) == 'Gasan'){
+                $barangays = $this->gasan_barangays;
+            }
+            else if(ucwords($request->municipality) == 'Mogpog'){
+                $barangays = $this->mogpog_barangays;
+            }
+            else if(ucwords($request->municipality) == 'Sta. Cruz'){
+                $barangays = $this->sta_cruz_barangays;
+            }
+            else if(ucwords($request->municipality) == 'Torrijos'){
+                $barangays = $this->torrijos_barangays;
+            }
+            else{
+                return response()->json([
+                    'sex_count' => 'Bad Request'
+                ]);
+            }
+       
+            $females = $users->has('female') ? $users['female']->countBy('barangay')->toArray() : [];
+            $males = $users->has('male') ? $users['male']->countBy('barangay')->toArray() : [];
+            foreach($barangays as $barangay){
+                $key = $barangay;
+                $sex_count['female'][$key] = array_key_exists($key, $females) ?  $females[$key] : 0;
+                $sex_count['male'][$key] = array_key_exists($key, $males) ?  $males[$key] : 0;
+            }
+        }
+            return response()->json([
+                'sex_count' => $sex_count
+            ]);
+        
+        }
     
+   //    FOR PATIENT COUNT BY LOCATION//
+   public function getPatientCountByLocation(Request $request){
+    $location_count = [];
+    if(ucwords($request->municipality) == 'All'){
+        $users = User::where('type', 'patient')
+            ->get()
+            ->groupBy('type');
+        $municipalities = ['Boac', 'Buenavista', 'Gasan', 'Mogpog', 'Sta. Cruz', 'Torrijos'];
+        $patients = $users->has('patient') ? $users['patient']->countBy('municipality')->toArray() : [];
+        foreach($municipalities as $municipalities){
+            $key = $municipalities;
+            $location_count['patient'][$key] = array_key_exists($key, $patients) ?  $patients[$key] : 0;
+        }
+    }
+    else{
+        $users = User::where('type', 'patient')
+            ->where('municipality',ucwords($request->municipality))
+            ->get()
+            ->groupBy('type');
+        if(ucwords($request->municipality) == 'Boac'){
+            $barangays = $this->boac_barangays;
+        }
+        else if(ucwords($request->municipality) == 'Buenavista'){
+            $barangays = $this->buenavista_barangays;
+        }
+        else if(ucwords($request->municipality) == 'Gasan'){
+            $barangays = $this->gasan_barangays;
+        }
+        else if(ucwords($request->municipality) == 'Mogpog'){
+            $barangays = $this->mogpog_barangays;
+        }
+        else if(ucwords($request->municipality) == 'Sta. Cruz'){
+            $barangays = $this->sta_cruz_barangays;
+        }
+        else if(ucwords($request->municipality) == 'Torrijos'){
+            $barangays = $this->torrijos_barangays;
+        }
+        else{
+            return response()->json([
+                'location_count' => 'Bad Request'
+            ]);
+        }
+       
+        $patients = $users->has('patient') ? $users['patient']->countBy('barangay')->toArray() : [];
+        foreach($barangays as $barangay){
+            $key = $barangay;
+            $location_count['patient'][$key] = array_key_exists($key, $patients) ?  $patients[$key] : 0;
+        }
+    
+    }
+    return response()->json([
+        'location_count' => $location_count
+    ]);
+}
+    // PROFESSIONAL DASHBOARD (PATIENT PAGE)//
+
+    public function getPatientListInProfessionalDashboard(Request $request){
+        $formatted_users = [];
+        $patients = User::where('type', 'patient')->get();
+        foreach($patients as $patient){
+            $temp_array = [
+                $patient->id,
+                $patient->first_name.' '.$patient->last_name.' '.$patient->suffix,
+                $patient->sex,
+                Carbon::parse($patient->birthday)->format('M d, Y'),
+                $patient->barangay.' '.$patient->municipality,
+                $patient->email];
+            array_push($formatted_users, $temp_array);    
+        }
+        return response()->json([
+            'patients_list' => $formatted_users
+        ]);
+    }
 
 // FOR USER DASHBOARD DATA//
 
@@ -597,8 +731,9 @@ class FetchController extends Controller
     }
 
 
-    // FOR ADMIN DASHBOARD DATA//
+// FOR ADMIN DASHBOARD DATA//
 
+    // USERS COUNT (BOTH PATIENT/PROFESSIONAL)
     public function getUsersCount(Request $request){
         $users_count = [];
         if(ucwords($request->municipality) == 'All'){
@@ -606,8 +741,8 @@ class FetchController extends Controller
                 ->get()
                 ->groupBy('type');
             $municipalities = ['Boac', 'Buenavista', 'Gasan', 'Mogpog', 'Sta. Cruz', 'Torrijos'];
-            $patients = count($users) > 0 ? $users['patient']->countBy('municipality')->toArray() : [];
-            $professionals = count($users) > 0 ? $users['professional']->countBy('municipality')->toArray() : [];
+            $patients = $users->has('patient') ? $users['patient']->countBy('municipality')->toArray() : [];
+            $professionals = $users->has('professional') ? $users['professional']->countBy('municipality')->toArray() : [];
             foreach($municipalities as $municipalities){
                 $key = $municipalities;
                 $users_count['patient'][$key] = array_key_exists($key, $patients) ?  $patients[$key] : 0;
@@ -642,8 +777,10 @@ class FetchController extends Controller
                     'users_count' => 'Bad Request'
                 ]);
             }
-            $patients = count($users) > 0 ? $users['patient']->countBy('barangay')->toArray() : [];
-            $professionals = count($users) > 0 ? $users['professional']->countBy('barangay')->toArray() : [];
+           
+
+            $patients = $users->has('patient') ? $users['patient']->countBy('barangay')->toArray() : [];
+            $professionals = $users->has('professional') ? $users['professional']->countBy('barangay')->toArray() : [];
             foreach($barangays as $barangay){
                 $key = $barangay;
                 $users_count['patient'][$key] = array_key_exists($key, $patients) ?  $patients[$key] : 0;
@@ -654,7 +791,234 @@ class FetchController extends Controller
             'users_count' => $users_count
         ]);
     }
+
+    // FOR USERS LIST//
+
+    public function getUserListInAdminDashboard(){
+        $list_users = [];
+        $users = User::whereNot('type','admin')->get();
+        foreach($users as $user){
+            $temp_array = [
+                $user->id,
+                $user->first_name.' '.$user->last_name.' '.$user->suffix,
+                $user->type,
+                $user->sex,
+                Carbon::parse($user->birthday)->format('M d, Y'),
+                $user->barangay.' '.$user->municipality,
+                $user->email];
+            array_push($list_users, $temp_array);    
+        }
+        return response()->json([
+            'users-list' => $list_users
+
+        ]);
+    }
+
+    //FOR COUNT OF USERS USED MEDBOT//
+
+    public function getUsersCountByUsed(Request $request){
+        $users_count = [];
+        if($request->by == 'weekly'){
+            $year = substr($request->value, 0, 4);
+            $week = substr($request->value, 6, 2);
+            $dates = $this->getWeek($week, $year);
+            $patients = Reading::whereHas('user', function(Builder $query){
+                    $query->where('type','patient');
+                })
+                ->whereBetween('created_at', [$dates['start'], $dates['end']])
+                ->get()
+                ->countBy(function ($item) {
+                    return Carbon::parse($item->created_at)->format('Y-m-d');
+                })
+                ->toArray();
+            $period = CarbonPeriod::create($dates['start'], $dates['end']);
+            $patients_count = [];
+            foreach ($period as $date) {
+                $key = $date->format('Y-m-d');
+                $patients_count[$key] = array_key_exists($key, $patients) ? $patients[$key] : 0;             
+            }
+            $professionals = Reading::whereHas('user', function(Builder $query){
+                    $query->where('type','professional');
+                })
+                ->whereBetween('created_at', [$dates['start'], $dates['end']])
+                ->get()
+                ->countBy(function ($item) {
+                    return Carbon::parse($item->created_at)->format('Y-m-d');
+                })
+                ->toArray();
+            $period = CarbonPeriod::create($dates['start'], $dates['end']);
+            $professionals_count = [];
+            foreach ($period as $date) {
+                $key = $date->format('Y-m-d');
+                $professionals_count[$key] = array_key_exists($key, $professionals) ? $professionals[$key] : 0;             
+            }
+        }
+        else if($request->by == 'monthly'){
+            $year = substr($request->value, 0, 4);
+            $month = substr($request->value, 5, 2);
+            $patients = Reading::whereHas('user', function(Builder $query){
+                    $query->where('type','patient');
+                })
+                ->whereMonth('created_at', $month)
+                ->whereYear('created_at', $year)
+                ->get()
+                ->countBy(function ($item) {
+                    return Carbon::parse($item->created_at)->format('Y-m-d');
+                })
+                ->toArray();
+            $dates = $this->getMonth($month, $year);
+            $period = CarbonPeriod::create($dates['start'], $dates['end']);
+            $patients_count = [];
+            foreach ($period as $date) {
+                $key = $date->format('Y-m-d');
+                $patients_count[$key] = array_key_exists($key, $patients) ? $patients[$key] : 0;             
+            }
+            $professionals = Reading::whereHas('user', function(Builder $query){
+                    $query->where('type','professional');
+                })
+                ->whereMonth('created_at', $month)
+                ->whereYear('created_at', $year)
+                ->get()
+                ->countBy(function ($item) {
+                    return Carbon::parse($item->created_at)->format('Y-m-d');
+                })
+                ->toArray();
+            $dates = $this->getMonth($month, $year);
+            $period = CarbonPeriod::create($dates['start'], $dates['end']);
+            $professionals_count = [];
+            foreach ($period as $date) {
+                $key = $date->format('Y-m-d');
+                $professionals_count[$key] = array_key_exists($key, $professionals) ? $professionals[$key] : 0;             
+            }
+        }
+        else {
+            $year = substr($request->value, 0, 4);
+            $patients = Reading::whereHas('user', function(Builder $query){
+                    $query->where('type','patient');
+                })
+                ->whereYear('created_at', $year)
+                ->get()
+                ->countBy(function ($item) {
+                    return Carbon::parse($item->created_at)->format('M');
+                })
+                ->toArray();
+            $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            $patients_count = [];
+            foreach ($months as $month) {
+                $patients_count[$month] = array_key_exists($month, $patients) ? $patients[$month] : 0;          
+            }
+            $professionals = Reading::whereHas('user', function(Builder $query){
+                    $query->where('type','professional');
+                })
+                ->whereYear('created_at', $year)
+                ->get()
+                ->countBy(function ($item) {
+                    return Carbon::parse($item->created_at)->format('M');
+                })
+                ->toArray();
+            $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            $professionals_count = [];
+            foreach ($months as $month) {
+                $professionals_count[$month] = array_key_exists($month, $professionals) ? $professionals[$month] : 0;          
+            }
+        }
+        $users_count['patient'] = $patients_count;
+        $users_count['professional'] = $professionals_count;
+        return response()->json([
+            'users_count' => $users_count
+        ]);
+    }
+}
+    // public function getProfessionalListInAdminDashboard(Request $request){
+    //     $formatted_professionals =[];
+    //     $professionals = User::where('type', 'professional')->get();
+    //     foreach($professionals as $professional){
+    //         $temp_array_professional = [
+    //             $professional->id,
+    //             $professional->first_name.' '.$professional->last_name.' '.$professional->suffix,
+    //             $professional->sex,
+    //             Carbon::parse($professional->birthday)->format('M d, Y'),
+    //             $professional->barangay.' '.$professional->municipality,
+    //             $professional->email];
+    //         array_push($formatted_professional, $temp_array);    
+    //     }
+    //     return response()->json([
+    //         'professionals_list' => $formatted_professionals
+    //     ]);
+    // }
     
+
+
+    //FOR USERS COUNT BY USED ENHANCED MED-BOT//
+
+   
+    // public function getUsersCountByUsed(Request $request){
+    //     if($request->by == 'weekly'){
+    //         $year = substr($request->value, 0, 4);
+    //         $week = substr($request->value, 6, 2);
+    //         $dates = $this->getWeek($week, $year);
+    //         $users = Reading::with('user')
+    //             ->whereBetween('created_at', [$dates['start'], $dates['end']])
+    //             ->get()
+    //             ->countBy(function ($item) {
+    //                 return Carbon::parse($item->created_at)->format('Y-m-d');
+    //             })
+    //             ->toArray();
+    //         $period = CarbonPeriod::create($dates['start'], $dates['end']);
+    //         $users_count = [];
+    //         foreach ($period as $date) {
+    //             $key = $date->format('Y-m-d');
+    //             $users_count[$key] = array_key_exists($key, $users) ? $users[$key] : 0;
+    //         }
+    //         dd($users_count);
+    //         return response()->json([
+    //             'users_count' => $users_count
+    //         ]);
+    //     }
+    //     else if($request->by == 'monthly'){
+    //         $year = substr($request->value, 0, 4);
+    //         $month = substr($request->value, 5, 2);
+    //         $users = Reading::with('user')
+    //             ->whereMonth('created_at', $month)
+    //             ->whereYear('created_at', $year)
+    //             ->get()
+    //             ->countBy(function ($item) {
+    //                 return Carbon::parse($item->created_at)->format('Y-m-d');
+    //             })
+    //             ->toArray();
+    //         $dates = $this->getMonth($month, $year);
+    //         $period = CarbonPeriod::create($dates['start'], $dates['end']);
+    //         $used_count = [];
+    //         foreach ($period as $date) {
+    //             $key = $date->format('Y-m-d');
+    //             $users_count[$key] = array_key_exists($key, $users) ? $users[$key] : 0;
+    //         }
+    //         return response()->json([
+    //             'users_count' => $users_count
+    //         ]);
+    //     }
+    //     else {
+    //         $year = substr($request->value, 0, 4);
+    //         $users = Reading::with('user')
+    //             ->whereYear('created_at', $year)
+    //             ->get()
+    //             ->countBy(function ($item) {
+    //                 return Carbon::parse($item->created_at)->format('M');
+    //             })
+    //             ->toArray();
+    //         $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    //         $users_count = [];
+    //         foreach($months as $month){
+    //             $users_count[$month] = array_key_exists($month, $users) ? $users[$month] : 0;
+    //         }
+
+    //         return response()->json([
+    //             'users_count' => $users_count
+    //         ]);
+    //     }
+    // }
+
+
     public function getUserReadings(Request $request){
         $formatted_readings = [];
         $readings = Reading::where('user_id', $request->id)->get();
@@ -679,3 +1043,4 @@ class FetchController extends Controller
     }
 
 } 
+

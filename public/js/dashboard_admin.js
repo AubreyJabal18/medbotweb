@@ -1,9 +1,85 @@
-const select_usersByMunicipalityField = document.getElementById('select-usersByMunicipality');
-const select_usedField = document.getElementById('select_used');
-const year_usedField = document.getElementById('year_used')
-const month_usedField = document.getElementById('month_used');
-const week_usedField = document.getElementById('week_used');
+const confirmDeleteOverlay = document.getElementById('confirm-delete-overlay');
+const noticeDeletePatientModal = document.getElementById('notice-delete-patient');
+const cancelButton = document.getElementById('cancel-button');
+const deleteButton = document.getElementById('delete-button');
+const deleteForm = document.getElementById('delete-form');
+const deleteIdField = document.getElementById('delete-id');
+const deleteField = document.querySelectorAll('.delete');
+var activeCardId = -1;
 
+//FOR USERS LIST TABLE//
+
+const users_tableField = document.getElementById('users-table');
+
+async function getUserListInAdminDashboard(){
+    const response = await fetch('/get/users_list')
+    const data = await response.json();
+    return data['users-list'];
+    }
+
+getUserListInAdminDashboard().then((data) => {
+        console.log(data);
+        new gridjs.Grid({
+            columns: ['Id', 'User', 'Type', 'Sex', 'Birthdate', 'Address', 'Email', 
+                {
+                    name: 'Action',
+                    formatter: (cell, row) => {
+                        return gridjs.h('button',{
+                            className: 'py-1 mb-4 px-2 border rounded-full rounded-md text-white bg-color',
+                            onClick: () => {
+                                openNoticeDeletePatientModal();
+                                activeCardId = row.cells[0].data;
+                            },
+                        }, 'Remove'   
+                    );
+                }
+                }    
+            ],
+            search: true,
+            autoWidth: true,
+            data: data,
+            pagination: {
+                limit: 5,
+                summary: false
+            },
+            sort: true, 
+    
+        }).render(users_tableField);
+    }
+)
+
+//FOR DELETING USER IN USERS LIST//
+
+function closeNoticeDeletePatientModal(){
+    if (!confirmDeleteOverlay.classList.contains('hidden')){
+        confirmDeleteOverlay.classList.add('hidden');
+        noticeDeletePatientModal.classList.add('hidden');
+    }
+}
+
+function openNoticeDeletePatientModal(){
+    if (confirmDeleteOverlay.classList.contains('hidden')){
+        confirmDeleteOverlay.classList.remove('hidden');
+        noticeDeletePatientModal.classList.remove('hidden');
+    }
+}
+
+confirmDeleteOverlay.addEventListener('click', closeNoticeDeletePatientModal);
+cancelButton.addEventListener('click', closeNoticeDeletePatientModal);
+window.addEventListener('keydown', function(event){
+    if(event.key == 'Escape'){
+        closeNoticeDeletePatientModal();
+    }
+});
+
+deleteButton.addEventListener('click', function(){
+    deleteIdField.value = activeCardId;      
+    deleteForm.submit();
+});
+
+//FOR USERS BY MUNICIPALITY GRAPH//
+
+const select_usersByMunicipalityField = document.getElementById('select-usersByMunicipality');
 select_usersByMunicipalityField.addEventListener('change', function(){
     renderUsersCountChart(select_usersByMunicipalityField.value);
     console.log(select_usersByMunicipalityField.value);
@@ -54,7 +130,7 @@ function renderUsersCountChart(municipality){
                     data: patient_counts,
                 },{
                     label: 'Professional',
-                    backgroundColor: '#FFFF00',
+                    backgroundColor: '#19FBC5',
                     data: professional_counts,
                 }]
             };
@@ -88,50 +164,170 @@ function renderUsersCountChart(municipality){
     )
                 
 }    
-
 renderUsersCountChart('All');
 
 
-select_usedField.addEventListener('change', function(){
-    if(select_usedField.value == 'yearly'){
-        year_usedField.classList.remove('hidden')
+
+//FOR USERS WHO USED EHNACED MED-BOT GRAPH//
+
+
+const selectField = document.getElementById('select');
+const yearField = document.getElementById('year')
+const monthField = document.getElementById('month');
+const weekField = document.getElementById('week');
+
+selectField.addEventListener('change', function(){
+    if(selectField.value == 'yearly'){
+        yearField.classList.remove('hidden')
     }
         else{
-            year_usedField.classList.add('hidden')   
+            yearField.classList.add('hidden')   
         }
     
-    if(select_usedField.value == 'monthly'){
-        month_usedField.classList.remove('hidden')
+    if(selectField.value == 'monthly'){
+        monthField.classList.remove('hidden')
    }
         else{
-            month_usedField.classList.add('hidden')
+            monthField.classList.add('hidden')
         }
-    if(select_usedField.value == 'weekly'){
-        week_usedField.classList.remove('hidden')
+    if(selectField.value == 'weekly'){
+        weekField.classList.remove('hidden')
     }
         else{
-            week_usedField.classList.add('hidden')
+            weekField.classList.add('hidden')
         }
 
 });
 
 
-const select_userField = document.getElementById('select_user');
-const for_userField = document.getElementById('for_user');
 
-const usersListField = document.getElementById('users-list');
+async function getUsersCountByUsed(by, value){
+    const response = await fetch('/get/used_count?by=' + by + '&value=' + value)
+    const data = await response.json();
+    return data['users_count'];
+    
+}
 
+var usersCountByUsedChart = null;
 
-select_userField.addEventListener('change', function(){
-    if(select_userField.value == 'patient'){
-        for_userField.placeholder = 'Search for Patient';
+function renderUsersCountByUsedChart(by, value){
+    getUsersCountByUsed(by, value).then((data) => {
+        console.log(data);
+        var patients = data['patient'];
+        var professionals = data['professional'];
+        if(by == 'weekly'){
+            var labels = [];
+            var patient_counts = [];
+            var professional_counts = [];
+            for (const [key, value] of Object.entries(patients)) {
+                labels.push(key);
+                patient_counts.push(value);
+            }
+            for (const [key, value] of Object.entries(professionals)) {
+                professional_counts.push(value);
+            }
+        }
+        else if(by == 'monthly'){
+            var labels = [];
+            var patient_counts = [];
+            var professional_counts = [];
+            for (const [key, value] of Object.entries(patients)) {
+                labels.push(key);
+                patient_counts.push(value);
+            }
+            for (const [key, value] of Object.entries(professionals)) {
+                professional_counts.push(value);
+            }
+        }
+        else {
+            var labels = [];
+            var patient_counts = [];
+            var professional_counts = [];
+            for (const [key, value] of Object.entries(patients)) {
+                labels.push(key);
+                patient_counts.push(value);
+            }
+            for (const [key, value] of Object.entries(professionals)) {
+                professional_counts.push(value);
+            }  
+        }
+
+        const usersCountByUsedData = {
+            labels: labels,
+            datasets: [{
+                label: 'Patient',
+                backgroundColor: '#213E76',
+                data: patient_counts,
+            },{
+                label: 'Professional',
+                backgroundColor: '#19FBC5',
+                data: professional_counts,
+            }]
+        };
         
-    }
-    else{
-        for_userField.placeholder = 'Search for Professional'
-    }
+        const usersCountByUsedConfig = { 
+            type: 'bar',    
+            data: usersCountByUsedData,
+            options: {
+                scales: {
+                    x: {
+                        stacked: true
+                    },
+                    y: {
+                        beginAtZero: true,
+                        stacked: true
+                    }
+                },
+                legend: {
+                    display: false
+                }
+            },
+        };
+        if( usersCountByUsedChart != null){
+            usersCountByUsedChart.destroy();
+        }
+        usersCountByUsedChart = new Chart(
+            document.getElementById('countUsed'),
+            usersCountByUsedConfig
+        );  
+    })
+}
+
+weekField.addEventListener('change', function(){
+    monthField.value = '';
+    yearField.value = '';
+    console.log(weekField.value);
+    renderUsersCountByUsedChart('weekly', weekField.value);
 })
 
- 
+monthField.addEventListener('change', function(){
+    weekField.value = '';
+    yearField.value = '';
+    console.log(monthField.value);
+    renderUsersCountByUsedChart('monthly', monthField.value);
+})
 
-   
+yearField.addEventListener('change', function(){
+    weekField.value = '';
+    monthField.value = '';
+    console.log(yearield.value);
+    renderUsersCountByUsedChart('yearly', yearField.value);
+})
+
+renderUsersCountByUsedChart('weekly', moment().year() + '-W' + moment().week())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

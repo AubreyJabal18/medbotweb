@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <script src="{{asset('/js/moment.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('/css/mermaid.min.css')}}">
     @vite('resources/css/app.css')
 
 </head>
@@ -20,7 +21,7 @@
                     <p class="font-roboto font-bold text-[#07DBDB] text-lg md:text-2xl text-shadow">ENHANCED MED-BOT</p>
                 </div>
                 <div class="flex flex-row space-x-4 items-center justify-end">
-                    <p class="hidden font-roboto font-normal text-white text-lg md:block">{{ $user->first_name }}</p>
+                    <p class="hidden font-roboto font-normal text-white text-lg md:block">Admin</p>
                     <img src="{{asset('images/dashboard/profile.png')}}" alt="" id="profile-menu" class="h-8 w-8 cursor-pointer md:h-12 md:w-12 hover:brightness-75">
                 </div>
                 
@@ -113,22 +114,12 @@
                 </div>
             </div>    
         </div>         
-        <div class="w-full flex flex-col lg:flex-row items-center space-y-5 lg:space-y-0 lg:justify-evenly space-x-2 lg:px-4">
-            <div class="w-[90%] flex flex-col items-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-[90%] lg:w-[90%]">
-                <div class="flex flex-col md:flex-row items-center justify-center md:self-start space-y-0.5 md:space-y-0 md:space-x-8 px-4 mb-3 w-full">
-                    <p class="font-roboto text-semibold text-black/80 text-base md:text-xl ">Users List</p>
-                    <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="select_user" name="select_user">
-                        <option value="patient" >Patient</option>
-                        <option value="professional" >Professional</option>
-                    </select>  
-                    <div class="flex flex-row items-center relative w-full md:w-[50%] lg:w-[70%] py-2 md:ml-16">
-                        <input type="search" id="for_user" name="search" class="w-full bg-sky-100 border-none rounded-2xl outline-none px-8 lg:px-10 lg:mr-3 py-0 md:py-2 lg:py-2 placeholder:text-[#B87070]" placeholder="Search for Patient">
-                        <button class="absolute right-3 md:right-4 lg:right-8" id="search_button" name="search_button" type="button">
-                            <img src="{{asset('images/dashboard/search.png')}}" alt="" >
-                        </button>
-                    </div>    
-                </div>
-                <div class="table w-full">
+        <div class="flex flex-col px-4">
+            <p class="font-roboto text-bold text-black/80 text-base md:text-xl md:self-start lg:px-10">Users List</p>
+            <div id="users-table" class=""></div>
+        </div>
+      
+                {{-- <div class="table w-full">
                         <div class="table-header-group">
                             <div class="table-row bg-gray-200 font-roboto font-semibold text-black text-xs md:text-sm lg:text-base" id="users-table" name="users-table">
                                 <div class="table-cell text-center py-1 lg:w-[30%]">User</div>
@@ -160,11 +151,12 @@
                         @endforeach
                             
 
-                 </div>
+                </div> --}}
+
             </div>
         </div>
                
-        <div class="flex flex-col lg:flex-row items-center justify-center space-y-4 lg:space-y-0 lg:space-x-6 w-full px-2 md:px-6 mt-4">
+        <div class="flex flex-col lg:flex-row items-center self-center space-y-4 lg:space-x-6 lg:w-full px-2 md:px-6 mt-4">
             <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-full lg:w-full ">
                 <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-xl  text-[#151515]  px-4 text-center bg-gray-200  ">Users Count by Municipality</p>      
                 <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 mt-4">
@@ -178,7 +170,7 @@
                         <option value="Torrijos">Torrijos</option>
                     </select>
                 </div>
-                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 left-0 ">
+                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 left-0 lg:w-[60%]">
                 <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 right-0">
                 <canvas id="users-count" class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></canvas>
             </div>
@@ -189,24 +181,44 @@
                             
                     <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
                     
-                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="select_used" name="by_used">
+                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="select" name="by">
                             <option value="weekly" >Weekly</option>
                             <option value="monthly" >Monthly</option>
                             <option value="yearly" >Yearly</option> 
                         </select>  
                     </div> 
-                        <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="year_used" name="value_used">
-                        <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="month_used" name="value_used">
-                        <input class=" flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="week_used" name="value_used">
+                        <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="year" name="value">
+                        <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="month" name="value">
+                        <input class=" flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="week" name="value">
                 </div>
-                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 left-0 ">
+                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 left-0 lg:w-[60% ] ">
                 <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 right-0">
-                <canvas id="countReadings" class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></canvas>
+                <canvas id="countUsed" class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></canvas>
             </div>
         </div>
     </div>
 
+    <div id="notice-delete-patient" class="hidden fixed flex-col border-2 w-[80%] md:w-[50%] lg:w-[30%] h-[25%] md:h-[25%] rounded-xl items-center  bg-white drop-shadow-lg shadow-lg z-50 top-[40%] left-[10%] md:left-[25%] lg:left-[35%]">
+        <div class="flex flex-col md:flex-row space-x-6 space-y-2 md:space-y-0 items-center  md:py-6 lg:py-7 md:px-6">
+            <img src="{{asset('images/dashboard/remove_icon.png')}}" alt="" class="flex w-16 md:w-16 md:h-16 lg:w-16 self-center  ">
+            <p class="flex font-roboto text-black/80 font-light px-2 md:px-1 text-sm md:text-base lg:text-lg pb-4 md:pb-6">Do you really want to remove this patient?</p>
+        </div>
+        <div class="flex flex-row justify-end space-x-2  px-2 md:px-4">
+            <button id="cancel-button" class="flex flex items-center justify-center font-roboto font-normal text-neutral-500 md:hover:rounded-lg hover:text-white hover:bg-neutral-400 py-1 px-4 text-sm lg:text-base">Cancel</button>
+            <button id="delete-button" class="flex items-center justify-center font-roboto font-normal text-white rounded-lg bg-red-500 md:hover:bg-red-600 py-1 px-3 text-sm  lg:text-base">Delete</button>
+        </div>    
+
+        <form action="/delete" method="POST" id="delete-form">
+            @csrf
+            <input type="text" id="delete-id" name="id" class="hidden">
+        </form>
+    </div>
+
+    <div id="confirm-delete-overlay" class=" hidden fixed w-full h-100 inset-0 z-10 overflow-hidden flex justify-center items-center brightness-50 backdrop-blur-sm">
+    </div>
+
     <script src="{{asset('/js/chart.umd.min.js')}}"></script>
+    <script src="{{asset('/js/gridjs.umd.js')}}"></script>
     <script src="{{asset('/js/dashboard_admin.js')}}"></script>
 
 </body>

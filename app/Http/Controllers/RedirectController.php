@@ -100,6 +100,39 @@ class RedirectController extends Controller
         }
         return view('login_admin');
     }
+    public function redirectToPatientsInProfessionalDashboard(Request $request){
+        if(Auth::check() && Auth::user()->type == 'professional'){
+            $user = Auth::user();
+            return view('patients_professional_dashboard', [
+                'user' =>$user
+            ]);     
+
+        }
+    }
+
+    public function redirectToPatientPage(Request $request){
+        if(Auth::user()->type == 'professional'){
+            if($request->has('user')){
+                $user = User::find($request->user);
+                $professional = Auth::user();
+                $readings= Reading::where('user_id', $user->id)->latest()->get();
+                return view('professional_patients',[
+                    'user' => $user,
+                    'professional' => $professional, 
+                    'readings' => $readings
+                ]);   
+            }
+            else{
+                flash()->addError('User unidentified');
+            }
+             
+        }
+        else{
+            flash()->addError('You cannot access this page');
+            return back('/');
+        }
+       
+    }
 
     public function redirectToReadings(){
         if (Auth::check() && Auth::user()->type == 'patient'){
