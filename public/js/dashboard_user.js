@@ -53,6 +53,12 @@ rating_selectField.addEventListener('change', function(){
     }
 });
 
+async function getUser(){
+    const response = await fetch('/get/authenticated')
+    const data = await response.json();
+    return data['user'];
+}
+
 // Render Reading Trends Chart
 
 async function getReadings(by, value, id){
@@ -389,19 +395,28 @@ function renderReadingTrendsChart(by, value, id = 1){
 trends_weekField.addEventListener('change', function(){
     trends_monthField.value = '';
     trends_yearField.value = '';
-    renderReadingTrendsChart('weekly', trends_weekField.value);
+    getUser().then((id) => {
+        renderReadingTrendsChart('weekly', trends_weekField.value, id);
+    })
 })
 
 trends_monthField.addEventListener('change', function(){
     trends_weekField.value = '';
     trends_yearField.value = '';
-    renderReadingTrendsChart('monthly', trends_monthField.value);
+    getUser().then((id) => {
+        renderReadingTrendsChart('monthly', trends_monthField.value);
+    })
 })
 
 trends_yearField.addEventListener('change', function(){
     trends_weekField.value = '';
     trends_monthField.value = '';
-    renderReadingTrendsChart('yearly', trends_yearField.value);
+    getUser().then((id) => {
+        renderReadingTrendsChart('yearly', trends_yearField.value);
+    })
 })
 
-renderReadingTrendsChart('weekly', moment().year() + '-W' + moment().week(), 1)
+getUser().then((id) => {
+    renderReadingTrendsChart('weekly', moment().year() + '-W' + moment().week(), id)
+
+})

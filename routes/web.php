@@ -61,7 +61,7 @@ Route::get('/login/admin', [RedirectController::class, 'redirectToAdminLogin']);
 
 Route::post('/login/admin/process', [LoginController::class, 'loginAdmin']);
 
-// Route::get('/get/count_reading', [FetchController::class, 'getCount']);
+Route::get('/get/count_reading', [FetchController::class, 'getCount']);
 
 Route::get('/get/users_count', [FetchController::class, 'getUsersCount']);
 
@@ -80,3 +80,15 @@ Route::get('get/users_list', [FetchController::class, 'getUserListInAdminDashboa
 Route::post('/delete', [DeleteController::class, 'deleteUser']);
 
 Route::get('/get/used_count', [FetchController::class, 'getUsersCountByUsed']);
+
+Route::get('/dashboard/readings', [RedirectController::class, 'redirectToReadings']);
+
+Route::get('get/patient_list', [FetchController::class, 'getUsersList']);
+
+Route::get('/get/count_reading', [FetchController::class, 'getCount']);
+
+Route::get('/get/users_count', [FetchController::class, 'getUsersCount']);
+
+Route::get('/get/readings', [FetchController::class, 'getUserReadings']);
+
+Route::get('/get/authenticated', [FetchController::class, 'getAuthenticatedUser']);
