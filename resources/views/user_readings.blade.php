@@ -84,7 +84,7 @@
 
 			<div class="items-center justify-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300">
 				<p class="text-lg md:text-2xl font-semibold mb-2 text-white text-center">Your Vital Readings</p>
-				<div id="test-table" class="w-[300px] md:w-[500px] lg:w-[900px] xl:[1000px]"></div>
+				<div id="test-table" class="w-[300px] md:w-[500px] lg:w-[900px] xl:w-[1200px]"></div>
 			</div>
 	
 		</div>
@@ -99,7 +99,7 @@
 	</div>
 
 	<script src="{{asset('/js/gridjs.umd.js')}}"></script>
-	<script src="{{asset('/js/test.js')}}"></script>
+	<script src="{{asset('/js/user_reading.js')}}"></script>
   
 </body>
 </html>
