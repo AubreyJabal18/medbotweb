@@ -46,8 +46,8 @@
 					<p class="flex font-roboto font-normal text-black text-sm xl:text-xl md:text-base">Weekly Count</p>
 					
 					<div class="flex flex-row w-full h-fit items-center justify-evenly">
-						<img src="{{asset('images/dashboard/design_patient.png')}}" alt="" title="User" class="w-8 lg:w-24 h-8 lg:h-24">
-						<p class="font-roboto font-bold text-black text-2xl lg:text-4xl">{{$weeklyCount}}</p>
+						<img src="{{asset('images/dashboard/design_patient.png')}}" alt=""  class="w-8 lg:w-24 h-8 lg:h-24">
+						<p class="font-roboto font-bold text-black text-2xl lg:text-4xl" title="Number of user interaction with the enhanced Med-Bot per Week">{{$weeklyCount}}</p>
 					</div>
 					<img src="{{asset('images/dashboard/bg_design.png')}}" alt="" class=" absolute w-16 lg:w-24 h-16 lg:h-24 bottom-0 left-0 -z-10 rounded-xl ">	
 				</div>
@@ -56,8 +56,8 @@
 					<p class="flex font-roboto font-normal text-black text-sm md:text-base xl:text-xl">Monthly Count</p>
 					
 					<div class="flex flex-row w-full h-fit items-center justify-evenly">
-						<img src="{{asset('images/dashboard/design_patient.png')}}" alt="" title="Healthcare Professional" class="w-8 lg:w-24 h-8 lg:h-24">
-						<p class="font-roboto font-bold text-black text-2xl lg:text-4xl">{{$monthlyCount}}</p>
+						<img src="{{asset('images/dashboard/design_patient.png')}}" alt="" class="w-8 lg:w-24 h-8 lg:h-24">
+						<p class="font-roboto font-bold text-black text-2xl lg:text-4xl" title="Number of user interaction with the enhanced Med-Bot per Month">{{$monthlyCount}}</p>
 					</div> 
 					<img src="{{asset('images/dashboard/bg_design.png')}}" alt="" class=" absolute w-16 lg:w-24 h-16 lg:h-24 bottom-0 left-0 -z-10 rounded-xl ">   
 				</div>
@@ -68,8 +68,8 @@
             	<p class="flex font-roboto font-normal text-black text-sm md:text-base xl:text-xl">Yearly Count</p>
 				
 				<div class="flex flex-row w-full h-fit items-center justify-evenly">
-					<img src="{{asset('images/dashboard/design_patient.png')}}" alt="" title="Healthcare Professional" class="w-8 lg:w-24 h-8 lg:h-24">
-					<p class="font-roboto font-bold text-black text-2xl lg:text-4xl">{{$yearlyCount}}</p>
+					<img src="{{asset('images/dashboard/design_patient.png')}}" alt="" class="w-8 lg:w-24 h-8 lg:h-24">
+					<p class="font-roboto font-bold text-black text-2xl lg:text-4xl" title="Number of user interaction with the enhanced Med-Bot per Year">{{$yearlyCount}}</p>
 				</div>    
 				<img src="{{asset('images/dashboard/bg_design.png')}}" alt="" class=" absolute w-16 lg:w-24 h-16 lg:h-24 bottom-0 left-0 -z-10 rounded-xl ">
             </div>
@@ -84,22 +84,22 @@
 
 			<div class="items-center justify-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300">
 				<p class="text-lg md:text-2xl font-semibold mb-2 text-white text-center">Your Vital Readings</p>
-				<div id="test-table" class="w-[300px] md:w-[500px] lg:w-[900px] xl:[1000px]"></div>
+				<div id="test-table" class="w-[300px] md:w-[500px] lg:w-[900px] xl:w-[1200px]"></div>
 			</div>
 	
 		</div>
 		
 		<div class="flex justify-end">
-			<div class="flex flex-row items-center justify-center p-2 space-x-2 mt-10 lg:mr-16 xl:mr-72 left-10 w-52 h-20 border border-white bg-[#5EDAD5] rounded-xl shadow-lg shadow-black">
+			<div class="flex flex-row items-center justify-center p-2 space-x-2 mt-10 mb-10 lg:mr-16 xl:mr-72 left-10 w-52 h-20 border border-white bg-[#5EDAD5] rounded-xl shadow-lg shadow-black">
 				<img src="{{asset('images/dashboard/download.png')}}" alt="" class="w-12 h-12">
-				<p class="text-roboto font-medium text-lg text-black text-center">Download Vital Readings</p>
+				<b class="text-roboto font-medium text-lg text-black text-center">Download Vital Readings</b>
 			</div>
 		</div>
 		
 	</div>
 
 	<script src="{{asset('/js/gridjs.umd.js')}}"></script>
-	<script src="{{asset('/js/test.js')}}"></script>
+	<script src="{{asset('/js/user_reading.js')}}"></script>
   
 </body>
 </html>
