@@ -219,7 +219,7 @@
             <p class="flex font-bold text-lg md:text-xl lg:text-2xl self-center md:self-start  pb-2 pl-6 font-roboto">Patient's Demographic Profile</p>
         </div>           
         <div class="flex flex-col lg:flex-row items-center justify-center space-y-4 md:space-y-4 md:space-x-6 w-full px-2 md:px-6">
-            <div class=" flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 w-[90%]  md:w-[80%] lg:w-[70%]  space-y-2  ">
+            <div class=" flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 w-[90%]  md:w-[80%] lg:w-[50%]  space-y-2  ">
                 <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-2xl  text-[#151515]  px-4 bg-violet-100 w-full justify-center">Patient's Count by Age</p>         
                 <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
                     <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="select-patientByMunicipalityAge" > 
@@ -236,7 +236,7 @@
                 <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-[50%] bottom-0 right-0">         
                 <canvas id="patientsByAge" class="mt-4 flex drop-shadow-lg shadow-lg h-80 w-full rounded-lg bg-white "></canvas>
             </div>
-            <div class="w-[90%] flex flex-col items-center  p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300  md:w-[80%] lg:w-[70%] space-y-2 ">
+            <div class="w-[90%] flex flex-col items-center  p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300  md:w-[80%] lg:w-[50%] space-y-2 ">
                 <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-2xl  text-[#151515]  px-4 bg-violet-100 w-full justify-center">Patient's Count by Sex</p>
                 <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
                     <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline"  id="select-patientByMunicipalitySex"> 
@@ -253,7 +253,7 @@
                 <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-[50%] bottom-0 right-0">         
                 <canvas id="patientsBySex" class="mt-4 flex drop-shadow-lg shadow-lg h-80 w-full rounded-lg bg-white"></canvas>
             </div>
-            <div class="w-[90%] flex flex-col items-center  p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300  md:w-[80%] lg:w-[70%] space-y-2 ">
+            <div class="w-[90%] flex flex-col items-center  p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300  md:w-[80%] lg:w-[50%] space-y-2 ">
                 <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-2xl  text-[#151515] px-4 bg-violet-100 w-full justify-center">Patient's Count by Location</p>
                 <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2 ">
                     <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="select-patientByMunicipalityLocation" > 

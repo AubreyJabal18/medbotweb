@@ -52,13 +52,13 @@
                     <p class="font-roboto font-normal text-white text-md md:text-xl lg:text-2xl mx-2 md:mx-8 lg:mx-8 mt-2 md:mt-3 lg:mt-3">
                         Welcome to the Patients Page, where you can access a comprehensive list of patients and their medical information, empowering you to deliver top-notch care with cutting-edge support.
                     </p>
-                    <img src="{{asset('images/dashboard/model.png')}}" alt="" class="absolute self-end md:h-[50%] md:w-[30%] lg:h-[55%] lg:w-[20%] md:right-2 lg:right-12 md:top-[38%] lg:top-[33%] hidden md:block">
+                    <img src="{{asset('images/dashboard/model.png')}}" alt="" class="absolute self-end md:h-[50%] md:w-[30%] lg:h-[55%] lg:w-[20%] md:right-0 lg:right-12 md:top-[42%] lg:top-[33%] hidden md:block">
                 </div>
             </div> 
         </div>
-
+        
         <p class="flex font-bold font-roboto text-black/80 text-xl md:text-xl lg:text-2xl py-5 md:py-7 lg:py-4 justify-center md:justify-start md:px-10">Patient's List</p>
-        <div id="patients-table"></div>
+        <div id="patients-table" class="px-6"></div>
 
         {{-- <table class="">
             <thead>
@@ -83,7 +83,7 @@
             </tbody>
         </table> --}}
 
-
+        
     </div>
 
     <script src="{{asset('/js/gridjs.umd.js')}}"></script>

@@ -61,6 +61,7 @@ submitButton.addEventListener('click', function(){
         return;
     }
 
+
     if(sexField.value == 'null'){
         alert('Select your sex');
         submitButton.disabled = false;

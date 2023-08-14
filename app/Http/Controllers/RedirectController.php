@@ -138,6 +138,7 @@ class RedirectController extends Controller
         if (Auth::check() && Auth::user()->type == 'patient'){
             $user = Auth::user();
             $readings = Reading::where('user_id', Auth::user()->id)->latest()->get();
+           
             $now = Carbon::now();
             $week_start = $now->startOfWeek()->toDateString();
             $week_end = $now->endOfWeek()->toDateString();
@@ -149,6 +150,7 @@ class RedirectController extends Controller
             
             return view('user_readings', [
                 'user'=> $user,
+               
                 'readings' => $readings,
                 'weeklyCount' => $weeklyCount,
                 'monthlyCount' => $monthlyCount,
@@ -159,4 +161,55 @@ class RedirectController extends Controller
         flash()->addError('Please Login as a Patient');
         return redirect('/');
     }
+
+    public function redirectToProfessionalReadings(){
+        if (Auth::check() && Auth::user()->type == 'professional'){
+            $user = Auth::user();
+            $readings = Reading::where('user_id', Auth::user()->id)->latest()->get();
+            $now = Carbon::now();
+            $week_start = $now->startOfWeek()->toDateString();
+            $week_end = $now->endOfWeek()->toDateString();
+            $weeklyCount = Reading::where('user_id', Auth::user()->id)->whereBetween('created_at', [$week_start, $week_end])->get()->count();
+
+            $monthlyCount = Reading::where('user_id', Auth::user()->id)->whereMonth('created_at', $now->month)->whereYear('created_at', $now->year)->get()->count();
+
+            $yearlyCount = Reading::where('user_id', Auth::user()->id)->whereYear('created_at', $now->year)->get()->count();
+            
+            return view('professional_readings', [
+                'user'=> $user,
+                'readings' => $readings,
+                'weeklyCount' => $weeklyCount,
+                'monthlyCount' => $monthlyCount,
+                'yearlyCount' => $yearlyCount
+            ]);
+        }
+
+        flash()->addError('Please Login as a Professional');
+        return redirect('/');
+    }
+
+    public function redirectToPatientReadings(Request $request){
+        $user = User::find($request->user);
+        $professional = Auth::user();
+        $readings = Reading::where('user_id', Auth::user()->id)->latest()->get();
+       
+        $now = Carbon::now();
+        $week_start = $now->startOfWeek()->toDateString();
+        $week_end = $now->endOfWeek()->toDateString();
+        $weeklyCount = Reading::where('user_id', Auth::user()->id)->whereBetween('created_at', [$week_start, $week_end])->get()->count();
+
+        $monthlyCount = Reading::where('user_id', Auth::user()->id)->whereMonth('created_at', $now->month)->whereYear('created_at', $now->year)->get()->count();
+
+        $yearlyCount = Reading::where('user_id', Auth::user()->id)->whereYear('created_at', $now->year)->get()->count();
+        
+        return view('patient_readings', [
+            'user'=> $user,
+            'professional' => $professional,
+            'readings' => $readings,
+            'weeklyCount' => $weeklyCount,
+            'monthlyCount' => $monthlyCount,
+            'yearlyCount' => $yearlyCount
+        ]);
+    }
+    
 }

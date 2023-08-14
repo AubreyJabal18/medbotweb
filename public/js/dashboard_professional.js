@@ -449,26 +449,146 @@ search_buttonField.addEventListener('change', function(){
     form.submit();
 })
    
-// PATIENTS COUNT BY AGE//
+//PATIENTS COUNT BY AGE//
 
 const select_patientByMunicipalityAge = document.getElementById('select-patientByMunicipalityAge');
 
 select_patientByMunicipalityAge.addEventListener('change', function(){
+    renderPatientCountByAgeChart(select_patientByMunicipalityAge.value);
     console.log(select_patientByMunicipalityAge.value);
 })
 
-var patientCountByAge = null;
+var patientCountByAgeChart = null;
 
 async function getPatientCountByAge(municipality){
     const response = await fetch ('get/age_count?municipality=' + municipality)
     const data = await response.json();
-    return data = ['age_count'];
-
-// function renderPatientCountByAgeChart(municipality){
-//     getPatientCountByAge(municipality).then((data) =>)
-// }    
-
+    console.log(data);
+    return data['age_count'];
+    
 }
+function renderPatientCountByAgeChart(municipality){
+    getPatientCountByAge(municipality).then((data) => {
+        console.log(data);
+        var first_range = data['1-20'];
+        console.log(first_range);
+        var second_range = data['21-40'];
+        var third_range = data['41-60'];
+        var fourth_range = data['61-80'];
+        var fifth_range = data['81-100'];
+        var fifth_range = data['100-above'];
+        if(municipality == 'All'){
+            var labels = [];
+            var first_range_counts = [];
+            var second_range_counts = [];
+            var third_range_counts = [];
+            var fourth_range_counts = [];
+            var fifth_range_counts = [];
+            var sixth_range_counts = [];
+            for (const [key, value] of Object.entries(first_range)) {
+                labels.push(key);
+                first_range_counts.push(value);
+            }
+            for (const [key, value] of Object.entries(second_range)) {
+                second_range_counts.push(value);
+            }
+            for (const [key, value] of Object.entries(third_range)) {
+                third_range_counts.push(value);
+            }
+            for (const [key, value] of Object.entries(fourth_range)) {
+                fourth_range_counts.push(value);
+            }
+            for (const [key, value] of Object.entries(fifth_range)) {
+                fifth_range_counts.push(value);
+            }
+                     
+        }
+        else{
+            var labels = [];
+            var first_range_counts = [];
+            var second_range_counts = [];
+            var third_range_counts = [];
+            var fourth_range_counts = [];
+            var fifth_range_counts = [];
+            var sixth_range_counts = [];
+            for (const [key, value] of Object.entries(first_range)) {
+                labels.push(key);
+                first_range_counts.push(value);
+            }
+            for (const [key, value] of Object.entries(second_range)) {
+                second_range_counts.push(value);
+            }
+            for (const [key, value] of Object.entries(third_range)) {
+                third_range_counts.push(value);
+            }
+            for (const [key, value] of Object.entries(fourth_range)) {
+                fourth_range_counts.push(value);
+            }
+            for (const [key, value] of Object.entries(fifth_range)) {
+                fifth_range_counts.push(value);
+            }
+                    
+        }
+        
+        const patientCountByAgeData = {
+            labels: labels,
+            datasets: [{
+                label: '1-20',
+                backgroundColor: '#FF2E2E',
+                data: first_range_counts,
+            },{
+                label: '21-40',
+                backgroundColor: '#FFEE57',
+                data: second_range_counts,
+            },{
+                label: '41-60',
+                backgroundColor: '#1BBF21',
+                data: third_range_counts,
+            },{
+                label: '61-80',
+                backgroundColor: '#B81E09',
+                data: fourth_range_counts,
+            },{
+                label: '81-100',
+                backgroundColor: '#213E76',
+                data: fifth_range_counts,
+            },{
+                label: '100-above',
+                backgroundColor: '#276BF0',
+                data: sixth_range_counts,
+            }]
+            
+        };
+       
+        const patientCountByAgeConfig = {
+            type: 'bar',
+            data: patientCountByAgeData,
+            options: {
+                scales: {
+                    x: {
+                        stacked: true
+                    },
+                    y: {
+                        beginAtZero: true,
+                        stacked: true
+                    }
+                },
+                legend: {
+                    display: false
+                }
+              },
+        };
+        if(patientCountByAgeChart != null){
+            patientCountByAgeChart.destroy();
+        }
+        patientCountByAgeChart = new Chart(
+            document.getElementById('patientsByAge'),
+            patientCountByAgeConfig
+        );
+    })
+} 
+renderPatientCountByAgeChart('All');
+
 
 // PATIENTS COUNT BY SEX//
 
@@ -486,6 +606,8 @@ async function getPatientCountBySex(municipality){
     const data = await response.json();
     return data['sex_count'];
 }
+
+
 function renderPatientCountBySexChart(municipality){
     getPatientCountBySex(municipality).then((data) => {
         var females = data['female'];
@@ -520,11 +642,11 @@ function renderPatientCountBySexChart(municipality){
             labels: labels,
             datasets: [{
                 label: 'Female',
-                backgroundColor: '#FCA0C1',
+                backgroundColor: '#FF5588',
                 data: female_counts,
             },{
                 label: 'Male',
-                backgroundColor: '#213E76',
+                backgroundColor: '#276BF0',
                 data: male_counts,
             }]
         };

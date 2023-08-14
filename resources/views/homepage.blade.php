@@ -32,7 +32,7 @@
                 <p class="font-roboto font-normal text-center text-base text-white md:text-2xl">"We are here to assist you by offering solutions for your vital sign requirements, transforming the way you monitor your vital sign measurements."</p>
                 <a href="/register/user" class="relative border border-white rounded-lg bg-[#5EDAD5] font-roboto font-semibold tracking-wide text-sm text-white px-4 py-3 md:text-base md:px-12 md:py-5">GET STARTED</a>
             </div>
-            <img src="{{asset('images/homepage/medbot.svg')}}" alt="" class="h-3/4 w-3/4 md:-translate-y-24">
+            <img src="{{asset('images/homepage/model_front_view.png')}}" alt="" class="h-[35%] w-[30%] md:-translate-y-24">
         </div> 
     </div>
 

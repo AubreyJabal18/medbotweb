@@ -19,9 +19,10 @@ getPatientListInProfessionalDashboard().then((data) => {
         search: true,
         data: data,
         pagination: {
-            limit: 5,
+            limit: 10,
             summary: false
-        }
+        },
+        sort: true
 
     }).render(patients_tableField);
 })

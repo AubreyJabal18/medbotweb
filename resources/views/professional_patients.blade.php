@@ -34,12 +34,12 @@
 
                 <img src="{{asset('images/dashboard/tri3.png')}}" alt="" class="absolute place-self-start w-2/5 md:w-1/5 md:h-1/5 lg:h-2/5 lg:w-1/5 left-[60%] md:left-[80%] lg:left-[80%] top-[91%] md:top-[84%] lg:top-[80%] ">
                 
-                <x-menu_professional :user="$user"/>
+                <x-menu_professional :user="$professional"/>
             </div>
 
             <div class="flex flex-col md:flex-row items-center justify-center bg-[#F3EFEF]/50 py-2 md:py-4 lg:py-5 md:flex-row md:justify-between px-20">
                 <p class="font-roboto font-semibold text-[#A03B3B] text-lg md:text-2xl">Dashboard</p>
-                <a href="" class="font-roboto font-semibold text-[#A03B3B] hover:text-gray-300 text-base md:text-xl lg:pr-[5%]">View Readings</a>
+                <a href="/patients/readings?user={{$user->id}}" class="font-roboto font-semibold text-[#A03B3B] hover:text-gray-300 text-base md:text-xl lg:pr-[5%]">View Readings</a>
             </div>
 
             <div class="flex flex-col justify-center py-8 px-4">

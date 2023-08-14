@@ -113,9 +113,51 @@
                     @endfor      
                 </div>
             </div>    
-        </div>         
-        <div class="flex flex-col px-4">
-            <p class="font-roboto text-bold text-black/80 text-base md:text-xl md:self-start lg:px-10">Users List</p>
+        </div> 
+               
+        <div class="flex flex-col lg:flex-row items-center self-center space-y-4 lg:space-x-6 lg:w-full px-2 md:px-6 mt-4">
+            <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-full lg:w-full ">
+                <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-xl  text-[#151515]  px-4 text-center bg-gray-200  ">Users Count by Municipality</p>      
+                <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 mt-4">
+                    <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline"  id="select-usersByMunicipality" name="by"> 
+                        <option value="All">All</option>
+                        <option value="Boac">Boac</option>
+                        <option value="Buenavista">Buenavista</option>
+                        <option value="Gasan">Gasan</option>
+                        <option value="Mogpog">Mogpog</option>
+                        <option value="Sta. Cruz">Sta. Cruz</option>
+                        <option value="Torrijos">Torrijos</option>
+                    </select>
+                </div>
+                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-[60%] bottom-0 left-0 lg:w-[60%]">
+                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-[60%] bottom-0 right-0">
+                <canvas id="users-count" class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></canvas>
+            </div>
+            
+            <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-full lg:w-full ">
+                <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-xl  text-[#151515]  px-4 text-center bg-gray-200  ">Users Who Used Enhanced Med-Bot</p>
+                <div class="flex flex-col md:flex-row font-roboto self-center md:space-x-10 pt-2 ">
+                            
+                    <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
+                    
+                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="select" name="by">
+                            <option value="weekly" >Weekly</option>
+                            <option value="monthly" >Monthly</option>
+                            <option value="yearly" >Yearly</option> 
+                        </select>  
+                    </div> 
+                        <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="year" name="value">
+                        <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="month" name="value">
+                        <input class=" flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="week" name="value">
+                </div>
+                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-[60%] bottom-0 left-0 lg:w-[80%] ">
+                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-[60%] bottom-0 right-0 lg:w-[80%]">
+                <canvas id="countUsed" class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></canvas>
+            </div>
+        </div>
+
+        <div class="flex flex-col px-6 py-6">
+            <p class="font-roboto font-bold text-black/80 text-base md:text-xl lg:text-2xl md:self-start ">Users List</p>
             <div id="users-table" class=""></div>
         </div>
       
@@ -155,47 +197,7 @@
 
             </div>
         </div>
-               
-        <div class="flex flex-col lg:flex-row items-center self-center space-y-4 lg:space-x-6 lg:w-full px-2 md:px-6 mt-4">
-            <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-full lg:w-full ">
-                <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-xl  text-[#151515]  px-4 text-center bg-gray-200  ">Users Count by Municipality</p>      
-                <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 mt-4">
-                    <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline"  id="select-usersByMunicipality" name="by"> 
-                        <option value="All">All</option>
-                        <option value="Boac">Boac</option>
-                        <option value="Buenavista">Buenavista</option>
-                        <option value="Gasan">Gasan</option>
-                        <option value="Mogpog">Mogpog</option>
-                        <option value="Sta. Cruz">Sta. Cruz</option>
-                        <option value="Torrijos">Torrijos</option>
-                    </select>
-                </div>
-                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 left-0 lg:w-[60%]">
-                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 right-0">
-                <canvas id="users-count" class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></canvas>
-            </div>
-            
-            <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-full lg:w-full ">
-                <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-xl  text-[#151515]  px-4 text-center bg-gray-200  ">Users Who Used Enhanced Med-Bot</p>
-                <div class="flex flex-col md:flex-row font-roboto self-center md:space-x-10 pt-2 ">
-                            
-                    <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
-                    
-                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="select" name="by">
-                            <option value="weekly" >Weekly</option>
-                            <option value="monthly" >Monthly</option>
-                            <option value="yearly" >Yearly</option> 
-                        </select>  
-                    </div> 
-                        <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="year" name="value">
-                        <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="month" name="value">
-                        <input class=" flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="week" name="value">
-                </div>
-                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 left-0 lg:w-[60% ] ">
-                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-60 bottom-0 right-0">
-                <canvas id="countUsed" class="mt-4 flex drop-shadow-lg shadow-lg h-96 w-full rounded-lg bg-white"></canvas>
-            </div>
-        </div>
+        
     </div>
 
     <div id="notice-delete-patient" class="hidden fixed flex-col border-2 w-[80%] md:w-[50%] lg:w-[30%] h-[25%] md:h-[25%] rounded-xl items-center  bg-white drop-shadow-lg shadow-lg z-50 top-[40%] left-[10%] md:left-[25%] lg:left-[35%]">

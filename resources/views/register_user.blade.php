@@ -11,7 +11,7 @@
         <div class="flex flex-col-reverse px-5 py-5 mx-auto md:flex-row md:space-x-10 z-10">
             <div class="flex flex-col justify-center items-center h-full">
                 <p class=" font-roboto font-normal text-2xl text-white text-center mt-5 md:mt-0 md:text-3xl z-10">Your Ultimate ALL-in-ONE Healthcare Buddy</p>
-                <img src="{{asset('images/register/medbot-side.svg')}}" alt="" class="h-1/2 w-1/2 md:h-1/2 md:w-3/4 relative z-10">
+                <img src="{{asset('images/register/model_right_sideview.png')}}" alt="" class="h-1/2 w-1/2  md:h-[25%] md:h-[20%] lg:h-[30%] lg:w-[60%] relative z-10">
                 <p class=" font-roboto font-normal text-lg text-white text-center md:text-xl z-10">Monitor your vital signs using the Enhanced Med-Bot</p>
 
                 <div class="absolute justify-center">

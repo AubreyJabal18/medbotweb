@@ -25,11 +25,11 @@
 				<p class="font-roboto font-bold text-[#07DBDB] text-lg md:text-2xl text-shadow">ENHANCED MED-BOT</p>
 			</div>
 			<div class="flex flex-row space-x-4 items-center justify-end">
-				<p class="hidden font-roboto font-normal text-white text-lg md:block">{{ $user->first_name }} {{ $user->last_name }} {{ $user->suffix ? $user->suffix : '' }}</p>
+				<p class="hidden font-roboto font-normal text-white text-lg md:block">{{ $professional->first_name }} {{ $professional->last_name }} {{ $professional->suffix ? $professional->suffix : '' }}</p>
 				<img src="{{asset('images/dashboard/profile.png')}}" alt="" id="profile-menu" class="h-8 w-8 cursor-pointer md:h-12 md:w-12 hover:brightness-75">
 			</div>
 			
-			<x-menu_user :user="$user"/>
+			<x-menu_professional :user="$professional"/>
 		</div>
 
 		<div class="flex flex-col space-y-2 md:space-y-0 md:flex-row items-center justify-center md:space-x-5 relative">
@@ -84,6 +84,7 @@
 
 			<div class="items-center justify-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300">
 				<p class="text-lg md:text-2xl font-semibold mb-2 text-white text-center">Your Vital Readings</p>
+				<input type="id" id="user-id" class="hidden" value="{{$user->id}}">
 				<div id="test-table" class="w-[300px] md:w-[500px] lg:w-[900px] xl:[1000px]"></div>
 			</div>
 	
@@ -99,7 +100,7 @@
 	</div>
 
 	<script src="{{asset('/js/gridjs.umd.js')}}"></script>
-	<script src="{{asset('/js/test.js')}}"></script>
+	<script src="{{asset('/js/patient_readings.js')}}"></script>
   
 </body>
 </html>

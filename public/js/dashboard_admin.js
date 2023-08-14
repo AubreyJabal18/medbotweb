@@ -39,10 +39,13 @@ getUserListInAdminDashboard().then((data) => {
             autoWidth: true,
             data: data,
             pagination: {
-                limit: 5,
+                limit: 10,
                 summary: false
             },
-            sort: true, 
+            sort: true,
+            className:{
+                th: 'text-roboto text-black'
+            }
     
         }).render(users_tableField);
     }
@@ -310,7 +313,7 @@ monthField.addEventListener('change', function(){
 yearField.addEventListener('change', function(){
     weekField.value = '';
     monthField.value = '';
-    console.log(yearield.value);
+    console.log(yearField.value);
     renderUsersCountByUsedChart('yearly', yearField.value);
 })
 

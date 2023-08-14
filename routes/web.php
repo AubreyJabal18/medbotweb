@@ -91,4 +91,12 @@ Route::get('/get/users_count', [FetchController::class, 'getUsersCount']);
 
 Route::get('/get/readings', [FetchController::class, 'getUserReadings']);
 
+Route::get('/readings', [RedirectController::class, 'redirectToProfessionalReadings']);
+
 Route::get('/get/authenticated', [FetchController::class, 'getAuthenticatedUser']);
+
+Route::get('/get/professional_readings', [FetchController::class, 'getProfessionalReadings']);
+
+Route::get('/patients/readings', [RedirectController::class, 'redirectToPatientReadings']);
+
+Route::get('/get/age_count', [FetchController::class, 'getPatientCountByAge']);

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 
+
 class FetchController extends Controller
 {
 
@@ -495,6 +496,126 @@ class FetchController extends Controller
         }
     
     }
+
+    // FOR PATIENT COUNT BY AGE//
+
+    public function getPatientCountByAge(Request $request) {
+        $age_count = [];
+        $age_ranges = [
+            '1-20' => 0,
+            '21-40' => 0,
+            '41-60' => 0,
+            '61-80' => 0,
+            '81-100' => 0,
+            '100-above' => 0,
+        ];
+    
+        if (ucwords($request->municipality) == 'All') {
+            $user = User::where('type', 'patient');
+            $patients = $user->get()->map(function ($patient) {
+                $patient->age = Carbon::parse($patient->birthday)->age;
+                return $patient;
+            });
+    
+            foreach ($patients as $patient) {
+                if ($patient->age >= 1 && $patient->age <= 20) {
+                    $age_ranges['1-20']++;
+                } elseif ($patient->age >= 21 && $patient->age <= 40) {
+                    $age_ranges['21-40']++;
+                } elseif ($patient->age >= 41 && $patient->age <= 60) {
+                    $age_ranges['41-60']++;
+                } elseif ($patient->age >= 61 && $patient->age <= 80) {
+                    $age_ranges['61-80']++;
+                } elseif ($patient->age >= 81 && $patient->age <= 100) {
+                    $age_ranges['81-100']++;
+                } elseif ($patient->age >= 100) {
+                    $age_ranges['100-above']++;
+                }
+            }
+    
+            $municipalities = ['Boac', 'Buenavista', 'Gasan', 'Mogpog', 'Sta. Cruz', 'Torrijos'];
+    
+            foreach ($municipalities as $municipality) {
+                $municipality_patients = $patients->where('municipality', $municipality);
+    
+                $age_count['1-20'][$municipality] = $municipality_patients->where('age', '>=', 1)->where('age', '<=', 20)->count();
+                $age_count['21-40'][$municipality] = $municipality_patients->where('age', '>=', 21)->where('age', '<=', 40)->count();
+                $age_count['41-60'] [$municipality]= $municipality_patients->where('age', '>=', 41)->where('age', '<=', 60)->count();
+                $age_count['61-80'][$municipality] = $municipality_patients->where('age', '>=', 61)->where('age', '<=', 80)->count();
+                $age_count['81-100'][$municipality] = $municipality_patients->where('age', '>=', 81)->where('age', '<=', 100)->count();
+                $age_count['100-above'][$municipality] = $municipality_patients->where('age', '>=', 100)->count();
+            }
+            
+
+            return response()->json([
+                'age_count' => $age_count,
+            ]);
+        }    
+        
+        else {
+            $user = User::where('type', 'patient');
+            $patients = $user->get()->map(function ($patient) {
+                $patient->age = Carbon::parse($patient->birthday)->age;
+                return $patient;
+            });
+
+            foreach ($patients as $patient) {
+                if ($patient->age >= 1 && $patient->age <= 20) {
+                    $age_ranges['1-20']++;
+                } elseif ($patient->age >= 21 && $patient->age <= 40) {
+                    $age_ranges['21-40']++;
+                } elseif ($patient->age >= 41 && $patient->age <= 60) {
+                    $age_ranges['41-60']++;
+                } elseif ($patient->age >= 61 && $patient->age <= 80) {
+                    $age_ranges['61-80']++;
+                } elseif ($patient->age >= 81 && $patient->age <= 100) {
+                    $age_ranges['81-100']++;
+                } elseif ($patient->age >= 100) {
+                    $age_ranges['100-above']++;
+                }
+            }
+
+            if(ucwords($request->municipality) == 'Boac'){
+                $barangays = $this->boac_barangays;
+            }
+            else if(ucwords($request->municipality) == 'Buenavista'){
+                $barangays = $this->buenavista_barangays;
+            }
+            else if(ucwords($request->municipality) == 'Gasan'){
+                $barangays = $this->gasan_barangays;
+            }
+            else if(ucwords($request->municipality) == 'Mogpog'){
+                $barangays = $this->mogpog_barangays;
+            }
+            else if(ucwords($request->municipality) == 'Sta. Cruz'){
+                $barangays = $this->sta_cruz_barangays;
+            }
+            else if(ucwords($request->municipality) == 'Torrijos'){
+                $barangays = $this->torrijos_barangays;
+            }
+            else{
+                return response()->json([
+                    'age_count' => 'Bad Request'
+                ]);
+            }
+
+            foreach ($barangays as $barangay) {
+                $barangay_patients = $patients->where('barangay', $barangay);
+
+                $age_count['1-20'][$barangay] = $barangay_patients->where('age', '>=', 1)->where('age', '<=', 20)->count();
+                $age_count['21-40'][$barangay] = $barangay_patients->where('age', '>=', 21)->where('age', '<=', 40)->count();
+                $age_count['41-60'][$barangay] = $barangay_patients->where('age', '>=', 41)->where('age', '<=', 60)->count();
+                $age_count['61-80'][$barangay] = $barangay_patients->where('age', '>=', 61)->where('age', '<=', 80)->count();
+                $age_count['81-100'][$barangay] = $barangay_patients->where('age', '>=', 81)->where('age', '<=', 100)->count();
+                $age_count['100-above'][$barangay] = $barangay_patients->where('age', '>=', 100)->count();
+            }
+            return response()->json([
+                'age_count' => $age_count,
+            ]);
+        }
+    
+    }
+
 //    FOR PATIENT COUNT BY SEX//
 
     public function getPatientCountBySex(Request $request){
@@ -929,6 +1050,7 @@ class FetchController extends Controller
         ]);
     }
 
+//FOR USER READINGS//
     public function getUserReadings(Request $request){
         $formatted_readings = [];
         $readings = Reading::where('user_id', $request->id)->get();
@@ -946,15 +1068,37 @@ class FetchController extends Controller
         ]);
     }
 
+//FOR PROFESSIONAL READINGS//
+
+    public function getProfessionalReadings(Request $request){
+        $formatted_readings = [];
+        $readings = Reading::where('user_id', $request->id)->get();
+        foreach($readings as $reading){
+            $temp_array = [
+                Carbon::parse($reading->created_at)->format('M d, Y'), 
+                $reading->blood_pressure_systolic.'/'.$reading->blood_pressure_diastolic,
+                $reading->blood_saturation.'%',
+                $reading->temperature.'C',
+                $reading->pulse_rate.' bpm'];
+            array_push($formatted_readings, $temp_array);
+        }
+        return response()->json([
+            'readings' => $formatted_readings
+        ]);
+    }
+
+    
     public function getAuthenticatedUser(){
         return response()->json([
             'user' => Auth::user()->id
         ]);
     }
-    
+
+
+  
 }
 
 
-    
+
  
 
