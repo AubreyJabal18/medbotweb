@@ -22,27 +22,29 @@ getUser().then((id) => {
         data: data,
         className: {
             table: 'min-w-full divide-y divide-gray-700',
-            thead: 'bg-gray-300',
+            thead: 'bg-gray-700',
             th: 'px-6 py-3 text-left text-base bg-gray-300 font-medium text-black tracking-wider',
             tbody: 'bg-white divide-y divide-gray-300',
             td: 'px-6 py-4 whitespace-nowrap'
         },
 
         style: {
+            table: {
+              border: '3px solid black'
+            },
             th: {
-              'background-color': 'bg-gray-200',
-              color: 'gray',
-              'border-bottom': '2px solid black',
-              'text-align': 'center',
-              textTransform: 'uppercase'
+              'background-color': 'rgba(0, 0, 0, 0.1)',
+              color: 'black',
+              'border-bottom': '3px solid black',
+              'text-align': 'center'
             },
             td: {
-              'text-align': 'center',
-              border:'1px solid gray',
-              'background-color':'white'
-            },
-        },
-    }).render(table);
+              'text-align': 'center'
+            }
+          }
+
+
+        }).render(table);
     })
 })
 

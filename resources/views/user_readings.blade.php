@@ -16,12 +16,12 @@
             window.open('/get/qrcode?id='+id, '_self');
         </script>
     @endif
-
-	<div class="flex flex-col h-fit md:h-full xl:h-screen bg-gradient-to-r from-[#5b86e5] to-[#305ab9]">
 		
-		<div class="flex flex-row justify-between items-center px-4 py-3 md:px- mb-10">
+	<div class="flex flex-col h-fit md:h-full xl:h-fit bg-gradient-to-r from-[#5b86e5] to-[#305ab9] ">
+		
+		<div class="flex flex-row justify-between items-center px-4 py-3 md:px- mb-10 z-10">
 			<div class="flex flex-row space-x-4 items-center">
-				<img src={{asset('images/dashboard/logo.png')}} alt="" class="h-8 w-8 md:h-12 md:w-12">
+				<img src="{{asset('images/dashboard/logo.png')}}" alt="" class="h-8 w-8 md:h-12 md:w-12">
 				<p class="font-roboto font-bold text-[#07DBDB] text-lg md:text-2xl text-shadow">ENHANCED MED-BOT</p>
 			</div>
 			<div class="flex flex-row space-x-4 items-center justify-end">
@@ -46,7 +46,7 @@
 					<p class="flex font-roboto font-normal text-black text-sm xl:text-xl md:text-base">Weekly Count</p>
 					
 					<div class="flex flex-row w-full h-fit items-center justify-evenly">
-						<img src="{{asset('images/dashboard/design_patient.png')}}" alt=""  class="w-8 lg:w-24 h-8 lg:h-24">
+						<img src="{{asset('images/dashboard/BP.svg')}}" alt=""  class="w-12 lg:w-24 h-12 lg:h-24">
 						<p class="font-roboto font-bold text-black text-2xl lg:text-4xl" title="Number of user interaction with the enhanced Med-Bot per Week">{{$weeklyCount}}</p>
 					</div>
 					<img src="{{asset('images/dashboard/bg_design.png')}}" alt="" class=" absolute w-16 lg:w-24 h-16 lg:h-24 bottom-0 left-0 -z-10 rounded-xl ">	
@@ -56,7 +56,7 @@
 					<p class="flex font-roboto font-normal text-black text-sm md:text-base xl:text-xl">Monthly Count</p>
 					
 					<div class="flex flex-row w-full h-fit items-center justify-evenly">
-						<img src="{{asset('images/dashboard/design_patient.png')}}" alt="" class="w-8 lg:w-24 h-8 lg:h-24">
+						<img src="{{asset('images/dashboard/BP.svg')}}" alt="" class="w-12 lg:w-24 h-12 lg:h-24">
 						<p class="font-roboto font-bold text-black text-2xl lg:text-4xl" title="Number of user interaction with the enhanced Med-Bot per Month">{{$monthlyCount}}</p>
 					</div> 
 					<img src="{{asset('images/dashboard/bg_design.png')}}" alt="" class=" absolute w-16 lg:w-24 h-16 lg:h-24 bottom-0 left-0 -z-10 rounded-xl ">   
@@ -68,38 +68,35 @@
             	<p class="flex font-roboto font-normal text-black text-sm md:text-base xl:text-xl">Yearly Count</p>
 				
 				<div class="flex flex-row w-full h-fit items-center justify-evenly">
-					<img src="{{asset('images/dashboard/design_patient.png')}}" alt="" class="w-8 lg:w-24 h-8 lg:h-24">
+					<img src="{{asset('images/dashboard/BP.svg')}}" alt="" class="w-12 lg:w-24 h-12 lg:h-24">
 					<p class="font-roboto font-bold text-black text-2xl lg:text-4xl" title="Number of user interaction with the enhanced Med-Bot per Year">{{$yearlyCount}}</p>
 				</div>    
 				<img src="{{asset('images/dashboard/bg_design.png')}}" alt="" class=" absolute w-16 lg:w-24 h-16 lg:h-24 bottom-0 left-0 -z-10 rounded-xl ">
             </div>
 			
-			<img src="{{asset('images/dashboard/model.png')}}" alt="" class="w-36 h-36 lg:w-44 lg:h-44 z-10">
+			<img src="{{asset('images/dashboard/model2.png')}}" alt="" class="w-36 h-36 lg:w-44 lg:h-44 z-10">
 			
 		</div>
 
 
 		
-		<div class="flex justify-center mt-5 mb-5 md:mt-14 ">
-
+		<div class="flex flex-row items-center justify-evenly mt-5 mb-5 md:mt-14 relative">
 			<div class="items-center justify-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300">
-				<p class="text-lg md:text-2xl font-semibold mb-2 text-white text-center">Your Vital Readings</p>
-				<div id="test-table" class="w-[300px] md:w-[500px] lg:w-[900px] xl:w-[1200px]"></div>
+			  <p class="text-lg md:text-2xl font-semibold mb-2 text-white text-center">Your Vital Readings</p>
+			  <div id="test-table" class="w-[300px] md:w-[700px] lg:w-[900px] xl:w-[1400px] xl:h-fit"></div>
 			</div>
-	
-		</div>
-		
-		<div class="flex justify-end">
-			<div class="flex flex-row items-center justify-center p-2 space-x-2 mt-10 mb-10 lg:mr-16 xl:mr-72 left-10 w-52 h-20 border border-white bg-[#5EDAD5] rounded-xl shadow-lg shadow-black">
+
+			<div class="absolute bottom-10 right-20 z-50">
+			  <div class="flex flex-row items-center justify-center p-2 space-x-2 w-40 h-16 border border-white bg-[#5EDAD5] rounded-xl shadow-sm shadow-black transition-colors duration-300 hover:bg-[#4ac0b8] focus:bg-[#4ac0b8]">
 				<img src="{{asset('images/dashboard/download.png')}}" alt="" class="w-12 h-12">
-				<b class="text-roboto font-medium text-lg text-black text-center">Download Vital Readings</b>
+				<b class="text-roboto font-medium text-base text-black text-center">Download Reading</b>
+			  </div>
 			</div>
 		</div>
-		
 	</div>
 
 	<script src="{{asset('/js/gridjs.umd.js')}}"></script>
-	<script src="{{asset('/js/user_reading.js')}}"></script>
+	<script src="{{asset('/js/test.js')}}"></script>
   
 </body>
 </html>

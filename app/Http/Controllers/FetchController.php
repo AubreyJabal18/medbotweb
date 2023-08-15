@@ -1056,11 +1056,17 @@ class FetchController extends Controller
         $readings = Reading::where('user_id', $request->id)->get();
         foreach($readings as $reading){
             $temp_array = [
-                Carbon::parse($reading->created_at)->format('M d, Y'), 
-                $reading->blood_pressure_systolic.'/'.$reading->blood_pressure_diastolic,
+                Carbon::parse($reading->created_at)->format('M d, Y'),
+                Carbon::parse($reading->created_at)->format('h:i A'),
+                $reading->blood_pressure_systolic.'/'.$reading->blood_pressure_diastolic.' mmHg',
+                $reading->blood_pressure_rating,
                 $reading->blood_saturation.'%',
+                $reading->blood_saturation_rating,
                 $reading->temperature.'C',
-                $reading->pulse_rate.' bpm'];
+                $reading->temperature_rating,
+                $reading->pulse_rate.' bpm',
+                $reading->pulse_rate_rating];
+
             array_push($formatted_readings, $temp_array);
         }
         return response()->json([
