@@ -24,6 +24,7 @@ class User extends Authenticatable
         'first_name',
         'suffix',
         'honorific',
+        'id_number',
         'type',
         'sex',
         'birthday',
@@ -60,8 +61,4 @@ class User extends Authenticatable
         return $this->hasMany(Reading::class, 'user_id')->get();
     }
 
-    public function getAge()
-    {
-        return Carbon::parse($this->attributes['birthdate'])->age;
-    }
 }

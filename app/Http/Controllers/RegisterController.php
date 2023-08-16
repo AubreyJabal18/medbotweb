@@ -59,6 +59,7 @@ class RegisterController extends Controller
             'first_name' => $request->first_name,
             'suffix' => $request->suffix,
             'honorific' => null,
+            'id_number' => 'medbot2',
             'type' => 'patient',
             'sex' => $request->sex,
             'birthday' => $request->birthday,
@@ -70,6 +71,9 @@ class RegisterController extends Controller
         ];
 
         $user = User::create($user_form);
+        $municipality_firstLetter = strtoupper(substr( $request->municipality, 0, 3));
+        $user->id_number = '5B2-'.$municipality_firstLetter.'PZT-'.$user->id;
+        $user->save();
 
         if($request->hasFile('profile')){
             $profile_path = $this->UploadFile($request->file('profile'), $user->id, 'profiles');
@@ -137,6 +141,7 @@ class RegisterController extends Controller
             'first_name' => $request->first_name,
             'suffix' => $request->suffix,
             'honorific' => $request->honorific,
+            'id_number' => 'medbot1',
             'type' => 'professional',
             'sex' => $request->sex,
             'birthday' => $request->birthday,
@@ -148,6 +153,9 @@ class RegisterController extends Controller
         ];
 
         $user = User::create($user_form);
+        $municipality_firstLetter = strtoupper(substr( $request->municipality, 0, 3));
+        $user->id_number = '5B2-'.$municipality_firstLetter.'HCP-'.$user->id;
+        $user->save();
 
         if($request->hasFile('profile')){
             $profile_path = $this->uploadFile($request->file('profile'), $user->id, 'profiles', 'public');

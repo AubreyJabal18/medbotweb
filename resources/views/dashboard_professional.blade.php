@@ -36,15 +36,7 @@
             </div>
             <div class="flex flex-col items-center justify-center bg-[#F3EFEF]/50 py-2 md:py-4 lg:py-5 md:flex-row md:justify-between px-10">
                 <p class="font-roboto font-semibold text-[#A03B3B] text-lg md:text-2xl">Dashboard</p>
-                <form action="/search/process" role="search" method="GET" enctype="multipart/form-data" id='form' name='form' class="flex w-full md:w-2/5 lg:w-2/5">
-                    <div class="flex flex-row items-center relative w-[100%] md:w-[100%]">
-                        <input type="search" id="search" name="search" class="w-full bg-[#DDD9D9]/50 border-none rounded-2xl outline-none px-8 lg:px-10 lg:mr-3 py-1 md:py-2 lg:py-2 placeholder:text-[#B87070] " placeholder="Search for patient">
-                        <button class="absolute right-3 md:right-4 lg:right-8" id="search_button" name="search_button" type="button">
-                            <img src="{{asset('images/dashboard/search.png')}}" alt="" >
-                        </button>
-                        
-                    </div>     
-                </form>  
+                 
             </div>
             <div class="flex flex-col justify-center py-8 px-4">
                 <p class="font-roboto font-medium text-white text-xl md:text-2xl lg:text-2xl md:ml-3 md:text-2xl">Hello {{$user->honorific}} {{$user->last_name}},</p>
@@ -73,7 +65,7 @@
                     @foreach($latest_readings as $reading)
                         <div class="table-row-group">
                             <div class="table-row font-roboto font-normal text-black text-sm md:text-base ">
-                                <div class="table-cell text-center py-1">{{$reading->user->first_name}} {{$reading->user->last_name}}</div>
+                                <div class="table-cell text-center py-1">{{$reading->user->id_number}}</div>
                                 <div class="table-cell text-center py-1">{{$reading->user->sex}}</div>
                                 <div class="table-cell text-center py-1">{{$reading->user->barangay}}, {{$reading->user->municipality}}</div>
                                 <div class="table-cell text-center py-1">{{\Carbon\Carbon::parse($reading->created_at)->format('M d, Y (H:i:s)')}}</div>

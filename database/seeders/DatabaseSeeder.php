@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
             'last_name' => 'Medbot',
             'first_name' => 'Admin',
+            'id_number' => 'admin',
             'type' => 'admin',
             'sex' => 'female',
             'birthday' => '2001-09-18',

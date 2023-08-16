@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('suffix')->nullable();
             $table->string('honorific')->nullable();
+            $table->string('id_number')->unique();
             $table->string('type');
             $table->string('sex');
             $table->date('birthday');

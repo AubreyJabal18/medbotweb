@@ -88,7 +88,7 @@
                     @foreach($latest_users as $user)    
                         <div class="table-row-group pb-2 ">
                             <div class="table-row font-roboto font-normal text-black text-sm md:text-base space-x-2 items-center ">
-                                <div class="table-cell py-1 items-center justify- text-center w-1/5 lg:w-[20%] border-2 border-r-0 border-blue-500 ">{{ $user->first_name }} {{ $user->last_name }} {{ $user->suffix }}
+                                <div class="table-cell py-1 items-center justify- text-center w-1/5 lg:w-[20%] border-2 border-r-0 border-blue-500 ">{{ $user->id_number }} 
                                 </div>
                                 <div class="table-cell py-1 px-2 items-center justify- text-center w-1/5 lg:w-[20%] border-2 border-r-0 border-l-0 border-blue-500 ">{{ $user->type }}
                                 </div>
