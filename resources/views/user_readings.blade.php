@@ -17,7 +17,7 @@
         </script>
     @endif
 		
-	<div class="flex flex-col h-fit md:h-full xl:h-fit bg-gradient-to-r from-[#5b86e5] to-[#305ab9] ">
+	<div class="flex flex-col min-h-screen bg-gradient-to-r from-[#5b86e5] to-[#305ab9] ">
 		
 		<div class="flex flex-row justify-between items-center px-4 py-3 md:px- mb-10 z-10">
 			<div class="flex flex-row space-x-4 items-center">
@@ -77,26 +77,22 @@
 			<img src="{{asset('images/dashboard/model2.png')}}" alt="" class="w-36 h-36 lg:w-44 lg:h-44 z-10">
 			
 		</div>
-
-
 		
-		<div class="flex flex-row items-center justify-evenly mt-5 mb-5 md:mt-14 relative">
-			<div class="items-center justify-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300">
-			  <p class="text-lg md:text-2xl font-semibold mb-2 text-white text-center">Your Vital Readings</p>
-			  <div id="test-table" class="w-[300px] md:w-[700px] lg:w-[900px] xl:w-[1400px] xl:h-fit"></div>
-			</div>
+		<div class="items-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300">
+			<p class="text-lg md:text-2xl font-semibold mb-2 text-white text-center">Your Vital Readings</p>
+			<div id="reading-table" class="flex w-[90%] md:w-[80%] justify-center mx-auto"></div>
+		</div>
 
-			<div class="absolute bottom-10 right-20 z-50">
-			  <div class="flex flex-row items-center justify-center p-2 space-x-2 w-40 h-16 border border-white bg-[#5EDAD5] rounded-xl shadow-sm shadow-black transition-colors duration-300 hover:bg-[#4ac0b8] focus:bg-[#4ac0b8]">
-				<img src="{{asset('images/dashboard/download.png')}}" alt="" class="w-12 h-12">
-				<b class="text-roboto font-medium text-base text-black text-center">Download Reading</b>
-			  </div>
+		<div class="fixed bottom-2 right-10 z-50 md:bottom-6 ">
+			<div class="flex flex-row items-center justify-center p-2 space-x-2 w-40 h-16 border border-white bg-[#5EDAD5] rounded-xl shadow-sm shadow-black transition-colors duration-300 hover:bg-[#4ac0b8] focus:bg-[#4ac0b8]">
+			<img src="{{asset('images/dashboard/download.png')}}" alt="" class="w-12 h-12">
+			<b class="text-roboto font-medium text-base text-black text-center">Download Reading</b>
 			</div>
 		</div>
 	</div>
 
 	<script src="{{asset('/js/gridjs.umd.js')}}"></script>
-	<script src="{{asset('/js/test.js')}}"></script>
+	<script src="{{asset('/js/user_readings.js')}}"></script>
   
 </body>
 </html>
