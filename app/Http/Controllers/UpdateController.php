@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Auth;
 class UpdateController extends Controller
 {
     public function updatePatient(Request $request)
-    {   
-        
+    {   $user = User::find($request->id);
+
         $validator = Validator::make($request->all(), [
         'first_name' => 'required|regex:/^[a-zA-Z ]+$/',
         'last_name' => 'required|regex:/^[a-zA-Z ]+$/',
@@ -23,7 +23,7 @@ class UpdateController extends Controller
         'municipality' => 'required',
         'barangay' => 'required',
         'contact_number' => 'required|regex:/^(09)\d{9}$/',
-        'email' => 'required|email|unique:users,email',
+        'email' => 'required|email|unique:users,email,'.$user->id,
         'profile' => 'nullable|mimes:jpg,jpeg,png'
     ],
     [
@@ -43,9 +43,6 @@ class UpdateController extends Controller
         $user->profile = $profile_path;
         $user->save();
     }
-    
-    
-    $user = User::find($request->id);
         
     $user->first_name = $request->first_name;
     $user->last_name = $request->last_name;
@@ -61,7 +58,7 @@ class UpdateController extends Controller
     $user->save();
 
     flash()->addSuccess('Your information has been updated.');
-    return redirect('dashboard_user');
+    return redirect('/');
     
     }
 
@@ -75,7 +72,7 @@ class UpdateController extends Controller
             'municipality' => 'required',
             'barangay' => 'required',
             'contact_number' => 'required|regex:/^(09)\d{9}$/',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:users,email,'.$user->id,
             'license' => 'required|unique:users,license',
             'profile' => 'nullable|mimes:jpg,jpeg,png'
         ],
@@ -113,7 +110,7 @@ class UpdateController extends Controller
         $user->save();
 
         flash()->addSuccess('Your information has been updated.');
-        return redirect('dashboard_professional');
+        return redirect('/');
 
     }   
 
