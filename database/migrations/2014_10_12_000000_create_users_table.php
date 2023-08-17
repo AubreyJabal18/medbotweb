@@ -23,6 +23,7 @@ return new class extends Migration
             $table->date('birthday');
             $table->string('municipality');
             $table->string('barangay');
+            $table->string('contact_number')->unique();
             $table->string('email')->unique();
             $table->string('license')->nullable()->unique();
             $table->string('password');
