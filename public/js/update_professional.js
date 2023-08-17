@@ -1,4 +1,4 @@
-const submitButton = document.getElementById('submit-button');
+const submitButton = document.getElementById('update-button');
 const firstNameField = document.getElementById('firstname');
 const lastNameField = document.getElementById('lastname');
 const suffixField = document.getElementById('suffix');
@@ -9,7 +9,7 @@ const barangayField = document.getElementById('barangay');
 const contactField = document.getElementById('contact_number');
 const emailField = document.getElementById('email');
 const form = document.getElementById('form');
-const terms = document.getElementById('terms')
+
 
 function toTitleCase(str){
     const arr = str.split(" ");
@@ -102,12 +102,12 @@ submitButton.addEventListener('click', function(){
         return;
     }
 
-    if(!terms.checked) {
-        alert("Please accept the Terms and Conditions");
-        form.terms.focus();
+    if(licenseField.value.length == 0){
+        alert('License Number is required');
         submitButton.disabled = false;
         return;
     }
+
 
     firstNameField.value = toTitleCase(firstNameField.value);
     lastNameField.value = toTitleCase(lastNameField.value);
@@ -116,3 +116,5 @@ submitButton.addEventListener('click', function(){
     form.submit();
     
 });
+
+

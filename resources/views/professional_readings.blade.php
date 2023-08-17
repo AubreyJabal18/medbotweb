@@ -85,8 +85,9 @@
 		
 		<div class="flex justify-center mt-5 mb-5 md:mt-10 ">
 			<div class="items-center justify-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300">
-				<p class="text-lg md:text-2xl font-semibold mb-2 text-white text-center">Your Vital Signs Readings</p>
-				<div id="test-table" class="w-[300px] md:w-[650px] lg:w-[1200px] xl:[1000px]"></div>
+				<p class="text-lg md:text-2xl font-semibold mb-2 text-white text-center">Your Vital Readings</p>
+				<input type="id" id="user-id" class="hidden" value="{{$user->id}}">
+				<div id="test-table" class="w-[300px] md:w-[500px] lg:w-[900px] xl:[1000px]"></div>
 			</div>
 	
 		</div>

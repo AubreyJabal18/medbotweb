@@ -211,5 +211,17 @@ class RedirectController extends Controller
             'yearlyCount' => $yearlyCount
         ]);
     }
+
+    public function redirectToUpdatePatientInfo(){
+        $user = Auth::user();
+        return view('update_patient', compact('user'));
+
+    }
+
+    public function redirectToUpdateProfessionalInfo(){
+        $user = Auth::user();
+        return view('update_professional', compact('user'));
+
+    }
     
 }

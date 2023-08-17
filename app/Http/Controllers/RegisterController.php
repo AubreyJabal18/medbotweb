@@ -24,7 +24,7 @@ class RegisterController extends Controller
             'birthday' => 'required|before:now',
             'municipality' => 'required',
             'barangay' => 'required',
-            'contact' => 'required|regex:/^(09)\d{9}$/',
+            'contact_number' => 'required|regex:/^(09)\d{9}$/',
             'email' => 'required|email|unique:users,email',
             'profile' => 'nullable|mimes:jpg,jpeg,png'
         ],
@@ -39,13 +39,15 @@ class RegisterController extends Controller
             'birthday.before' => 'Invalid date',
             'municipality.required' => 'Municipality is required',
             'barangay.required' => 'Barangay is required',
-            'contact.required' => 'Contact number is required',
-            'contact.regex' => 'Invalid contact number format',
+            'contact_number.required' => 'Contact number is required',
+            'contact_number.regex' => 'Invalid contact number format',
             'email.required' => 'Email is required',
             'email.email' => 'Invalid email format',
             'email.unique' => 'Email already exists',
             'profile.mimes' => 'Invalid picture format'
         ]);
+
+        
         if($validator->fails()){
             foreach($validator->messages()->all() as $message){
                 flash()->addError($message);
@@ -59,17 +61,22 @@ class RegisterController extends Controller
             'first_name' => $request->first_name,
             'suffix' => $request->suffix,
             'honorific' => null,
+            'id_number' => 'medbot2',
             'type' => 'patient',
             'sex' => $request->sex,
             'birthday' => $request->birthday,
             'municipality' => $request->municipality,
             'barangay' => $request->barangay,
+            'contact_number' => $request->contact_number,
             'email' => $request->email,
             'license' => null,
             'password' => bcrypt($password)
         ];
 
         $user = User::create($user_form);
+        $municipality_firstLetter = strtoupper(substr( $request->municipality, 0, 3));
+        $user->id_number = '5B2-'.$municipality_firstLetter.'PZT-'.$user->id;
+        $user->save();
 
         if($request->hasFile('profile')){
             $profile_path = $this->UploadFile($request->file('profile'), $user->id, 'profiles');
@@ -99,7 +106,7 @@ class RegisterController extends Controller
             'birthday' => 'required|before:now',
             'municipality' => 'required',
             'barangay' => 'required',
-            'contact' => 'required|regex:/^(09)\d{9}$/',
+            'contact_number' => 'required|regex:/^(09)\d{9}$/',
             'email' => 'required|email|unique:users,email',
             'license' => 'required|unique:users,license',
             'profile' => 'nullable|mimes:jpg,jpeg,png'
@@ -116,8 +123,8 @@ class RegisterController extends Controller
             'birthday.before' => 'Invalid date',
             'municipality.required' => 'Municipality is required',
             'barangay.required' => 'Barangay is required',
-            'contact.required' => 'Contact number is required',
-            'contact.regex' => 'Invalid contact number format',
+            'contact_number.required' => 'Contact number is required',
+            'contact_number.regex' => 'Invalid contact number format',
             'email.required' => 'Email is required',
             'email.email' => 'Invalid email format',
             'email.unique' => 'Email already exists',
@@ -137,17 +144,22 @@ class RegisterController extends Controller
             'first_name' => $request->first_name,
             'suffix' => $request->suffix,
             'honorific' => $request->honorific,
+            'id_number' => 'medbot1',
             'type' => 'professional',
             'sex' => $request->sex,
             'birthday' => $request->birthday,
             'municipality' => $request->municipality,
             'barangay' => $request->barangay,
+            'contact_number' => $request->contact_number,
             'email' => $request->email,
             'license' => $request->license,
             'password' => bcrypt($password)
         ];
 
         $user = User::create($user_form);
+        $municipality_firstLetter = strtoupper(substr( $request->municipality, 0, 3));
+        $user->id_number = '5B2-'.$municipality_firstLetter.'HCP-'.$user->id;
+        $user->save();
 
         if($request->hasFile('profile')){
             $profile_path = $this->uploadFile($request->file('profile'), $user->id, 'profiles', 'public');
@@ -166,4 +178,5 @@ class RegisterController extends Controller
             'id' => $user->id
         ]);
     }
+
 }

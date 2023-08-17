@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\FetchController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DeleteController;
+use App\Http\Controllers\UpdateController;
 
 
 
@@ -100,3 +101,15 @@ Route::get('/get/professional_readings', [FetchController::class, 'getProfession
 Route::get('/patients/readings', [RedirectController::class, 'redirectToPatientReadings']);
 
 Route::get('/get/age_count', [FetchController::class, 'getPatientCountByAge']);
+
+Route::get('/update/patient', [RedirectController::class, 'redirectToUpdatePatientInfo']);
+
+Route::get('/update/professional', [RedirectController::class, 'redirectToUpdateProfessionalInfo']);
+
+Route::post('/update/patient/process', [UpdateController::class, 'updatePatient']);
+
+Route::post('/update/professional/process', [UpdateController::class, 'updateProfessional']);
+
+
+
+// Route::put('/patient/update', [RedirectController::class, 'update'])->name('patient.update');

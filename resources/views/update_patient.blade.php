@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Update My Information</title>
     @vite('resources/css/app.css')
 </head>
 <body>
-    <div class="relative flex w-full h-fit bg-gradient-to-r from-[#5B86E5] to-[#305AB9]">
+    <div class="relative flex w-full h-screen bg-gradient-to-r from-[#5B86E5] to-[#305AB9]">
         <div class="flex flex-col-reverse px-5 py-5 mx-auto md:flex-row md:space-x-10 z-10">
             <div class="flex flex-col justify-center items-center h-full">
                 <p class=" font-roboto font-normal text-2xl text-white text-center mt-5 md:mt-0 md:text-3xl z-10">Your Ultimate ALL-in-ONE Healthcare Buddy</p>
@@ -19,7 +19,7 @@
                 </div>
             </div>
 
-            <div class="w-full h-fit flex flex-col bg-white rounded-3xl border-black px-4 py-4 z-10">
+            <div class="w-full h-fit justify-center self-center flex flex-col bg-white rounded-3xl border-black px-4 py-4 z-10">
                 <div class="flex flex-col px-4 py-2 md:flex-row">
                     <div class="flex justify-end md:hidden">
                         <a href="/">
@@ -31,21 +31,16 @@
                             <img src="{{asset('images/register/logo2.svg')}}" alt="" class="h-12 w-12">
                             <p class="font-roboto font-bold text-base text-[#5ECECD] text-shadow text-center">ENHANCED MED-BOT</p>
                         </div>   
-                        <div class="hidden justify-end items-center md:flex">
-                            <a href="/">
-                                <img src="{{asset('images/register/home.svg')}}" alt="" class="h-6 w-6">
-                            </a>
-                        </div>  
+                      
                     </div>
                 </div>
 
-                <div class="w-full flex flex-col my-4 md:px-4">
-                    <p class="font-roboto font-bold text-base text-black ">Create an account</p>
-                    <p class="font-roboto font-normal text-base text-black ">Register as Professional? <a href="/register/professional" class="text-[#5B86E5]">Click here</a></p>
-                </div>
+                
 
-                <form action="/register/user/process" method="POST" enctype="multipart/form-data" id="form">
+                <form action="/update/patient/process" method="POST" enctype="multipart/form-data" id="form">
+                    <input type="text" class="hidden" value="{{$user->id}}" name="id">
                     @csrf
+                    
                     <div class="grid grid-cols-1 gap-4 items-start mt-4 md:grid-cols-2 lg:grid-cols-3">
                     
                         <div class="grid flex flex-col justify-center items-center md:col-span-2 lg:row-span-5 lg:col-span-1"> 
@@ -56,17 +51,17 @@
     
                         <div class="grid flex flex-col items-start space-y-0.5">
                             <label class=" text-gray-700 text-sm font-normal" for="firstname">First Name</label>
-                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstname" type="text" placeholder="First Name" name=first_name value="{{old('first_name')}}">
+                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstname" type="text" placeholder="First Name" name=first_name value="{{ $user->first_name }}">
                         </div>
     
                         <div class="grid flex flex-col items-start space-y-0.5">
                             <label class=" text-gray-700 text-sm font-normal" for="lastname">Last Name</label>
-                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lastname" type="text" placeholder="Last Name" name="last_name" value="{{old('last_name')}}">
+                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lastname" type="text" placeholder="Last Name" name="last_name" value="{{ $user->last_name }}">
                         </div>
     
                         <div class="grid flex flex-col items-start space-y-0.5">
                             <label class=" text-gray-700 text-sm font-normal" for="suffix">Suffix</label>
-                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="suffix" type="text" placeholder="Suffix" name="suffix" value="{{old('suffix')}}">
+                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="suffix" type="text" placeholder="Suffix" name="suffix" value="{{ $user->suffix }}">
                         </div>
     
                         <div class="grid"></div>
@@ -74,10 +69,10 @@
                         <div class="grid flex flex-col items-start space-y-0.5">
                             <label class=" text-gray-700 text-sm font-normal" for="sex">Sex</label>
                             <div class="relative">
-                               <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="sex" name="sex" value="{{old('sex')}}">
+                               <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="sex" name="sex" value="{{ $user->sex }}">
                                     <option disabled selected hidden class="text-gray-400" value="null">Select an option</option>
-                                    <option class="text-gray-400" value="male">Male</option>
-                                    <option class="text-gray-400" value="female">Female</option>
+                                    <option class="text-gray-400" value="male" @if($user->sex === 'male') selected @endif>Male</option>
+                                    <option class="text-gray-400" value="female" @if($user->sex === 'female') selected @endif>Female</option>
                                 </select>
                                 <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                     <img src="{{asset('images/register/menu-down (1).svg')}}" alt="Dropdown Icon" class="h-5 w-5 text-gray-700">
@@ -87,20 +82,20 @@
     
                         <div class="grid flex flex-col items-start space-y-0.5">
                             <label class=" text-gray-700 text-sm font-normal" for="birthday">Date of birth (MM/DD/YY)</label>
-                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="birthday" type="date" placeholder="Select a date" name="birthday" value="{{old('birthday')}}">
+                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="birthday" type="date" placeholder="Select a date" name="birthday" value="{{ $user->birthday }}">
                         </div>
     
                         <div class="grid flex flex-col items-start space-y-0.5">
                             <label class=" text-gray-700 text-sm font-normal" for="municipality">Municipality</label>
                             <div class="relative">
-                               <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="municipality" name="municipality" value="{{old('municipality')}}">
+                               <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="municipality" name="municipality" value="{{ $user->municipality }}">
                                     <option disabled selected hidden value="null">Select a Municipality</option>
-                                    <option value="Boac">Boac</option>
-                                    <option value="Buenavista">Buenavista</option>
-                                    <option value="Gasan">Gasan</option>
-                                    <option value="Mogpog">Mogpog</option>
-                                    <option value="Sta. Cruz">Santa Cruz</option>
-                                    <option value="Torrijos">Torrijos</option>
+                                    <option value="Boac" @if($user->municipality === 'Boac') selected @endif>Boac</option>
+                                    <option value="Buenavista" @if($user->municipality === 'Buenavista') selected @endif>Buenavista</option>
+                                    <option value="Gasan" @if($user->municipality === 'Gasan') selected @endif>Gasan</option>
+                                    <option value="Mogpog" @if($user->municipality === 'Mogpog') selected @endif>Mogpog</option>
+                                    <option value="Sta. Cruz" @if($user->municipality === 'Sta. Cruz') selected @endif>Santa Cruz</option>
+                                    <option value="Torrijos" @if($user->municipality === 'Torrijos') selected @endif>Torrijos</option>
                                 </select>
                                 <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                     <img src="{{asset('images/register/menu-down (1).svg')}}" alt="Dropdown Icon" class="h-5 w-5 text-gray-700">
@@ -111,7 +106,7 @@
                         <div class="grid flex flex-col items-start space-y-0.5">
                             <label class=" text-gray-700 text-sm font-normal" for="barangay">Barangay</label>
                             <div class="relative">
-                                <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="barangay" name="barangay" value="{{old('barangay')}}">
+                                <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="barangay" name="barangay" value="{{ $user->barangay }}">
                                     <option disabled selected hidden value="null">Select barangay...</option>
                                 </select>
                                 <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
@@ -122,29 +117,21 @@
 
                         <div class="grid flex flex-col items-start space-y-0.5">
                             <label class=" text-gray-700 text-sm font-normal" for="cn">Contact Number</label>
-                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="contact_number" type="text" placeholder="Contact Number" name="contact_number" value="{{old('contact_number')}}">
+                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="contact_number" type="text" placeholder="Contact Number" name="contact_number" value="{{ $user->contact_number }}">
                         </div>
     
                         <div class="grid flex flex-col items-start space-y-0.5">
                             <label class=" text-gray-700 text-sm font-normal" for="email">Email</label>
-                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Email" name="email" value="{{old('email')}}">
+                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Email" name="email" value="{{ $user->email }}">
                         </div>
                     </div>
                 
-                
 
-                    <div class="flex justify-center items-center my-7 md:items-center md:my-10">
-                        <input type="checkbox" class=" checked:bg-black w-4 h-4" id='terms'>
-                        <span class="ml-2 text-sm text-black text-center">I agree to the <a href="#" class="text-[#7A9DEA] underline underline-offset-2">Terms and Condition</a></span>
+                    <div class="flex justify-center items-center my-2 md:my-0 py-4">
+                        <button type="submit" id="update-button" class="flex items-center justify-center border rounded-full w-28 h-11 bg-[#47B0E1] font-roboto font-medium text-base text-white md:w-32 md:h-12">Update</button>
                     </div>
 
-                    <div class="flex justify-center items-center my-2 md:my-0">
-                        <button type="button" id="submit-button" class="flex items-center justify-center border rounded-full w-28 h-11 bg-[#47B0E1] font-roboto font-medium text-base text-white md:w-32 md:h-12">Register</button>
-                    </div>
-
-                    <div class="flex justify-center items-center mt-2 md:my-7">
-                        <p class="font-roboto text-sm font-medium text-[#2D3748] md:text-base">Already have an account? <a href="/login/upload" class="text-[#5B86E5] underline underline-offset-4">Login here</a></p>
-                    </div>
+                   
                 </form>
             </div>
         </div>
@@ -163,7 +150,7 @@
     </div>
 
     <script src="{{ asset('/js/barangay.js') }}"></script>
-    <script src="{{ asset('/js/validate_user_registration.js') }}"></script>
+    <script src="{{ asset('/js/update_patient.js') }}"></script>
     <script src="{{ asset('/js/profile_selector.js') }}"></script>
 </body>
 </html>

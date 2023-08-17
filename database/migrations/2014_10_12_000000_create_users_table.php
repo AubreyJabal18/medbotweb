@@ -17,11 +17,13 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('suffix')->nullable();
             $table->string('honorific')->nullable();
+            $table->string('id_number')->unique();
             $table->string('type');
             $table->string('sex');
             $table->date('birthday');
             $table->string('municipality');
             $table->string('barangay');
+            $table->string('contact_number')->unique();
             $table->string('email')->unique();
             $table->string('license')->nullable()->unique();
             $table->string('password');

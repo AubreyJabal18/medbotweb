@@ -740,7 +740,7 @@ class FetchController extends Controller
         foreach($patients as $patient){
             $temp_array = [
                 $patient->id,
-                $patient->first_name.' '.$patient->last_name.' '.$patient->suffix,
+                $patient->id_number,
                 $patient->sex,
                 Carbon::parse($patient->birthday)->format('M d, Y'),
                 $patient->barangay.' '.$patient->municipality,
@@ -921,7 +921,7 @@ class FetchController extends Controller
         foreach($users as $user){
             $temp_array = [
                 $user->id,
-                $user->first_name.' '.$user->last_name.' '.$user->suffix,
+                $user->id_number,
                 $user->type,
                 $user->sex,
                 Carbon::parse($user->birthday)->format('M d, Y'),

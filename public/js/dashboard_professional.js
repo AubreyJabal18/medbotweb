@@ -441,13 +441,6 @@ renderPatientRegistersChart('weekly', moment().year() + '-W' + moment().week())
 
 // });
 
-searchField.addEventListener('change', function(){
-    form.submit();
-})
-
-search_buttonField.addEventListener('change', function(){
-    form.submit();
-})
    
 //PATIENTS COUNT BY AGE//
 

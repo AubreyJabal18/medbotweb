@@ -17,11 +17,13 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
             'last_name' => 'Medbot',
             'first_name' => 'Admin',
+            'id_number' => 'admin',
             'type' => 'admin',
             'sex' => 'female',
             'birthday' => '2001-09-18',
             'municipality' => 'Boac',
             'barangay' => 'Ihatub',
+            'contact_number' => '09109791138',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('admin123')
         ]);
