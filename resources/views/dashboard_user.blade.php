@@ -50,7 +50,7 @@
                 
                 <div class="flex flex-col lg:space-y-1 mb-[5%] md:mb-[10%] lg:mb-[10%] md:text-left md:mr-[20%] lg:mr-[30%]">
                     <p class="font-roboto font-normal text-white text-md md:text-xl lg:text-2xl mx-2 md:mx-8 lg:mx-8 mt-2 md:mt-3 lg:mt-3">
-                        We sincerely appreciate your effort in reviewing the vital sign measurements history of patients. Your attention to their progress will greatly contribute to their well-being. 
+                        Go ahead and take a look at the results of your vital signs measurement! Your health and progress are our top priority. 
                     </p>
                     
                     
@@ -94,7 +94,7 @@
             <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
                 <img src="{{asset('images/dashboard/blood_saturation.svg')}}" alt="" class="w-1/4 h-fit">
                 <div class="flex flex-col text-center w-3/4">
-                    <p class="font-bold text-xl lg:text-2xl">Blood Saturation</p>
+                    <p class="font-bold text-xl lg:text-2xl">Oxygen Saturation</p>
 
                     <div class="flex flex-row text-center justify-center gap-2">
                         <p class="text-lg lg:text-xl mt-2">{{count($readings) > 0 ? $readings[0]->blood_saturation : '--'}}%</p>
