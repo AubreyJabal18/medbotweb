@@ -22,22 +22,22 @@ getUser().then((id) => {
                 data[i][0],
                 data[i][1],
                 gridjs.html(
-                    `<div class="flex flex-row items-center justify-center">
+                    `<div class="flex flex-row items-center justify-evenly">
                         <img src="/images/dashboard/${data[i][3]}.svg" class="w-6 h-6 mr-2">${data[i][2]}
                     </div>`
                 ),
                 gridjs.html(
-                    `<div class="flex flex-row items-center justify-center">
+                    `<div class="flex flex-row items-center justify-evenly">
                         <img src="/images/dashboard/${data[i][5]}.svg" class="w-6 h-6 mr-2">${data[i][4]}
                     </div>`
                 ),
                 gridjs.html(
-                    `<div class="flex flex-row items-center justify-center">
+                    `<div class="flex flex-row items-center justify-evenly">
                         <img src="/images/dashboard/${data[i][7]}.svg" class="w-6 h-6 mr-2">${data[i][6]}
                     </div>`
                 ),
                 gridjs.html(
-                    `<div class="flex flex-row items-center justify-center">
+                    `<div class="flex flex-row items-center justify-evenly">
                         <img src="/images/dashboard/${data[i][9]}.svg" class="w-6 h-6 mr-2">${data[i][8]}
                     </div>`
                 ),
@@ -98,8 +98,6 @@ getUser().then((id) => {
             'text-align': 'center',
             border:'1px solid gray',    
             'background-color':'white',
-
-            
             },
         },  
         

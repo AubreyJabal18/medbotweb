@@ -77,11 +77,31 @@
 			<img src="{{asset('images/dashboard/model2.png')}}" alt="" class="w-36 h-36 lg:w-44 lg:h-44 z-10">
 			
 		</div>
-		
-		<div class="items-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300">
-			<p class="text-lg md:text-2xl font-semibold mb-2 text-white text-center">Your Vital Readings</p>
-			<div id="reading-table" class="flex w-[90%] md:w-[80%] justify-center mx-auto"></div>
+
+		<div class="flex items-center justify-center">
+			<div class="flex flex-row items-center justify-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit w-fit border border-gray-300 mt-10">
+				<img src="{{asset('images/dashboard/low.svg')}}" alt="" class="w-6 h-6 md:w-8 md:h-8 mr-2">
+				<p class="font-medium text-base md:text-lg text-white mr-2 md:mr-5"> - Low</p>
+
+				<img src="{{asset('images/dashboard/normal.svg')}}" alt="" class="w-6 h-6 md:w-8 md:h-8 mr-2">
+				<p class="font-medium text-base md:text-lg text-white mr-2 md:mr-5"> - Normal</p>
+
+				<img src="{{asset('images/dashboard/high.svg')}}" alt="" class="w-6 h-6 md:w-8 md:h-8 mr-2">
+				<p class="font-medium text-base md:text-lg text-white"> - High</p>
+			</div>
+
 		</div>
+
+		<div class="flex items-center justify-center mt-10">
+			<div class="flex flex-col items-center justify-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit w-[95%] border border-gray-300">
+				<p class="text-lg md:text-2xl font-semibold mb-2 text-white text-center">Your Vital Readings</p>
+				<div id="reading-table" class="flex w-90%] md:w-[100%] justify-center mx-auto"></div>
+			</div>
+		</div>	
+
+		<div class="flex items-center justify-center mt-20">
+
+		</div>	
 
 		<div class="fixed bottom-2 right-10 z-50 md:bottom-6 ">
 			<div class="flex flex-row items-center justify-center p-2 space-x-2 w-40 h-16 border border-white bg-[#5EDAD5] rounded-xl shadow-sm shadow-black transition-colors duration-300 hover:bg-[#4ac0b8] focus:bg-[#4ac0b8]">
