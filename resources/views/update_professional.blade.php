@@ -40,7 +40,7 @@
                     <div class="grid grid-cols-1 gap-4 items-start mt-4 md:grid-cols-2 lg:grid-cols-3">
                         
                         <div class="grid flex flex-col justify-center items-center md:col-span-2 lg:row-span-5 lg:col-span-1"> 
-                            <img src="{{asset('images/register/Profile pic.svg')}}" alt="" id="profile-placeholder" class="h-20 w-20 mx-auto rounded-full cursor-pointer hover:brightness-50">
+                            <img src="{{ asset('storage/' . $user->profile) }}" alt="" id="profile-placeholder" class="h-20 w-20 mx-auto rounded-full cursor-pointer hover:brightness-50">
                             <p class="font-roboto text-gray-700 text-sm font-normal mt-2">Profile Picture</p>
                             <input type="file" class="hidden" id="profile" name="profile" accept="image/.png,image/.jpeg,image/.jpg">
                         </div> 
@@ -69,7 +69,7 @@
                             <div class="grid flex flex-col items-start space-y-0.5">
                                 <label class=" text-gray-700 text-sm font-normal" for="sex">Sex</label>
                                 <div class="relative">
-                                   <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="sex" name="sex" value="{{ $user->sex }}">
+                                    <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="sex" name="sex" value="{{ $user->sex }}">
                                         <option disabled selected hidden class="text-gray-400" value="null">Select an option</option>
                                         <option class="text-gray-400" value="male" @if($user->sex === 'male') selected @endif>Male</option>
                                         <option class="text-gray-400" value="female" @if($user->sex === 'female') selected @endif>Female</option>
@@ -133,7 +133,7 @@
                     </div>
 
                 <div class="flex justify-center items-center my-2 md:my-0 py-4">
-                    <button id="update-button" type="button" class="flex items-center justify-center border rounded-full w-28 h-11 bg-[#47B0E1] font-roboto font-medium text-base text-white md:w-32 md:h-12">Update</button>
+                    <button id="update-button" type="submit" class="flex items-center justify-center border rounded-full w-28 h-11 bg-[#47B0E1] font-roboto font-medium text-base text-white md:w-32 md:h-12">Update</button>
                 </div>
 
             </div>

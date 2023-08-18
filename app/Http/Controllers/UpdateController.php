@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 
 class UpdateController extends Controller
 {
+    use Upload;
+
     public function updatePatient(Request $request)
     {   $user = User::find($request->id);
 
@@ -53,6 +55,7 @@ class UpdateController extends Controller
     $user->barangay = $request->barangay;
     $user->contact_number = $request->contact_number;
     $user->email = $request->email;
+    $user->profile = $request->profile;
 
 
     $user->save();
@@ -62,7 +65,9 @@ class UpdateController extends Controller
     
     }
 
-    public function updateProfessional(Request $request) {   
+    public function updateProfessional(Request $request) 
+    {   $user = User::find($request->id);
+
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|regex:/^[a-zA-Z ]+$/',
             'last_name' => 'required|regex:/^[a-zA-Z ]+$/',
@@ -73,7 +78,7 @@ class UpdateController extends Controller
             'barangay' => 'required',
             'contact_number' => 'required|regex:/^(09)\d{9}$/',
             'email' => 'required|email|unique:users,email,'.$user->id,
-            'license' => 'required|unique:users,license',
+            'license' => 'required|unique:users,license,'.$user->id,
             'profile' => 'nullable|mimes:jpg,jpeg,png'
         ],
         [
@@ -92,10 +97,7 @@ class UpdateController extends Controller
             $user->profile = $profile_path;
             $user->save();
         }
-        
-        
-        $user = User::find($request->id);
-            
+    
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->suffix = $request->suffix;
@@ -106,6 +108,7 @@ class UpdateController extends Controller
         $user->contact_number = $request->contact_number;
         $user->email = $request->email;
         $user->license = $request->license;
+        $user->profile = $request->profile;
 
         $user->save();
 

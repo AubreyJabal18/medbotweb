@@ -112,4 +112,3 @@ Route::post('/update/professional/process', [UpdateController::class, 'updatePro
 
 
 
-// Route::put('/patient/update', [RedirectController::class, 'update'])->name('patient.update');

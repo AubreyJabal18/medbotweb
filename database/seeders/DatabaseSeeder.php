@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             'birthday' => '2001-09-18',
             'municipality' => 'Boac',
             'barangay' => 'Ihatub',
-            'contact_number' => '09109791138',
+            'contact_number' => '09123456789',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('admin123')
         ]);
