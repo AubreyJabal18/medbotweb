@@ -59,19 +59,6 @@
             </div> 
         </div>
 
-        <div class="flex items-center justify-center">
-			<div class="flex flex-row items-center justify-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit w-fit border border-gray-300 mt-10">
-				<img src="{{asset('images/dashboard/low.svg')}}" alt="" class="w-6 h-6 md:w-8 md:h-8 mr-2">
-				<p class="font-medium text-base md:text-lg text-black mr-2 md:mr-5"> - Low</p>
-
-				<img src="{{asset('images/dashboard/normal.svg')}}" alt="" class="w-6 h-6 md:w-8 md:h-8 mr-2">
-				<p class="font-medium text-base md:text-lg text-black mr-2 md:mr-5"> - Normal</p>
-
-				<img src="{{asset('images/dashboard/high.svg')}}" alt="" class="w-6 h-6 md:w-8 md:h-8 mr-2">
-				<p class="font-medium text-base md:text-lg text-black"> - High</p>
-			</div>
-		</div>
-        
         <div class="flex flex-col justify-center pt-10 px-10">
             <p class="font-roboto font-bold text-black text-lg lg:text-xl">LATEST READING</p>
         
@@ -80,8 +67,33 @@
             </div>
         </div>
 
+        <div class="flex items-center justify-center my-2">
+			<div class="flex flex-row items-center justify-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit w-fit border border-gray-300">
+				<img src="{{asset('images/dashboard/Blue.png')}}" alt="" class="w-6 h-6 md:w-8 md:h-8 mr-2">
+				<p class="font-medium text-base md:text-lg text-black mr-2 md:mr-5"> - Low</p>
+
+				<img src="{{asset('images/dashboard/Green.png')}}" alt="" class="w-6 h-6 md:w-8 md:h-8 mr-2">
+				<p class="font-medium text-base md:text-lg text-black mr-2 md:mr-5"> - Normal</p>
+
+				<img src="{{asset('images/dashboard/Red.png')}}" alt="" class="w-6 h-6 md:w-8 md:h-8 mr-2">
+				<p class="font-medium text-base md:text-lg text-black"> - High</p>
+			</div>
+		</div>
+
         <div class="place-items-center items-center justify-center grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-10 px-10 lg:gap-3 md:grid-cols-2 md:gap-5 mt-8">
-            <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
+            
+            @if(count($readings) > 1)
+                @if($readings[0]->blood_pressure_rating == 'low')
+                    <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2 bg-blue-400">
+                @elseif($readings[0]->blood_pressure_rating == 'normal')
+                    <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-green-400 shadow-lg shadow-green-500/50 mb-8 px-2 py-2 bg-green-400">
+                @elseif($readings[0]->blood_pressure_rating == 'high')
+                    <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-red-400 shadow-lg shadow-red-500/50 mb-8 px-2 py-2 bg-red-400">
+                @endif
+            @else
+                <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
+            @endif
+            
                 <img src="{{asset('images/dashboard/blood_pressure.svg')}}" alt="" class="w-1/4 h-fit">
                 <div class="flex flex-col text-center w-3/4">
                     <p class="font-bold text-xl lg:text-2xl">Blood Pressure</p>
@@ -104,7 +116,18 @@
                 </div>
             </div>
 
-            <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
+            @if(count($readings) > 1)
+                @if($readings[0]->blood_saturation_rating == 'low')
+                    <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2 bg-blue-400">
+                @elseif($readings[0]->blood_saturation_rating == 'normal')
+                    <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-green-400 shadow-lg shadow-green-500/50 mb-8 px-2 py-2 bg-green-400">
+                @elseif($readings[0]->blood_saturation_rating == 'high')
+                    <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-red-400 shadow-lg shadow-red-500/50 mb-8 px-2 py-2 bg-red-400">
+                @endif
+            @else
+                
+                <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
+            @endif
                 <img src="{{asset('images/dashboard/blood_saturation.svg')}}" alt="" class="w-1/4 h-fit">
                 <div class="flex flex-col text-center w-3/4">
                     <p class="font-bold text-xl lg:text-2xl">Oxygen Saturation</p>
@@ -125,7 +148,17 @@
                 </div>
             </div>
 
-            <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
+            @if(count($readings) > 1)
+                @if($readings[0]->temperature_rating == 'low')
+                    <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2 bg-blue-400">
+                @elseif($readings[0]->temperature_rating == 'normal')
+                    <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-green-400 shadow-lg shadow-green-500/50 mb-8 px-2 py-2 bg-green-400">
+                @elseif($readings[0]->temperature_rating == 'high')
+                    <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-red-400 shadow-lg shadow-red-500/50 mb-8 px-2 py-2 bg-red-400">
+                @endif
+            @else
+                <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
+            @endif
                 <img src="{{asset('images/dashboard/temperature.svg')}}" alt="" class="w-1/4 h-fit">
                 <div class="flex flex-col text-center w-3/4">
                     <p class="font-bold text-xl lg:text-2xl">Temperature</p>
@@ -147,7 +180,19 @@
                 </div>
             </div>
 
-            <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
+
+            @if(count($readings) > 1)
+                @if($readings[0]->pulse_rate_rating == 'low')
+                    <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2 bg-blue-400">
+                @elseif($readings[0]->pulse_rate_rating == 'normal')
+                    <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-green-400 shadow-lg shadow-green-500/50 mb-8 px-2 py-2 bg-green-400">
+                @elseif($readings[0]->pulse_rate_rating == 'high')
+                    <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-red-400 shadow-lg shadow-red-500/50 mb-8 px-2 py-2 bg-red-400">
+                @endif
+            @else
+                <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
+            @endif
+            
                 <img src="{{asset('images/dashboard/pulse_rate.svg')}}" alt="" class="w-1/4 h-fit">
                 <div class="flex flex-col text-center w-3/4">
                     <p class="font-bold text-xl lg:text-2xl">Pulse Rate</p>
@@ -186,7 +231,7 @@
                     <div class="flex flex-row text-center justify-center gap-2">
                         <p class="text-lg lg:text-xl mt-2 "> {{count($readings) > 1 ? $readings[1]->blood_pressure_systolic : '--'}}/{{count($readings) > 1 ? $readings[1]->blood_pressure_diastolic : '--'}} mmHg</p>
                         
-                        @if(count($readings) >= 1)
+                        @if(count($readings) > 1)
                             @if($readings[0]->blood_pressure_rating == 'low')
                                 <img src="{{asset('images/dashboard/low.svg')}}" alt="Low Blood Pressure" title="Low Blood Pressure" class="w-8 h-8 mt-2">
                             @elseif($readings[0]->blood_pressure_rating == 'normal')
