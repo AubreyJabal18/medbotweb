@@ -95,7 +95,7 @@
 		<div class="flex items-center justify-center mt-10">
 			<div class="flex flex-col items-center justify-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit w-[95%] border border-gray-300">
 				<p class="text-lg md:text-2xl font-semibold mb-2 text-white text-center">Your Vital Readings</p>
-				<div id="reading-table" class="flex w-90%] md:w-[100%] justify-center mx-auto"></div>
+				<div id="reading-table" class="w-[100%]"></div>
 			</div>
 		</div>	
 
