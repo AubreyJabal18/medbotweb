@@ -16,7 +16,7 @@
     @endif
 
     <div class="flex flex-col w-screen pb-10">
-
+        <input type="text" class="hidden" id="user-id" value={{$user->id}}>
         <div class="relative flex-col bg-gradient-to-r from-[#0B60D1] to-[#305ab9] bg-cover bg-no-repeat pb-5 md:pb-6 lg:pb-0">
             <div class="flex flex-row justify-between items-center px-4 py-3 md:px-10">
                 <div class="flex flex-row space-x-4 items-center">
@@ -25,7 +25,7 @@
                 </div>
                 <div class="flex flex-row space-x-4 items-center justify-end">
                     <p class="hidden font-roboto font-normal text-white text-lg md:block">{{ $professional->first_name }} {{ $professional->last_name }} {{ $professional->suffix ? $professional->suffix : '' }}</p>
-                    <img src="{{asset('images/dashboard/profile.png')}}" alt="" id="profile-menu" class="h-8 w-8 cursor-pointer md:h-12 md:w-12 hover:brightness-75">
+                    <img src="{{ $professional->profile != null ? asset('storage/' . $professional->profile) : asset('images/dashboard/profile.png')}}" alt="" id="profile-menu" class="h-8 w-8 cursor-pointer md:h-12 md:w-12 rounded-full hover:brightness-75">
                 </div>
                 
                 <img src="{{asset('images/dashboard/tri1.png')}}" alt="" class="absolute place-self-start w-2/5 md:w-2/5 lg:h-1/5 lg:w-2/5 left-0 top-[95%] md:top-[88%] lg:top-[85%]">

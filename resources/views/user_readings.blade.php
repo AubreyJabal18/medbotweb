@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Readings</title>
+	<title>My Readings</title>
 	@vite('resources/css/app.css')
 
 	<link href="{{asset('/css/mermaid.min.css')}}" rel="stylesheet"/>
@@ -26,7 +26,7 @@
 			</div>
 			<div class="flex flex-row space-x-4 items-center justify-end">
 				<p class="hidden font-roboto font-normal text-white text-lg md:block">{{ $user->first_name }} {{ $user->last_name }} {{ $user->suffix ? $user->suffix : '' }}</p>
-				<img src="{{asset('images/dashboard/profile.png')}}" alt="" id="profile-menu" class="h-8 w-8 cursor-pointer md:h-12 md:w-12 hover:brightness-75">
+				<img src="{{ $user->profile != null ? asset('storage/' . $user->profile) : asset('images/dashboard/profile.png')}}" alt="" id="profile-menu" class="h-8 w-8 cursor-pointer md:h-12 md:w-12 rounded-full hover:brightness-75">
 			</div>
 			
 			<x-menu_user :user="$user"/>

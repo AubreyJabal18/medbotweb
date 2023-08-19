@@ -8,6 +8,7 @@ const municipalityField = document.getElementById('municipality');
 const barangayField = document.getElementById('barangay');
 const contactField = document.getElementById('contact_number');
 const emailField = document.getElementById('email');
+const licenseField = document.getElementById('license');
 const form = document.getElementById('form');
 
 

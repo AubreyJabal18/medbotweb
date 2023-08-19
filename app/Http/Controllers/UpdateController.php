@@ -11,9 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class UpdateController extends Controller
 {
-    public function updatePatient(Request $request)
-    {   $user = User::find($request->id);
+    use Upload;
 
+    public function updatePatient(Request $request)
+    {   
+        $user = User::find($request->id);
         $validator = Validator::make($request->all(), [
         'first_name' => 'required|regex:/^[a-zA-Z ]+$/',
         'last_name' => 'required|regex:/^[a-zA-Z ]+$/',
@@ -39,9 +41,8 @@ class UpdateController extends Controller
     };
 
     if($request->hasFile('profile')){
-        $profile_path = $this->uploadFile($request->file('profile'), $user->id, 'profiles', 'public');
+        $profile_path = $this->uploadFile($request->file('profile'), $user->id, 'profiles');
         $user->profile = $profile_path;
-        $user->save();
     }
         
     $user->first_name = $request->first_name;
@@ -54,7 +55,6 @@ class UpdateController extends Controller
     $user->contact_number = $request->contact_number;
     $user->email = $request->email;
 
-
     $user->save();
 
     flash()->addSuccess('Your information has been updated.');
@@ -62,7 +62,10 @@ class UpdateController extends Controller
     
     }
 
-    public function updateProfessional(Request $request) {   
+    public function updateProfessional(Request $request) 
+    {   
+        $user = User::find($request->id);
+
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|regex:/^[a-zA-Z ]+$/',
             'last_name' => 'required|regex:/^[a-zA-Z ]+$/',
@@ -73,7 +76,7 @@ class UpdateController extends Controller
             'barangay' => 'required',
             'contact_number' => 'required|regex:/^(09)\d{9}$/',
             'email' => 'required|email|unique:users,email,'.$user->id,
-            'license' => 'required|unique:users,license',
+            'license' => 'required|unique:users,license,'.$user->id,
             'profile' => 'nullable|mimes:jpg,jpeg,png'
         ],
         [
@@ -88,14 +91,11 @@ class UpdateController extends Controller
         };
 
         if($request->hasFile('profile')){
-            $profile_path = $this->uploadFile($request->file('profile'), $user->id, 'profiles', 'public');
+            $profile_path = $this->uploadFile($request->file('profile'), $user->id, 'profiles');
             $user->profile = $profile_path;
             $user->save();
         }
-        
-        
-        $user = User::find($request->id);
-            
+    
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->suffix = $request->suffix;
@@ -106,6 +106,7 @@ class UpdateController extends Controller
         $user->contact_number = $request->contact_number;
         $user->email = $request->email;
         $user->license = $request->license;
+   
 
         $user->save();
 

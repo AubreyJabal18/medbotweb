@@ -24,7 +24,7 @@ class RegisterController extends Controller
             'birthday' => 'required|before:now',
             'municipality' => 'required',
             'barangay' => 'required',
-            'contact_number' => 'required|regex:/^(09)\d{9}$/',
+            'contact_number' => 'required|regex:/^(09)\d{9}$/|unique:users,contact_number',
             'email' => 'required|email|unique:users,email',
             'profile' => 'nullable|mimes:jpg,jpeg,png'
         ],
@@ -106,7 +106,7 @@ class RegisterController extends Controller
             'birthday' => 'required|before:now',
             'municipality' => 'required',
             'barangay' => 'required',
-            'contact_number' => 'required|regex:/^(09)\d{9}$/',
+            'contact_number' => 'required|regex:/^(09)\d{9}$/|unique:users,contact_number',
             'email' => 'required|email|unique:users,email',
             'license' => 'required|unique:users,license',
             'profile' => 'nullable|mimes:jpg,jpeg,png'

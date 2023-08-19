@@ -16,7 +16,7 @@ getUser().then((id) => {
     getUserReadings(id).then((data) => {
         console.log(data)
         new gridjs.Grid({
-        columns: ['Date', 'Blood Pressure', 'Oxygen Saturation', 'Temperature', 'Pulse Rate'],
+        columns: ['Date', 'Blood Pressure', 'Blood Pressure Rating', 'Oxygen Saturation', 'Oxygen Saturation Rating', 'Temperature', 'Temperature Rating', 'Pulse Rate', 'Pulse Rate Rating'],
         sort: true,
         resizable: true,
         data: data,

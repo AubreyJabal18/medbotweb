@@ -6,6 +6,8 @@ const rating_selectField = document.getElementById('rating_select');
 const rating_yearField = document.getElementById('rating_year')
 const rating_monthField = document.getElementById('rating_month');
 const rating_weekField = document.getElementById('rating_week');
+const idField = document.getElementById('user-id');
+const id = idField.value;
 
 trends_selectField.addEventListener('change', function(){
     if(trends_selectField.value == 'yearly'){
@@ -63,7 +65,7 @@ async function getReadings(by, value, id){
 
 var readingTrendsChart = null;
 
-function renderReadingTrendsChart(by, value, id = 1){
+function renderReadingTrendsChart(by, value, id){
     getReadings(by, value, id).then((data) => {
         if(by == 'weekly'){
             labels = [];
@@ -389,19 +391,19 @@ function renderReadingTrendsChart(by, value, id = 1){
 trends_weekField.addEventListener('change', function(){
     trends_monthField.value = '';
     trends_yearField.value = '';
-    renderReadingTrendsChart('weekly', trends_weekField.value);
+    renderReadingTrendsChart('weekly', trends_weekField.value, id);
 })
 
 trends_monthField.addEventListener('change', function(){
     trends_weekField.value = '';
     trends_yearField.value = '';
-    renderReadingTrendsChart('monthly', trends_monthField.value);
+    renderReadingTrendsChart('monthly', trends_monthField.value, id);
 })
 
 trends_yearField.addEventListener('change', function(){
     trends_weekField.value = '';
     trends_monthField.value = '';
-    renderReadingTrendsChart('yearly', trends_yearField.value);
+    renderReadingTrendsChart('yearly', trends_yearField.value, id);
 })
 
-renderReadingTrendsChart('weekly', moment().year() + '-W' + moment().week(), 1)
+renderReadingTrendsChart('weekly', moment().year() + '-W' + moment().week(), id)
