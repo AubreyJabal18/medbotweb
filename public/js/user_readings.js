@@ -23,7 +23,7 @@ getUser().then((id) => {
                 data[i][1],
                 gridjs.html(
                     `<div class="flex flex-row items-center justify-evenly">
-                        <img src="/images/dashboard/${data[i][3]}.svg" class="w-6 h-6 mr-2">${data[i][2]}
+                        <img src="/images/dashboard/${data[i][3]}.svg" class="w-6 h-6 md:mr-2">${data[i][2]}
                     </div>`
                 ),
                 gridjs.html(
@@ -48,60 +48,40 @@ getUser().then((id) => {
         new gridjs.Grid({
         columns: [
             {
-                name:'Date', 
-                width:'15%'
+                name:'Date'
             },
             {
-                name:'Time',
-                width:'15%'}, 
+                name:'Time'
+            }, 
             {
-                name: 'Blood Pressure', 
-                width: '15%'
+                name: 'Blood Pressure'
             },
             {
-                name:'Oxygen Saturation', 
-                width:'15%',
+                name:'Oxygen Saturation'
             },        
             {
-                name:'Temperature', 
-                width:'15%',
+                name:'Temperature'
             },           
             {
-                name:'Pulse Rate', 
-                width:'15%',
+                name:'Pulse Rate'
             }
         ],
         
         sort: true,
         resizable: true,
         data: formattedData,
-        className: {
-            table: 'min-w-full divide-y divide-gray-700',
-            thead: 'bg-gray-200',
-            th: 'px-6 py-3 text-left text-base bg-gray-300 font-medium tracking-wider',
-            tbody: 'bg-white divide-y divide-gray-300',
-            td: 'px-4 py-4 whitespace-nowrap'
-        },
-
-        style: {
-
+        style: { 
+            table: { 
+              'white-space': 'nowrap'
+            },
             th: {
-            'background-color': 'bg-gray-200',
-            color: 'gray',
-            'border-bottom': '2px solid black',
-            'text-align': 'center',
-            textTransform: 'uppercase',
-            'font-size':'14px'
+                'text-align': 'center'
             },
-
-            td: {
-            'text-align': 'center',
-            border:'1px solid gray',    
-            'background-color':'white',
-            },
-        },  
-        
-         }).render(table);
+            td:{
+                'text-align': 'center'
+            }
+          },
+        }).render(table);
     })
 })
 
