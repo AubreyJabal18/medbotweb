@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('blood_pressure_rating');
             $table->integer('blood_saturation');
             $table->string('blood_saturation_rating');
-            $table->integer('temperature');
+            $table->float('temperature');
             $table->string('temperature_rating');
             $table->integer('pulse_rate');
             $table->string('pulse_rate_rating');

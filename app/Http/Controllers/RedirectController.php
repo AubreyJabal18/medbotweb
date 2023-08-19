@@ -170,11 +170,10 @@ class RedirectController extends Controller
             $week_start = $now->startOfWeek()->toDateString();
             $week_end = $now->endOfWeek()->toDateString();
             $weeklyCount = Reading::where('user_id', Auth::user()->id)->whereBetween('created_at', [$week_start, $week_end])->get()->count();
-
+            
             $monthlyCount = Reading::where('user_id', Auth::user()->id)->whereMonth('created_at', $now->month)->whereYear('created_at', $now->year)->get()->count();
 
             $yearlyCount = Reading::where('user_id', Auth::user()->id)->whereYear('created_at', $now->year)->get()->count();
-            
             return view('professional_readings', [
                 'user'=> $user,
                 'readings' => $readings,
@@ -189,6 +188,10 @@ class RedirectController extends Controller
     }
 
     public function redirectToPatientReadings(Request $request){
+        if(Auth::check() && Auth::user()->type != 'professional'){
+            return redirect('/');  
+        }
+        
         $user = User::find($request->user);
         $professional = Auth::user();
         $readings = Reading::where('user_id', Auth::user()->id)->latest()->get();
@@ -196,11 +199,11 @@ class RedirectController extends Controller
         $now = Carbon::now();
         $week_start = $now->startOfWeek()->toDateString();
         $week_end = $now->endOfWeek()->toDateString();
-        $weeklyCount = Reading::where('user_id', Auth::user()->id)->whereBetween('created_at', [$week_start, $week_end])->get()->count();
+        $weeklyCount = Reading::where('user_id', $user->id)->whereBetween('created_at', [$week_start, $week_end])->get()->count();
+        
+        $monthlyCount = Reading::where('user_id', $user->id)->whereMonth('created_at', $now->month)->whereYear('created_at', $now->year)->get()->count();
 
-        $monthlyCount = Reading::where('user_id', Auth::user()->id)->whereMonth('created_at', $now->month)->whereYear('created_at', $now->year)->get()->count();
-
-        $yearlyCount = Reading::where('user_id', Auth::user()->id)->whereYear('created_at', $now->year)->get()->count();
+        $yearlyCount = Reading::where('user_id', $user->id)->whereYear('created_at', $now->year)->get()->count();
         
         return view('patient_readings', [
             'user'=> $user,

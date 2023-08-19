@@ -14,8 +14,8 @@ class UpdateController extends Controller
     use Upload;
 
     public function updatePatient(Request $request)
-    {   $user = User::find($request->id);
-
+    {   
+        $user = User::find($request->id);
         $validator = Validator::make($request->all(), [
         'first_name' => 'required|regex:/^[a-zA-Z ]+$/',
         'last_name' => 'required|regex:/^[a-zA-Z ]+$/',
@@ -41,9 +41,8 @@ class UpdateController extends Controller
     };
 
     if($request->hasFile('profile')){
-        $profile_path = $this->uploadFile($request->file('profile'), $user->id, 'profiles', 'public');
+        $profile_path = $this->uploadFile($request->file('profile'), $user->id, 'profiles');
         $user->profile = $profile_path;
-        $user->save();
     }
         
     $user->first_name = $request->first_name;
@@ -55,8 +54,6 @@ class UpdateController extends Controller
     $user->barangay = $request->barangay;
     $user->contact_number = $request->contact_number;
     $user->email = $request->email;
-    $user->profile = $request->profile;
-
 
     $user->save();
 
@@ -66,7 +63,8 @@ class UpdateController extends Controller
     }
 
     public function updateProfessional(Request $request) 
-    {   $user = User::find($request->id);
+    {   
+        $user = User::find($request->id);
 
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|regex:/^[a-zA-Z ]+$/',
@@ -93,7 +91,7 @@ class UpdateController extends Controller
         };
 
         if($request->hasFile('profile')){
-            $profile_path = $this->uploadFile($request->file('profile'), $user->id, 'profiles', 'public');
+            $profile_path = $this->uploadFile($request->file('profile'), $user->id, 'profiles');
             $user->profile = $profile_path;
             $user->save();
         }
@@ -108,7 +106,7 @@ class UpdateController extends Controller
         $user->contact_number = $request->contact_number;
         $user->email = $request->email;
         $user->license = $request->license;
-        $user->profile = $request->profile;
+   
 
         $user->save();
 

@@ -100,6 +100,8 @@ Route::get('/get/professional_readings', [FetchController::class, 'getProfession
 
 Route::get('/patients/readings', [RedirectController::class, 'redirectToPatientReadings']);
 
+Route::get('get/patient/readings', [FetchController::class, 'getPatientReadingsInProfessionalDashboard']);
+
 Route::get('/get/age_count', [FetchController::class, 'getPatientCountByAge']);
 
 Route::get('/update/patient', [RedirectController::class, 'redirectToUpdatePatientInfo']);

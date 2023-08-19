@@ -271,7 +271,9 @@ class FetchController extends Controller
             $year = substr($request->value, 0, 4);
             $week = substr($request->value, 6, 2);
             $dates = $this->getWeek($week, $year);
-            $users = Reading::with('user')
+            $users = Reading::whereHas('user', function(Builder $query){
+                $query->where('type','patient');
+                })
                 ->whereBetween('created_at', [$dates['start'], $dates['end']])
                 ->get()
                 ->countBy(function ($item) {
@@ -291,7 +293,9 @@ class FetchController extends Controller
         else if($request->by == 'monthly'){
             $year = substr($request->value, 0, 4);
             $month = substr($request->value, 5, 2);
-            $users = Reading::with('user')
+            $users = Reading::whereHas('user', function(Builder $query){
+                $query->where('type','patient');
+                })
                 ->whereMonth('created_at', $month)
                 ->whereYear('created_at', $year)
                 ->get()
@@ -312,13 +316,15 @@ class FetchController extends Controller
         }
         else {
             $year = substr($request->value, 0, 4);
-            $users = Reading::with('user')
-                ->whereYear('created_at', $year)
-                ->get()
-                ->countBy(function ($item) {
-                    return Carbon::parse($item->created_at)->format('M');
-                })
-                ->toArray();
+            $users = Reading::whereHas('user', function(Builder $query){
+                $query->where('type','patient');
+            })
+            ->whereYear('created_at', $year)
+            ->get()
+            ->countBy(function ($item) {
+                return Carbon::parse($item->created_at)->format('M');
+            })
+            ->toArray();
             $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
             $uses = [];
             foreach($months as $month){
@@ -431,71 +437,71 @@ class FetchController extends Controller
         ]);
     }
 
-    public function getPatientReadings(Request $request){
-        if($request->reading_by == 'weekly'){
-            $year = substr($request->reading_value, 0, 4);
-            $week = substr($request->reading_value, 6, 2);
-            $dates = $this->getWeek($week, $year);
-            $users = Reading::with('user')
-                ->where($request->municipality == 'All')
-                ->whereBetween('created_at', [$dates['start'], $dates['end']])
-                ->get()
-                ->countBy(function ($item) {
-                    return Carbon::parse($item->created_at)->format('Y-m-d');
-                })
-                ->toArray();
-            $period = CarbonPeriod::create($dates['start'], $dates['end']);
-            $patient_readings = [];
-            foreach ($period as $date) {
-                $key = $date->format('Y-m-d');
-                $patient_readings[$key] = array_key_exists($key, $users) ? $users[$key] : 0;
-            }
-            return response()->json([
-                'patient_readings' => $patient_readings
-            ]);
-        }
-        else if($request->reading_by == 'monthly'){
-            $year = substr($request->reading_value, 0, 4);
-            $month = substr($request->reading_value, 5, 2);
-            $users = User::where('type', 'patient')
-                ->whereMonth('created_at', $month)
-                ->whereYear('created_at', $year)
-                ->get()
-                ->countBy(function ($item) {
-                    return Carbon::parse($item->created_at)->format('Y-m-d');
-                })
-                ->toArray();
-            $dates = $this->getMonth($month, $year);
-            $period = CarbonPeriod::create($dates['start'], $dates['end']);
-            $patient_readings = [];
-            foreach ($period as $date) {
-                $key = $date->format('Y-m-d');
-                $patient_readings[$key] = array_key_exists($key, $users) ? $users[$key] : 0;
-            }
-            return response()->json([
-                'patient_readings' => $patient_readings
-            ]);
-        }
-        else {
-            $year = substr($request->reading_value, 0, 4);
-            $users = User::where('type', 'patient')
-                ->whereYear('created_at', $year)
-                ->get()
-                ->countBy(function ($item) {
-                    return Carbon::parse($item->created_at)->format('M');
-                })
-                ->toArray();
-            $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-            $patient_readings = [];
-            foreach($months as $month){
-                $patient_readings[$month] = array_key_exists($month, $users) ? $users[$month] : 0;
-            }
-            return response()->json([
-                'patient_readings' => $patient_readings
-            ]);
-        }
+    // public function getPatientReadings(Request $request){
+    //     if($request->reading_by == 'weekly'){
+    //         $year = substr($request->reading_value, 0, 4);
+    //         $week = substr($request->reading_value, 6, 2);
+    //         $dates = $this->getWeek($week, $year);
+    //         $users = Reading::with('user')
+    //             ->where($request->municipality == 'All')
+    //             ->whereBetween('created_at', [$dates['start'], $dates['end']])
+    //             ->get()
+    //             ->countBy(function ($item) {
+    //                 return Carbon::parse($item->created_at)->format('Y-m-d');
+    //             })
+    //             ->toArray();
+    //         $period = CarbonPeriod::create($dates['start'], $dates['end']);
+    //         $patient_readings = [];
+    //         foreach ($period as $date) {
+    //             $key = $date->format('Y-m-d');
+    //             $patient_readings[$key] = array_key_exists($key, $users) ? $users[$key] : 0;
+    //         }
+    //         return response()->json([
+    //             'patient_readings' => $patient_readings
+    //         ]);
+    //     }
+    //     else if($request->reading_by == 'monthly'){
+    //         $year = substr($request->reading_value, 0, 4);
+    //         $month = substr($request->reading_value, 5, 2);
+    //         $users = User::where('type', 'patient')
+    //             ->whereMonth('created_at', $month)
+    //             ->whereYear('created_at', $year)
+    //             ->get()
+    //             ->countBy(function ($item) {
+    //                 return Carbon::parse($item->created_at)->format('Y-m-d');
+    //             })
+    //             ->toArray();
+    //         $dates = $this->getMonth($month, $year);
+    //         $period = CarbonPeriod::create($dates['start'], $dates['end']);
+    //         $patient_readings = [];
+    //         foreach ($period as $date) {
+    //             $key = $date->format('Y-m-d');
+    //             $patient_readings[$key] = array_key_exists($key, $users) ? $users[$key] : 0;
+    //         }
+    //         return response()->json([
+    //             'patient_readings' => $patient_readings
+    //         ]);
+    //     }
+    //     else {
+    //         $year = substr($request->reading_value, 0, 4);
+    //         $users = User::where('type', 'patient')
+    //             ->whereYear('created_at', $year)
+    //             ->get()
+    //             ->countBy(function ($item) {
+    //                 return Carbon::parse($item->created_at)->format('M');
+    //             })
+    //             ->toArray();
+    //         $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    //         $patient_readings = [];
+    //         foreach($months as $month){
+    //             $patient_readings[$month] = array_key_exists($month, $users) ? $users[$month] : 0;
+    //         }
+    //         return response()->json([
+    //             'patient_readings' => $patient_readings
+    //         ]);
+    //     }
     
-    }
+    // }
 
     // FOR PATIENT COUNT BY AGE//
 
@@ -1081,11 +1087,16 @@ class FetchController extends Controller
         $readings = Reading::where('user_id', $request->id)->get();
         foreach($readings as $reading){
             $temp_array = [
-                Carbon::parse($reading->created_at)->format('M d, Y'), 
-                $reading->blood_pressure_systolic.'/'.$reading->blood_pressure_diastolic,
+                Carbon::parse($reading->created_at)->format('M d, Y'),
+                Carbon::parse($reading->created_at)->format('h:i A'),
+                $reading->blood_pressure_systolic.'/'.$reading->blood_pressure_diastolic.' mmHg',
+                $reading->blood_pressure_rating,
                 $reading->blood_saturation.'%',
+                $reading->blood_saturation_rating,
                 $reading->temperature.'C',
-                $reading->pulse_rate.' bpm'];
+                $reading->temperature_rating,
+                $reading->pulse_rate.' bpm',
+                $reading->pulse_rate_rating];
             array_push($formatted_readings, $temp_array);
         }
         return response()->json([
@@ -1093,6 +1104,28 @@ class FetchController extends Controller
         ]);
     }
 
+    public function getPatientReadingsInProfessionalDashboard(Request $request){
+        $formatted_readings = [];
+        $readings = Reading::where('user_id', $request->id)->get();
+        foreach($readings as $reading){
+            $temp_array = [
+                Carbon::parse($reading->created_at)->format('M d, Y'),
+                Carbon::parse($reading->created_at)->format('h:i A'),
+                $reading->blood_pressure_systolic.'/'.$reading->blood_pressure_diastolic.' mmHg',
+                $reading->blood_pressure_rating,
+                $reading->blood_saturation.'%',
+                $reading->blood_saturation_rating,
+                $reading->temperature.'C',
+                $reading->temperature_rating,
+                $reading->pulse_rate.' bpm',
+                $reading->pulse_rate_rating];
+
+            array_push($formatted_readings, $temp_array);
+        }
+        return response()->json([
+            'readings' => $formatted_readings
+        ]);
+    }
     
     public function getAuthenticatedUser(){
         return response()->json([
@@ -1100,6 +1133,18 @@ class FetchController extends Controller
         ]);
     }
 
+    public function getAuthenticatedPatient(Request $request) {
+        $user = Reading::where('user_id', $request->id)->get();
+
+        if ($user->isEmpty()) {
+            return response()->json(['message' => 'Readings not found for the user.'], 404);
+        }
+
+        return response()->json([
+            'user' => $user,
+        ]);
+    }
+    
 
   
 }
