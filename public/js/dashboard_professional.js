@@ -6,8 +6,7 @@
 // const pervasiveness_yearField = document.getElementById('pervasiveness_year')
 // const pervasiveness_monthField = document.getElementById('pervasiveness_month');
 // const pervasiveness_weekField = document.getElementById('pervasiveness_week');
-const searchField = document.getElementById('search');
-const search_buttonField = document.getElementById('search_button');
+
 const form = document.getElementById('form');
 
 // PATIENT THAT USED MEDBOT CHART//

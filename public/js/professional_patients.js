@@ -9,6 +9,7 @@ const rating_weekField = document.getElementById('rating_week');
 const idField = document.getElementById('user-id');
 const id = idField.value;
 
+
 trends_selectField.addEventListener('change', function(){
     if(trends_selectField.value == 'yearly'){
         trends_yearField.classList.remove('hidden')

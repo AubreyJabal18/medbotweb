@@ -7,7 +7,7 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-    <div class=" relative flex w-full h-screen bg-gradient-to-r from-[#5B86E5] to-[#305AB9]">
+    <div class=" relative flex w-full h-fit lg:h-screen bg-gradient-to-r from-[#5B86E5] to-[#305AB9]">
         <div class="flex flex-col-reverse px-5 py-5 mx-auto md:flex-row md:space-x-10 z-10">
             <div class="flex flex-col justify-center items-center h-full">
                 <p class=" font-roboto font-normal text-2xl text-white text-center mt-5 md:mt-0 md:text-3xl z-10">Your Ultimate ALL-in-ONE Healthcare Buddy</p>
@@ -26,12 +26,12 @@
                             <img src="{{asset('images/register/home.svg')}}" alt="" class="h-6 w-6">
                         </a>
                     </div>
-                    <div class="w-full flex flex-row justify-between">
+                    <div class="w-full flex-col md:flex-row justify-between space-y-6 md:space-y-4">
                         <div class="w-full flex flex-row space-x-5 items-center">
                             <img src="{{asset('images/register/logo2.svg')}}" alt="" class="h-12 w-12">
                             <p class="font-roboto font-bold text-base text-[#5ECECD] text-shadow text-center">ENHANCED MED-BOT</p>
-                            <p class="font-roboto font-light text-base md:text-2xl text-neutral-400 text-center pl-48">Profile Information</p>
-                        </div>   
+                        </div>
+                        <p class=" font-roboto font-light text-lg lg:text-2xl text-neutral-400 text-center md:pl-12">Profile Information</p>   
                     </div>
                 </div>
 
@@ -46,93 +46,95 @@
                             <p class="font-roboto text-gray-700 text-sm font-normal mt-2">Profile Picture</p>
                             <input type="file" class="hidden" id="profile" name="profile" accept="image/.png,image/.jpeg,image/.jpg">
                         </div> 
-    
-                            @csrf
-                            <div class="grid flex flex-col items-start space-y-0.5">
-                                <label class=" text-gray-700 text-sm font-normal" for="firstname">First Name</label>
-                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstname" type="text" placeholder="First Name" name="first_name" value="{{ $user->first_name }}">
-                            </div>
 
-                            <div class="grid flex flex-col items-start space-y-0.5">
-                                <label class=" text-gray-700 text-sm font-normal" for="lastname">Last Name</label>
-                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="last_name" id="lastname" type="text" placeholder="Last Name" value="{{ $user->last_name }}">
-                            </div>
+                        <div class="grid flex flex-col items-start space-y-0.5">
+                            <label class=" text-gray-700 text-sm font-normal" for="firstname">First Name</label>
+                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstname" type="text" placeholder="First Name" name="first_name" value="{{ $user->first_name }}">
+                        </div>
 
-                            <div class="grid flex flex-col items-start space-y-0.5">
-                                <label class=" text-gray-700 text-sm font-normal" for="suffix">Suffix</label>
-                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="suffix" type="text" placeholder="Suffix" name="suffix" value="{{ $user->suffix }}">
-                            </div>
+                        <div class="grid flex flex-col items-start space-y-0.5">
+                            <label class=" text-gray-700 text-sm font-normal" for="lastname">Last Name</label>
+                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="last_name" id="lastname" type="text" placeholder="Last Name" value="{{ $user->last_name }}">
+                        </div>
 
-                            <div class="grid flex flex-col items-start space-y-0.5">
-                                <label class=" text-gray-700 text-sm font-normal" for="honorific">Honorific</label>
-                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="honorific" type="text" placeholder="Honorific" name="honorific" value="{{ $user->honorific }}">
-                            </div>
+                        <div class="grid flex flex-col items-start space-y-0.5">
+                            <label class=" text-gray-700 text-sm font-normal" for="suffix">Suffix</label>
+                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="suffix" type="text" placeholder="Suffix" name="suffix" value="{{ $user->suffix }}">
+                        </div>
 
-                            <div class="grid flex flex-col items-start space-y-0.5">
-                                <label class=" text-gray-700 text-sm font-normal" for="sex">Sex</label>
-                                <div class="relative">
-                                    <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="sex" name="sex" value="{{ $user->sex }}">
-                                        <option disabled selected hidden class="text-gray-400" value="null">Select an option</option>
-                                        <option class="text-gray-400" value="male" @if($user->sex === 'male') selected @endif>Male</option>
-                                        <option class="text-gray-400" value="female" @if($user->sex === 'female') selected @endif>Female</option>
-                                    </select>
-                                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                        <img src="{{asset('images/register/menu-down (1).svg')}}" alt="Dropdown Icon" class="h-5 w-5 text-gray-700">
-                                    </div>
+                        <div class="grid flex flex-col items-start space-y-0.5">
+                            <label class=" text-gray-700 text-sm font-normal" for="honorific">Honorific</label>
+                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="honorific" type="text" placeholder="Honorific" name="honorific" value="{{ $user->honorific }}">
+                        </div>
+
+                        <div class="grid flex flex-col items-start space-y-0.5">
+                            <label class=" text-gray-700 text-sm font-normal" for="sex">Sex</label>
+                            <div class="relative">
+                                <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="sex" name="sex" value="{{ $user->sex }}">
+                                    <option disabled selected hidden class="text-gray-400" value="null">Select an option</option>
+                                    <option class="text-gray-400" value="male" @if($user->sex === 'male') selected @endif>Male</option>
+                                    <option class="text-gray-400" value="female" @if($user->sex === 'female') selected @endif>Female</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                    <img src="{{asset('images/register/menu-down (1).svg')}}" alt="Dropdown Icon" class="h-5 w-5 text-gray-700">
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="grid flex flex-col items-start space-y-0.5">
-                                <label class=" text-gray-700 text-sm font-normal" for="birthday">Date of birth (MM/DD/YY)</label>
-                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="birthday" type="date" placeholder="Select a date" name="birthday" value="{{ $user->birthday }}">
-                            </div>
+                        <div class="grid flex flex-col items-start space-y-0.5">
+                            <label class=" text-gray-700 text-sm font-normal" for="birthday">Date of birth (MM/DD/YY)</label>
+                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="birthday" type="date" placeholder="Select a date" name="birthday" value="{{ $user->birthday }}">
+                        </div>
 
-                            <div class="grid flex flex-col items-start space-y-0.5">
-                                <label class=" text-gray-700 text-sm font-normal" for="municipality">Municipality</label>
-                                <div class="relative">
-                                <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  id="municipality" name="municipality" value="{{ $user->municipality }}">
-                                        <option disabled selected hidden value="null">Select a Municipality</option>
-                                        <option value="Boac" @if($user->municipality === 'Boac') selected @endif>Boac</option>
-                                        <option value="Buenavista" @if($user->municipality === 'Buenavista') selected @endif>Buenavista</option>
-                                        <option value="Gasan" @if($user->municipality === 'Gasan') selected @endif>Gasan</option>
-                                        <option value="Mogpog" @if($user->municipality === 'Mogpog') selected @endif>Mogpog</option>
-                                        <option value="Sta. Cruz" @if($user->municipality === 'Sta. Cruz') selected @endif>Santa Cruz</option>
-                                        <option value="Torrijos" @if($user->municipality === 'Torrijos') selected @endif>Torrijos</option>
-                                    </select>
-                                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                        <img src="{{asset('images/register/menu-down (1).svg')}}" alt="Dropdown Icon" class="h-5 w-5 text-gray-700">
-                                    </div>
+                        <div class="grid flex flex-col items-start space-y-0.5">
+                            <label class=" text-gray-700 text-sm font-normal" for="municipality">Municipality</label>
+                            <div class="relative">
+                            <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  id="municipality" name="municipality" value="{{ $user->municipality }}">
+                                    <option disabled selected hidden value="null">Select a Municipality</option>
+                                    <option value="Boac" @if($user->municipality === 'Boac') selected @endif>Boac</option>
+                                    <option value="Buenavista" @if($user->municipality === 'Buenavista') selected @endif>Buenavista</option>
+                                    <option value="Gasan" @if($user->municipality === 'Gasan') selected @endif>Gasan</option>
+                                    <option value="Mogpog" @if($user->municipality === 'Mogpog') selected @endif>Mogpog</option>
+                                    <option value="Sta. Cruz" @if($user->municipality === 'Sta. Cruz') selected @endif>Santa Cruz</option>
+                                    <option value="Torrijos" @if($user->municipality === 'Torrijos') selected @endif>Torrijos</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                    <img src="{{asset('images/register/menu-down (1).svg')}}" alt="Dropdown Icon" class="h-5 w-5 text-gray-700">
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="grid flex flex-col items-start space-y-0.5">
-                                <label class=" text-gray-700 text-sm font-normal" for="barangay">Barangay</label>
-                                <div class="relative">
-                                <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="barangay" name="barangay" value="{{ $user->barangay }}">
-                                        <option disabled selected hidden value="null">Select a barangay</option>
-                                    </select>
-                                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                        <img src="{{asset('images/register/menu-down (1).svg')}}" alt="Dropdown Icon" class="h-5 w-5 text-gray-700">
-                                    </div>
+                        <div class="grid flex flex-col items-start space-y-0.5">
+                            <label class=" text-gray-700 text-sm font-normal" for="barangay">Barangay</label>
+                            <div class="relative">
+                                <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="barangay" name="barangay">
+                                    <option disabled selected hidden value="">Select a barangay</option>
+                                    @foreach ($previousBarangays as $barangay)
+                                        <option value="{{ $barangay }}" @if ($barangay === $user->barangay) selected @endif>{{ $barangay }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                    <img src="{{asset('images/register/menu-down (1).svg')}}" alt="Dropdown Icon" class="h-5 w-5 text-gray-700">
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="grid flex flex-col items-start space-y-0.5">
-                                <label class=" text-gray-700 text-sm font-normal" for="cn">Contact Number</label>
-                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="contact_number" type="text" placeholder="Contact Number" name="contact_number" value="{{ $user->contact_number }}">
-                            </div>
+                        <div class="grid flex flex-col items-start space-y-0.5">
+                            <label class=" text-gray-700 text-sm font-normal" for="cn">Contact Number</label>
+                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="contact_number" type="text" placeholder="Contact Number" name="contact_number" value="{{ $user->contact_number }}">
+                        </div>
 
-                            <div class="grid flex flex-col items-start space-y-0.5">
-                                <label class=" text-gray-700 text-sm font-normal" for="email">Email</label>
-                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Email" name="email" value="{{ $user->email }}">
-                            </div>
+                        <div class="grid flex flex-col items-start space-y-0.5">
+                            <label class=" text-gray-700 text-sm font-normal" for="email">Email</label>
+                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Email" name="email" value="{{ $user->email }}">
+                        </div>
 
-                            <div class="grid flex flex-col items-start space-y-0.5 lg:col-start-2">
-                                <label class=" text-gray-700 text-sm font-normal" for="ln">License Number</label>
-                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="license" type="text" placeholder="License Number" name="license"  value="{{ $user->license }}">
-                            </div>
-                        </form>
+                        <div class="grid flex flex-col items-start space-y-0.5 lg:col-start-2">
+                            <label class=" text-gray-700 text-sm font-normal" for="ln">License Number</label>
+                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="license" type="text" placeholder="License Number" name="license"  value="{{ $user->license }}">
+                        </div>
                     </div>
+                </form>
 
                 <div class="flex justify-center items-center my-2 md:my-0 py-4">
                     <button id="update-button" type="submit" class="flex items-center justify-center border rounded-full w-28 h-11 bg-[#47B0E1] font-roboto font-medium text-base text-white md:w-32 md:h-12">Update</button>
@@ -157,5 +159,14 @@
     <script src="{{ asset('/js/barangay.js') }}"></script>
     <script src="{{ asset('/js/update_professional.js') }}"></script>
     <script src="{{ asset('/js/profile_selector.js') }}"></script>
+
+    <script>
+        var previousMunicipality = {{Js::from($user->municipality)}};
+        var previousBarangay = {{Js::from($user->barangay)}};
+        municipalityDropdown.value = previousMunicipality;
+        changeBarangayOptions();
+        barangayDropdown.value = previousBarangay;
+
+    </script>
 </body>
 </html>

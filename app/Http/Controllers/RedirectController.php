@@ -45,7 +45,7 @@ class RedirectController extends Controller
             }
             else if(Auth::user()->type == 'professional'){
                 $user = Auth::user();
-                $latest_readings = Reading::with('user')->latest()->get()->unique('user_id');
+                $latest_readings = Reading::with('user')->latest()->get()->unique('user_id')->take(5);
                 return view('dashboard_professional', [
                     'user' => $user,
                     'latest_readings' => $latest_readings
@@ -217,14 +217,23 @@ class RedirectController extends Controller
 
     public function redirectToUpdatePatientInfo(){
         $user = Auth::user();
-        return view('update_patient', compact('user'));
-
+        $previousBarangays = explode(',', $user->barangay);
+       
+        return view('update_patient', [
+            'user' => $user,
+            'previousBarangays' => $previousBarangays
+        ]);
     }
 
-    public function redirectToUpdateProfessionalInfo(){
+    public function redirectToUpdateProfessionalInfo() {
         $user = Auth::user();
-        return view('update_professional', compact('user'));
-
+        $previousBarangays = explode(',', $user->barangay);
+       
+        return view('update_professional', [
+            'user' => $user,
+            'previousBarangays' => $previousBarangays
+        ]);
     }
+    
     
 }

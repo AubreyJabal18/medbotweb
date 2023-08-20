@@ -19,7 +19,7 @@
 		
 	<div class="flex flex-col min-h-screen bg-gradient-to-r from-[#5b86e5] to-[#305ab9] ">
 		
-		<div class="flex flex-row justify-between items-center px-4 py-3 md:px- mb-10 z-10">
+		<div class="flex flex-row justify-between items-center px-4 py-3 md:px- mb-6 z-10">
 			<div class="flex flex-row space-x-4 items-center">
 				<img src="{{asset('images/dashboard/logo.png')}}" alt="" class="h-8 w-8 md:h-12 md:w-12">
 				<p class="font-roboto font-bold text-[#07DBDB] text-lg md:text-2xl text-shadow">ENHANCED MED-BOT</p>
@@ -32,6 +32,15 @@
 			<x-menu_professional :user="$professional"/>
 		</div>
 
+		<div class="flex flex-col space-y-1 mb-10 px-6 ">
+			<p class="flex font-roboto font-normal text-white text-md md:text-xl lg:text-2xl " >Hello {{$professional->honorific}} {{ $professional->last_name}}, welcome to the Patient Readings Page!</p>
+			<p class="flex font-roboto font-normal text-white text-md md:text-xl lg:text-2xl lg:ml-6">
+				Here, you can access the complete reading history of {{ $user->first_name }} {{ $user->last_name }} {{ $user->suffix ? $user->suffix : ''}}'s vital sign measurements, 
+			</p>
+			<p class="flex font-roboto font-normal text-white text-md md:text-xl lg:text-2xl lg:ml-6">aiding you in delivering optimal care.
+			</p>
+		</div>
+		
 		<div class="flex flex-col space-y-2 md:space-y-0 md:flex-row items-center justify-center md:space-x-5 relative">
 			
 			<div class="flex items-center">
@@ -78,11 +87,32 @@
 			
 		</div>
 		
-		<div class="items-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300">
-			<p class="text-lg md:text-2xl font-semibold mb-2 text-white text-center">Your Vital Readings</p>
-			<div id="reading-table" class="flex w-[90%] md:w-[80%] justify-center mx-auto"></div>
-			<input type="text" class="hidden" name="user-id" id="user-id" value="{{$user->id}}">
+		<div class="flex items-center justify-center">
+			<div class="flex flex-row items-center justify-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit w-fit border border-gray-300 mt-10">
+				<img src="{{asset('images/dashboard/low.svg')}}" alt="" class="w-6 h-6 md:w-8 md:h-8 mr-2">
+				<p class="font-medium text-base md:text-lg text-white mr-2 md:mr-5"> - Low</p>
+
+				<img src="{{asset('images/dashboard/normal.svg')}}" alt="" class="w-6 h-6 md:w-8 md:h-8 mr-2">
+				<p class="font-medium text-base md:text-lg text-white mr-2 md:mr-5"> - Normal</p>
+
+				<img src="{{asset('images/dashboard/high.svg')}}" alt="" class="w-6 h-6 md:w-8 md:h-8 mr-2">
+				<p class="font-medium text-base md:text-lg text-white"> - High</p>
+			</div>
+
 		</div>
+
+		<div class="flex items-center justify-center mt-10">
+			<div class="flex flex-col items-center justify-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit w-[95%] border border-gray-300">
+				<p class="text-lg md:text-2xl font-semibold mb-2 text-white text-center"> {{ $user->first_name }} {{ $user->last_name }}'s {{ $user->suffix ? $user->suffix : ''}} Vital Readings</p>
+				<div id="reading-table" class="w-[100%]"></div>
+				<input type="text" class="hidden" name="user-id" id="user-id" value="{{$user->id}}">
+
+			</div>
+		</div>	
+
+		<div class="flex items-center justify-center mt-20">
+
+		</div>	
 
 		<div class="fixed bottom-2 right-10 z-50 md:bottom-6 ">
 			<div class="flex flex-row items-center justify-center p-2 space-x-2 w-40 h-16 border border-white bg-[#5EDAD5] rounded-xl shadow-sm shadow-black transition-colors duration-300 hover:bg-[#4ac0b8] focus:bg-[#4ac0b8]">
