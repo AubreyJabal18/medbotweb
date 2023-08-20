@@ -55,22 +55,22 @@
                             @csrf
                             <div class="grid flex flex-col items-start space-y-0.5">
                                 <label class=" text-gray-700 text-sm font-normal" for="firstname">First Name</label>
-                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstname" type="text" placeholder="First Name" name="first_name" value="{{old('first_name')}}">
+                                <input class="shadow appearance-none border rounded h-fit w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstname" type="text" placeholder="First Name" name="first_name" value="{{old('first_name')}}">
                             </div>
 
                             <div class="grid flex flex-col items-start space-y-0.5">
                                 <label class=" text-gray-700 text-sm font-normal" for="lastname">Last Name</label>
-                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="last_name" id="lastname" type="text" placeholder="Last Name" value="{{old('last_name')}}">
+                                <input class="shadow appearance-none border rounded h-fit w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="last_name" id="lastname" type="text" placeholder="Last Name" value="{{old('last_name')}}">
                             </div>
 
                             <div class="grid flex flex-col items-start space-y-0.5">
                                 <label class=" text-gray-700 text-sm font-normal" for="suffix">Suffix</label>
-                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="suffix" type="text" placeholder="Suffix" name="suffix" value="{{old('suffix')}}">
+                                <input class="shadow appearance-none border rounded h-fit w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="suffix" type="text" placeholder="Suffix" name="suffix" value="{{old('suffix')}}">
                             </div>
 
                             <div class="grid flex flex-col items-start space-y-0.5">
                                 <label class=" text-gray-700 text-sm font-normal" for="honorific">Honorific</label>
-                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="honorific" type="text" placeholder="Honorific" name="honorific" value="{{old('honorific')}}">
+                                <input class="shadow appearance-none border rounded h-fit w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="honorific" type="text" placeholder="Honorific" name="honorific" value="{{old('honorific')}}">
                             </div>
 
                             <div class="grid flex flex-col items-start space-y-0.5">
@@ -124,17 +124,17 @@
 
                             <div class="grid flex flex-col items-start space-y-0.5">
                                 <label class=" text-gray-700 text-sm font-normal" for="cn">Contact Number</label>
-                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="contact_number" type="text" placeholder="Contact Number" name="contact_number" value="{{old('contact_number')}}">
+                                <input class="shadow appearance-none border rounded h-fit w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="contact_number" type="text" placeholder="Contact Number" name="contact_number" value="{{old('contact_number')}}">
                             </div>
 
                             <div class="grid flex flex-col items-start space-y-0.5">
                                 <label class=" text-gray-700 text-sm font-normal" for="email">Email</label>
-                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Email" name="email" value="{{old('email')}}">
+                                <input class="shadow appearance-none border rounded h-fit w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Email" name="email" value="{{old('email')}}">
                             </div>
 
                             <div class="grid flex flex-col items-start space-y-0.5 lg:col-start-2">
                                 <label class=" text-gray-700 text-sm font-normal" for="ln">License Number</label>
-                                <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="license" type="text" placeholder="License Number" name="license"  value="{{old('license')}}">
+                                <input class="shadow appearance-none border rounded h-fit w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="license" type="text" placeholder="License Number" name="license"  value="{{old('license')}}">
                             </div>
                         </form>
                     </div>
