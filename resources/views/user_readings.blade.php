@@ -104,15 +104,38 @@
 		</div>	
 
 		<div class="fixed bottom-2 right-10 z-50 md:bottom-6 ">
-			<div class="flex flex-row items-center justify-center p-2 space-x-2 w-40 h-16 border border-white bg-[#5EDAD5] rounded-xl shadow-sm shadow-black transition-colors duration-300 hover:bg-[#4ac0b8] focus:bg-[#4ac0b8]">
-			<img src="{{asset('images/dashboard/download.png')}}" alt="" class="w-12 h-12">
-			<b class="text-roboto font-medium text-base text-black text-center">Download Reading</b>
+			<div id="download-reading-button" class="flex flex-row items-center justify-center p-2 space-x-2 w-40 h-16 border border-white bg-[#5EDAD5] rounded-xl shadow-sm shadow-black transition-colors duration-300 hover:bg-[#4ac0b8] focus:bg-[#4ac0b8]">
+				<img src="{{asset('images/dashboard/download.png')}}" alt="" class="w-12 h-12">
+				<button class="text-roboto font-medium text-base text-black text-center cursor-pointer">Download Reading</button>
 			</div>
+		</div>
+		
+		<div id="blur-overlay" class="hidden fixed w-[100%] h-[100%] backdrop-blur-sm"></div>
+		
+		<div id="notice-delete-patient" class="fixed flex-col border-2 w-auto h-auto rounded-xl items-center  bg-white drop-shadow-lg shadow-lg z-50 top-[40%] left-[10%] md:left-[25%] lg:left-[35%]">
+			<p class="font-roboto text-sm text-center uppercase font-bold lg:text-base p-2">Download Your Readings Here</p>
+			<form class="p-4">
+				<div class="flex flex-row items-center justify-evenly">
+					<label for="fromDate" class="block font-roboto text-sm font-medium text-gray-700">From:</label>
+					<input type="date" id="fromDate" name="fromDate" class="mt-1 p-2 border rounded-md focus:ring focus:ring-blue-200" required>
+				</div>
+
+				<div class="flex flex-row items-center justify-evenly">
+					<label for="toDate" class="block mt-4 font-roboto text-sm font-medium text-gray-700">To:</label>
+					<input type="date" id="toDate" name="toDate" class="mt-1 p-2 border rounded-md focus:ring focus:ring-blue-200" required>
+				</div>
+
+				<div class="flex flex-row items-center justify-end">
+					<button type="submit" class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Download</button>
+				</div>
+				
+			</form>
 		</div>
 	</div>
 
 	<script src="{{asset('/js/gridjs.umd.js')}}"></script>
 	<script src="{{asset('/js/user_readings.js')}}"></script>
+	<script src="{{asset('/js/download_readings.js')}}"></script>
   
 </body>
 </html>
