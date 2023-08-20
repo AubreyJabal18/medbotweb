@@ -330,7 +330,7 @@
                 </div>
 
                 <canvas id="reading-trends" class="mt-4 w-[96%] flex drop-shadow-lg shadow-lg rounded-lg bg-white z-10 h-fit">
-
+                    <input  type="text" class="hidden" name="user-id" id="user-id" value="{{$user->id}}">
                 </canvas>
 
                 <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute lg:h-[70%] bottom-0 left-0">

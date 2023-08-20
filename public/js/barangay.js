@@ -232,6 +232,7 @@ const torrijos_barangays = [
 const municipalityDropdown = document.getElementById('municipality');
 const barangayDropdown = document.getElementById('barangay');
 
+
 function addOptions(select, list){
     select.innerHTML = '';
     var nullOption = document.createElement('option');
@@ -249,8 +250,8 @@ function addOptions(select, list){
     }
 }
 
-municipalityDropdown.addEventListener('change', function(){
-    var value = municipalityDropdown.value;
+function changeBarangayOptions(){
+       var value = municipalityDropdown.value;
     if(value == 'null'){
         addOptions(barangayDropdown, []);
     }
@@ -271,5 +272,7 @@ municipalityDropdown.addEventListener('change', function(){
     }
     else if(value == 'Torrijos'){
         addOptions(barangayDropdown, torrijos_barangays);
-    }
-});
+    } 
+}
+municipalityDropdown.addEventListener('change', changeBarangayOptions);
+

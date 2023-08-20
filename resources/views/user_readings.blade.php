@@ -19,7 +19,7 @@
 		
 	<div class="flex flex-col min-h-screen bg-gradient-to-r from-[#5b86e5] to-[#305ab9] ">
 		
-		<div class="flex flex-row justify-between items-center px-4 py-3 md:px- mb-10 z-10">
+		<div class="flex flex-row justify-between items-center px-4 py-3 md:px- mb-6 z-10">
 			<div class="flex flex-row space-x-4 items-center">
 				<img src="{{asset('images/dashboard/logo.png')}}" alt="" class="h-8 w-8 md:h-12 md:w-12">
 				<p class="font-roboto font-bold text-[#07DBDB] text-lg md:text-2xl text-shadow">ENHANCED MED-BOT</p>
@@ -30,6 +30,13 @@
 			</div>
 			
 			<x-menu_user :user="$user"/>
+		</div>
+
+		<div class="flex flex-col space-y-1 mb-10 px-6 ">
+			<p class="flex font-roboto font-normal text-white text-md md:text-xl lg:text-2xl " >Hello {{ $user->first_name }} {{ $user->last_name }} {{ $user->suffix ? $user->suffix : '' }}, welcome to your Readings Page!</p>
+			<p class="flex font-roboto font-normal text-white text-md md:text-xl lg:text-2xl lg:ml-6">
+				Here, you can access the complete reading history of your vital sign measurements.
+			</p>
 		</div>
 
 		<div class="flex flex-col space-y-2 md:space-y-0 md:flex-row items-center justify-center md:space-x-5 relative">

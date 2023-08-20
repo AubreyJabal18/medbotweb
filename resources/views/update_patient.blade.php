@@ -30,7 +30,7 @@
                         <div class="w-full flex flex-row space-x-5 items-center">
                             <img src="{{asset('images/register/logo2.svg')}}" alt="" class="h-12 w-12">
                             <p class="font-roboto font-bold text-base text-[#5ECECD] text-shadow text-center">ENHANCED MED-BOT</p>
-                            <p class="font-roboto font-light text-base md:text-2xl text-neutral-400 text-center pl-48">Profile Information</p>
+                            <p class="font-roboto font-light text-lg lg:text-2xl text-neutral-400 text-center md:pl-12 lg:pl-48">Profile Information</p>
                         </div>    
                     </div>
                 </div>
@@ -106,8 +106,11 @@
                         <div class="grid flex flex-col items-start space-y-0.5">
                             <label class=" text-gray-700 text-sm font-normal" for="barangay">Barangay</label>
                             <div class="relative">
-                                <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="barangay" name="barangay" value="{{ $user->barangay }}">
-                                    <option disabled selected hidden value="null">Select barangay...</option>
+                                <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="barangay" name="barangay">
+                                    <option disabled selected hidden value="">Select a barangay</option>
+                                    @foreach ($previousBarangays as $barangay)
+                                        <option value="{{ $barangay }}" @if ($barangay === $user->barangay) selected @endif>{{ $barangay }}</option>
+                                    @endforeach
                                 </select>
                                 <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                     <img src="{{asset('images/register/menu-down (1).svg')}}" alt="Dropdown Icon" class="h-5 w-5 text-gray-700">
@@ -152,5 +155,15 @@
     <script src="{{ asset('/js/barangay.js') }}"></script>
     <script src="{{ asset('/js/update_patient.js') }}"></script>
     <script src="{{ asset('/js/profile_selector.js') }}"></script>
+
+    <script>
+        var previousMunicipality = {{Js::from($user->municipality)}};
+        var previousBarangay = {{Js::from($user->barangay)}};
+        municipalityDropdown.value = previousMunicipality;
+        changeBarangayOptions();
+        barangayDropdown.value = previousBarangay;
+
+    </script>
+
 </body>
 </html>

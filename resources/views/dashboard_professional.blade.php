@@ -72,16 +72,18 @@
                             </div>
                         </div>
                     @endforeach
-                    @for($i = count($latest_readings); $i <= 5; $i++)
-                        <div class="table-row-group">
-                            <div class="table-row font-roboto font-normal text-black text-sm md:text-base ">
-                                <div class="table-cell text-center py-1">---</div>
-                                <div class="table-cell text-center py-1">---</div>
-                                <div class="table-cell text-center py-1">---</div>
-                                <div class="table-cell text-center py-1">---</div>
+                    @if(count($latest_readings) < 5)
+                        @for($i = count($latest_readings); $i <= 5; $i++)
+                            <div class="table-row-group">
+                                <div class="table-row font-roboto font-normal text-black text-sm md:text-base ">
+                                    <div class="table-cell text-center py-1">---</div>
+                                    <div class="table-cell text-center py-1">---</div>
+                                    <div class="table-cell text-center py-1">---</div>
+                                    <div class="table-cell text-center py-1">---</div>
+                                </div>
                             </div>
-                        </div>
-                    @endfor
+                        @endfor
+                    @endif    
 
                 </div>
             </div>

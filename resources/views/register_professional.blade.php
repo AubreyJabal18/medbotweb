@@ -76,10 +76,10 @@
                             <div class="grid flex flex-col items-start space-y-0.5">
                                 <label class=" text-gray-700 text-sm font-normal" for="sex">Sex</label>
                                 <div class="relative">
-                                <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="sex" name="sex" value="{{old('sex')}}">
-                                        <option disabled selected hidden class="text-gray-700" value="null">Select an option</option>
-                                        <option class="text-gray-700" value="Male">Male</option>
-                                        <option class="text-gray-700" value="Female">Female</option>
+                                    <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="sex" name="sex" value="{{old('sex')}}">
+                                        <option disabled selected hidden class="text-gray-400" value="null">Select an option</option>
+                                        <option class="text-gray-400" value="male" @if(old('sex') === 'male') selected @endif>Male</option>
+                                        <option class="text-gray-400" value="female" @if(old('municipality') === 'female') selected @endif>Female</option>
                                     </select>
                                     <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                         <img src="{{asset('images/register/menu-down (1).svg')}}" alt="Dropdown Icon" class="h-5 w-5 text-gray-700">
@@ -95,14 +95,14 @@
                             <div class="grid flex flex-col items-start space-y-0.5">
                                 <label class=" text-gray-700 text-sm font-normal" for="municipality">Municipality</label>
                                 <div class="relative">
-                                <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  id="municipality" name="municipality" value="{{old('municipality')}}">
+                                    <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="municipality" name="municipality" value="{{old('municipality')}}">
                                         <option disabled selected hidden value="null">Select a Municipality</option>
-                                        <option value="Boac">Boac</option>
-                                        <option value="Buenavista">Buenavista</option>
-                                        <option value="Gasan">Gasan</option>
-                                        <option value="Mogpog">Mogpog</option>
-                                        <option value="Sta. Cruz">Santa Cruz</option>
-                                        <option value="Torrijos">Torrijos</option>
+                                        <option value="Boac" @if(old('municipality') === 'Boac') selected @endif>Boac</option>
+                                        <option value="Buenavista"@if(old('municipality') === 'Buenavista') selected @endif>Buenavista</option>
+                                        <option value="Gasan" @if(old('municipality') === 'Gasan') selected @endif >Gasan</option>
+                                        <option value="Mogpog" @if(old('municipality') === 'Mogpog') selected @endif>Mogpog</option>
+                                        <option value="Sta. Cruz" @if(old('municipality') === 'Sta. Cruz') selected @endif>Santa Cruz</option>
+                                        <option value="Torrijos"@if(old('municipality') === 'Torrijos') selected @endif>Torrijos</option>
                                     </select>
                                     <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                         <img src="{{asset('images/register/menu-down (1).svg')}}" alt="Dropdown Icon" class="h-5 w-5 text-gray-700">
@@ -171,5 +171,14 @@
     <script src="{{ asset('/js/barangay.js') }}"></script>
     <script src="{{ asset('/js/validate_professional_registration.js') }}"></script>
     <script src="{{ asset('/js/profile_selector.js') }}"></script>
+
+    <script>
+        var oldMunicipality = {{Js::from(old('municipality'))}};
+        var oldBarangay = {{Js::from(old('barangay'))}};
+        municipalityDropdown.value = oldMunicipality;
+        changeBarangayOptions()
+        barangayDropdown.value = oldBarangay;
+    </script>
+    
 </body>
 </html>

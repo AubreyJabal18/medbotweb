@@ -1133,20 +1133,6 @@ class FetchController extends Controller
         ]);
     }
 
-    public function getAuthenticatedPatient(Request $request) {
-        $user = Reading::where('user_id', $request->id)->get();
-
-        if ($user->isEmpty()) {
-            return response()->json(['message' => 'Readings not found for the user.'], 404);
-        }
-
-        return response()->json([
-            'user' => $user,
-        ]);
-    }
-    
-
-  
 }
 
 
