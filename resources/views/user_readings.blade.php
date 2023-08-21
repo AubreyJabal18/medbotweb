@@ -18,7 +18,7 @@
     @endif
 		
 	<div class="flex flex-col min-h-screen bg-gradient-to-r from-[#5b86e5] to-[#305ab9] ">
-		
+		<input type="text" id="user-id" class="hidden" value={{ $user->id }}>
 		<div class="flex flex-row justify-between items-center px-4 py-3 md:px- mb-6 z-10">
 			<div class="flex flex-row space-x-4 items-center">
 				<img src="{{asset('images/dashboard/logo.png')}}" alt="" class="h-8 w-8 md:h-12 md:w-12">
@@ -119,21 +119,21 @@
 		
 		<div id="blur-overlay" class="hidden fixed w-[100%] h-[100%] backdrop-blur-sm"></div>
 		
-		<div id="notice-delete-patient" class="fixed flex-col border-2 w-auto h-auto rounded-xl items-center  bg-white drop-shadow-lg shadow-lg z-50 top-[40%] left-[10%] md:left-[25%] lg:left-[35%]">
-			<p class="font-roboto text-sm text-center uppercase font-bold lg:text-base p-2">Download Your Readings Here</p>
+		<div id="pop-up-box" class=" hidden fixed flex-col border-2 w-[80%] md:w-[50%] lg:w-[40%] xl:w-[30%] h-auto rounded-xl items-center  bg-white drop-shadow-lg shadow-lg z-50 top-[40%] left-[10%] md:left-[25%] lg:left-[35%]">
+			<p class="font-roboto text-sm text-center uppercase font-bold md:text-base p-2">Download Your Readings Here</p>
 			<form class="p-4">
-				<div class="flex flex-row items-center justify-evenly">
+				<div class="flex flex-row items-center justify-center space-x-5">
 					<label for="fromDate" class="block font-roboto text-sm font-medium text-gray-700">From:</label>
 					<input type="date" id="fromDate" name="fromDate" class="mt-1 p-2 border rounded-md focus:ring focus:ring-blue-200" required>
 				</div>
 
-				<div class="flex flex-row items-center justify-evenly">
+				<div class="flex flex-row items-center justify-center space-x-9">
 					<label for="toDate" class="block mt-4 font-roboto text-sm font-medium text-gray-700">To:</label>
 					<input type="date" id="toDate" name="toDate" class="mt-1 p-2 border rounded-md focus:ring focus:ring-blue-200" required>
 				</div>
 
 				<div class="flex flex-row items-center justify-end">
-					<button type="submit" class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Download</button>
+					<button id="download-button" type="button" class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Download</button>
 				</div>
 				
 			</form>
@@ -143,6 +143,8 @@
 	<script src="{{asset('/js/gridjs.umd.js')}}"></script>
 	<script src="{{asset('/js/user_readings.js')}}"></script>
 	<script src="{{asset('/js/download_readings.js')}}"></script>
+	<script src="{{asset('/js/pop_up_box.js')}}"></script>
+	
   
 </body>
 </html>
