@@ -114,5 +114,7 @@ Route::post('/update/professional/process', [UpdateController::class, 'updatePro
 
 Route::get('/get/patient_ratings', [FetchController::class, 'getPatientRatings']);
 
+Route::get('/get/download', [FetchController::class, 'downloadReadings']);
+
 
 
