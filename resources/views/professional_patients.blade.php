@@ -24,7 +24,9 @@
         <div class="relative flex-col bg-gradient-to-r from-[#0B60D1] to-[#305ab9] bg-cover bg-no-repeat pb-5 md:pb-6 lg:pb-0">
             <div class="flex flex-row justify-between items-center px-4 py-3 md:px-10">
                 <div class="flex flex-row space-x-4 items-center">
-                    <img src={{asset('images/dashboard/logo.png')}} alt="" class="h-8 w-8 md:h-12 md:w-12">
+                    <a href="/">
+                        <img src={{asset('images/dashboard/logo.png')}} alt="" class="h-8 w-8 md:h-12 md:w-12">
+                    </a>
                     <p class="font-roboto font-bold text-[#07DBDB] text-lg md:text-2xl text-shadow">ENHANCED MED-BOT</p>
                 </div>
                 <div class="flex flex-row space-x-4 items-center justify-end">
@@ -85,14 +87,14 @@
             
             @if(count($readings) > 1)
                 @if($readings[0]->blood_pressure_rating == 'low')
-                    <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2 bg-blue-400">
+                    <div id="blood-pressure-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2 bg-blue-400 cursor-pointer">
                 @elseif($readings[0]->blood_pressure_rating == 'normal')
-                    <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-green-400 shadow-lg shadow-green-500/50 mb-8 px-2 py-2 bg-green-400">
+                    <div id="blood-pressure-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-green-400 shadow-lg shadow-green-500/50 mb-8 px-2 py-2 bg-green-400 cursor-pointer">
                 @elseif($readings[0]->blood_pressure_rating == 'high')
-                    <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-red-400 shadow-lg shadow-red-500/50 mb-8 px-2 py-2 bg-red-400">
+                    <div id="blood-pressure-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-red-400 shadow-lg shadow-red-500/50 mb-8 px-2 py-2 bg-red-400 cursor-pointer">
                 @endif
             @else
-                <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
+                <div id="blood-pressure-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
             @endif
             
                 <img src="{{asset('images/dashboard/blood_pressure.svg')}}" alt="" class="w-1/4 h-fit">
@@ -115,20 +117,62 @@
                     </div>
                     
                 </div>
+
+                <div id="blood-pressure-causes" class="hidden absolute top-24 w-full h-auto bg-white border border-gray-400 rounded-lg z-10 p-2">
+                    @if(count($readings) > 1)
+                        @if($readings[0]->blood_pressure_rating == 'low')
+                            <p class="font-roboto text-sm text-center uppercase font-bold lg:text-base">Your Blood Pressure is Low</p>
+                            <p class="font-roboto text-xs text-justify font-normal lg:text-base">This might be due to the following: <br> 
+                                •   Dehydration <br>
+                                •	Medication side effects <br>
+                                •	Heart issues <br>
+                                •	Prolonged bed rest <br>
+                                •	Agitation or other unusual changes in behavior <br> 
+                                •	Confusion or trouble concentrating <br>
+                                •	Feeling tired, sluggish or lethargic <br>
+                                •	Fatigue or weakness <br>
+                                •	Fast, shallow breathing <br>
+                                •	Distorted or blurred vision <br>
+                                •	Nausea or vomiting <br>
+                                •	Fainting or passing out <br>
+                                •	Dizziness or feeling lightheaded <br>
+                            </p>
+
+                        @elseif($readings[0]->blood_pressure_rating == 'normal')
+                            <p class="font-roboto text-sm text-center uppercase font-bold lg:text-base">Your Blood Pressure is Normal</p>
+                            <p class="font-roboto text-xs text-center font-normal lg:text-base">This indicates a Healthy Condition</p>
+
+                        @elseif($readings[0]->blood_pressure_rating == 'high')
+                            <p class="font-roboto text-sm text-center uppercase font-bold lg:text-base">Your Blood Pressure is High</p>
+                            <p class="font-roboto text-xs text-justify font-normal lg:text-base">High blood pressure, also known as hypertension, might be due to the following: <br>
+                                •	Having biological family members with high blood pressure, cardiovascular disease or diabetes <br>
+                                •	Being over age 55 <br>
+                                •	Having certain medical conditions, including chronic kidney disease, metabolic syndrome, obstructive sleep apnea or thyroid disease <br>
+                                •	Having overweight or obesity <br>
+                                •	Not getting enough exercise <br>
+                                •	Eating foods high in sodium <br>
+                                •	Smoking or using tobacco products <br>
+                                •	Drinking too much <br>             
+                            </p>
+                        @endif
+                    @else
+                        <div id="blood-pressure-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
+                    @endif
+                </div>
             </div>
 
             @if(count($readings) > 1)
                 @if($readings[0]->blood_saturation_rating == 'low')
-                    <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2 bg-blue-400">
+                    <div id="blood-saturation-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2 bg-blue-400 cursor-pointer">
                 @elseif($readings[0]->blood_saturation_rating == 'normal')
-                    <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-green-400 shadow-lg shadow-green-500/50 mb-8 px-2 py-2 bg-green-400">
+                    <div id="blood-saturation-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-green-400 shadow-lg shadow-green-500/50 mb-8 px-2 py-2 bg-green-400 cursor-pointer">
                 @elseif($readings[0]->blood_saturation_rating == 'high')
-                    <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-red-400 shadow-lg shadow-red-500/50 mb-8 px-2 py-2 bg-red-400">
+                    <div id="blood-saturation-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-red-400 shadow-lg shadow-red-500/50 mb-8 px-2 py-2 bg-red-400 cursor-pointer">
                 @endif
             @else
-                
-                <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
+                <div id="blood-saturation-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
             @endif
+
                 <img src="{{asset('images/dashboard/blood_saturation.svg')}}" alt="" class="w-1/4 h-fit">
                 <div class="flex flex-col text-center w-3/4">
                     <p class="font-bold text-xl lg:text-2xl">Oxygen Saturation</p>
@@ -147,19 +191,49 @@
                         @endif
                     </div>
                 </div>
+
+                <div id="blood-saturation-causes" class="hidden absolute top-24 w-full h-auto bg-white border border-gray-400 rounded-lg z-10 p-2">
+                    @if(count($readings) > 1)
+                        @if($readings[0]->blood_saturation_rating == 'low')
+                            <p class="font-roboto text-sm text-center uppercase font-bold lg:text-base">Your Oxygen Saturation is Low</p>
+                            <p class="font-roboto text-xs text-justify font-normal lg:text-base">This might be due to the following: <br> 
+                            •	Acute respiratory distress syndrome (ARDS) <br>
+                            •	Anemia <br>
+                            •	Asthma <br>
+                            •	Bronchitis <br>
+                            •	Chronic obstructive pulmonary disease (COPD) <br>
+                            •	Congenital heart defects <br>
+                            •	Congestive heart failure <br>
+                            •	Emphysema <br>
+                            •	Pneumonia <br>
+                            •	Pneumothorax (air in the space around your lung or collapsed lung) <br>
+                            •	Pulmonary edema (fluid on your lungs) <br>
+                            •	Pulmonary embolism (blood clot in your lung) <br>
+                            •	Pulmonary fibrosis (lung scarring) <br>
+                            •	Pulmonary hypertension <br>
+                            </p>
+                        @elseif($readings[0]->blood_saturation_rating == 'normal')
+                            <p class="font-roboto text-sm text-center uppercase font-bold lg:text-base">Your Oxygen Saturation is Normal</p>
+                            <p class="font-roboto text-xs text-center font-normal lg:text-base">This indicates an Adequate Oxygen levels<br> 
+                        @endif
+                    @else
+                        <div id="blood-saturation-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
+                    @endif 
+                </div>
             </div>
 
             @if(count($readings) > 1)
                 @if($readings[0]->temperature_rating == 'low')
-                    <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2 bg-blue-400">
+                    <div id="temperature-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2 bg-blue-400 cursor-pointer">
                 @elseif($readings[0]->temperature_rating == 'normal')
-                    <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-green-400 shadow-lg shadow-green-500/50 mb-8 px-2 py-2 bg-green-400">
+                    <div id="temperature-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-green-400 shadow-lg shadow-green-500/50 mb-8 px-2 py-2 bg-green-400 cursor-pointer">
                 @elseif($readings[0]->temperature_rating == 'high')
-                    <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-red-400 shadow-lg shadow-red-500/50 mb-8 px-2 py-2 bg-red-400">
+                    <div id="temperature-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-red-400 shadow-lg shadow-red-500/50 mb-8 px-2 py-2 bg-red-400 cursor-pointer">
                 @endif
             @else
-                <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
+                <div id="temperature-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
             @endif
+
                 <img src="{{asset('images/dashboard/temperature.svg')}}" alt="" class="w-1/4 h-fit">
                 <div class="flex flex-col text-center w-3/4">
                     <p class="font-bold text-xl lg:text-2xl">Temperature</p>
@@ -179,19 +253,48 @@
 
                     </div>
                 </div>
+
+                <div id="temperature-causes" class="hidden absolute top-24 w-full h-auto bg-white border border-gray-400 rounded-lg z-10 p-2">
+                    @if(count($readings) > 1)
+                        @if($readings[0]->temperature_rating == 'low')
+                            <p class="font-roboto text-sm text-center uppercase font-bold lg:text-base">Your Temperature is Low</p>
+                            <p class="font-roboto text-xs text-justify font-normal lg:text-base">This might be due to the following: <br>
+                            •	Cold Exposure Medical conditions, (hypothyroidism, shock)
+                            </p>
+                                
+                        @elseif($readings[0]->temperature_rating == 'normal')
+                            <p class="font-roboto text-sm text-center uppercase font-bold lg:text-base">Your Temperature is Normal</p>
+                            <p class="font-roboto text-xs text-center font-normal lg:text-base">This indicates a Normal Body Temperature</p>
+
+                        @elseif($readings[0]->temperature_rating == 'high')
+                            <p class="font-roboto text-sm text-center uppercase font-bold lg:text-base">Your Temperature is High</p>
+                            <p class="font-roboto text-xs text-justify font-normal lg:text-base">You have a Fever. This might be due to the following: <br>
+                                •	Bacterial infections <br>
+                                •	Viral infections such as influenza or COVID-19 <br>
+                                •	Gastrointestinal (GI) infections <br>
+                                •	Urinary tract infections <br>
+                                •	Skin infections <br>
+                                •	Inflammation <br>
+                                •	Heatstroke <br>
+                            </p>
+                        @endif
+                    @else
+                        <div id="temperature-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
+                    @endif
+                </div>
             </div>
 
 
             @if(count($readings) > 1)
                 @if($readings[0]->pulse_rate_rating == 'low')
-                    <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2 bg-blue-400">
+                    <div id="pulse-rate-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2 bg-blue-400 cursor-pointer">
                 @elseif($readings[0]->pulse_rate_rating == 'normal')
-                    <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-green-400 shadow-lg shadow-green-500/50 mb-8 px-2 py-2 bg-green-400">
+                    <div id="pulse-rate-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-green-400 shadow-lg shadow-green-500/50 mb-8 px-2 py-2 bg-green-400 cursor-pointer">
                 @elseif($readings[0]->pulse_rate_rating == 'high')
-                    <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-red-400 shadow-lg shadow-red-500/50 mb-8 px-2 py-2 bg-red-400">
+                    <div id="pulse-rate-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-red-400 shadow-lg shadow-red-500/50 mb-8 px-2 py-2 bg-red-400 cursor-pointer">
                 @endif
             @else
-                <div class="flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
+                <div id="pulse-rate-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
             @endif
             
                 <img src="{{asset('images/dashboard/pulse_rate.svg')}}" alt="" class="w-1/4 h-fit">
@@ -212,8 +315,48 @@
                         @endif
                     </div>
                 </div>
+
+                <div id="pulse-rate-causes" class="hidden absolute top-24 w-full h-auto bg-white border border-gray-400 rounded-lg z-10 p-2">
+                    @if(count($readings) > 1)
+                        @if($readings[0]->pulse_rate_rating == 'low')
+                        <p class="font-roboto text-sm text-center uppercase font-bold lg:text-base">Your Pulse Rate is Low</p>
+                        <p class="font-roboto text-xs text-justify font-normal lg:text-base">This might be due to the following: <br>
+                            •	Age 
+                        </p>
+
+                        @elseif($readings[0]->pulse_rate_rating == 'normal')
+                            <p class="font-roboto text-sm text-center uppercase font-bold lg:text-base">Your Pulse Rate is Normal</p>
+                            <p class="font-roboto text-xs text-center font-normal lg:text-base">This indicates a Healthy Heart Rate</p>
+
+                        @elseif($readings[0]->pulse_rate_rating == 'high')
+                            <p class="font-roboto text-sm text-center uppercase font-bold lg:text-base">Your Pulse Rate is High</p>
+                            <p class="font-roboto text-xs text-justify font-normal lg:text-base">This might be due to the following: <br>
+                                •	Using tobacco products <br>
+                                •	Having a family history of tachycardia <br>
+                                •	Stressed <br>
+                                •	Having high blood pressure <br>
+                                •	Having obesity <br>
+                                •	Drinking a lot of caffeine or alcohol <br>
+                                •	Having a thyroid issue but not getting treatment for it <br>
+                                •	Taking drugs that are not legal <br>
+                                •	Having certain heart issues <br>
+                                •	Taking certain kinds of heart medicines <br>
+
+                            </p>
+                        @endif
+                    @else
+                        <div id="pulse-rate-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
+                    @endif
+                        </div>
+                </div>
             </div> 
         </div>
+
+        <div class="flex items-center justify-start px-10 my-2">
+			<div class="flex flex-row items-center justify-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit w-fit border border-gray-300">
+				<p class="text-roboto text-sm font-semibold">Disclaimer: The Enhanced Med-Bot provides general guidance. For personalized advice, consult a qualified medical professional.</p>
+			</div>
+		</div>
 
         <div class="flex flex-col justify-center py-10 px-10">
             <p class="font-roboto font-bold text-black text-lg lg:text-xl">PREVIOUS READING</p>
@@ -331,13 +474,12 @@
                 </div>
 
                 <canvas id="reading-trends" class="mt-4 w-[96%] flex drop-shadow-lg shadow-lg rounded-lg bg-white z-10 h-fit">
-
+                    <input  type="text" class="hidden" name="user-id" id="user-id" value="{{$user->id}}">
                 </canvas>
 
                 <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute lg:h-[70%] bottom-0 left-0">
                 <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute lg:h-60 bottom-0 right-0">  
             </div> 
-            <input  type="text" class="hidden" name="user-id" id="user-id" value="{{$user->id}}">
         </div>
 
         <div class="flex flex-col items-center justify-center py-5 w-full lg:px-32">
@@ -372,5 +514,6 @@
 
     <script src="{{asset('/js/chart.js')}}"></script>
     <script src="{{ asset('/js/professional_patients.js') }}"></script>
+    <script src="{{ asset('/js/vitals_info.js') }}"></script>
 </body>
 </html>

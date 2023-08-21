@@ -79,7 +79,7 @@
                                     <select class="shadow appearance-none border rounded w-full h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="sex" name="sex" value="{{old('sex')}}">
                                         <option disabled selected hidden class="text-gray-400" value="null">Select an option</option>
                                         <option class="text-gray-400" value="male" @if(old('sex') === 'male') selected @endif>Male</option>
-                                        <option class="text-gray-400" value="female" @if(old('municipality') === 'female') selected @endif>Female</option>
+                                        <option class="text-gray-400" value="female" @if(old('sex') === 'female') selected @endif>Female</option>
                                     </select>
                                     <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                         <img src="{{asset('images/register/menu-down (1).svg')}}" alt="Dropdown Icon" class="h-5 w-5 text-gray-700">

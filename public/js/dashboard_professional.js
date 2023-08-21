@@ -1,7 +1,4 @@
-// const reading_selectField = document.getElementById('reading_select');
-// const reading_yearField = document.getElementById('reading_year')
-// const reading_monthField = document.getElementById('reading_month');
-// const reading_weekField = document.getElementById('reading_week');
+
 // const pervasiveness_selectField = document.getElementById('pervasiveness_select');
 // const pervasiveness_yearField = document.getElementById('pervasiveness_year')
 // const pervasiveness_monthField = document.getElementById('pervasiveness_month');
@@ -394,28 +391,7 @@ registered_yearField.addEventListener('change', function(){
 renderPatientRegistersChart('weekly', moment().year() + '-W' + moment().week())
 
 
-// reading_selectField.addEventListener('change', function(){
-//     if(reading_selectField.value == 'yearly'){
-//         reading_yearField.classList.remove('hidden')
-//     }
-//         else{
-//             reading_yearField.classList.add('hidden')   
-//         }
 
-//     if(reading_selectField.value == 'monthly'){
-//         reading_monthField.classList.remove('hidden')
-//     }
-//         else{
-//             reading_monthField.classList.add('hidden')
-//         }
-//     if(reading_selectField.value == 'weekly'){
-//         reading_weekField.classList.remove('hidden')
-//     }
-//     else{
-//         reading_weekField.classList.add('hidden')
-//     }
- 
-// });
 
 // pervasiveness_selectField.addEventListener('change', function(){
 //     if(pervasiveness_selectField.value == 'yearly'){
@@ -447,7 +423,6 @@ const select_patientByMunicipalityAge = document.getElementById('select-patientB
 
 select_patientByMunicipalityAge.addEventListener('change', function(){
     renderPatientCountByAgeChart(select_patientByMunicipalityAge.value);
-    console.log(select_patientByMunicipalityAge.value);
 })
 
 var patientCountByAgeChart = null;
@@ -455,15 +430,12 @@ var patientCountByAgeChart = null;
 async function getPatientCountByAge(municipality){
     const response = await fetch ('get/age_count?municipality=' + municipality)
     const data = await response.json();
-    console.log(data);
     return data['age_count'];
     
 }
 function renderPatientCountByAgeChart(municipality){
     getPatientCountByAge(municipality).then((data) => {
-        console.log(data);
         var first_range = data['1-20'];
-        console.log(first_range);
         var second_range = data['21-40'];
         var third_range = data['41-60'];
         var fourth_range = data['61-80'];
@@ -588,7 +560,6 @@ const select_patientByMunicipalitySex = document.getElementById('select-patientB
 
 select_patientByMunicipalitySex.addEventListener('change', function(){
     renderPatientCountBySexChart(select_patientByMunicipalitySex.value);
-    console.log(select_patientByMunicipalitySex.value);
 })
 
 var patientCountBySexChart = null;
@@ -678,7 +649,6 @@ const select_patientByMunicipalityLocation = document.getElementById('select-pat
 
 select_patientByMunicipalityLocation.addEventListener('change', function(){
     renderPatientCountByLocationChart(select_patientByMunicipalityLocation.value);
-    console.log(select_patientByMunicipalityLocation.value);
 })
     
 var patientCountByLocationChart = null;
@@ -744,9 +714,139 @@ function renderPatientCountByLocationChart(municipality){
 } 
 renderPatientCountByLocationChart('All');   
 
+const ratingField = document.getElementById('rating');
+var currentParameter = 'blood_pressure';
+var selectedBy = 'weekly';
+var selectedValue = '2023-W33';
+var selectedMunicipality = 'All';
+var patientRatingsChart = null;
+
+async function getPatientRatings(parameter, by, value, municipality) {
+    const response = await fetch('/get/patient_ratings?parameter=' + parameter + '&by=' + by + '&value=' + value + '&municipality=' + municipality);
+    const data = await response.json();
+    return data['ratings_count'];
+}
+
+function renderPatientRatingsChart() {
+    getPatientRatings(currentParameter, selectedBy, selectedValue, selectedMunicipality).then((data) => {
+        console.log(data)
+        var labels = [];
+        var rating_counts = [];
+        for (const [key, value] of Object.entries(data)) {
+            labels.push(key);
+            rating_counts.push(value);
+        }
+        console.log(data);
+        const patientRatingsData = {
+            labels: ['Low', 'Normal', 'High'],
+            datasets: [{
+                backgroundColor: ['#FFE34F','#1BC222', '#F24242'],
+                data: rating_counts,
+            }]
+        };
+       
+        const patientRatingsConfig  = {
+            type: 'pie',
+            data: patientRatingsData,
+            options: {
+                maintainAspectRatio: true, 
+                aspectRatio: 1.5, 
+             },
+           
+        };
+
+        if(patientRatingsChart != null){
+            patientRatingsChart.destroy();
+        }
+        patientRatingsChart = new Chart(
+            document.getElementById('patient-ratings-chart'),
+            patientRatingsConfig
+        );
+    })
+}
+
+const rating_byMunicipality = document.getElementById('rating_byMunicipality');
+const rating_selectField = document.getElementById('rating_select');
+const rating_yearField = document.getElementById('rating_year');
+const rating_monthField = document.getElementById('rating_month');
+const rating_weekField = document.getElementById('rating_week');
+const rating_bpField = document.getElementById('rating_bp');
+const rating_bsField = document.getElementById('rating_bs');
+const rating_tempField = document.getElementById('rating_temp');
+const rating_prField = document.getElementById('rating_pr');
+
+rating_byMunicipality.addEventListener('change', function(){
+    selectedMunicipality = rating_byMunicipality.value;
+    renderPatientRatingsChart();
+});
+
+rating_weekField.addEventListener('change', function(){
+    selectedValue = rating_weekField.value;
+    renderPatientRatingsChart();
+});
+
+rating_monthField.addEventListener('change', function(){
+    selectedValue = rating_monthField.value;
+    renderPatientRatingsChart();
+});
+
+rating_yearField.addEventListener('change', function(){
+    selectedValue = rating_yearField.value;
+    renderPatientRatingsChart();
+});
+
+rating_selectField.addEventListener('change', function () {
+    if (rating_selectField.value == 'yearly') {
+        rating_yearField.classList.remove('hidden');
+        rating_weekField.value = '';
+        rating_monthField.value = '';
+        selectedBy = rating_selectField.value;
+    } 
+    else {
+        rating_yearField.classList.add('hidden');
+    }
+
+    if (rating_selectField.value == 'monthly') {
+        rating_monthField.classList.remove('hidden');
+        rating_weekField.value = '';
+        rating_yearField.value = '';
+        selectedBy = rating_selectField.value;
+    } 
+    else {
+        rating_monthField.classList.add('hidden');
+    }
+
+    if (rating_selectField.value == 'weekly') {
+        rating_weekField.classList.remove('hidden');
+        rating_monthField.value = '';
+        rating_yearField.value = '';
+        selectedBy = rating_selectField.value;
+    } 
+    else {
+        rating_weekField.classList.add('hidden');
+    }
+});
 
 
 
+rating_bpField.addEventListener('click', function () {
+    currentParameter = 'blood_pressure';
+    renderPatientRatingsChart();
+});
 
+rating_bsField.addEventListener('click', function () {
+    currentParameter = 'blood_saturation';
+    renderPatientRatingsChart();
+});
 
+rating_tempField.addEventListener('click', function () {
+    currentParameter = 'temperature';
+    renderPatientRatingsChart();
+});
 
+rating_prField.addEventListener('click', function () {
+    currentParameter = 'pulse_rate';
+    renderPatientRatingsChart();
+});
+
+renderPatientRatingsChart();
