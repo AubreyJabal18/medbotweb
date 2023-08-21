@@ -112,5 +112,7 @@ Route::post('/update/patient/process', [UpdateController::class, 'updatePatient'
 
 Route::post('/update/professional/process', [UpdateController::class, 'updateProfessional']);
 
+Route::get('/get/patient_ratings', [FetchController::class, 'getPatientRatings']);
+
 
 

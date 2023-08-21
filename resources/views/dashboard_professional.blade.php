@@ -129,11 +129,11 @@
         </div>
         <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 w-full px-2 md:px-6">
             <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-full ">
-                <p class="flex font-roboto font-normal self-center leading-normal text-lg md:text-xl lg:text-2xl  text-[#151515] px-2 justify-center bg-blue-200 w-full">Patients Readings</p>
-                <div class="flex flex-col lg:flex-row font-roboto self-center md:space-x-10 pt-2 ">
+                <p class="flex font-roboto font-normal self-center leading-normal text-lg md:text-xl lg:text-2xl  text-[#151515] px-2 justify-center bg-blue-200 w-full">Patient Ratings</p>
+                <div class="flex flex-col lg:flex-row font-roboto self-center lg:space-x-10 pt-2 ">
                                 
                     <div class="flex flex-col lg:flex-row -center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
-                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="municipality" id="reading_byMunicipality"> 
+                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="rating_byMunicipality" name="municipality" > 
                             <option value="All">All</option>
                             <option value="Boac">Boac</option>
                             <option value="Buenavista">Buenavista</option>
@@ -142,29 +142,29 @@
                             <option value="Sta. Cruz">Santa Cruz</option>
                             <option value="Torrijos">Torrijos</option>
                         </select>
-                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="reading_select" name="reading_by">
-                            <option value="weekly" >Weekly</option>
-                            <option value="monthly" >Monthly</option>
-                            <option value="yearly" >Yearly</option> 
+                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="rating_select" name="by">
+                            <option value="weekly" >Week</option>
+                            <option value="monthly" >Month</option>
+                            <option value="yearly" >Year</option> 
                         </select>  
                     </div> 
-                    <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="reading_year" name="reading_value">
-                    <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="reading_month" name="reading_value">
-                    <input class="flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="reading_week" name="reading_value">
+                    <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="rating_year" name="value">
+                    <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 lg:space-x-4 bg-white " type="month" id="rating_month" name="value">
+                    <input class="flex  border-2 rounded-full border-[#969696] mt-2 px-2 lg:space-x-4 bg-white " type="week" id="rating_week" name="value">
                 </div>                
-                <canvas class="mt-4 flex drop-shadow-lg shadow-lg h-72 w-full rounded-lg bg-white"></canvas>
+                <canvas class="mt-4 flex drop-shadow-lg shadow-lg h-56 w-42 rounded-lg bg-white" id="patient-ratings-chart"></canvas>
                 <div class="grid grid-cols-2 lg:grid-cols-4 pt-4 gap-y-1 gap-x-1 lg:gap-x-2">
-                   <button id="reading_bp" name="reading_bp" class="flex flex-row font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-8 py-1 bg-[#59AEDD] text-white">
+                   <button id="rating_bp" name="rating_bp" class="flex flex-row font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-8 py-1 bg-[#59AEDD] text-white">
                     <img src="{{asset('images/dashboard/blood_pressure.svg')}}" alt="Blood Pressure" class="flex h-6 w-7 mr-4">BP
                    </button>
-                   <button id="reading_bs" name="reading_bs" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-6 py-1 bg-[#EB7373] text-white">
+                   <button id="rating_bs" name="rating_bs" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-6 py-1 bg-[#EB7373] text-white">
                     <img src="{{asset('images/dashboard/blood_saturation.svg')}}" alt="Blood Saturation" class="flex h-5 w-8 mr-6 mt-0.5">BS
-                   </button>
-                   <button id="reading_temp" name="reading_temp"
+                   </button>    
+                   <button id="rating_temp" name="rating_temp"
                    class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-5 py-1 bg-[#697269] text-white">
                     <img src="{{asset('images/dashboard/temperature.svg')}}" alt="Temperature" class="flex h-5 w-8 mr-3  mt-0.5">TEMP
                    </button>
-                   <button id="reading_pr" name="reading_pr" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-8 py-1 bg-[#93D396] text-white">
+                   <button id="rating_pr" name="rating_pr" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-8 py-1 bg-[#93D396] text-white">
                     <img src="{{asset('images/dashboard/pulse_rate.svg')}}" alt="Temperature" class="flex h-5 w-7 mr-6 mt-0.5">PR
                 </button>
             </div>
@@ -183,9 +183,9 @@
                             <option value="Torrijos">Torrijos</option>
                         </select>
                         <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="pervasiveness_select" name="pervasiveness_select">
-                            <option value="weekly" >Weekly</option>
-                            <option value="monthly" >Monthly</option>
-                            <option value="yearly" >Yearly</option> 
+                            <option value="weekly" >Week</option>
+                            <option value="monthly" >Month</option>
+                            <option value="yearly" >Year</option> 
                         </select>  
                     </div> 
                     <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="pervasiveness_year" name="pervasiveness_year">

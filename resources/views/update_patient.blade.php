@@ -7,7 +7,7 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-    <div class="relative flex w-full h-screen bg-gradient-to-r from-[#5B86E5] to-[#305AB9]">
+    <div class="relative flex w-full h-fit lg:h-screen bg-gradient-to-r from-[#5B86E5] to-[#305AB9]">
         <div class="flex flex-col-reverse px-5 py-5 mx-auto md:flex-row md:space-x-10 z-10">
             <div class="flex flex-col justify-center items-center h-full">
                 <p class=" font-roboto font-normal text-2xl text-white text-center mt-5 md:mt-0 md:text-3xl z-10">Your Ultimate ALL-in-ONE Healthcare Buddy</p>
@@ -26,12 +26,14 @@
                             <img src="{{asset('images/register/home.svg')}}" alt="" class="h-6 w-6">
                         </a>
                     </div>
-                    <div class="w-full flex flex-row justify-between">
+                    <div class="w-full flex-col md:flex-row justify-between space-y-6 md:space-y-4">
                         <div class="w-full flex flex-row space-x-5 items-center">
-                            <img src="{{asset('images/register/logo2.svg')}}" alt="" class="h-12 w-12">
+                            <a href="/" >
+                                <img src="{{ asset('images/register/logo2.svg') }}" alt="" class="h-12 w-12">
+                            </a>
                             <p class="font-roboto font-bold text-base text-[#5ECECD] text-shadow text-center">ENHANCED MED-BOT</p>
-                            <p class="font-roboto font-light text-lg lg:text-2xl text-neutral-400 text-center md:pl-12 lg:pl-48">Profile Information</p>
-                        </div>    
+                        </div>
+                        <p class=" font-roboto font-light text-lg lg:text-2xl text-neutral-400 text-center md:pl-12">Profile Information</p>   
                     </div>
                 </div>
 
@@ -51,17 +53,17 @@
     
                         <div class="grid flex flex-col items-start space-y-0.5">
                             <label class=" text-gray-700 text-sm font-normal" for="firstname">First Name</label>
-                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstname" type="text" placeholder="First Name" name=first_name value="{{ $user->first_name }}">
+                            <input class="shadow appearance-none border rounded h-fit w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstname" type="text" placeholder="First Name" name=first_name value="{{ $user->first_name }}">
                         </div>
     
                         <div class="grid flex flex-col items-start space-y-0.5">
                             <label class=" text-gray-700 text-sm font-normal" for="lastname">Last Name</label>
-                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lastname" type="text" placeholder="Last Name" name="last_name" value="{{ $user->last_name }}">
+                            <input class="shadow appearance-none border rounded h-fit w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lastname" type="text" placeholder="Last Name" name="last_name" value="{{ $user->last_name }}">
                         </div>
     
                         <div class="grid flex flex-col items-start space-y-0.5">
                             <label class=" text-gray-700 text-sm font-normal" for="suffix">Suffix</label>
-                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="suffix" type="text" placeholder="Suffix" name="suffix" value="{{ $user->suffix }}">
+                            <input class="shadow appearance-none border rounded h-fit w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="suffix" type="text" placeholder="Suffix" name="suffix" value="{{ $user->suffix }}">
                         </div>
     
                         <div class="grid"></div>
@@ -120,12 +122,12 @@
 
                         <div class="grid flex flex-col items-start space-y-0.5">
                             <label class=" text-gray-700 text-sm font-normal" for="cn">Contact Number</label>
-                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="contact_number" type="text" placeholder="Contact Number" name="contact_number" value="{{ $user->contact_number }}">
+                            <input class="shadow appearance-none border rounded h-fit w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="contact_number" type="text" placeholder="Contact Number" name="contact_number" value="{{ $user->contact_number }}">
                         </div>
     
                         <div class="grid flex flex-col items-start space-y-0.5">
                             <label class=" text-gray-700 text-sm font-normal" for="email">Email</label>
-                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Email" name="email" value="{{ $user->email }}">
+                            <input class="shadow appearance-none border rounded h-fit w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Email" name="email" value="{{ $user->email }}">
                         </div>
                     </div>
                 

@@ -437,72 +437,7 @@ class FetchController extends Controller
         ]);
     }
 
-    // public function getPatientReadings(Request $request){
-    //     if($request->reading_by == 'weekly'){
-    //         $year = substr($request->reading_value, 0, 4);
-    //         $week = substr($request->reading_value, 6, 2);
-    //         $dates = $this->getWeek($week, $year);
-    //         $users = Reading::with('user')
-    //             ->where($request->municipality == 'All')
-    //             ->whereBetween('created_at', [$dates['start'], $dates['end']])
-    //             ->get()
-    //             ->countBy(function ($item) {
-    //                 return Carbon::parse($item->created_at)->format('Y-m-d');
-    //             })
-    //             ->toArray();
-    //         $period = CarbonPeriod::create($dates['start'], $dates['end']);
-    //         $patient_readings = [];
-    //         foreach ($period as $date) {
-    //             $key = $date->format('Y-m-d');
-    //             $patient_readings[$key] = array_key_exists($key, $users) ? $users[$key] : 0;
-    //         }
-    //         return response()->json([
-    //             'patient_readings' => $patient_readings
-    //         ]);
-    //     }
-    //     else if($request->reading_by == 'monthly'){
-    //         $year = substr($request->reading_value, 0, 4);
-    //         $month = substr($request->reading_value, 5, 2);
-    //         $users = User::where('type', 'patient')
-    //             ->whereMonth('created_at', $month)
-    //             ->whereYear('created_at', $year)
-    //             ->get()
-    //             ->countBy(function ($item) {
-    //                 return Carbon::parse($item->created_at)->format('Y-m-d');
-    //             })
-    //             ->toArray();
-    //         $dates = $this->getMonth($month, $year);
-    //         $period = CarbonPeriod::create($dates['start'], $dates['end']);
-    //         $patient_readings = [];
-    //         foreach ($period as $date) {
-    //             $key = $date->format('Y-m-d');
-    //             $patient_readings[$key] = array_key_exists($key, $users) ? $users[$key] : 0;
-    //         }
-    //         return response()->json([
-    //             'patient_readings' => $patient_readings
-    //         ]);
-    //     }
-    //     else {
-    //         $year = substr($request->reading_value, 0, 4);
-    //         $users = User::where('type', 'patient')
-    //             ->whereYear('created_at', $year)
-    //             ->get()
-    //             ->countBy(function ($item) {
-    //                 return Carbon::parse($item->created_at)->format('M');
-    //             })
-    //             ->toArray();
-    //         $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    //         $patient_readings = [];
-    //         foreach($months as $month){
-    //             $patient_readings[$month] = array_key_exists($month, $users) ? $users[$month] : 0;
-    //         }
-    //         return response()->json([
-    //             'patient_readings' => $patient_readings
-    //         ]);
-    //     }
     
-    // }
-
     // FOR PATIENT COUNT BY AGE//
 
     public function getPatientCountByAge(Request $request) {
@@ -1131,6 +1066,95 @@ class FetchController extends Controller
         return response()->json([
             'user' => Auth::user()->id
         ]);
+    }
+
+    public function getPatientRatings(Request $request){
+        $parameter_ratings = ['low','normal','high'];
+        $ratings_count = [];
+        if($request->by == 'weekly'){
+            $year = substr($request->value, 0, 4);
+            $week = substr($request->value, 6, 2);
+            $dates = $this->getWeek($week, $year);
+            if($request->municipality == 'All'){
+                $ratings = Reading::with('user')
+                    ->whereBetween('created_at', [$dates['start'], $dates['end']])
+                    ->get()
+                    ->countBy(function ($item) use ($request){
+                        return $item[$request->parameter.'_rating'];
+                    })
+                    ->toArray();
+            }
+            else{
+                $ratings = Reading::whereHas('user', function(Builder $query) use ($request){
+                        $query->where('municipality',$request->municipality);
+                    })
+                    ->whereBetween('created_at', [$dates['start'], $dates['end']])
+                    ->get()
+                    ->countBy(function ($item) use ($request){
+                        return $item[$request->parameter.'_rating'];
+                    })
+                    ->toArray();
+            }
+        }
+        else if($request->_by == 'monthly'){
+            $year = substr($request->value, 0, 4);
+            $month = substr($request->value, 5, 2);
+            $dates = $this->getWeek($week, $year);
+            if($request->municipality == 'All'){
+                $ratings = Reading::with('user')
+                    ->whereMonth('created_at', $month)
+                    ->whereYear('created_at',$year)
+                    ->get()
+                    ->countBy(function ($item) use ($request){
+                        return $item[$request->parameter.'_rating'];
+                    })
+                    ->toArray();
+            }
+            else{
+                $ratings = Reading::whereHas('user', function(Builder $query)  use ($request){
+                        $query->where('municipality',$request->municipality);
+                    })
+                    ->whereMonth('created_at', $month)
+                    ->whereYear('created_at',$year)
+                    ->get()
+                    ->countBy(function ($item) use ($request){
+                        return $item[$request->parameter.'_rating'];
+                    })
+                    ->toArray();
+            }
+        }
+        else {
+            $year = substr($request->value, 0, 4);
+            if($request->municipality == 'All'){
+                $ratings = Reading::with('user')
+                    ->whereYear('created_at',$year)
+                    ->get()
+                    ->countBy(function ($item) use ($request){
+                        return $item[$request->parameter.'_rating'];
+                    })
+                    ->toArray();
+            }
+            else{
+                $ratings = Reading::whereHas('user', function(Builder $query)  use ($request){
+                        $query->where('municipality',$request->municipality);
+                    })
+                    ->whereYear('created_at',$year)
+                    ->get()
+                    ->countBy(function ($item) use ($request){
+                        return $item[$request->parameter.'_rating'];
+                    })
+                    ->toArray();
+            }
+        }
+
+
+        foreach ($parameter_ratings as $parameter_rating) {
+            $ratings_count[$parameter_rating] = array_key_exists($parameter_rating, $ratings) ? $ratings[$parameter_rating] : 0;          
+        }
+        return response()->json([
+            'ratings_count' => $ratings_count
+        ]);
+    
     }
 
 }

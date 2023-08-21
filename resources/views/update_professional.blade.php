@@ -28,7 +28,9 @@
                     </div>
                     <div class="w-full flex-col md:flex-row justify-between space-y-6 md:space-y-4">
                         <div class="w-full flex flex-row space-x-5 items-center">
-                            <img src="{{asset('images/register/logo2.svg')}}" alt="" class="h-12 w-12">
+                            <a href="/" >
+                                <img src="{{ asset('images/register/logo2.svg') }}" alt="" class="h-12 w-12">
+                            </a>
                             <p class="font-roboto font-bold text-base text-[#5ECECD] text-shadow text-center">ENHANCED MED-BOT</p>
                         </div>
                         <p class=" font-roboto font-light text-lg lg:text-2xl text-neutral-400 text-center md:pl-12">Profile Information</p>   
@@ -49,22 +51,22 @@
 
                         <div class="grid flex flex-col items-start space-y-0.5">
                             <label class=" text-gray-700 text-sm font-normal" for="firstname">First Name</label>
-                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstname" type="text" placeholder="First Name" name="first_name" value="{{ $user->first_name }}">
+                            <input class="shadow appearance-none border rounded h-fit w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstname" type="text" placeholder="First Name" name="first_name" value="{{ $user->first_name }}">
                         </div>
 
                         <div class="grid flex flex-col items-start space-y-0.5">
                             <label class=" text-gray-700 text-sm font-normal" for="lastname">Last Name</label>
-                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="last_name" id="lastname" type="text" placeholder="Last Name" value="{{ $user->last_name }}">
+                            <input class="shadow appearance-none border rounded h-fit w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="last_name" id="lastname" type="text" placeholder="Last Name" value="{{ $user->last_name }}">
                         </div>
 
                         <div class="grid flex flex-col items-start space-y-0.5">
                             <label class=" text-gray-700 text-sm font-normal" for="suffix">Suffix</label>
-                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="suffix" type="text" placeholder="Suffix" name="suffix" value="{{ $user->suffix }}">
+                            <input class="shadow appearance-none border rounded h-fit w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="suffix" type="text" placeholder="Suffix" name="suffix" value="{{ $user->suffix }}">
                         </div>
 
                         <div class="grid flex flex-col items-start space-y-0.5">
                             <label class=" text-gray-700 text-sm font-normal" for="honorific">Honorific</label>
-                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="honorific" type="text" placeholder="Honorific" name="honorific" value="{{ $user->honorific }}">
+                            <input class="shadow appearance-none border rounded h-fit w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="honorific" type="text" placeholder="Honorific" name="honorific" value="{{ $user->honorific }}">
                         </div>
 
                         <div class="grid flex flex-col items-start space-y-0.5">
@@ -121,12 +123,12 @@
 
                         <div class="grid flex flex-col items-start space-y-0.5">
                             <label class=" text-gray-700 text-sm font-normal" for="cn">Contact Number</label>
-                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="contact_number" type="text" placeholder="Contact Number" name="contact_number" value="{{ $user->contact_number }}">
+                            <input class="shadow appearance-none border rounded h-fit w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="contact_number" type="text" placeholder="Contact Number" name="contact_number" value="{{ $user->contact_number }}">
                         </div>
 
                         <div class="grid flex flex-col items-start space-y-0.5">
                             <label class=" text-gray-700 text-sm font-normal" for="email">Email</label>
-                            <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Email" name="email" value="{{ $user->email }}">
+                            <input class="shadow appearance-none border rounded h-fit w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Email" name="email" value="{{ $user->email }}">
                         </div>
 
                         <div class="grid flex flex-col items-start space-y-0.5 lg:col-start-2">
