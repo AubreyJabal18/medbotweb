@@ -1133,6 +1133,15 @@ class FetchController extends Controller
         ]);
     }
 
+    public function downloadReadings(Request $request){
+        $startDate = Carbon::createFromFormat('Y-m-d', $request->start)->startOfDay();
+        $endDate = Carbon::createFromFormat('Y-m-d', $request->end)->endOfDay();
+        $readings = Reading::where('user_id', $request->id)
+        ->whereBetween('created_at',[$startDate, $endDate])
+        ->get();
+        dd($readings);
+    }
+
 }
 
 
