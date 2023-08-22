@@ -1156,7 +1156,8 @@ class FetchController extends Controller
             'ratings_count' => $ratings_count
         ]);
     
-
+    }
+    
     public function downloadReadings(Request $request){
         $startDate = Carbon::createFromFormat('Y-m-d', $request->start)->startOfDay();
         $endDate = Carbon::createFromFormat('Y-m-d', $request->end)->endOfDay();
