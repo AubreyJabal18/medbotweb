@@ -750,7 +750,7 @@ function renderPatientRatingsChart() {
             data: patientRatingsData,
             options: {
                 maintainAspectRatio: true, 
-                aspectRatio: 1.5, 
+                aspectRatio: 2, 
              },
            
         };
@@ -774,6 +774,7 @@ const rating_bpField = document.getElementById('rating_bp');
 const rating_bsField = document.getElementById('rating_bs');
 const rating_tempField = document.getElementById('rating_temp');
 const rating_prField = document.getElementById('rating_pr');
+const titleField = document.getElementById('title');
 
 rating_byMunicipality.addEventListener('change', function(){
     selectedMunicipality = rating_byMunicipality.value;
@@ -827,26 +828,43 @@ rating_selectField.addEventListener('change', function () {
     }
 });
 
-
+function deactivateAllFields() {
+    rating_bpField.classList.remove('active');
+    rating_bsField.classList.remove('active');
+    rating_tempField.classList.remove('active');
+    rating_prField.classList.remove('active');
+}
 
 rating_bpField.addEventListener('click', function () {
     currentParameter = 'blood_pressure';
     renderPatientRatingsChart();
+    deactivateAllFields();
+    rating_bpField.classList.add('active'); 
+    titleField.textContent = 'Blood Pressure'; 
 });
 
 rating_bsField.addEventListener('click', function () {
     currentParameter = 'blood_saturation';
     renderPatientRatingsChart();
+    deactivateAllFields();
+    rating_bsField.classList.add('active'); 
+    titleField.textContent = 'Oxygen Saturation'; 
 });
 
 rating_tempField.addEventListener('click', function () {
     currentParameter = 'temperature';
     renderPatientRatingsChart();
+    deactivateAllFields();
+    rating_tempField.classList.add('active'); 
+    titleField.textContent = 'Temperature'; 
 });
 
 rating_prField.addEventListener('click', function () {
     currentParameter = 'pulse_rate';
     renderPatientRatingsChart();
+    deactivateAllFields();
+    rating_prField.classList.add('active'); 
+    titleField.textContent = 'Pulse Rate'; 
 });
 
 renderPatientRatingsChart();

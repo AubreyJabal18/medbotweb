@@ -127,7 +127,7 @@
         <div class="flex flex-col items-center justify-center md:justify-start md:flex-row space-x-6 px-5">
             <p class="flex text-lg md:text-xl lg:text-2xl font-roboto font-bold pt-8 pl-5 pb-4">Patient's Record Summary</p>
         </div>
-        <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 w-full px-2 md:px-6">
+        <div class="flex flex-col items-center self-center  space-y-4 md:space-y-0 md:space-x-6 w-full lg:w-[70%] px-2 md:px-6">
             <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-full ">
                 <p class="flex font-roboto font-normal self-center leading-normal text-lg md:text-xl lg:text-2xl  text-[#151515] px-2 justify-center bg-blue-200 w-full">Patient Ratings</p>
                 <div class="flex flex-col lg:flex-row font-roboto self-center lg:space-x-10 pt-2 ">
@@ -151,8 +151,9 @@
                     <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="rating_year" name="value">
                     <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 lg:space-x-4 bg-white " type="month" id="rating_month" name="value">
                     <input class="flex  border-2 rounded-full border-[#969696] mt-2 px-2 lg:space-x-4 bg-white " type="week" id="rating_week" name="value">
-                </div>                
-                <canvas class="mt-4 flex drop-shadow-lg shadow-lg h-56 w-42 rounded-lg bg-white" id="patient-ratings-chart"></canvas>
+                </div> 
+                <i class = "flex font-roboto text-base lg:text-lg  py-1 px-12 mt-4 lg:mt-8" id="title"></i>               
+                <canvas class="mt-4 flex drop-shadow-lg shadow-lg h-12 w-10 rounded-lg bg-white" id="patient-ratings-chart"></canvas>
                 <div class="grid grid-cols-2 lg:grid-cols-4 pt-4 gap-y-1 gap-x-1 lg:gap-x-2">
                    <button id="rating_bp" name="rating_bp" class="flex flex-row font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-8 py-1 bg-[#59AEDD] text-white">
                     <img src="{{asset('images/dashboard/blood_pressure.svg')}}" alt="Blood Pressure" class="flex h-6 w-7 mr-4">BP
@@ -161,7 +162,7 @@
                     <img src="{{asset('images/dashboard/blood_saturation.svg')}}" alt="Blood Saturation" class="flex h-5 w-8 mr-6 mt-0.5">BS
                    </button>    
                    <button id="rating_temp" name="rating_temp"
-                   class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-5 py-1 bg-[#697269] text-white">
+                   class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-5 py-1 bg-[#697269] text-white ">
                     <img src="{{asset('images/dashboard/temperature.svg')}}" alt="Temperature" class="flex h-5 w-8 mr-3  mt-0.5">TEMP
                    </button>
                    <button id="rating_pr" name="rating_pr" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-8 py-1 bg-[#93D396] text-white">
@@ -169,45 +170,7 @@
                 </button>
             </div>
             </div>
-            <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-full">
-                <p class="flex font-roboto font-normal self-center leading-normal text-lg md:text-xl lg:text-2xl  text-[#151515]  px-2 justify-center bg-blue-200 w-full">Pervasiveness</p>
-                <div class="flex flex-col lg:flex-row font-roboto self-center md:space-x-10 pt-2 ">          
-                    <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
-                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" name="muni" id="muni">
-                            <option value="All">All</option>
-                            <option value="Boac">Boac</option>
-                            <option value="Buenavista">Buenavista</option>
-                            <option value="Gasan">Gasan</option>
-                            <option value="Mogpog">Mogpog</option>
-                            <option value="Sta. Cruz">Santa Cruz</option>
-                            <option value="Torrijos">Torrijos</option>
-                        </select>
-                        <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="pervasiveness_select" name="pervasiveness_select">
-                            <option value="weekly" >Week</option>
-                            <option value="monthly" >Month</option>
-                            <option value="yearly" >Year</option> 
-                        </select>  
-                    </div> 
-                    <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="pervasiveness_year" name="pervasiveness_year">
-                    <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="pervasiveness_month" name="pervasiveness_month">
-                    <input class="flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="pervasiveness_week" name="pervasiveness_week">
-                </div>
-                <div class="mt-4 flex drop-shadow-lg shadow-lg h-72 w-full rounded-lg bg-white"></div>
-                <div class="grid grid-cols-2 lg:grid-cols-4 pt-4 gap-y-1 gap-x-1 lg:gap-x-2">
-                    <button id="pervasiveness_bp" name="pervasiveness_bp" class="flex flex-row font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-8 py-1 bg-[#59AEDD] text-white">
-                        <img src="{{asset('images/dashboard/blood_pressure.svg')}}" alt="Blood Pressure" class="flex h-6 w-7 mr-4">BP
-                    </button>
-                    <button id="pervasiveness_bs" name="pervasiveness_bs" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-6 py-1 bg-[#EB7373] text-white">
-                        <img src="{{asset('images/dashboard/blood_saturation.svg')}}" alt="Blood Saturation" class="flex h-5 w-8 mr-6 mt-0.5">BS
-                    </button>
-                    <button id="pervasiveness_temp" name="pervasiveness_temp" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-5 py-1 bg-[#697269] text-white">
-                        <img src="{{asset('images/dashboard/temperature.svg')}}" alt="Temperature" class="flex h-5 w-8 mr-3  mt-0.5">TEMP
-                    </button>
-                    <button id="pervasiveness_pr" name="pervasiveness_pr" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-8 py-1 bg-[#93D396] text-white">
-                        <img src="{{asset('images/dashboard/pulse_rate.svg')}}" alt="Temperature" class="flex h-5 w-7 mr-6 mt-0.5">PR
-                    </button>
-                </div>
-            </div>
+            
         </div>
         <div class="flex flex-col md:flex-row  items-center py-2 pt-12 px-5">
             <p class="flex font-bold text-lg md:text-xl lg:text-2xl self-center md:self-start  pb-2 pl-6 font-roboto">Patient's Demographic Profile</p>
@@ -226,8 +189,8 @@
                         <option value="Torrijos">Torrijos</option>
                     </select>
                 </div>
-                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-[50%] bottom-0 left-0 ">
-                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-[50%] bottom-0 right-0">         
+                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start w-[80%] h-[40%] md:h-[50%] lg:h-[50%] bottom-0 left-0 ">
+                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start w-[80%]  h-[40%] md:h-[50%] lg:h-[50%] bottom-0 right-0">         
                 <canvas id="patientsByAge" class="mt-4 flex drop-shadow-lg shadow-lg h-80 w-full rounded-lg bg-white "></canvas>
             </div>
             <div class="w-[90%] flex flex-col items-center  p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300  md:w-[80%] lg:w-[50%] space-y-2 ">
@@ -243,8 +206,8 @@
                         <option value="Torrijos">Torrijos</option>
                     </select>
                 </div>
-                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-[50%] bottom-0 left-0 ">
-                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-[50%] bottom-0 right-0">         
+                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start w-[80%] h-[40%] md:h-[50%] lg:h-[50%] bottom-0 left-0 ">
+                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start w-[80%] h-[40%] md:h-[50%] lg:h-[50%] bottom-0 right-0">         
                 <canvas id="patientsBySex" class="mt-4 flex drop-shadow-lg shadow-lg h-80 w-full rounded-lg bg-white"></canvas>
             </div>
             <div class="w-[90%] flex flex-col items-center  p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300  md:w-[80%] lg:w-[50%] space-y-2 ">
@@ -260,8 +223,8 @@
                         <option value="Torrijos">Torrijos</option>
                     </select>
                 </div>
-                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start lg:h-50 lg:w-[60%] bottom-0 left-0 ">
-                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start lg:h-50 bottom-0 right-0">
+                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute place-self-start w-[80%] h-[40%] md:h-[50%] lg:h-50 lg:w-[60%] bottom-0 left-0 ">
+                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute place-self-start w-[80%] h-[40%] md:h-[50%] lg:h-50 bottom-0 right-0">
                 <canvas id="patientsByLocation"class="mt-4 flex drop-shadow-lg shadow-lg h-80 w-full rounded-lg bg-white"></canvas>
             </div>         
         </div>
