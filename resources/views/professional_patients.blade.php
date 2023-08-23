@@ -354,7 +354,7 @@
 
         <div class="flex items-center justify-start px-10 my-2">
 			<div class="flex flex-row items-center justify-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit w-fit border border-gray-300">
-				<p class="text-roboto text-sm font-semibold">Disclaimer: The Enhanced Med-Bot provides general guidance. For personalized advice, consult a qualified medical professional.</p>
+				<p class="text-roboto text-sm font-semibold">Disclaimer: The Enhanced Med-Bot provides general guidance. For specific diagnosis regarding health condition, consult a qualified medical professional.</p>
 			</div>
 		</div>
 

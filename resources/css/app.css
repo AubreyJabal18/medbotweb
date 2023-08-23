@@ -36,3 +36,7 @@
 .td:hover {
     background-color:  rgb(209 213 219);
 }
+
+.active {
+    background-color: rgb(38, 33, 33);
+}

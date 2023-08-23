@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Response;
 
 class FetchController extends Controller
 {
@@ -1097,10 +1097,10 @@ class FetchController extends Controller
                     ->toArray();
             }
         }
-        else if($request->_by == 'monthly'){
+        else if($request->by == 'monthly'){
             $year = substr($request->value, 0, 4);
             $month = substr($request->value, 5, 2);
-            $dates = $this->getWeek($week, $year);
+            $dates = $this->getWeek($month, $year);
             if($request->municipality == 'All'){
                 $ratings = Reading::with('user')
                     ->whereMonth('created_at', $month)
@@ -1167,7 +1167,6 @@ class FetchController extends Controller
         dd($readings);
 
     }
-
 }
 
 
