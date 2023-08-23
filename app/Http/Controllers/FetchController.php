@@ -1097,10 +1097,10 @@ class FetchController extends Controller
                     ->toArray();
             }
         }
-        else if($request->_by == 'monthly'){
+        else if($request->by == 'monthly'){
             $year = substr($request->value, 0, 4);
             $month = substr($request->value, 5, 2);
-            $dates = $this->getWeek($week, $year);
+            $dates = $this->getWeek($month, $year);
             if($request->municipality == 'All'){
                 $ratings = Reading::with('user')
                     ->whereMonth('created_at', $month)
