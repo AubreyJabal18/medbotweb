@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Response;
 
 class FetchController extends Controller
 {
@@ -1167,6 +1167,24 @@ class FetchController extends Controller
         dd($readings);
 
     }
+
+
+    public function download(Reading $reading){
+        $startDate = Carbon::parse($request->start)->startOfDay();
+        $endDate = Carbon::parse($request->end)->endOfDay();
+        $userId = $request->id;
+
+        // Fetch data based on selected date range and user ID
+        $readings = Reading::where('user_id', $userId)
+            ->whereBetween('created_at', [$startDate, $endDate])
+            ->get();
+
+        // Generate PDF using a library like Dompdf or Snappy
+        // Save the PDF to a temporary location
+
+        // Return the generated PDF as a downloadable response
+        return Response::download($pdfFilePath, 'readings.pdf');
+    
 
 }
 
