@@ -152,7 +152,7 @@
                     <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 lg:space-x-4 bg-white " type="month" id="rating_month" name="value">
                     <input class="flex  border-2 rounded-full border-[#969696] mt-2 px-2 lg:space-x-4 bg-white " type="week" id="rating_week" name="value">
                 </div> 
-                <i class = "flex font-roboto text-base lg:text-lg  py-1 px-12 mt-4 lg:mt-8" id="title"></i>               
+                <i class = "flex font-roboto text-base lg:text-lg  py-1 px-12 mt-4 lg:mt-8" id="title">Blood Pressure</i>               
                 <canvas class="mt-4 flex drop-shadow-lg shadow-lg h-12 w-10 rounded-lg bg-white" id="patient-ratings-chart"></canvas>
                 <div class="grid grid-cols-2 lg:grid-cols-4 pt-4 gap-y-1 gap-x-1 lg:gap-x-2">
                    <button id="rating_bp" name="rating_bp" class="flex flex-row font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-8 py-1 bg-[#59AEDD] text-white">
