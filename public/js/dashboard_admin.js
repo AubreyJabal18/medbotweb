@@ -20,7 +20,7 @@ async function getUserListInAdminDashboard(){
 getUserListInAdminDashboard().then((data) => {
         console.log(data);
         new gridjs.Grid({
-            columns: ['Id', 'Id Number', 'Type', 'Sex', 'Birthdate', 'Address', 'Email', 
+            columns: ['Id', 'Id Number', 'Type', 'Sex', 'Birthdate', 'Address', 
                 {
                     name: 'Action',
                     formatter: (cell, row) => {

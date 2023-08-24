@@ -98,19 +98,21 @@
                             <div class="flex h-2"></div>
                             <div class="table-row font-roboto font-normal text-black text-sm md:text-base space-y-2 items-center"></div>   
                         </div>
-                    @endforeach 
-                    @for ($i = count($latest_users); $i <= 4; $i++)
-                        <div class="table-row-group pb-2 ">
-                            <div class="table-row font-roboto font-normal text-black text-sm md:text-base space-x-2 items-center ">
-                                <div class="table-cell py-1 items-center justify- text-center w-1/5 lg:w-[20%] border-2 border-r-0 border-blue-500 ">---</div>
-                                <div class="table-cell py-1 px-2 items-center justify- text-center w-1/5 lg:w-[20%] border-2 border-r-0 border-l-0 border-blue-500 ">---</div>
-                                <div class="table-cell text-center py-1 border-2 border-l-0 border-r-0 border-blue-500">---</div>
-                                <div class="table-cell text-center py-1 px-1 border-2 border-l-0 border-blue-500 ">---</div>
+                    @endforeach
+                    @if(count($latest_users) < 5) 
+                        @for ($i = count($latest_users); $i <= 5; $i++)
+                            <div class="table-row-group pb-2 ">
+                                <div class="table-row font-roboto font-normal text-black text-sm md:text-base space-x-2 items-center ">
+                                    <div class="table-cell py-1 items-center justify- text-center w-1/5 lg:w-[20%] border-2 border-r-0 border-blue-500 ">---</div>
+                                    <div class="table-cell py-1 px-2 items-center justify- text-center w-1/5 lg:w-[20%] border-2 border-r-0 border-l-0 border-blue-500 ">---</div>
+                                    <div class="table-cell text-center py-1 border-2 border-l-0 border-r-0 border-blue-500">---</div>
+                                    <div class="table-cell text-center py-1 px-1 border-2 border-l-0 border-blue-500 ">---</div>
+                                </div>
+                                <div class="flex h-2"></div>
+                                <div class="table-row font-roboto font-normal text-black text-sm md:text-base space-y-2 items-center"></div>   
                             </div>
-                            <div class="flex h-2"></div>
-                            <div class="table-row font-roboto font-normal text-black text-sm md:text-base space-y-2 items-center"></div>   
-                        </div>
-                    @endfor      
+                        @endfor
+                    @endif      
                 </div>
             </div>    
         </div> 

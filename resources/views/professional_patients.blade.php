@@ -25,7 +25,7 @@
             <div class="flex flex-row justify-between items-center px-4 py-3 md:px-10">
                 <div class="flex flex-row space-x-4 items-center">
                     <a href="/">
-                        <img src={{asset('images/dashboard/logo.png')}} alt="" class="h-8 w-8 md:h-12 md:w-12">
+                        <img src={{asset('images/dashboard/logo2.png')}} alt="" class="h-8 w-8 md:h-12 md:w-12">
                     </a>
                     <p class="font-roboto font-bold text-[#07DBDB] text-lg md:text-2xl text-shadow">ENHANCED MED-BOT</p>
                 </div>
@@ -354,7 +354,7 @@
 
         <div class="flex items-center justify-start px-10 my-2">
 			<div class="flex flex-row items-center justify-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit w-fit border border-gray-300">
-				<p class="text-roboto text-sm font-semibold">Disclaimer: The Enhanced Med-Bot provides general guidance. For personalized advice, consult a qualified medical professional.</p>
+				<p class="text-roboto text-sm font-semibold">Disclaimer: The Enhanced Med-Bot provides general guidance. For specific diagnosis regarding health condition, consult a qualified medical professional.</p>
 			</div>
 		</div>
 

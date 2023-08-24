@@ -56,7 +56,7 @@ class RedirectController extends Controller
                 $users = User::where('type', 'patient')->orWhere('type', 'professional')->get();
                 $patient_count = User::where('type', 'patient')->count();
                 $professional_count = User::where('type', 'professional')->count();
-                $latest_users = User::where('type', 'patient')->orWhere('type', 'professional')->latest()->get();
+                $latest_users = User::where('type', 'patient')->orWhere('type', 'professional')->latest()->get()->take(5);
                 return view('dashboard_admin', [
                     'user' => $user,
                     'users' => $users,

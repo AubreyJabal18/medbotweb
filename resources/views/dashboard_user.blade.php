@@ -24,7 +24,7 @@
         <div class="relative flex-col bg-gradient-to-r from-[#0B60D1] to-[#305ab9] bg-cover bg-no-repeat pb-5 md:pb-6 lg:pb-0">
             <div class="flex flex-row justify-between items-center px-4 py-3 md:px-10">
                 <div class="flex flex-row space-x-4 items-center">
-                    <img src={{asset('images/dashboard/logo.png')}} alt="" class="h-8 w-8 md:h-12 md:w-12">
+                    <img src={{asset('images/dashboard/logo2.png')}} alt="" class="h-8 w-8 md:h-12 md:w-12">
                     <p class="font-roboto font-bold text-[#07DBDB] text-lg md:text-2xl text-shadow">ENHANCED MED-BOT</p>
                 </div>
                 <div class="flex flex-row space-x-4 items-center justify-end">
@@ -111,9 +111,11 @@
                             @endif
                         @endif
 
-                    </div>   
+                    </div>
+                    
                 </div>
-                <div id="blood-pressure-causes" class="hidden absolute top-24 w-full h-auto bg-white border border-yellow-400 rounded-lg z-10 p-2">
+
+                <div id="blood-pressure-causes" class="hidden absolute top-24 w-full h-auto bg-white border border-gray-400 rounded-lg z-10 p-2">
                     @if(count($readings) > 1)
                         @if($readings[0]->blood_pressure_rating == 'low')
                             <p class="font-roboto text-sm text-center uppercase font-bold lg:text-base">Your Blood Pressure is Low</p>
@@ -132,11 +134,11 @@
                                 •	Fainting or passing out <br>
                                 •	Dizziness or feeling lightheaded <br>
                             </p>
-    
+
                         @elseif($readings[0]->blood_pressure_rating == 'normal')
                             <p class="font-roboto text-sm text-center uppercase font-bold lg:text-base">Your Blood Pressure is Normal</p>
                             <p class="font-roboto text-xs text-center font-normal lg:text-base">This indicates a Healthy Condition</p>
-    
+
                         @elseif($readings[0]->blood_pressure_rating == 'high')
                             <p class="font-roboto text-sm text-center uppercase font-bold lg:text-base">Your Blood Pressure is High</p>
                             <p class="font-roboto text-xs text-justify font-normal lg:text-base">High blood pressure, also known as hypertension, might be due to the following: <br>
@@ -151,11 +153,8 @@
                             </p>
                         @endif
                     @else
-                        <div id="blood-pressure-info" class="relative flex flex-col items-center border-2 border-solid rounded-lg w-full h-full border-yellow-400 shadow-lg shadow-yellow-500/50 px-2 py-2">
-                            <p class="font-roboto text-sm text-center uppercase font-bold lg:text-lg">No Blood Pressure Reading Yet</p>
-                            <p class="font-roboto text-xs text-center font-normal lg:text-base">In order to examine potential causes, we kindly request you to take a blood pressure reading. This will allow for an assessment of underlying factors.</p>
+                        <div id="blood-pressure-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
                     @endif
-                    </div>
                 </div>
             </div>
 
@@ -190,7 +189,7 @@
                     </div>
                 </div>
 
-                <div id="blood-saturation-causes" class="hidden absolute top-24 w-full h-auto bg-white border border-yellow-400 rounded-lg z-10 p-2">
+                <div id="blood-saturation-causes" class="hidden absolute top-24 w-full h-auto bg-white border border-gray-400 rounded-lg z-10 p-2">
                     @if(count($readings) > 1)
                         @if($readings[0]->blood_saturation_rating == 'low')
                             <p class="font-roboto text-sm text-center uppercase font-bold lg:text-base">Your Oxygen Saturation is Low</p>
@@ -215,11 +214,8 @@
                             <p class="font-roboto text-xs text-center font-normal lg:text-base">This indicates an Adequate Oxygen levels<br> 
                         @endif
                     @else
-                        <div id="blood-saturation-info" class="relative flex flex-col items-center border-2 border-solid rounded-lg w-full h-full border-yellow-400 shadow-lg shadow-yellow-500/50 px-2 py-2">
-                            <p class="font-roboto text-sm text-center uppercase font-bold lg:text-lg">No Oxygen Saturation Reading Yet</p>
-                            <p class="font-roboto text-xs text-center font-normal lg:text-base">In order to examine potential causes, we kindly request you to take an oxygen saturation reading. This will allow for an assessment of underlying factors.</p>
+                        <div id="blood-saturation-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
                     @endif 
-                    </div>
                 </div>
             </div>
 
@@ -255,7 +251,7 @@
                     </div>
                 </div>
 
-                <div id="temperature-causes" class="hidden absolute top-24 w-full h-auto bg-white border border-yellow-400 rounded-lg z-10 p-2">
+                <div id="temperature-causes" class="hidden absolute top-24 w-full h-auto bg-white border border-gray-400 rounded-lg z-10 p-2">
                     @if(count($readings) > 1)
                         @if($readings[0]->temperature_rating == 'low')
                             <p class="font-roboto text-sm text-center uppercase font-bold lg:text-base">Your Temperature is Low</p>
@@ -280,11 +276,8 @@
                             </p>
                         @endif
                     @else
-                        <div id="temperature-info" class="relative flex flex-col items-center border-2 border-solid rounded-lg w-full h-full border-yellow-400 shadow-lg shadow-yellow-500/50 px-2 py-2">
-                            <p class="font-roboto text-sm text-center uppercase font-bold lg:text-lg">No Temperature Reading Yet</p>
-                            <p class="font-roboto text-xs text-center font-normal lg:text-base">In order to examine potential causes, we kindly request you to take a temperature reading. This will allow for an assessment of underlying factors.</p>
+                        <div id="temperature-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
                     @endif
-                    </div>
                 </div>
             </div>
 
@@ -320,7 +313,7 @@
                     </div>
                 </div>
 
-                <div id="pulse-rate-causes" class="hidden absolute top-24 w-full h-auto bg-white border border-yellow-400 rounded-lg z-10 p-2">
+                <div id="pulse-rate-causes" class="hidden absolute top-24 w-full h-auto bg-white border border-gray-400 rounded-lg z-10 p-2">
                     @if(count($readings) > 1)
                         @if($readings[0]->pulse_rate_rating == 'low')
                         <p class="font-roboto text-sm text-center uppercase font-bold lg:text-base">Your Pulse Rate is Low</p>
@@ -349,18 +342,16 @@
                             </p>
                         @endif
                     @else
-                        <div id="pulse-rate-info" class="relative flex flex-col items-center border-2 border-solid rounded-lg w-full h-full border-yellow-400 shadow-lg shadow-yellow-500/50 px-2 py-2">
-                            <p class="font-roboto text-sm text-center uppercase font-bold lg:text-lg">No Pulse Rate Reading Yet</p>
-                            <p class="font-roboto text-xs text-center font-normal lg:text-base">In order to examine potential causes, we kindly request you to take a pulse rate reading. This will allow for an assessment of underlying factors.</p>
+                        <div id="pulse-rate-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
                     @endif
-                    </div>
+                        </div>
                 </div>
             </div> 
         </div>
 
         <div class="flex items-center justify-start px-10 my-2">
 			<div class="flex flex-row items-center justify-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit w-fit border border-gray-300">
-				<p class="text-roboto text-sm font-semibold">Disclaimer: The Enhanced Med-Bot provides general guidance. For personalized advice, consult a qualified medical professional.</p>
+				<p class="text-roboto text-sm font-semibold">Disclaimer: The Enhanced Med-Bot provides general guidance. For specific diagnosis regarding health condition, consult a qualified medical professional.</p>
 			</div>
 		</div>
 
