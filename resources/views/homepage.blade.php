@@ -21,7 +21,7 @@
 
         <!-- Hero -->
         <div class="h-fit flex flex-col mx-auto items-center md:flex-row">
-            <img src="{{asset('images/homepage/logo2.svg')}}" alt="" class="h-[232px] w-[258px]">
+            <img src="{{asset('images/homepage/logo2.png')}}" alt="" class="h-[232px] w-[258px]">
             <div class="flex flex-col items-center">
                 <p class="font-roboto font-bold text-3xl md:text-4xl text-[#5ECECD] text-shadow text-center lg:text-[64px]">ENHANCED MED-BOT</p>
                 <p class="font-roboto font-normal text-lg md:text-xl text-white text-center lg:text-4xl my-4">“Your Ultimate ALL-in-ONE Healthcare Buddy”</p>

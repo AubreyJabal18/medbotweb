@@ -29,7 +29,7 @@
                     <div class="w-full flex-col md:flex-row justify-between space-y-6 md:space-y-4">
                         <div class="w-full flex flex-row space-x-5 items-center">
                             <a href="/" >
-                                <img src="{{ asset('images/register/logo2.svg') }}" alt="" class="h-12 w-12">
+                                <img src="{{ asset('images/dashboard/logo2.png') }}" alt="" class="h-12 w-12">
                             </a>
                             <p class="font-roboto font-bold text-base text-[#5ECECD] text-shadow text-center">ENHANCED MED-BOT</p>
                         </div>

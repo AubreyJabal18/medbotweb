@@ -24,7 +24,7 @@
         <div class="relative flex-col bg-gradient-to-r from-[#0B60D1] to-[#305ab9] bg-cover bg-no-repeat pb-5 md:pb-6 lg:pb-0">
             <div class="flex flex-row justify-between items-center px-4 py-3 md:px-10">
                 <div class="flex flex-row space-x-4 items-center">
-                    <img src={{asset('images/dashboard/logo.png')}} alt="" class="h-8 w-8 md:h-12 md:w-12">
+                    <img src={{asset('images/dashboard/logo2.png')}} alt="" class="h-8 w-8 md:h-12 md:w-12">
                     <p class="font-roboto font-bold text-[#07DBDB] text-lg md:text-2xl text-shadow">ENHANCED MED-BOT</p>
                 </div>
                 <div class="flex flex-row space-x-4 items-center justify-end">
