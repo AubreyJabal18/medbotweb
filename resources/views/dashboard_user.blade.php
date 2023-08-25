@@ -155,6 +155,7 @@
                     @else
                         <div id="blood-pressure-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
                     @endif
+                    </div>
                 </div>
             </div>
 
@@ -216,6 +217,7 @@
                     @else
                         <div id="blood-saturation-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
                     @endif 
+                    </div>
                 </div>
             </div>
 
@@ -278,6 +280,7 @@
                     @else
                         <div id="temperature-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
                     @endif
+                    </div>
                 </div>
             </div>
 
