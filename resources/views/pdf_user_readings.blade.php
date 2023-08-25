@@ -57,6 +57,9 @@
                         <th>Pulse Rate</th>
                     </tr>
 
+                    @php
+                        use Carbon\Carbon;
+                    @endphp
                     @if(count($readings))
                         @foreach($readings as $reading)
                             <tr>
