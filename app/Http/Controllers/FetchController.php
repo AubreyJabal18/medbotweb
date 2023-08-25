@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
+use PDF;
 
 class FetchController extends Controller
 {
@@ -1165,6 +1166,14 @@ class FetchController extends Controller
             ->whereBetween('created_at', [$startDate, $endDate])
             ->get();
         dd($readings);
+    }
+
+    public function generatePDF(Request $request){
+        $readings = Reading::where('user_id', $request->user_id)->get();
+
+        $pdf = PDF::loadView('pdf_user_readings', compact ('readings'));
+        // return $pdf->download('user_readings.pdf');
+        return $pdf->stream();
     }
 }
 

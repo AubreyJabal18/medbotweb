@@ -135,7 +135,7 @@
 				</div>
 
 				<div class="flex flex-row items-center justify-end">
-					<button id="download-button" type="button" class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Download</button>
+					<a id="download-button" type="button" href="{{ route('download-user-readings.pdf') }}" class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Download</a>
 				</div>
 				
 			</form>
