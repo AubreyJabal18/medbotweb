@@ -109,7 +109,6 @@
 		</div>	
 
 		<div class="flex items-center justify-center mt-20"></div>	
-
 		<div class="fixed bottom-2 right-10 z-50 md:bottom-6 ">
 			<div id="download-reading-button" class="flex flex-row items-center justify-center p-2 space-x-2 w-40 h-16 border border-white bg-[#5EDAD5] rounded-xl shadow-sm shadow-black transition-colors duration-300 hover:bg-[#4ac0b8] focus:bg-[#4ac0b8]">
 				<img src="{{asset('images/dashboard/download.png')}}" alt="" class="w-12 h-12">
@@ -133,10 +132,7 @@
 				</div>
 
 				<div class="flex flex-row items-center justify-end">
-					<a href="">
-						<button id="download-button" type="button" class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Download</button>
-					</a>
-					
+					<a id="download-button" type="button" href="{{ route('download-user-readings.pdf') }}" class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Download</a>
 				</div>
 				
 			</form>
