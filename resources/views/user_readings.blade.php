@@ -135,7 +135,7 @@
 				</div>
 
 				<div class="flex flex-row items-center justify-end">
-					<a id="download-button" type="button" href="{{ route('download-user-readings.pdf') }}" class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Download</a>
+					<button type="button" id="download-button" type="button" class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Download</button>
 				</div>
 				
 			</form>
@@ -145,7 +145,6 @@
 	<script src="{{asset('/js/gridjs.umd.js')}}"></script>
 	<script src="{{asset('/js/user_readings.js')}}"></script>
 	<script src="{{asset('/js/download_readings.js')}}"></script>
-	<script src="{{asset('/js/pop_up_box.js')}}"></script>
 	
   
 </body>
