@@ -1191,6 +1191,56 @@ class FetchController extends Controller
         return $pdf->download('patient_readings.pdf');
         // return $pdf->stream();
     }
+
+    public function getUserRatings(Request $request){
+        $parameter_ratings = ['low', 'normal', 'high'];
+        $ratings_count = [];
+        
+        if ($request->by == 'weekly') {
+            $year = substr($request->value, 0, 4);
+            $week = substr($request->value, 6, 2);
+            $dates = $this->getWeek($week, $year);
+            
+            $ratings = Reading::where('user_id', Auth::user()->id)
+                ->whereBetween('created_at', [$dates['start'], $dates['end']])
+                ->get()
+                ->countBy(function ($item) use ($request) {
+                    return $item[$request->parameter.'_rating'];
+                })
+                ->toArray();
+        } else if ($request->by == 'monthly') {
+            $year = substr($request->value, 0, 4);
+            $month = substr($request->value, 5, 2);
+            
+            $ratings = Reading::where('user_id', Auth::user()->id)
+                ->whereMonth('created_at', $month)
+                ->whereYear('created_at', $year)
+                ->get()
+                ->countBy(function ($item) use ($request) {
+                    return $item[$request->parameter.'_rating'];
+                })
+                ->toArray();
+        } else {
+            $year = substr($request->value, 0, 4);
+            
+            $ratings = Reading::where('user_id', Auth::user()->id)
+                ->whereYear('created_at', $year)
+                ->get()
+                ->countBy(function ($item) use ($request) {
+                    return $item[$request->parameter.'_rating'];
+                })
+                ->toArray();
+        }
+    
+        foreach ($parameter_ratings as $parameter_rating) {
+            $ratings_count[$parameter_rating] = array_key_exists($parameter_rating, $ratings) ? $ratings[$parameter_rating] : 0;          
+        }
+        
+        return response()->json([
+            'ratings_count' => $ratings_count
+        ]);
+    }
+    
 }
 
 
