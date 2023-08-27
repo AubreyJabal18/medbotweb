@@ -153,9 +153,8 @@
                             </p>
                         @endif
                     @else
-                        <div id="blood-pressure-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
+                        <div id="blood-pressure-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2"></div>
                     @endif
-                    </div>
                 </div>
             </div>
 
@@ -215,9 +214,8 @@
                             <p class="font-roboto text-xs text-center font-normal lg:text-base">This indicates an Adequate Oxygen levels<br> 
                         @endif
                     @else
-                        <div id="blood-saturation-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
+                        <div id="blood-saturation-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2"></div>
                     @endif 
-                    </div>
                 </div>
             </div>
 
@@ -278,9 +276,8 @@
                             </p>
                         @endif
                     @else
-                        <div id="temperature-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
+                        <div id="temperature-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2"></div>
                     @endif
-                    </div>
                 </div>
             </div>
 
@@ -345,9 +342,8 @@
                             </p>
                         @endif
                     @else
-                        <div id="pulse-rate-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
+                        <div id="pulse-rate-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2"></div>
                     @endif
-                        </div>
                 </div>
             </div> 
         </div>
