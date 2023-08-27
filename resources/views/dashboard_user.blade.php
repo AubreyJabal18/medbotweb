@@ -491,15 +491,27 @@
                 
                     <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="rating_year" name="value">
                     <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="month" id="rating_month" name="value">
-                    <input class="hidden flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="rating_week" name="value">
+                    <input class=" flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="rating_week" name="value">
                 </div>
 
-                <div class="mt-4 w-[96%] flex drop-shadow-lg shadow-lg h-96 rounded-lg bg-white z-10">
-
-                </div>
-
-                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute lg:h-[70%] bottom-0 left-0">
-                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute lg:h-60 bottom-0 right-0">
+                <i class = "flex font-roboto text-base lg:text-lg  py-1 px-12 mt-4 lg:mt-8" id="title">Blood Pressure</i>               
+                <canvas class="mt-4 flex drop-shadow-lg shadow-lg h-12 w-10 rounded-lg bg-white" id="user-ratings-chart"></canvas>
+                
+                <div class="grid grid-cols-2 lg:grid-cols-4 pt-4 gap-y-1 gap-x-1 lg:gap-x-2">
+                   <button id="rating_bp" name="rating_bp" class="flex flex-row font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-8 py-1 bg-[#59AEDD] text-white">
+                    <img src="{{asset('images/dashboard/blood_pressure.svg')}}" alt="Blood Pressure" class="flex h-6 w-7 mr-4">BP
+                   </button>
+                   <button id="rating_bs" name="rating_bs" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-6 py-1 bg-[#EB7373] text-white">
+                    <img src="{{asset('images/dashboard/blood_saturation.svg')}}" alt="Blood Saturation" class="flex h-5 w-8 mr-6 mt-0.5">BS
+                   </button>    
+                   <button id="rating_temp" name="rating_temp"
+                   class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-5 py-1 bg-[#697269] text-white ">
+                    <img src="{{asset('images/dashboard/temperature.svg')}}" alt="Temperature" class="flex h-5 w-8 mr-3  mt-0.5">TEMP
+                   </button>
+                   <button id="rating_pr" name="rating_pr" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-8 py-1 bg-[#93D396] text-white">
+                    <img src="{{asset('images/dashboard/pulse_rate.svg')}}" alt="Temperature" class="flex h-5 w-7 mr-6 mt-0.5">PR
+                </button>
+                
             </div>
         </div>
     </div>

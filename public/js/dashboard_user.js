@@ -423,3 +423,146 @@ getUser().then((id) => {
     renderReadingTrendsChart('weekly', moment().year() + '-W' + moment().week(), id)
 
 })
+
+const ratingField = document.getElementById('rating');
+var currentParameter = 'blood_pressure';
+var selectedBy = 'weekly';
+var selectedValue = '2023-W33';
+var userRatingsChart = null;
+
+async function getUserRatings(parameter, by, value) {
+    const response = await fetch('/get/user_ratings?parameter=' + parameter + '&by=' + by + '&value=' + value);
+    const data = await response.json();
+    return data['ratings_count'];
+}
+
+function renderUserRatingsChart() {
+    getUserRatings(currentParameter, selectedBy, selectedValue).then((data) => {
+        var labels = [];
+        var rating_counts = [];
+        for (const [key, value] of Object.entries(data)) {
+            labels.push(key);
+            rating_counts.push(value);
+        }
+    
+        const userRatingsData = {
+            labels: ['Low', 'Normal', 'High'],
+            datasets: [{
+                backgroundColor: ['#FFE34F','#1BC222', '#F24242'],
+                data: rating_counts,
+            }]
+        };
+       
+        const userRatingsConfig  = {
+            type: 'pie',
+            data: userRatingsData,
+            options: {
+                maintainAspectRatio: true, 
+                aspectRatio: 2, 
+             },
+           
+        };
+
+        if (userRatingsChart != null) {
+            userRatingsChart.destroy();
+        }
+        userRatingsChart = new Chart(
+            document.getElementById('user-ratings-chart'),
+            userRatingsConfig
+        );
+    })
+}
+
+const rating_bpField = document.getElementById('rating_bp');
+const rating_bsField = document.getElementById('rating_bs');
+const rating_tempField = document.getElementById('rating_temp');
+const rating_prField = document.getElementById('rating_pr');
+const titleField = document.getElementById('title');
+
+rating_weekField.addEventListener('change', function(){
+    selectedValue = rating_weekField.value;
+    renderUserRatingsChart();
+});
+
+rating_monthField.addEventListener('change', function(){
+    selectedValue = rating_monthField.value;
+    renderUserRatingsChart();
+});
+
+rating_yearField.addEventListener('change', function(){
+    selectedValue = rating_yearField.value;
+    renderUserRatingsChart();
+});
+
+rating_selectField.addEventListener('change', function () {
+    if (rating_selectField.value == 'yearly') {
+        rating_yearField.classList.remove('hidden');
+        rating_weekField.value = '';
+        rating_monthField.value = '';
+        selectedBy = rating_selectField.value;
+    } 
+    else {
+        rating_yearField.classList.add('hidden');
+    }
+
+    if (rating_selectField.value == 'monthly') {
+        rating_monthField.classList.remove('hidden');
+        rating_weekField.value = '';
+        rating_yearField.value = '';
+        selectedBy = rating_selectField.value;
+    } 
+    else {
+        rating_monthField.classList.add('hidden');
+    }
+
+    if (rating_selectField.value == 'weekly') {
+        rating_weekField.classList.remove('hidden');
+        rating_monthField.value = '';
+        rating_yearField.value = '';
+        selectedBy = rating_selectField.value;
+    } 
+    else {
+        rating_weekField.classList.add('hidden');
+    }
+});
+
+function deactivateAllFields() {
+    rating_bpField.classList.remove('active');
+    rating_bsField.classList.remove('active');
+    rating_tempField.classList.remove('active');
+    rating_prField.classList.remove('active');
+}
+
+rating_bpField.addEventListener('click', function () {
+    currentParameter = 'blood_pressure';
+    renderUserRatingsChart();
+    deactivateAllFields();
+    rating_bpField.classList.add('active'); 
+    titleField.textContent = 'Blood Pressure'; 
+});
+
+rating_bsField.addEventListener('click', function () {
+    currentParameter = 'blood_saturation';
+    renderUserRatingsChart();
+    deactivateAllFields();
+    rating_bsField.classList.add('active'); 
+    titleField.textContent = 'Oxygen Saturation'; 
+});
+
+rating_tempField.addEventListener('click', function () {
+    currentParameter = 'temperature';
+    renderUserRatingsChart();
+    deactivateAllFields();
+    rating_tempField.classList.add('active'); 
+    titleField.textContent = 'Temperature'; 
+});
+
+rating_prField.addEventListener('click', function () {
+    currentParameter = 'pulse_rate';
+    renderUserRatingsChart();
+    deactivateAllFields();
+    rating_prField.classList.add('active'); 
+    titleField.textContent = 'Pulse Rate'; 
+});
+
+renderUserRatingsChart();
