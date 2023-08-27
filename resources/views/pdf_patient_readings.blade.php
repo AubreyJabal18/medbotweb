@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Readings</title>
+    <title>Patient Readings</title>
     @vite('resources/css/app.css')
 
     <link href="{{asset('/css/mermaid.min.css')}}" rel="stylesheet"/>
@@ -46,8 +46,8 @@
 
         <div class="flex items-center justify-center mt-10">
             <div class="flex flex-col items-center justify-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit w-[95%] border border-gray-300">
-
-                <h1>My Readings</h1>
+                
+                <h1>{{$user->id_number}}'s Patient Readings</h1>
                 <table>
                     <tr>
                         <th>Date</th>

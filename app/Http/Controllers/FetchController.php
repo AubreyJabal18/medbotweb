@@ -1174,7 +1174,21 @@ class FetchController extends Controller
             ->get();
             
         $pdf = PDF::loadView('pdf_user_readings', compact ('readings'));
-        return $pdf->download('user_readings.pdf');
+        return $pdf->download('my_readings.pdf');
+        // return $pdf->stream();
+    }
+
+    public function generatePatientPDF(Request $request){
+        $user = User::find($request->user_id);
+        $readings = Reading::where('user_id', $request->user_id)
+            ->whereBetween('created_at',[$request->start, $request->end])    
+            ->get();
+         
+        $pdf = PDF::loadView('pdf_patient_readings', [
+            'user' => $user,
+            'readings' => $readings
+        ]);
+        return $pdf->download('patient_readings.pdf');
         // return $pdf->stream();
     }
 }

@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>My Readings</title>
+	<title>Patient Readings</title>
 	@vite('resources/css/app.css')
 
 	<link href="{{asset('/css/mermaid.min.css')}}" rel="stylesheet"/>
@@ -22,7 +22,7 @@
 		<div class="flex flex-row justify-between items-center px-4 py-3 md:px- mb-6 z-10">
 			<div class="flex flex-row space-x-4 items-center">
 				<a href="/">
-					<img src={{asset('images/dashboard/logo.png')}} alt="" class="h-8 w-8 md:h-12 md:w-12">
+					<img src={{asset('images/dashboard/logo2.png')}} alt="" class="h-8 w-8 md:h-12 md:w-12">
 				</a>
 				<p class="font-roboto font-bold text-[#07DBDB] text-lg md:text-2xl text-shadow">ENHANCED MED-BOT</p>
 			</div>
@@ -139,7 +139,7 @@
 				</div>
 
 				<div class="flex flex-row items-center justify-end">
-					<a id="download-button" type="button" href="{{ route('download-user-readings.pdf') }}" class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Download</a>
+					<button id="download-button" type="button" class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Download</button>
 				</div>
 				
 			</form>
@@ -148,8 +148,8 @@
 
 	<script src="{{asset('/js/gridjs.umd.js')}}"></script>
 	<script src="{{asset('/js/patient_readings.js')}}"></script>
-	<script src="{{asset('/js/download_readings.js')}}"></script>
-	<script src="{{asset('/js/pop_up_box.js')}}"></script>
+	<script src="{{asset('/js/download_patient_readings.js')}}"></script>
+	
   
 </body>
 </html>

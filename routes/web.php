@@ -118,5 +118,7 @@ Route::get('/get/download', [FetchController::class, 'downloadReadings']);
 
 Route::get('/download_user_readings', [FetchController::class, 'generatePDF']);
 
+Route::get('/download_patient_readings', [FetchController::class, 'generatePatientPDF']);
+
 
 
