@@ -12,10 +12,10 @@
 <body>
 
     @if(Session::has('id'))
-    <script>
-        const id = {{session()->get('id')}};
-        window.open('/get/qrcode?id='+id, '_self');
-    </script>
+        <script>
+            const id = {{session()->get('id')}};
+            open('/get/qrcode?id='+id);
+        </script>
     @endif
 
     <div class="flex flex-col w-screen pb-10"> 
