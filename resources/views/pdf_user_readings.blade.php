@@ -47,9 +47,11 @@
         <div class="flex items-center justify-center mt-10">
             <div class="flex flex-col items-center justify-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit w-[95%] border border-gray-300">
 
+                <h3>{{ $user->first_name }} {{ $user->last_name }} {{ $user->suffix ? $user->suffix : '' }}</h3>
+                <p>Generated on: {{ $currentDateTime }}</p>
                 <h1>My Readings</h1>
                 <table>
-                    <tr>
+                    <tr>    
                         <th>Date</th>
                         <th>Time</th>
                         <th>Blood Pressure</th>

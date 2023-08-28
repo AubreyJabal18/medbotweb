@@ -1158,30 +1158,34 @@ class FetchController extends Controller
         ]);
     
     }
-    
-    public function downloadReadings(Request $request){
-        $startDate = Carbon::createFromFormat('Y-m-d', $request->start)->startOfDay();
-        $endDate = Carbon::createFromFormat('Y-m-d', $request->end)->endOfDay();
-        $readings = Reading::where('user_id', $request->id)
-            ->whereBetween('created_at', [$startDate, $endDate])
-            ->get();
-        dd($readings);
-    }
 
     public function generatePDF(Request $request){
+        $user = Auth::user();
+        $startDate = $request->start;
+        $endDate = Carbon::createFromFormat('Y-m-d', $request->end)->addDay()->format('Y-m-d');
         $readings = Reading::where('user_id', $request->user_id)
-            ->whereBetween('created_at',[$request->start, $request->end])    
+            ->whereBetween('created_at',[$startDate, $endDate])    
             ->get();
-            
-        $pdf = PDF::loadView('pdf_user_readings', compact ('readings'));
+        
+        $now = Carbon::now();
+        $now->setTimezone('Asia/Manila');
+        $formattedNow = $now->format('Y-m-d h:i A');
+
+        $pdf = PDF::loadView('pdf_user_readings',[
+            'user'=> $user,
+            'readings' => $readings,
+            'currentDateTime' => $formattedNow
+        ]);
         return $pdf->download('my_readings.pdf');
         // return $pdf->stream();
     }
 
     public function generatePatientPDF(Request $request){
         $user = User::find($request->user_id);
+        $startDate = $request->start;
+        $endDate = Carbon::createFromFormat('Y-m-d', $request->end)->addDay()->format('Y-m-d');
         $readings = Reading::where('user_id', $request->user_id)
-            ->whereBetween('created_at',[$request->start, $request->end])    
+            ->whereBetween('created_at',[$startDate, $endDate])    
             ->get();
          
         $pdf = PDF::loadView('pdf_patient_readings', [
