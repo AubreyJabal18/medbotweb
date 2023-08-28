@@ -11,7 +11,7 @@
     @if(Session::has('id'))
         <script>
             const id = {{session()->get('id')}};
-            window.open('/get/qrcode?id='+id, '_self');
+            open('/get/qrcode?id='+id);
         </script>
     @endif
 
