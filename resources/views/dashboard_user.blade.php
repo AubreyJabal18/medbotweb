@@ -459,9 +459,9 @@
 
                 <div class="flex flex-row lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2 py-2">
                     <select class="shadow border px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="trends_select" name="by">
-                        <option value="weekly" >Weekly</option>
-                        <option value="monthly" >Monthly</option>
-                        <option value="yearly" >Yearly</option>
+                        <option value="weekly" >Week</option>
+                        <option value="monthly" >Month</option>
+                        <option value="yearly" >Year</option>
                     </select>
                 
                     <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="trends_year" name="value">
@@ -484,9 +484,9 @@
 
                 <div class="flex flex-row lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2 py-2">
                     <select class="shadow border px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="rating_select" name="by">
-                        <option value="weekly" >Weekly</option>
-                        <option value="monthly" >Monthly</option>
-                        <option value="yearly" >Yearly</option>
+                        <option value="weekly" >Week</option>
+                        <option value="monthly" >Month</option>
+                        <option value="yearly" >Year</option>
                     </select>  
                 
                     <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="rating_year" name="value">

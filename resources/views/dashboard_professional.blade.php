@@ -93,9 +93,9 @@
                     <div class="flex flex-col md:flex-row font-roboto self-center md:space-x-10 pt-2 ">
                         <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
                             <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="select" name="by">
-                                <option value="weekly" >Weekly</option>
-                                <option value="monthly" >Monthly</option>
-                                <option value="yearly" >Yearly</option> 
+                                <option value="weekly" >Week</option>
+                                <option value="monthly" >Month</option>
+                                <option value="yearly" >Year</option> 
                             </select>  
                         </div> 
                         <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="year" name="value">
@@ -110,9 +110,9 @@
                     <div class="flex flex-col md:flex-row font-roboto self-center md:space-x-10 pt-2 ">        
                         <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
                             <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="registered_select" name="registered_by">
-                                <option value="weekly" >Weekly</option>
-                                <option value="monthly" >Monthly</option>
-                                <option value="yearly" >Yearly</option> 
+                                <option value="weekly" >Week</option>
+                                <option value="monthly" >Month</option>
+                                <option value="yearly" >Year</option> 
                             </select>  
                         </div> 
                         <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="registered_year" name="registered_value">

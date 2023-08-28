@@ -17,7 +17,7 @@
         <div class=" flex-col bg-gradient-to-r from-[#0B60D1] to-[#305ab9] bg-cover bg-no-repeat relative pb-5 md:pb-6 lg:pb-0">
             <div class="flex flex-row justify-between items-center px-4 py-3 md:px-10">
                 <div class="flex flex-row space-x-4 items-center">
-                    <img src={{asset('images/dashboard/logo.png')}} alt="" class="h-8 w-8 md:h-12 md:w-12">
+                    <img src={{asset('images/dashboard/logo2.png')}} alt="" class="h-8 w-8 md:h-12 md:w-12">
                     <p class="font-roboto font-bold text-[#07DBDB] text-lg md:text-2xl text-shadow">ENHANCED MED-BOT</p>
                 </div>
                 <div class="flex flex-row space-x-4 items-center justify-end">
@@ -143,9 +143,9 @@
                     <div class="flex flex-col lg:flex-row justify-center md:justify-end items-center space-y-2 lg:space-y-0 lg:space-x-4 pr-2">
                     
                         <select class="shadow border rounded px-3 h-7 md:h-8 text-sm md:text-base rounded-full text-gray-400 leading-tight focus:outline-none focus:shadow-outline" id="select" name="by">
-                            <option value="weekly" >Weekly</option>
-                            <option value="monthly" >Monthly</option>
-                            <option value="yearly" >Yearly</option> 
+                            <option value="weekly" >Week</option>
+                            <option value="monthly" >Month</option>
+                            <option value="yearly" >Year</option> 
                         </select>  
                     </div> 
                         <input class="hidden flex border-2 rounded-full border-[#969696] mt-2 pl-2 bg-white" type="number" min="1900" max="2050" value="2023" id="year" name="value">

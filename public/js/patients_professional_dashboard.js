@@ -16,7 +16,11 @@ getPatientListInProfessionalDashboard().then((data) => {
                 formatter: (_, row) => gridjs.html(`<a href="/patients/dashboard?user=${row.cells[0].data}" class="text-color">Visit</a>`)
             }
         ],
-        search: true,
+        search: {
+            selector: (cell, rowIndex, cellIndex) => {
+                if (cellIndex === 1) return cell;
+            }
+        },
         data: data,
         pagination: {
             limit: 10,
