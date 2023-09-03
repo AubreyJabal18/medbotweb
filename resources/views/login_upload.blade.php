@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload Login</title>
     @vite('resources/css/app.css')
+    <script src="{{ asset('/js/html5-qrcode.min.js') }}" type="text/javascript">
 </head>
 <body>
     
@@ -23,10 +24,12 @@
             <div id="upload-placeholder" class="flex items-center justify-center w-3/4 h-[70%] border-2 border-neutral-700 rounded-xl mt-5 cursor-pointer md:w-[70%] md:h-[50%] lg:w-[60%] lg:h-[50%]">
                 <img src="{{asset('images/login/upload.svg')}}" alt="" class="h-3/4 w-1/2 md:h-1/2">
             </div>
-            <form action="/login/upload/process" method="POST" enctype="multipart/form-data" class="hidden" id='form' name='form'>
+            <div id="qrcode-reader" class="hidden"></div>
+            <input type="file" class="hidden" id="qrcode-input" name="qrcode-input" accept="image/png,image/jpeg,image/jpg capture">
+            <form action="/login/process" method="POST" class="hidden" id="login-form">
                 @csrf
-                <input type="file" class="hidden" id="qrcode" name="qrcode" accept="image/png,image/jpeg,image/jpg capture">
-            </form>
+                <input type="text" placeholder="Enter encrypted qrcode" id="qrcode" name="qrcode" required="">
+            </form>   
             <div class="flex flex-row items-center place-self-center mt-4">
                 <a href="/login/camera">
                     <div class="flex flex-row justify-center items-center space-x-3 py-1 px-3  rounded-l-full border">
@@ -45,6 +48,8 @@
     </div>
 
     <script src="{{asset('/js/login_upload.js')}}"></script>
+ 
+
 
 </body>
 
