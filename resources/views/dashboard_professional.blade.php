@@ -163,7 +163,7 @@
                    </button>    
                    <button id="rating_temp" name="rating_temp"
                    class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-5 py-1 bg-[#697269] text-white ">
-                    <img src="{{asset('images/dashboard/temperature.svg')}}" alt="Temperature" class="flex h-5 w-8 mr-3  mt-0.5">TEMP
+                    <img src="{{asset('images/dashboard/Temperature.svg')}}" alt="Temperature" class="flex h-5 w-8 mr-3  mt-0.5">TEMP
                    </button>
                    <button id="rating_pr" name="rating_pr" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-8 py-1 bg-[#93D396] text-white">
                     <img src="{{asset('images/dashboard/pulse_rate.svg')}}" alt="Temperature" class="flex h-5 w-7 mr-6 mt-0.5">PR
