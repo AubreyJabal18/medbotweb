@@ -29,7 +29,7 @@
             <button type="button" id="swap-camera" class="flex flex-row items-center justify-center mt-2 px-1 py-1 rounded-full border border-slate-400 font-roboto font-normal text-gray-800 text-[10px] md:text-[10px] md:mt-1 lg:hidden">
                 <img src="{{asset('images/login/swap_camera.svg')}}" alt=" " class="w-3 h-3 md:w-4 md:h-4">
             </button>
-            <form action="/login/camera/process" method="POST" class="hidden" id="login-form">
+            <form action="/login/process" method="POST" class="hidden" id="login-form">
                 @csrf
                 <input type="text" placeholder="Enter encrypted qrcode" id="qrcode" name="qrcode" required="">
             </form>      
