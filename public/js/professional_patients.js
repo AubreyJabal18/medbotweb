@@ -408,3 +408,152 @@ trends_yearField.addEventListener('change', function(){
 })
 
 renderReadingTrendsChart('weekly', moment().year() + '-W' + moment().week(), id)
+
+
+//readings rating of patient//
+
+
+const ratingField = document.getElementById('rating');
+var currentParameter = 'blood_pressure';
+var selectedBy = 'weekly';
+var selectedValue = moment().year() + '-W' + moment().week();
+var patientRatingsInProfDashboardChart = null;
+
+async function getPatientRatingsInProfDashboard(parameter, by, value, id) {
+    console.log('/get/patientRatings?parameter=' + parameter + '&by=' + by + '&value=' + value + '&id=' + id)
+    const response = await fetch('/get/patientRatings?parameter=' + parameter + '&by=' + by + '&value=' + value + '&id=' + id);
+    const data = await response.json();
+    console.log(data);
+    return data['ratings_count'];
+}
+
+function renderPatientRatingsInProfDashboardsChart() {
+    getPatientRatingsInProfDashboard(currentParameter, selectedBy, selectedValue, id).then((data) => {
+        var labels = [];
+        var rating_counts = [];
+        for (const [key, value] of Object.entries(data)) {
+            labels.push(key);
+            rating_counts.push(value);
+        }
+    
+        const patientRatingsData = {
+            labels: ['Low', 'Normal', 'High'],
+            datasets: [{
+                backgroundColor: ['#FFE34F','#1BC222', '#F24242'],
+                data: rating_counts,
+            }]
+        };
+       
+        const patientRatingsConfig  = {
+            type: 'pie',
+            data: patientRatingsData,
+            options: {
+                maintainAspectRatio: true, 
+                aspectRatio: 2, 
+             },
+           
+        };
+
+        if (patientRatingsInProfDashboardChart != null) {
+            patientRatingsInProfDashboardChart.destroy();
+        }
+        patientRatingsInProfDashboardChart = new Chart(
+            document.getElementById('user-ratings-chart'),
+            patientRatingsConfig
+        );
+    })
+}
+
+const rating_bpField = document.getElementById('rating_bp');
+const rating_bsField = document.getElementById('rating_bs');
+const rating_tempField = document.getElementById('rating_temp');
+const rating_prField = document.getElementById('rating_pr');
+const titleField = document.getElementById('title');
+
+rating_weekField.addEventListener('change', function(){
+    selectedValue = rating_weekField.value;
+    renderPatientRatingsInProfDashboardsChart();
+});
+
+rating_monthField.addEventListener('change', function(){
+    selectedValue = rating_monthField.value;
+    renderPatientRatingsInProfDashboardsChart();
+});
+
+rating_yearField.addEventListener('change', function(){
+    selectedValue = rating_yearField.value;
+    renderPatientRatingsInProfDashboardsChart();
+});
+
+rating_selectField.addEventListener('change', function () {
+    if (rating_selectField.value == 'yearly') {
+        rating_yearField.classList.remove('hidden');
+        rating_weekField.value = '';
+        rating_monthField.value = '';
+        selectedBy = rating_selectField.value;
+    } 
+    else {
+        rating_yearField.classList.add('hidden');
+    }
+
+    if (rating_selectField.value == 'monthly') {
+        rating_monthField.classList.remove('hidden');
+        rating_weekField.value = '';
+        rating_yearField.value = '';
+        selectedBy = rating_selectField.value;
+    } 
+    else {
+        rating_monthField.classList.add('hidden');
+    }
+
+    if (rating_selectField.value == 'weekly') {
+        rating_weekField.classList.remove('hidden');
+        rating_monthField.value = '';
+        rating_yearField.value = '';
+        selectedBy = rating_selectField.value;
+    } 
+    else {
+        rating_weekField.classList.add('hidden');
+    }
+});
+
+function deactivateAllFields() {
+    rating_bpField.classList.remove('active');
+    rating_bsField.classList.remove('active');
+    rating_tempField.classList.remove('active');
+    rating_prField.classList.remove('active');
+}
+
+rating_bpField.addEventListener('click', function () {
+    currentParameter = 'blood_pressure';
+    renderPatientRatingsInProfDashboardsChart(id);
+    deactivateAllFields();
+    rating_bpField.classList.add('active'); 
+    titleField.textContent = 'Blood Pressure'; 
+});
+
+rating_bsField.addEventListener('click', function () {
+    currentParameter = 'blood_saturation';
+    renderPatientRatingsInProfDashboardsChart(id);
+    deactivateAllFields();
+    rating_bsField.classList.add('active'); 
+    titleField.textContent = 'Oxygen Saturation'; 
+});
+
+rating_tempField.addEventListener('click', function () {
+    currentParameter = 'temperature';
+    renderPatientRatingsInProfDashboardsChart(id);
+    deactivateAllFields();
+    rating_tempField.classList.add('active'); 
+    titleField.textContent = 'Temperature'; 
+});
+
+rating_prField.addEventListener('click', function () {
+    currentParameter = 'pulse_rate';
+    renderPatientRatingsInProfDashboardsChart(id);
+    deactivateAllFields();
+    rating_prField.classList.add('active'); 
+    titleField.textContent = 'Pulse Rate'; 
+});
+
+renderPatientRatingsInProfDashboardsChart();

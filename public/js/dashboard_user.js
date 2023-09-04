@@ -424,6 +424,8 @@ getUser().then((id) => {
 
 })
 
+//readings rating of patient//
+
 const ratingField = document.getElementById('rating');
 var currentParameter = 'blood_pressure';
 var selectedBy = 'weekly';
