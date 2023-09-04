@@ -416,18 +416,19 @@ renderReadingTrendsChart('weekly', moment().year() + '-W' + moment().week(), id)
 const ratingField = document.getElementById('rating');
 var currentParameter = 'blood_pressure';
 var selectedBy = 'weekly';
-var selectedValue = '2023-W33';
+var selectedValue = moment().year() + '-W' + moment().week();
 var patientRatingsInProfDashboardChart = null;
 
 async function getPatientRatingsInProfDashboard(parameter, by, value, id) {
+    console.log('/get/patientRatings?parameter=' + parameter + '&by=' + by + '&value=' + value + '&id=' + id)
     const response = await fetch('/get/patientRatings?parameter=' + parameter + '&by=' + by + '&value=' + value + '&id=' + id);
     const data = await response.json();
     console.log(data);
     return data['ratings_count'];
 }
 
-function renderPatientRatingsInProfDashboardsChart(parameter, by, value, id) {
-    getPatientRatingsInProfDashboard(currentParameter, selectedBy, selectedValue).then((data) => {
+function renderPatientRatingsInProfDashboardsChart() {
+    getPatientRatingsInProfDashboard(currentParameter, selectedBy, selectedValue, id).then((data) => {
         var labels = [];
         var rating_counts = [];
         for (const [key, value] of Object.entries(data)) {

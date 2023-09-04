@@ -1262,7 +1262,7 @@ class FetchController extends Controller
                     return $item[$request->parameter.'_rating'];
                 })
                 ->toArray();
-            dd($ratings);    
+ 
         } else if ($request->by == 'monthly') {
             $year = substr($request->value, 0, 4);
             $month = substr($request->value, 5, 2);
