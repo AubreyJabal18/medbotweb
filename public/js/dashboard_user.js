@@ -429,7 +429,7 @@ getUser().then((id) => {
 const ratingField = document.getElementById('rating');
 var currentParameter = 'blood_pressure';
 var selectedBy = 'weekly';
-var selectedValue = '2023-W33';
+var selectedValue = moment().year() + '-W' + moment().week();
 var userRatingsChart = null;
 
 async function getUserRatings(parameter, by, value) {

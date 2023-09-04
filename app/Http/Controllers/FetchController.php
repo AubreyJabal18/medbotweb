@@ -1255,7 +1255,7 @@ class FetchController extends Controller
             $week = substr($request->value, 6, 2);
             $dates = $this->getWeek($week, $year);
             
-            $ratings =  Reading::with('user')
+            $ratings =  Reading::where('user_id', $request->id)
                 ->whereBetween('created_at', [$dates['start'], $dates['end']])
                 ->get()
                 ->countBy(function ($item) use ($request) {
@@ -1267,7 +1267,7 @@ class FetchController extends Controller
             $year = substr($request->value, 0, 4);
             $month = substr($request->value, 5, 2);
             
-            $ratings =  Reading::with('user')
+            $ratings =  Reading::where('user_id', $request->id)
                 ->whereMonth('created_at', $month)
                 ->whereYear('created_at', $year)
                 ->get()
@@ -1278,7 +1278,7 @@ class FetchController extends Controller
         } else {
             $year = substr($request->value, 0, 4);
             
-            $ratings =  Reading::with('user')
+            $ratings =  Reading::where('user_id', $request->id)
                 ->whereYear('created_at', $year)
                 ->get()
                 ->countBy(function ($item) use ($request) {

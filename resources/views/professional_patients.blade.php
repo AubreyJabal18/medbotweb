@@ -477,8 +477,8 @@
                     <input  type="text" class="hidden" name="user-id" id="user-id" value="{{$user->id}}">
                 </canvas>
 
-                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute lg:h-[70%] bottom-0 left-0">
-                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute lg:h-60 bottom-0 right-0">  
+                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute h-[30%] lg:h-[70%] bottom-0 left-0">
+                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute h-[30%] lg:h-[70%] bottom-0 right-0">  
             </div> 
         </div>
 
