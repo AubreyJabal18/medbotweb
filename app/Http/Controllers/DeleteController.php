@@ -18,5 +18,14 @@ class DeleteController extends Controller
         return redirect('/');
     }
 
+    public function restoreUser(Request $request){
+        $user = User::withTrashed()->find($request->id);
+        $user->restore();
+     
+        flash()->addSuccess('User has been Restored Successfully!');
+    
+        return redirect('/');
+    }
+
 
 }

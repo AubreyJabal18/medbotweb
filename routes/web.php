@@ -120,5 +120,11 @@ Route::get('/download_user_readings', [FetchController::class, 'generatePDF']);
 
 Route::get('/download_patient_readings', [FetchController::class, 'generatePatientPDF']);
 
+Route::get('/restore/deleted_user', [RedirectController::class, 'redirectToRestoreDeletedUserInfo']);
+
+Route::get('get/restore_deleted_users_list', [Fetchcontroller::class, 'getRestoreDeletedUser']);
+
+Route::post('/restore', [DeleteController::class, 'restoreUser']);
+
 
 

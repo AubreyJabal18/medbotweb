@@ -15,6 +15,14 @@
                 <p class="font-roboto group-hover:text-white">Dashboard</p>
             </div>
         </a>
+
+        <a href="/restore/deleted_user">
+            <div class="group flex flex-row p-2 space-x-5 hover:bg-blue-300">
+                <img src="{{asset('images/dashboard/restore.png')}}" alt="" class = "h-6 w-6">
+                <p class="font-roboto group-hover:text-white">Restore Deleted User</p>
+            </div>
+        </a>
+
         <a href="/logout">
             <div class="group flex flex-row p-2 space-x-5 hover:bg-blue-300">
                 <svg class="fill-[#6B7280] group-hover:fill-white" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -235,5 +235,11 @@ class RedirectController extends Controller
         ]);
     }
     
-    
+    public function redirectToRestoreDeletedUserInfo() {
+        $user = Auth::user();
+
+        return view('restore_deleted_user', [
+            'user' => $user
+        ]);
+    }
 }
