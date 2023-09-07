@@ -1297,6 +1297,25 @@ class FetchController extends Controller
         ]);
     }
     
+    public function getRestoreDeletedUser(){
+        $list_users = [];
+        $users = User::whereNot('type','admin')->onlyTrashed()->get();
+        foreach($users as $user){
+            $temp_array = [
+                $user->id,
+                $user->id_number,
+                $user->type,
+                $user->sex,
+                Carbon::parse($user->birthday)->format('M d, Y'),
+                $user->barangay.' '.$user->municipality,
+                $user->email];
+            array_push($list_users, $temp_array);    
+        }
+        return response()->json([
+            'users-list' => $list_users
+
+        ]);
+    }
 }
 
 

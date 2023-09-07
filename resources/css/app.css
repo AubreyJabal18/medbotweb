@@ -23,6 +23,10 @@
     background-color:  rgb(220 38 38);
 }
 
+.bg-restore {
+    background-color:  rgb(33, 211, 98);
+}
+
 .rounded-full {
     border-radius:  9999px;
 

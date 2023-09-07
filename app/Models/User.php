@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 
 class User extends Authenticatable
@@ -60,5 +61,13 @@ class User extends Authenticatable
     public function readings(){
         return $this->hasMany(Reading::class, 'user_id')->get();
     }
+
+
+    /**
+     * The attributes that should be used in deleting/restoring data in database
+     * / 
+    */
+    
+    use SoftDeletes;
 
 }
