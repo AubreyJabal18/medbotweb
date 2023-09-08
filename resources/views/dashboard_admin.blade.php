@@ -222,6 +222,25 @@
     </div>
 
 
+    <div id="notice-retrieve-patient" class="hidden fixed flex-col border-2 w-[80%] md:w-[50%] lg:w-[30%] h-[25%] md:h-[25%] rounded-xl items-center  bg-white drop-shadow-lg shadow-lg z-50 top-[40%] left-[10%] md:left-[25%] lg:left-[35%]">
+        <div class="flex flex-col md:flex-row space-x-6 space-y-2 md:space-y-0 items-center  md:py-6 lg:py-7 md:px-6">
+            <img src="{{asset('images/dashboard/retrieve_icon.png')}}" alt="" class="flex w-16 md:w-16 md:h-16 lg:w-16 self-center  ">
+            <p class="flex font-roboto text-black/80 font-light px-2 md:px-1 text-sm md:text-base lg:text-lg pb-4 md:pb-6">Do you want to retrieve this user's QR Code?</p>
+        </div>
+        <div class="flex flex-row justify-end space-x-2  px-2 md:px-4">
+            <button id="cancel" class="flex flex items-center justify-center font-roboto font-normal text-neutral-500 md:hover:rounded-lg hover:text-white hover:bg-neutral-400 py-1 px-4 text-sm lg:text-base">Cancel</button>
+            <button id="retrieve-button" class="flex items-center justify-center font-roboto font-normal text-white rounded-lg bg-blue-500 md:hover:bg-blue-600 py-1 px-3 text-sm  lg:text-base">Retrieve</button>
+        </div>    
+
+        <form action="/retrieve" method="POST" id="retrieve-form">
+            @csrf
+            <input type="text" id="retrieve-id" name="id" class="hidden">
+        </form>
+    </div>
+
+    <div id="confirm-retrieve-overlay" class=" hidden fixed w-full h-100 inset-0 z-10 overflow-hidden flex justify-center items-center brightness-50 backdrop-blur-sm">
+    </div>
+
     <script src="{{asset('/js/chart.umd.min.js')}}"></script>
     <script src="{{asset('/js/gridjs.umd.js')}}"></script>
     <script src="{{asset('/js/dashboard_admin.js')}}"></script>

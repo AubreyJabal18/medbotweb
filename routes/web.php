@@ -126,5 +126,5 @@ Route::get('get/restore_deleted_users_list', [Fetchcontroller::class, 'getRestor
 
 Route::post('/restore', [DeleteController::class, 'restoreUser']);
 
-
+Route::post('/retrieve', [FetchController::class, 'getQrCode']);
 
