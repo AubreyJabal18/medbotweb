@@ -62,6 +62,8 @@ class LoginController extends Controller
             return redirect()->intended('dashboard');
         }
         else {
+            flash()->addSuccess('Admin credentials is incorrect');
+            return back();
         }
     }
 
