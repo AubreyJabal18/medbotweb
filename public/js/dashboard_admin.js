@@ -5,6 +5,15 @@ const deleteButton = document.getElementById('delete-button');
 const deleteForm = document.getElementById('delete-form');
 const deleteIdField = document.getElementById('delete-id');
 const deleteField = document.querySelectorAll('.delete');
+
+const confirmRetrieveOverlay = document.getElementById('confirm-retrieve-overlay');
+const noticeRetrievePatientModal = document.getElementById('notice-retrieve-patient');
+const retrieveButton = document.getElementById('retrieve-button');
+const cancel = document.getElementById('cancel');
+const retrieveForm = document.getElementById('retrieve-form');
+const retrieveIdField = document.getElementById('retrieve-id');
+const retrieveField = document.querySelectorAll('.retrieve');
+
 var activeCardId = -1;
 
 //FOR USERS LIST TABLE//
@@ -33,7 +42,20 @@ getUserListInAdminDashboard().then((data) => {
                         }, 'Remove'   
                     );
                 }
-                }    
+                }, 
+                {
+                    name: 'Retrieve QR',
+                    formatter: (cell, row) => {
+                        return gridjs.h('button',{
+                            className: 'py-1 mb-4 px-2 border rounded-full rounded-md text-white bg-retrieve',
+                            onClick: () => {
+                                openNoticeRetrievePatientModal();
+                                activeCardId = row.cells[0].data;
+                            },
+                        }, 'Retrieve'   
+                    );
+                }
+                }              
             ],
             search: {
                 selector: (cell, rowIndex, cellIndex) => {
@@ -82,6 +104,35 @@ window.addEventListener('keydown', function(event){
 deleteButton.addEventListener('click', function(){
     deleteIdField.value = activeCardId;      
     deleteForm.submit();
+});
+
+//FOR RETRIEVING USERS QR CODE//
+
+function closeNoticeRetrievePatientModal(){
+    if (!confirmRetrieveOverlay.classList.contains('hidden')){
+        confirmRetrieveOverlay.classList.add('hidden');
+        noticeRetrievePatientModal.classList.add('hidden');
+    }
+}
+
+function openNoticeRetrievePatientModal(){
+    if (confirmRetrieveOverlay.classList.contains('hidden')){
+        confirmRetrieveOverlay.classList.remove('hidden');
+        noticeRetrievePatientModal.classList.remove('hidden');
+    }
+}
+
+confirmRetrieveOverlay.addEventListener('click', closeNoticeRetrievePatientModal);
+cancel.addEventListener('click', closeNoticeRetrievePatientModal);
+window.addEventListener('keydown', function(event){
+    if(event.key == 'Escape'){
+        closeNoticeRetrievePatientModal();
+    }
+});
+
+retrieveButton.addEventListener('click', function(){
+    retrieveIdField.value = activeCardId;      
+    retrieveForm.submit();
 });
 
 //FOR USERS BY MUNICIPALITY GRAPH//

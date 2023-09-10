@@ -74,7 +74,7 @@ Route::get('/get/patients', [FetchController::class, 'getPatientListInProfession
 
 Route::get('/patients/dashboard', [RedirectController::class, 'redirectToPatientPage']);
 
-Route::get('get/users_list', [FetchController::class, 'getUserListInAdminDashboard']);
+Route::get('/get/users_list', [FetchController::class, 'getUserListInAdminDashboard']);
 
 Route::post('/delete', [DeleteController::class, 'deleteUser']);
 
@@ -98,7 +98,7 @@ Route::get('/get/professional_readings', [FetchController::class, 'getProfession
 
 Route::get('/patients/readings', [RedirectController::class, 'redirectToPatientReadings']);
 
-Route::get('get/patient/readings', [FetchController::class, 'getPatientReadingsInProfessionalDashboard']);
+Route::get('/get/patient/readings', [FetchController::class, 'getPatientReadingsInProfessionalDashboard']);
 
 Route::get('/get/age_count', [FetchController::class, 'getPatientCountByAge']);
 
@@ -126,5 +126,5 @@ Route::get('get/restore_deleted_users_list', [Fetchcontroller::class, 'getRestor
 
 Route::post('/restore', [DeleteController::class, 'restoreUser']);
 
-
+Route::post('/retrieve', [FetchController::class, 'getQrCode']);
 

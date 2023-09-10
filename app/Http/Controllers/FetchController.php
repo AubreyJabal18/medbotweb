@@ -867,7 +867,7 @@ class FetchController extends Controller
                 $user->type,
                 $user->sex,
                 Carbon::parse($user->birthday)->format('M d, Y'),
-                $user->barangay.' '.$user->municipality,
+                $user->barangay.', '.$user->municipality,
                 $user->email];
             array_push($list_users, $temp_array);    
         }
@@ -1316,6 +1316,8 @@ class FetchController extends Controller
 
         ]);
     }
+
+    
 }
 
 
