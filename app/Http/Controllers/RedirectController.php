@@ -242,4 +242,16 @@ class RedirectController extends Controller
             'user' => $user
         ]);
     }
+
+    public function redirectToAboutUsPage() {
+        return view('about_us', [
+
+        ]);
+    }
+
+    public function redirectToRetrieveQRCodePage() {
+        return view('retrieve_qrcode_page', [
+
+        ]);
+    }
 }
