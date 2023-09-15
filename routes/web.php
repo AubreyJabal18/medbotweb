@@ -128,3 +128,7 @@ Route::post('/restore', [DeleteController::class, 'restoreUser']);
 
 Route::post('/retrieve', [FetchController::class, 'getQrCode']);
 
+Route::get('/about_us', [RedirectController::class, 'redirectToAboutUsPage']);
+
+Route::get('/retrieve_qrcode', [RedirectController::class, 'redirectToRetrieveQRCodePage']);
+

@@ -15,9 +15,10 @@
         {{-- <img src="{{asset('images/homepage/homepage-top-banner.svg')}}" alt="" class="absolute hidden -z-50 md:-translate-y-32 lg:block w-screen"> --}}
 
         <!-- Navbar -->
-        <div class="flex flex-row justify-center items-center space-x-10 px-8 py-5 md:justify-end">
-            <a href="/register/user" class="border border-white rounded-lg bg-[#5198F8] font-roboto font-medium text-base text-white px-5 py-2 md:text-sm">REGISTER</a>
-            <a href="/login/upload" class="border border-white rounded-lg bg-[#5EDAD5] font-roboto font-medium text-base text-white px-5 py-2 md:text-sm">LOGIN</a>
+        <div class="flex flex-row justify-center items-center space-x-4 md:space-x-8 px-8 py-5 md:justify-end ">
+            <a href="/about_us" class=" font-roboto font-medium text-sm  text-white hover:text-[#5ECECD] ">ABOUT US</a>
+            <a href="/register/user" class="font-roboto font-medium text-sm  text-white hover:text-[#5ECECD] ">REGISTER</a>
+            <a href="/login/upload" class="  font-roboto font-medium text-sm  text-white hover:text-[#5ECECD] ">LOGIN</a>
         </div>
 
         <!-- Hero -->
@@ -31,7 +32,7 @@
         <div class="flex flex-row space-y-4 px-4 mt-6">
             <div class="flex flex-col space-y-5 items-center md:space-y-10">
                 <p class="font-roboto font-normal text-center text-base text-white md:text-2xl">"We are here to assist you by offering solutions for your vital sign requirements, transforming the way you monitor your vital sign measurements."</p>
-                <a href="/register/user" class="relative border border-white rounded-lg bg-[#5EDAD5] font-roboto font-semibold tracking-wide text-sm text-white px-4 py-3 md:text-base md:px-12 md:py-5">GET STARTED</a>
+                <a href="/register/user" class="relative border border-white rounded-full bg-[#5EADD7] font-roboto font-semibold tracking-wide text-sm text-white px-4 py-3 md:text-base md:px-12 md:py-5">GET STARTED</a>
             </div>
             <img src="{{asset('images/homepage/model_front_view.png')}}" alt="" class="h-[35%] w-[30%] md:-translate-y-24">
         </div> 
