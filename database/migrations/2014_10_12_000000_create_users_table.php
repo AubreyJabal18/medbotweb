@@ -28,9 +28,12 @@ return new class extends Migration
             $table->string('license')->nullable()->unique();
             $table->string('password');
             $table->string('profile')->nullable();
+            $table->string('question');
+            $table->string('answer');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
+            
         });
     }
 

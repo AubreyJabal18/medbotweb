@@ -35,7 +35,9 @@ class User extends Authenticatable
         'email',
         'license',
         'profile',
-        'password'
+        'password',
+        'question',
+        'answer'
     ];
 
     /**

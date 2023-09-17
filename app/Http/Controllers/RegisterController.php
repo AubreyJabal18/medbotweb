@@ -26,7 +26,9 @@ class RegisterController extends Controller
             'barangay' => 'required',
             'contact_number' => 'required|regex:/^(09)\d{9}$/|unique:users,contact_number',
             'email' => 'required|email|unique:users,email',
-            'profile' => 'nullable|mimes:jpg,jpeg,png'
+            'profile' => 'nullable|mimes:jpg,jpeg,png',
+            'question' => 'required',
+            'answer' => 'required'
         ],
         [
             'first_name.required' => 'First name is required',
@@ -44,9 +46,11 @@ class RegisterController extends Controller
             'email.required' => 'Email is required',
             'email.email' => 'Invalid email format',
             'email.unique' => 'Email already exists',
-            'profile.mimes' => 'Invalid picture format'
+            'profile.mimes' => 'Invalid picture format',
+            'question.required' => 'Security question is required',
+            'answer.required' => 'Answer is required'
         ]);
-
+       
         
         if($validator->fails()){
             foreach($validator->messages()->all() as $message){
@@ -70,13 +74,16 @@ class RegisterController extends Controller
             'contact_number' => $request->contact_number,
             'email' => $request->email,
             'license' => null,
-            'password' => bcrypt($password)
+            'password' => bcrypt($password),
+            'question' => $request->question,
+            'answer' => $request->answer
         ];
-
+       
         $user = User::create($user_form);
         $municipality_firstLetter = strtoupper(substr( $request->municipality, 0, 3));
         $user->id_number = '5B2-'.$municipality_firstLetter.'PZT-'.$user->id;
         $user->save();
+       
 
         if($request->hasFile('profile')){
             $profile_path = $this->UploadFile($request->file('profile'), $user->id, 'profiles');
@@ -109,7 +116,9 @@ class RegisterController extends Controller
             'contact_number' => 'required|regex:/^(09)\d{9}$/|unique:users,contact_number',
             'email' => 'required|email|unique:users,email',
             'license' => 'required|unique:users,license',
-            'profile' => 'nullable|mimes:jpg,jpeg,png'
+            'profile' => 'nullable|mimes:jpg,jpeg,png',
+            'question' => 'required',
+            'answer' => 'required'
         ],
         [
             'first_name.required' => 'First name is required',
@@ -129,7 +138,9 @@ class RegisterController extends Controller
             'email.email' => 'Invalid email format',
             'email.unique' => 'Email already exists',
             'license.unique' => 'License number is required',
-            'profile.mimes' => 'Invalid picture format'
+            'profile.mimes' => 'Invalid picture format',
+            'question.required' => 'Security question is required',
+            'answer.required' => 'Answer is required'
         ]);
         if($validator->fails()){
             foreach($validator->messages()->all() as $message){
@@ -153,7 +164,9 @@ class RegisterController extends Controller
             'contact_number' => $request->contact_number,
             'email' => $request->email,
             'license' => $request->license,
-            'password' => bcrypt($password)
+            'password' => bcrypt($password),
+            'question' => $request->question,
+            'answer' => $request->answer
         ];
 
         $user = User::create($user_form);

@@ -25,7 +25,9 @@ class DatabaseSeeder extends Seeder
             'barangay' => 'Ihatub',
             'contact_number' => '09123456789',
             'email' => 'admin@gmail.com',
-            'password' => bcrypt('admin123')
+            'password' => bcrypt('admin123'),
+            'question' => 'father_name',
+            'answer' => 'Raul'
         ]);
         \App\Models\User::factory()->create([
             'last_name' => 'Jabal',
@@ -38,7 +40,9 @@ class DatabaseSeeder extends Seeder
             'barangay' => 'Ihatub',
             'contact_number' => '09123456782',
             'email' => 'aubreyjabal12345@gmail.com',
-            'password' => bcrypt('medbot2aubrey')
+            'password' => bcrypt('medbot2aubrey'),
+            'question' => 'pet_name',
+            'answer' => 'Pungaw'
         ]);
         \App\Models\User::factory()->create([
             'last_name' => 'Uzumaki',
@@ -51,7 +55,9 @@ class DatabaseSeeder extends Seeder
             'barangay' => 'Murallon',
             'contact_number' => '09111111111',
             'email' => 'Uzumakinaruto@gmail.com',
-            'password' => bcrypt('medbot3naruto')
+            'password' => bcrypt('medbot3naruto'),
+            'question' => 'school_name',
+            'answer' => 'DSLMS'
         ]);
         \App\Models\User::factory()->create([
             'last_name' => 'Roronoa',
@@ -64,7 +70,9 @@ class DatabaseSeeder extends Seeder
             'barangay' => 'Sumangga',
             'contact_number' => '09111111112',
             'email' => 'roronoazoro@gmail.com',
-            'password' => bcrypt('medbot4zoro')
+            'password' => bcrypt('medbot4zoro'),
+            'question' => 'school_name',
+            'answer' => 'DSLMS'
         ]);
         \App\Models\User::factory()->create([
             'last_name' => 'Vinsmoke',
@@ -78,7 +86,9 @@ class DatabaseSeeder extends Seeder
             'barangay' => 'Lamesa',
             'contact_number' => '09091111112',
             'email' => 'sanji12@gmail.com',
-            'password' => bcrypt('medbot5sanji')
+            'password' => bcrypt('medbot5sanji'),
+            'question' => 'school_name',
+            'answer' => 'DLHMS'
         ]);
         \App\Models\User::factory()->create([
             'last_name' => 'Nico',
@@ -91,7 +101,9 @@ class DatabaseSeeder extends Seeder
             'barangay' => 'Sihi',
             'contact_number' => '09090911112',
             'email' => 'nicorobin@gmail.com',
-            'password' => bcrypt('medbot6robin')
+            'password' => bcrypt('medbot6robin'),
+            'question' => 'school_name',
+            'answer' => 'DHLMS'
         ]);
         \App\Models\User::factory()->create([
             'last_name' => 'Monkey',
@@ -105,7 +117,9 @@ class DatabaseSeeder extends Seeder
             'barangay' => 'Laon',
             'contact_number' => '09090909112',
             'email' => 'monkeydluffy@gmail.com',
-            'password' => bcrypt('medbot7luffy')
+            'password' => bcrypt('medbot7luffy'),
+            'question' => 'father_name',
+            'answer' => 'Arnold'
         ]);
         \App\Models\User::factory()->create([
             'last_name' => 'Nefertani',
@@ -118,7 +132,9 @@ class DatabaseSeeder extends Seeder
             'barangay' => 'Banuyo',
             'contact_number' => '09090909092',
             'email' => 'viviswan24@gmail.com',
-            'password' => bcrypt('medbot8vivi')
+            'password' => bcrypt('medbot8vivi'),
+            'question' => 'pet_name',
+            'answer' => 'Inang'
         ]);
         \App\Models\User::factory()->create([
             'last_name' => 'Toni',
@@ -134,7 +150,9 @@ class DatabaseSeeder extends Seeder
             'contact_number' => '09122222112',
             'email' => 'tonichoper@gmail.com',
             'license' => 'Toni1',
-            'password' => bcrypt('medbot9chopper')
+            'password' => bcrypt('medbot9chopper'),
+            'question' => 'school_name',
+            'answer' => 'NES'
         ]);
         \App\Models\User::factory()->create([
             'last_name' => 'Cyborg',
@@ -149,7 +167,9 @@ class DatabaseSeeder extends Seeder
             'contact_number' => '09090933332',
             'email' => 'cybrogfranky@gmail.com',
             'license' => 'Cyborg1',
-            'password' => bcrypt('medbot10franky')
+            'password' => bcrypt('medbot10franky'),
+            'question' => 'pet_name',
+            'answer' => 'Kyut'
         ]);
         \App\Models\User::factory()->create([
             'last_name' => 'Cat',
@@ -164,7 +184,9 @@ class DatabaseSeeder extends Seeder
             'contact_number' => '09555533332',
             'email' => 'catnami@gmail.com',
             'license' => 'Cat1',
-            'password' => bcrypt('medbot11nami')
+            'password' => bcrypt('medbot11nami'),
+            'question' => 'pet_name',
+            'answer' => 'Kyut'
         ]);
         \App\Models\User::factory()->create([
             'last_name' => 'Rumbar',
@@ -179,7 +201,9 @@ class DatabaseSeeder extends Seeder
             'contact_number' => '09565633332',
             'email' => 'rumbarbrook@gmail.com',
             'license' => 'Rumbar1',
-            'password' => bcrypt('medbot12brook')
+            'password' => bcrypt('medbot12brook'),
+            'question' => 'pet_name',
+            'answer' => 'Kyut'
         ]);
         \App\Models\Reading::factory()->create([
             'user_id' => 2,

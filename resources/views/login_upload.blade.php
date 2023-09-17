@@ -44,11 +44,11 @@
             </div>
             <p class="flex mt-4 font-roboto text-sm font-medium text-[#2D3748] text-center md:text-base">Don't have an account? &nbsp;<span><a href="/register/user" class="font-roboto text-blue-500 hover:text-blue-700 text-sm md:text-base justify-self-center underline">Register here</a></span></p>
         </div>
-        <div class="absolute bottom-[29%] md:bottom-10 md:right-[17%] lg:bottom-10 lg:right-[22%]">
+        <div class="absolute bottom-[32%] md:bottom-10 md:right-[17%] lg:bottom-10 lg:right-[22%]">
             <p class="flex mt-12 font-roboto text-xs font-medium text-neutral-300 text-center ">Lost your QR Code? &nbsp;<span><a href="/retrieve_qrcode" class="font-roboto text-neutral-300 hover:text-white text-xs justify-self-center underline">Retrieve it here</a></span></p>
         </div>
         
-        <img src="{{asset('images/login/model.png')}}" alt=" " class="hidden absolute md:block md:right-2 md:bottom-8 lg:bottom-10 lg:right-10 md:w-[160px] md:h-[160px] lg:w-[200px] lg:h-[190px]">
+        <img src="{{asset('images/login/model.png')}}" alt=" " class="hidden absolute md:block md:-right-7 md:-bottom-6 lg:bottom-10 lg:right-10 md:w-[160px] md:h-[160px] lg:w-[200px] lg:h-[190px]">
     </div>
 
     <script src="{{asset('/js/login_upload.js')}}"></script>
