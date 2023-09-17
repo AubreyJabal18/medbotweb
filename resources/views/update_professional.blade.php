@@ -135,6 +135,30 @@
                             <label class=" text-gray-700 text-sm font-normal" for="ln">License Number</label>
                             <input class="shadow appearance-none border rounded h-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="license" type="text" placeholder="License Number" name="license"  value="{{ $user->license }}">
                         </div>
+                        <div class="grid"></div>
+                            <div class="grid"></div>
+                        
+                            <div class="grid flex flex-col items-start space-y-2">
+                                <div class="relative">
+                                    <div class="flex flex-row space-x-4">
+                                        <label class=" text-gray-700 text-sm font-normal" for="question">Security Questions</label>
+                                        <p class="text-red-600 text-xs font-light">*Choose only one</p>
+                                    </div>  
+                                    <select class="self-start shadow appearance-none border rounded h-fit w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  id="question" name="question" value="{{ $user->question }}">
+                                        <option value="father_name" @if($user->question === 'father_name') selected @endif>What is your Father's first name?</option>
+                                        <option value="pet_name" @if($user->question === 'pet_name') selected @endif>What is the name of your first pet?</option>
+                                        <option value="school_name"  @if($user->question === 'school_name') selected @endif>What was the name of your school when you were in elementary school?</option>
+                                    </select>
+                                    <div class="absolute inset-y-10 right-0 flex items-center pr-3 pointer-events-none">
+                                        <img src="{{asset('images/register/menu-down (1).svg')}}" alt="Dropdown Icon" class="h-5 w-5 text-gray-700">
+                                    </div>
+                                </div>    
+                            </div>
+                            <div class="grid flex flex-col items-start">
+                                <label class=" text-gray-700 text-sm font-normal" for="answer">Answer</label>
+                                <input class=" shadow appearance-none border rounded h-fit w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your answer" type="text" id="answer" name="answer" value="{{ $user->answer }}">
+                            </div>                          
+                           
                     </div>
                 </form>
 

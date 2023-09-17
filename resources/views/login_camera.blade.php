@@ -18,7 +18,7 @@
             <p class="font-roboto font-semibold text-[#5ececd] text-2xl text-shadow text-center break-keep md:font-bold md:text-4xl lg:text-5xl">ENHANCED MEDBOT</p>
             <i class="font-roboto text-white text-sm text-center md:text-xl lg:text-2xl">“Your Ultimate ALL-in-ONE Healthcare Buddy”</i>
         </div>
-        <div class="relative flex flex-col p-2 w-4/5 h-[50%] bg-white items-center rounded-2xl mt-8 md:w-[50%] md:h-4/5 md:rounded-2xl lg:w-[50%] lg:h-4/5">
+        <div class="relative flex flex-col p-2 w-4/5 h-fit bg-white items-center rounded-2xl mt-8 md:w-[50%] md:h-4/5 md:rounded-2xl lg:w-[50%] lg:h-4/5">
             <a href="/">
                 <img src="{{asset('images/login/home.svg')}}" alt=" " class="absolute self-start left-5 top-5 w-3 md:w-6 h-3 md:h-6 md:top-6">   
             </a>
@@ -47,6 +47,10 @@
             </div>
             <p class="flex mt-4 font-roboto text-sm font-medium text-[#2D3748] text-center md:text-base">Don't have an account? &nbsp;<span><a href="/register/user" class="font-roboto text-blue-500 hover:text-blue-700 text-sm md:text-base justify-self-center underline">Register here</a></span></p>
         </div>
+        <div class="absolute bottom-[25%] md:bottom-10 md:right-[17%] lg:bottom-5 lg:right-[22%]">
+            <p class="flex mt-12 font-roboto text-xs font-medium text-neutral-300 text-center ">Lost your QR Code? &nbsp;<span><a href="/retrieve_qrcode" class="font-roboto text-neutral-300 hover:text-white text-xs justify-self-center underline">Retrieve it here</a></span></p>
+        </div>
+        
         <img src="{{asset('images/login/model.png')}}" alt=" " class="hidden absolute md:block md:-bottom-6 md:-right-7 lg:-right-8 md:w-[160px] md:h-[160px] lg:w-[200px] lg:h-[190px]">
     </div>
 

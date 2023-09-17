@@ -26,7 +26,9 @@ class UpdateController extends Controller
         'barangay' => 'required',
         'contact_number' => 'required|regex:/^(09)\d{9}$/',
         'email' => 'required|email|unique:users,email,'.$user->id,
-        'profile' => 'nullable|mimes:jpg,jpeg,png'
+        'profile' => 'nullable|mimes:jpg,jpeg,png',
+        'question' => 'required',
+        'answer' => 'required'
     ],
     [
         'profile.mimes' => 'Invalid picture format'
@@ -54,6 +56,8 @@ class UpdateController extends Controller
     $user->barangay = $request->barangay;
     $user->contact_number = $request->contact_number;
     $user->email = $request->email;
+    $user->question = $request->question;
+    $user->answer = $request->answer;
 
     $user->save();
 
@@ -77,7 +81,9 @@ class UpdateController extends Controller
             'contact_number' => 'required|regex:/^(09)\d{9}$/',
             'email' => 'required|email|unique:users,email,'.$user->id,
             'license' => 'required|unique:users,license,'.$user->id,
-            'profile' => 'nullable|mimes:jpg,jpeg,png'
+            'profile' => 'nullable|mimes:jpg,jpeg,png',
+            'question' => 'required',
+            'answer' => 'required'
         ],
         [
             'profile.mimes' => 'Invalid picture format'
@@ -106,6 +112,8 @@ class UpdateController extends Controller
         $user->contact_number = $request->contact_number;
         $user->email = $request->email;
         $user->license = $request->license;
+        $user->question = $request->question;
+        $user->answer = $request->answer;
    
 
         $user->save();

@@ -8,6 +8,7 @@ use App\Http\Controllers\FetchController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DeleteController;
 use App\Http\Controllers\UpdateController;
+use App\Http\Controllers\RetrieveController;
 
 
 
@@ -132,3 +133,4 @@ Route::get('/about_us', [RedirectController::class, 'redirectToAboutUsPage']);
 
 Route::get('/retrieve_qrcode', [RedirectController::class, 'redirectToRetrieveQRCodePage']);
 
+Route::post('/check_security_question', [RetrieveController::class, 'checkSecurityQuestion']);

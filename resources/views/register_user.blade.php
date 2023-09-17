@@ -129,6 +129,32 @@
                             <label class=" text-gray-700 text-sm font-normal" for="email">Email</label>
                             <input class="shadow appearance-none border rounded h-fit w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Email" name="email" value="{{old('email')}}">
                         </div>
+
+                        <div class="grid"></div>
+                        
+                        <div class="grid flex flex-col items-start space-y-2">
+                            <div class="relative">
+                                <div class="flex flex-row space-x-4">
+                                    <label class=" text-gray-700 text-sm font-normal" for="question">Security Questions</label>
+                                    <p class="text-red-600 text-xs font-light">*Choose only one</p>
+                                </div>  
+                                <select class="self-start shadow appearance-none border rounded h-fit w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  id="question" name="question" value="{{old('question')}}">
+                                    <option value="father_name">What is your Father's first name?</option>
+                                    <option value="pet_name">What is the name of your first pet?</option>
+                                    <option value="school_name" >What was the name of your school when you were in elementary school?</option>
+                                </select>
+                                <div class="absolute inset-y-10 right-0 flex items-center pr-3 pointer-events-none">
+                                    <img src="{{asset('images/register/menu-down (1).svg')}}" alt="Dropdown Icon" class="h-5 w-5 text-gray-700">
+                                </div>
+                            </div>    
+                        </div>
+
+                        <div class="grid flex flex-col items-start">
+                            <label class=" text-gray-700 text-sm font-normal" for="answer">Answer</label>
+                            <input class=" shadow appearance-none border rounded h-fit w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your answer" type="text" id="answer" name="answer" value="{{old('answer')}}">
+                        </div>                          
+                       
+
                     </div>
                 
                 
