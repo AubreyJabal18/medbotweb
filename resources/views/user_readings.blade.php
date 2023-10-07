@@ -113,8 +113,8 @@
 		</div>	
 
 		<div class="fixed bottom-2 right-10 z-50 md:bottom-6 ">
-			<div id="download-reading-button" class="flex flex-row items-center justify-center p-2 space-x-2 w-40 h-16 border border-white bg-[#5EDAD5] rounded-xl shadow-sm shadow-black transition-colors duration-300 hover:bg-[#4ac0b8] focus:bg-[#4ac0b8]">
-				<img src="{{asset('images/dashboard/download.png')}}" alt="" class="w-12 h-12">
+			<div id="download-reading-button" class="flex flex-row items-center justify-center p-2 w-40 h-16 border border-white bg-[#5EDAD5] rounded-xl shadow-sm shadow-black transition-colors duration-300 hover:bg-[#4ac0b8] focus:bg-[#4ac0b8]">
+				<img src="{{asset('images/about/vector.png')}}" alt="" class="w-10 h-10">
 				<button class="text-roboto font-medium text-base text-black text-center cursor-pointer">Download Reading</button>
 			</div>
 		</div>
