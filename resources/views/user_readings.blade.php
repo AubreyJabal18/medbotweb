@@ -35,9 +35,9 @@
 		</div>
 
 		<div class="flex flex-col space-y-1 mb-10 px-6 ">
-			<p class="flex font-roboto font-normal text-white text-md md:text-xl lg:text-2xl " >Hello {{ $user->first_name }} {{ $user->last_name }} {{ $user->suffix ? $user->suffix : '' }}, welcome to your Readings Page!</p>
+			<p class="flex font-roboto font-normal text-white text-md md:text-xl lg:text-2xl " >Hello {{ $user->first_name }} {{ $user->last_name }} {{ $user->suffix ? $user->suffix : '' }}, Welcome to your Readings Page!</p>
 			<p class="flex font-roboto font-normal text-white text-md md:text-xl lg:text-2xl lg:ml-6">
-				Here, you can access the complete reading history of your vital sign measurements.
+				Here, you can access the your complete vital signs reading history of your vital sign measurements.
 			</p>
 		</div>
 
@@ -52,7 +52,7 @@
 
 			<div class="flex flex-row items-center justify-center space-x-2 md:space-x-5">
 				<div class="flex flex-col relative items-center p-2 rounded-xl drop-shadow-lg shadow-lg border border-gray-300 h-[100px] lg:h-[150px] w-[150px] lg:w-[200px] space-y-2 bg-blue-200" title="This shows the times you used the Enhanced Med-Bot for this week.">
-					<p class="flex font-roboto font-normal text-black text-sm xl:text-xl md:text-base">Weekly Count</p>
+					<p class="flex font-roboto font-normal text-black text-sm xl:text-xl md:text-base">Week Count</p>
 					
 					<div class="flex flex-row w-full h-fit items-center justify-evenly">
 						<img src="{{asset('images/dashboard/BP.svg')}}" alt=""  class="w-12 lg:w-24 h-12 lg:h-24">
@@ -62,7 +62,7 @@
 				</div>
 
 				<div class="flex flex-col items-center p-2 rounded-xl drop-shadow-lg shadow-lg border border-gray-300 h-[100px] lg:h-[150px] w-[150px] lg:w-[200px] space-y-2 bg-blue-200" title="This shows the times you used the Enhanced Med-Bot for this month.">
-					<p class="flex font-roboto font-normal text-black text-sm md:text-base xl:text-xl">Monthly Count</p>
+					<p class="flex font-roboto font-normal text-black text-sm md:text-base xl:text-xl">Month Count</p>
 					
 					<div class="flex flex-row w-full h-fit items-center justify-evenly">
 						<img src="{{asset('images/dashboard/BP.svg')}}" alt="" class="w-12 lg:w-24 h-12 lg:h-24">
@@ -74,7 +74,7 @@
 			</div>
 
 			<div class="flex flex-col items-center p-2 rounded-xl drop-shadow-lg shadow-lg border border-gray-300 h-[100px] lg:h-[150px] w-[150px] lg:w-[200px] space-y-2 bg-blue-200" title="This shows the times you used the Enhanced Med-Bot for this year.">
-            	<p class="flex font-roboto font-normal text-black text-sm md:text-base xl:text-xl">Yearly Count</p>
+            	<p class="flex font-roboto font-normal text-black text-sm md:text-base xl:text-xl">Year Count</p>
 				
 				<div class="flex flex-row w-full h-fit items-center justify-evenly">
 					<img src="{{asset('images/dashboard/BP.svg')}}" alt="" class="w-12 lg:w-24 h-12 lg:h-24">
@@ -103,7 +103,7 @@
 
 		<div class="flex items-center justify-center mt-10">
 			<div class="flex flex-col items-center justify-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit w-[95%] border border-gray-300">
-				<p class="text-lg md:text-2xl font-semibold mb-2 text-white text-center">Your Vital Readings</p>
+				<p class="text-lg md:text-2xl font-semibold mb-2 text-white text-center">Your Vital Signs Reading History</p>
 				<div id="reading-table" class="w-[100%]"></div>
 			</div>
 		</div>	
@@ -114,8 +114,8 @@
 
 		<div class="fixed bottom-2 right-10 z-50 md:bottom-6 ">
 			<div id="download-reading-button" class="flex flex-row items-center justify-center p-2 w-40 h-16 border border-white bg-[#5EDAD5] rounded-xl shadow-sm shadow-black transition-colors duration-300 hover:bg-[#4ac0b8] focus:bg-[#4ac0b8]">
-				<img src="{{asset('images/about/vector.png')}}" alt="" class="w-10 h-10">
-				<button class="text-roboto font-medium text-base text-black text-center cursor-pointer">Download Reading</button>
+				<img src="{{asset('images/about/vector.png')}}" alt="" class="w-8 h-8">
+				<button class="text-roboto font-medium text-sm text-black text-center cursor-pointer">Download Vital Signs Reading History </button>
 			</div>
 		</div>
 		
