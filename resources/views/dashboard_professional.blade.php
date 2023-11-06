@@ -49,8 +49,9 @@
             </div> 
         </div>
         <p class="flex font-bold font-roboto text-black/80 text-xl md:text-xl lg:text-2xl py-5 md:py-7 lg:py-4 justify-center md:justify-start md:px-10">Patient's Statistics</p>
-        <div class="w-full flex flex-col lg:flex-row items-center space-y-5 lg:space-y-0 lg:justify-evenly space-x-2 lg:px-4">
-            <div class="w-[90%] flex flex-col items-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-[60%]">
+        
+        <div class="w-full flex flex-col md:flex-row items-center mb-5 md:my-5 md:mx-3 md:gap-2">
+            <div class="w-[90%] flex flex-col items-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300">
                 <p class="font-roboto text-semibold text-black/80 text-base mb-2 md:text-xl">Recent Patients</p>
                 <div class="table w-full">
                     <div class="table-header-group">
@@ -59,7 +60,7 @@
                             <div class="table-cell text-center py-1">Sex</div>
                             <div class="table-cell text-center py-1">Address</div>
                             <div class="table-cell text-center py-1">Time Taken</div>
-                       </div>
+                        </div>
                     </div>
 
                     @foreach($latest_readings as $reading)
@@ -87,6 +88,20 @@
 
                 </div>
             </div>
+
+            <div class="flex flex-col w-full md:w-fit h-fit items-center m-3">
+                <div class="flex flex-col items-center p-2 rounded-xl drop-shadow-lg shadow-lg border border-gray-300 h-[60%] w-[90%] md:w-72 md:h-60 space-y-2  ">
+                    <img src="{{asset('images/dashboard/design_patient.png')}}" alt="" title="Healthcare Professional" class="absolute left-2 top-8 md:top-12 lg:h-[40%] w-[35%] lg:w-[40%] ">
+                        <div class="flex flex-col self-end px-2 h-28 md:h-32 lg:h-36 items-center">
+                            <p class="flex font-roboto font-normal text-neutral-700 text-sm md:text-base">Patient Total Count</p>
+                            <p class="flex font-roboto font-bold text-neutral-700 text-2xl lg:text-4xl mt-6 md:mt-4 md:ml-10 lg:ml-0">{{$patient_count}}</p>
+                        </div>
+                    <img src="{{asset('images/dashboard/design_1.png')}}" alt="" class="absolute right-0 bottom-0 h-[50%] w-[100%]">          
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full flex flex-col lg:flex-row items-center space-y-5 lg:space-y-0 lg:justify-evenly space-x-2 lg:px-4">
             <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 w-full px-2 md:px-6">
                 <div class="w-[90%] flex flex-col items-center p-4 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-full ">
                     <p class="flex font-roboto font-normal self-center leading-normal text-base md:text-lg lg:text-xl  text-[#151515]  px-4 text-center bg-gray-200  ">Patients that Used Enhanced Med-Bot</p>
@@ -159,7 +174,7 @@
                     <img src="{{asset('images/dashboard/blood_pressure.svg')}}" alt="Blood Pressure" class="flex h-6 w-7 mr-4">BP
                    </button>
                    <button id="rating_bs" name="rating_bs" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-6 py-1 bg-[#EB7373] text-white">
-                    <img src="{{asset('images/dashboard/blood_saturation.svg')}}" alt="Blood Saturation" class="flex h-5 w-8 mr-6 mt-0.5">BS
+                    <img src="{{asset('images/dashboard/blood_saturation.svg')}}" alt="Blood Saturation" class="flex h-5 w-8 mr-6 mt-0.5">OS
                    </button>    
                    <button id="rating_temp" name="rating_temp"
                    class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-5 py-1 bg-[#697269] text-white ">
@@ -232,6 +247,7 @@
      
     <script src="{{asset('/js/chart.umd.min.js')}}"></script>
     <script src="{{asset('/js/dashboard_professional.js')}}"></script>
+    <script src="{{asset('/js/dashboard_admin.js')}}"></script>
 
 </body>
 </html>

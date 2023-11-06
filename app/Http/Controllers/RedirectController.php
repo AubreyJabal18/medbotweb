@@ -46,8 +46,12 @@ class RedirectController extends Controller
             else if(Auth::user()->type == 'professional'){
                 $user = Auth::user();
                 $latest_readings = Reading::with('user')->latest()->get()->unique('user_id')->take(5);
+                $patient_count = User::where('type', 'patient')->count();
+                $professional_count = User::where('type', 'professional')->count();
                 return view('dashboard_professional', [
                     'user' => $user,
+                    'patient_count' => $patient_count,
+                    'professional_count' => $professional_count,
                     'latest_readings' => $latest_readings
                 ]);
             }
