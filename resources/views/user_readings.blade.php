@@ -22,7 +22,7 @@
 		<div class="flex flex-row justify-between items-center px-4 py-3 md:px- mb-6 z-10">
 			<div class="flex flex-row space-x-4 items-center">
 				<a href="/">
-					<img src={{asset('images/dashboard/logo2.png')}} alt="" class="h-8 w-8 md:h-12 md:w-12">
+					<img src={{asset('images/LOGO.png')}} alt="" class="h-8 w-8 md:h-12 md:w-12">
 				</a>
 				<p class="font-roboto font-bold text-[#07DBDB] text-lg md:text-2xl text-shadow">ENHANCED MED-BOT</p>
 			</div>
@@ -44,9 +44,9 @@
 		<div class="flex flex-col space-y-2 md:space-y-0 md:flex-row items-center justify-center md:space-x-5 relative">
 			
 			<div class="flex items-center">
-				<img src="{{asset('images/dashboard/heartbeat.svg')}}" alt="" class="absolute w-36 h-40 xl:w-[600px] xl:h-40 left-0 top-56 xl:top-2 md:hidden xl:block">
+				<img src="{{asset('images/dashboard/heartbeat.svg')}}" alt="" class="absolute w-36 h-40 xl:w-[600px] xl:h-40 left-0 lg:left-32 xl:left-9 top-56 lg:-top-1 xl:-top-1 md:hidden lg:block">
 				<img src="{{asset('images/dashboard/heartbeat.svg')}}" alt="" class="absolute w-36 h-40 xl:w-auto xl:h-40 left-0 hidden md:block">
-				<img src="{{asset('images/dashboard/heartbeat.svg')}}" alt="" class="absolute w-36 h-40 xl:w-[640px] xl:h-40 right-0 top-56 xl:top-2 md:hidden xl:block">
+				<img src="{{asset('images/dashboard/heartbeat.svg')}}" alt="" class="absolute w-36 h-40 xl:w-[640px] xl:h-40 right-0 lg:right-32 xl:right-4 top-56 lg:-top-1 xl:-top-1 md:hidden lg:block">
 				<img src="{{asset('images/dashboard/heartbeat.svg')}}" alt="" class="absolute w-36 h-40 xl:w-auto xl:h-40 right-0 hidden md:block">
 			</div>
 
@@ -83,7 +83,7 @@
 				<img src="{{asset('images/dashboard/bg_design.png')}}" alt="" class=" absolute w-16 lg:w-24 h-16 lg:h-24 bottom-0 left-0 -z-10 rounded-xl ">
             </div>
 			
-			<img src="{{asset('images/dashboard/model2.png')}}" alt="" class="w-36 h-36 lg:w-44 lg:h-44 z-10">
+			<img src="{{asset('images/side view.png')}}" alt="" class="w-36 h-44 md:w-36 md:h-48 lg:w-44 lg:h-52 xl:w-52 xl:h-64 md:hidden z-10">
 			
 		</div>
 
