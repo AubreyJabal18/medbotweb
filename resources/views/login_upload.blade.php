@@ -48,7 +48,7 @@
             <p class="flex mt-12 font-roboto text-xs font-medium text-neutral-300 text-center ">Lost your QR Code? &nbsp;<span><a href="/retrieve_qrcode" class="font-roboto text-neutral-300 hover:text-white text-xs justify-self-center underline">Retrieve it here</a></span></p>
         </div>
         
-        <img src="{{asset('images/login/model.png')}}" alt=" " class="hidden absolute md:block md:-right-7 md:-bottom-6 lg:bottom-10 lg:right-10 md:w-[160px] md:h-[160px] lg:w-[200px] lg:h-[190px]">
+        <img src="{{asset('images/side view.png')}}" alt=" " class="hidden absolute md:block md:-right-0 md:-bottom-1 xl:right-20 xl:bottom-16 lg:bottom-10 lg:right-10 md:w-[120px] md:h-[170px] xl:w-[190px] xl:h-[270px]">
     </div>
 
     <script src="{{asset('/js/login_upload.js')}}"></script>

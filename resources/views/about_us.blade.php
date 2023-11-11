@@ -13,14 +13,14 @@
 
         <div class="flex flex-row justify-center items-center space-x-2 px-8 py-5 md:justify-start">
             <a href="/">
-                <img src="{{asset('images/homepage/logo2.png')}}" alt="" class=" h-[50px] w-[50px]">
+                <img src="{{asset('images/LOGO.png')}}" alt="" class=" h-[50px] w-[50px]">
             </a>
             <p class="font-roboto font-bold text-lg md:text-xl text-[#5ECECD] text-shadow text-center ">ENHANCED MED-BOT</p>
         </div>
 
 
         <div class="flex flex-row justify-center space-x-5 items-center">
-            <img src="{{asset('images/about/medbot.png')}}" alt="" class="w-24 h-24 lg:w-32 lg:h-32">
+            <img src="{{asset('images/front view.png')}}" alt="" class="w-20 h-28 md:w-32 md:h-48">
             <p class="font-roboto font-normal text-center text-lg text-white md:text-4xl underline">THE RESEARCHERS</p>
         </div>
        

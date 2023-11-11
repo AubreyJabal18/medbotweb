@@ -22,19 +22,19 @@
         </div>
 
         <!-- Hero -->
-        <div class="h-fit flex flex-col mx-auto items-center md:flex-row">
-            <img src="{{asset('images/homepage/logo2.png')}}" alt="" class="h-[232px] w-[258px]">
+        <div class="h-fit flex flex-col mx-auto items-center md:flex-row ">
+            <img src="{{asset('images/LOGO.png')}}" alt="" class="h-[232px] w-[258px] m-10">
             <div class="flex flex-col items-center">
                 <p class="font-roboto font-bold text-3xl md:text-4xl text-[#5ECECD] text-shadow text-center lg:text-[64px]">ENHANCED MED-BOT</p>
                 <p class="font-roboto font-normal text-lg md:text-xl text-white text-center lg:text-4xl my-4">“Your Ultimate ALL-in-ONE Healthcare Buddy”</p>
             </div>
         </div>
-        <div class="flex flex-row space-y-4 px-4 mt-6">
+        <div class="flex flex-row space-y-4 px-4 mt-6 justify-items-center">
             <div class="flex flex-col space-y-5 items-center md:space-y-10">
                 <p class="font-roboto font-normal text-center text-base text-white md:text-2xl">"We are here to assist you by offering solutions for your vital sign requirements, transforming the way you monitor your vital sign measurements."</p>
                 <a href="/register/user" class="relative border border-white rounded-full bg-[#5EADD7] font-roboto font-semibold tracking-wide text-sm text-white px-4 py-3 md:text-base md:px-12 md:py-5">GET STARTED</a>
             </div>
-            <img src="{{asset('images/homepage/model_front_view.png')}}" alt="" class="h-[35%] w-[30%] md:-translate-y-24">
+            <img src="{{asset('images/front view.png')}}" alt="" class="h-[45%] w-[40%] m-5 md:h-[20%] md:w-[15%] md:-translate-y-24 md:m-10">
         </div> 
     </div>
 

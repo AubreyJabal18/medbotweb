@@ -25,7 +25,7 @@
             <div class="flex flex-row justify-between items-center px-4 py-3 md:px-10">
                 <div class="flex flex-row space-x-4 items-center">
                     <a href="/">
-                        <img src= "{{asset('images/dashboard/logo2.png')}}" alt="" class="h-8 w-8 md:h-12 md:w-12">
+                        <img src= "{{asset('images/LOGO.png')}}" alt="" class="h-8 w-8 md:h-12 md:w-12">
                     </a>
                     <p class="font-roboto font-bold text-[#07DBDB] text-lg md:text-2xl text-shadow">ENHANCED MED-BOT</p>
                 </div>
@@ -57,7 +57,7 @@
                     </p>
                     
                     
-                    <img src="{{asset('images/dashboard/model.png')}}" alt="" class="absolute self-end md:h-[50%] md:w-[30%] lg:h-[55%] lg:w-[20%] md:right-2 lg:right-12 md:top-[38%] lg:top-[33%] hidden md:block">
+                    <img src="{{asset('images/side view.png')}}" alt="" class="absolute self-end md:h-[50%] md:w-[30%] lg:h-[55%] lg:w-[20%] md:right-2 lg:right-12 md:top-[38%] lg:top-[33%] hidden md:block">
                 </div>
             </div> 
         </div>

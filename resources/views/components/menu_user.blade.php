@@ -1,4 +1,4 @@
-<div id="menu" class=" hidden flex flex-col absolute z-50 w-3/4 md:w-1/5 h-fit bg-white rounded-md drop-shadow-md top-16 right-2 px-8 py-4">
+<div id="menu" class=" hidden flex flex-col absolute z-50 w-3/4 md:w-2/4 lg:w-1/4 h-fit bg-white rounded-md drop-shadow-md top-16 right-2 px-8 py-4">
     <div class="flex flex-col items-center">
         <img src="{{ $user->profile != null ? asset('storage/' . $user->profile) : asset('images/dashboard/profile.png')}}" alt="" class="w-16 h-16 m-2 rounded-full">
         <p class="font-roboto font-bold text-center">{{ $user->first_name }} {{ $user->last_name }} {{ $user->suffix ? $user->suffix : '' }}</p>
