@@ -56,8 +56,8 @@
                         Welcome to {{ $user->first_name}} {{ $user->last_name}} {{ $user->suffix ? $user->suffix : '' }} medical dashboard. Kindly review the comprehensive records to ensure optimal care and treatment planning.
                     </p>
                     
-                    
-                    <img src="{{asset('images/side view.png')}}" alt="" class="absolute self-end md:h-[50%] md:w-[30%] lg:h-[55%] lg:w-[20%] md:right-2 lg:right-12 md:top-[38%] lg:top-[33%] hidden md:block">
+                    <img src="{{asset('images/side view.png')}}" alt="" class="absolute self-end md:h-[60%] md:w-[25%] lg:h-[70%] lg:w-[23%] xl:h-[80%] xl:w-[20%] md:right-7 lg:right-12 xl:right-24 md:top-[38%] lg:top-[33%] hidden md:block">
+
                 </div>
             </div> 
         </div>
