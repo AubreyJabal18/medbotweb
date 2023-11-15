@@ -167,10 +167,37 @@ function renderReadingTrendsChart(by, value, id){
                     
                 ]
             };
+
             const readingTrendsConfig = {
                 type: 'line',
                 data: readingTrendsData,
+                options: {
+                    plugins:{
+                        annotation: {
+                            drawTime: 'afterDatasetsDraw',
+                            events: ['click'],
+                            annotations: [{
+                                id: 'systolics',
+                                type: 'line',
+                                mode: 'horizontal',
+                                scaleID: 'y-axis-0',
+                                value: '120',
+                                borderColor: 'black',
+                                borderWidth: '5',
+                                label:  {
+                                    backgroundColor: 'red',
+                                    content: 'testing',
+                                    enable: true
+                                },
+                                onClick: function(e){
+                                    console.log('Annotation',e.type,this);
+                                }
+                            }]
+                        }
+                    }
+                }
             };
+
             if(readingTrendsChart != null){
                 readingTrendsChart.destroy();
             }
@@ -450,7 +477,7 @@ function renderUserRatingsChart() {
         const userRatingsData = {
             labels: ['Low', 'Normal', 'High'],
             datasets: [{
-                backgroundColor: ['#FFE34F','#1BC222', '#F24242'],
+                backgroundColor: ['#38B6FF','#1BC222', '#F24242'],
                 data: rating_counts,
             }]
         };
