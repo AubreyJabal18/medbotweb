@@ -39,7 +39,7 @@ getUserListInAdminDashboard().then((data) => {
                                 openNoticeDeletePatientModal();
                                 activeCardId = row.cells[0].data;
                             },
-                        }, 'Remove'   
+                        }, 'Archive'   
                     );
                 }
                 }, 
