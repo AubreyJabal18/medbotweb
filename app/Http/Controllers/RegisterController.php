@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use App\Traits\Upload;
 use Illuminate\Support\Facades\Auth;
+use Faker\Factory;
 
 class RegisterController extends Controller
 {
@@ -78,10 +79,15 @@ class RegisterController extends Controller
             'question' => $request->question,
             'answer' => $request->answer
         ];
-       
+        
+        $faker = Factory::create();
+        // $randomString = $faker -> lexify('???');
+        $randomString = strtoupper($faker->randomLetter . $faker->randomLetter . $faker->randomLetter);
+        // $randomNumber = $faker->randomNumber(3);
+
         $user = User::create($user_form);
         $municipality_firstLetter = strtoupper(substr( $request->municipality, 0, 3));
-        $user->id_number = '5B2-'.$municipality_firstLetter.'PZT-'.$user->id;
+        $user->id_number = '5B2-'.$municipality_firstLetter.'PZT-'.$randomString;
         $user->save();
        
 
@@ -169,9 +175,14 @@ class RegisterController extends Controller
             'answer' => $request->answer
         ];
 
+        $faker = Factory::create();
+        // $randomString = $faker -> lexify('???');
+        $randomString = strtoupper($faker->randomLetter . $faker->randomLetter . $faker->randomLetter);
+        // $randomNumber = $faker->randomNumber(3);
+
         $user = User::create($user_form);
         $municipality_firstLetter = strtoupper(substr( $request->municipality, 0, 3));
-        $user->id_number = '5B2-'.$municipality_firstLetter.'HCP-'.$user->id;
+        $user->id_number = '5B2-'.$municipality_firstLetter.'HCP-'.$randomString;
         $user->save();
 
         if($request->hasFile('profile')){
