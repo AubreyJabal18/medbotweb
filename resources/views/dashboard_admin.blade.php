@@ -35,7 +35,7 @@
             </div>
 
             <div class="flex flex-col items-center justify-center bg-[#F3EFEF]/50 py-2 md:py-4 lg:py-5 md:flex-row md:justify-between px-10">
-                <p class="font-roboto font-semibold text-[#A03B3B] text-lg md:text-2xl">Dashboard</p>
+                <p class="font-roboto font-semibold text-white text-lg md:text-2xl">Dashboard</p>
               
             </div>
 

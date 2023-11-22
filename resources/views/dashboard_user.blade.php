@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <script src="{{asset('/js/moment.js')}}"></script>
+    <script src="{{asset('/js/chart js/dist/chart.umd.js')}}"></script>
+
     @vite('resources/css/app.css')
 </head>
 <body>
@@ -12,7 +14,7 @@
         <script>
             const id = {{session()->get('id')}};
             open('/get/qrcode?id='+id);
-        </script>
+        </scrip>
     @endif
 
     @php
@@ -25,7 +27,7 @@
             <div class="flex flex-row justify-between items-center px-4 py-3 md:px-10">
                 <div class="flex flex-row space-x-4 items-center">
                     <img src={{asset('images/LOGO.png')}} alt="" class="h-8 w-8 md:h-12 md:w-12">
-                    <p class="font-roboto font-bold text-[#07DBDB] text-lg md:text-2xl text-shadow">ENHANCED MED-BOT</p>
+                    <p class="font-roboto font-bold text-[#5ECECD] text-lg md:text-2xl text-shadow">ENHANCED MED-BOT</p>
                 </div>
                 <div class="flex flex-row space-x-4 items-center justify-end">
                     <p class="hidden font-roboto font-normal text-white text-lg md:block">{{ $user->first_name }} {{ $user->last_name }} {{ $user->suffix ? $user->suffix : '' }}</p>
@@ -42,7 +44,7 @@
             </div>
 
             <div class="flex flex-col items-center justify-center bg-[#F3EFEF]/50 py-2 md:py-4 lg:py-5 md:flex-row md:justify-between px-10">
-                <p class="font-roboto font-semibold text-[#A03B3B] text-lg md:text-2xl">Dashboard</p>
+                <p class="font-roboto font-semibold text-white text-lg md:text-2xl">Dashboard</p>
             </div>
 
             <div class="flex flex-col justify-center py-8 px-4">
@@ -516,8 +518,10 @@
         </div>
     </div>
 
-    <script src="{{asset('/js/chart.js')}}"></script>
-    <script src="{{ asset('/js/dashboard_user.js') }}"></script>
+    <script src="{{asset('/js/chart.js')}}"></scrip>
+    <script src="{{ asset('/js/dashboard_user.js') }}"></scrip>
     <script src="{{ asset('/js/vitals_info.js') }}"></script>
+    <script src="{{ asset('/js/chartjs-plugin-annotation.min.js') }}"></script>
+
 </body>
 </html>
