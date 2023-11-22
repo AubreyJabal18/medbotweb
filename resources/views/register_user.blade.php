@@ -154,15 +154,90 @@
                             <input class=" shadow appearance-none border rounded h-fit w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your answer" type="text" id="answer" name="answer" value="{{old('answer')}}">
                         </div>                          
                        
-
                     </div>
-                
-                
 
                     <div class="flex justify-center items-center my-7 md:items-center md:my-10">
-                        <input type="checkbox" class=" checked:bg-black w-4 h-4" id='terms'>
-                        <span class="ml-2 text-sm text-black text-center">I agree to the <a href="#" class="text-[#7A9DEA] underline underline-offset-2">Terms and Condition</a></span>
+                        <input type="checkbox" class="checked:bg-black w-4 h-4" id="terms">
+                        <span class="ml-2 text-sm text-black text-center">
+                            I agree to the <a href="#" class="text-[#7A9DEA] underline underline-offset-2" onclick="openTermsPopup()">Terms and Condition</a>
+                            and <a href="#" class="text-[#7A9DEA] underline underline-offset-2" onclick="openPrivacyPopup()">Privacy Notice</a>
+                        </span>
                     </div>
+                    
+                    <!-- Terms Popup -->
+                    <div class="fixed inset-0 flex items-center justify-center hidden" id="termsPopup">
+                        <div class="bg-black bg-opacity-50 absolute inset-0"></div>
+                        <div class="bg-white w-full md:max-w-2xl max-w-sm rounded shadow-lg p-8 relative z-10 overflow-y-auto max-h-[80vh]">
+                            <span id="closeButtonTerms" class="text-gray-700 text-2xl font-bold cursor-pointer absolute top-2 right-4" onclick="closeTermsPopup()">&times;</span>
+                            <h2 class="text-2xl text-center font-bold mb-4">TERMS AND CONDITIONS</h2>
+                            <p id="termsContent" class="ml-4 text-justify">
+                                <span class="ml-4">Welcome to Med-bot, the innovative Internet of Things (IoT) monitoring system designed to enhance healthcare through continuous blood vital signs monitoring. Before using our platform, please carefully read and understand the following terms and conditions. These terms outline the rights, responsibilities, and expectations for both healthcare professionals and patients utilizing the Med-bot system.<br></span>
+                                            
+                                <br>1. Patients<br>
+
+                                <span class="ml-4">1.1. Consent to Monitoring</span><br>
+                                <span class="ml-8">1.1.1 Patients consent to the continuous monitoring of their blood vital signs through the Med-bot IoT system.</span><br>
+                                
+                                <br><span class="ml-4">1.2. Data Usage</span><br>
+                                <span class="ml-8">1.2.1 Patient data collected by the system will be used solely for the purpose of monitoring and improving healthcare outcomes.</span><br>
+                                
+                                <br><span class="ml-4">1.3 Privacy and Confidentiality</span><br>
+                                <span class="ml-8">1.3.1 The system ensures the privacy and confidentiality of patient data, and it will not be shared with third parties without explicit consent, except as required by law.</span><br>
+                                
+                                <br><span class="ml-4">1.4 System Usage</span><br>
+                                <span class="ml-8">1.4.1 Patients agree to use the system responsibly and report any concerns or issues with the functionality promptly.</span><br>
+                                
+                                <br><span class="ml-4">1.5 Emergency Situations</span><br>
+                                <span class="ml-8">1.5.1 In emergency situations, healthcare professionals may access patient data to provide timely and appropriate medical assistance.</span><br>
+                                <br>
+                                <span class="ml-4">By accessing and using Med-bot, you acknowledge your acceptance of these terms. If you do not agree with any part of these terms, we advise against using the platform.<br></span>
+                                
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Privacy Popup -->
+                    <div class="fixed inset-0 flex items-center justify-center hidden" id="privacyPopup">
+                        <div class="bg-black bg-opacity-50 absolute inset-0"></div>
+                        <div class="bg-white w-full md:max-w-2xl max-w-sm rounded shadow-lg p-8 relative z-10 overflow-y-auto max-h-[80vh]">
+                            <span id="closeButtonPrivacy" class="text-gray-700 text-2xl font-bold cursor-pointer absolute top-2 right-4" onclick="closePrivacyPopup()">&times;</span>
+                            <h2 class="text-2xl font-bold mb-4">Privacy Notice</h2>
+                            <p id="privacyContent" class="ml-4 text-justify">
+                                <span class="ml-4">Welcome to Med-bot's Privacy Notice. This notice outlines how we collect, use, disclose, and safeguard your personal information when you use our Internet of Things (IoT) monitoring system. We are committed to protecting your privacy and ensuring the confidentiality of your data. </span><br>
+                            
+                                <br>**Information We Collect:**<br>
+                                <span class="ml-4">We collect and process various types of information, including but not limited to:</span><br>
+                                
+                                <span class="ml-4">- Personal information provided by users during account registration.</span><br>
+                                <span class="ml-4">- Health-related data obtained through continuous monitoring using the Med-bot IoT system.</span><br>
+                                <span class="ml-4">- Usage information, such as system interactions and preferences.</span><br>
+                            
+                               <br> **How We Use Your Information:**<br>
+                               <span class="ml-4">We use the collected information for the following purposes:</span><br>
+                                
+                                <span class="ml-4">- Providing and improving our healthcare services.</span><br>
+                                <span class="ml-4">- Customizing and enhancing the user experience.</span><br>
+                                <span class="ml-4">- Ensuring the security and integrity of the Med-bot system.</span><br>
+                                <span class="ml-4">- Complying with legal obligations and regulations.</span><br>
+                            
+                                <br>**Information Sharing:**<br>
+                                <span class="ml-4">We do not share your personal information with third parties without your explicit consent, except as required by law or to provide our healthcare services effectively.<br>
+                            
+                                <br>**Data Security:**<br>
+                                <span class="ml-4">We employ industry-standard security measures to protect your information from unauthorized access, disclosure, alteration, and destruction.<br>
+                            
+                                <br>**Your Choices:**<br>
+                                <span class="ml-4">You have the right to review, update, and delete your personal information. You can manage your privacy preferences through your account settings.<br>
+                            
+                                <br>**Contact Us:**<br>
+                                <span class="ml-4">If you have any questions or concerns about our Privacy Notice or data practices, please [contact us](#) for assistance.<br>
+                            
+                                <br><span class="ml-4">By using Med-bot, you acknowledge and agree to the terms outlined in this Privacy Notice. If you disagree with any part of this notice, we recommend refraining from using our platform.
+                            </p>
+                            
+                        </div>
+                    </div>
+
 
                     <div class="flex justify-center items-center my-2 md:my-0">
                         <button type="button" id="submit-button" class="flex items-center justify-center border rounded-full w-28 h-11 bg-[#47B0E1] font-roboto font-medium text-base text-white md:w-32 md:h-12">Register</button>
@@ -186,11 +261,13 @@
                 <img src="{{asset('images/register/Ellipse 3.svg')}}" alt="" class="">
             </div>
         </div>
+    
     </div>
 
     <script src="{{ asset('/js/barangay.js') }}"></script>
     <script src="{{ asset('/js/validate_user_registration.js') }}"></script>
     <script src="{{ asset('/js/profile_selector.js') }}"></script>
+    <script src="{{ asset('/js/terms_condition.js') }}"></script>
 
     <script>
         var oldMunicipality = {{Js::from(old('municipality'))}};
