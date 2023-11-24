@@ -172,27 +172,17 @@ function renderReadingTrendsChart(by, value, id){
                 type: 'line',
                 data: readingTrendsData,
                 options: {
-                    plugins:{
+                    plugins: {
                         annotation: {
-                            drawTime: 'afterDatasetsDraw',
-                            events: ['click'],
-                            annotations: [{
-                                id: 'systolics',
+                            annotations: {
+                                line1: {
                                 type: 'line',
-                                mode: 'horizontal',
-                                scaleID: 'y-axis-0',
-                                value: '120',
-                                borderColor: 'black',
-                                borderWidth: '5',
-                                label:  {
-                                    backgroundColor: 'red',
-                                    content: 'testing',
-                                    enable: true
-                                },
-                                onClick: function(e){
-                                    console.log('Annotation',e.type,this);
+                                yMin: 60,
+                                yMax: 60,
+                                borderColor: 'rgb(255, 99, 132)',
+                                borderWidth: 2,
                                 }
-                            }]
+                            }
                         }
                     }
                 }

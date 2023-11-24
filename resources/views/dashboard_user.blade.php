@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <script src="{{asset('/js/moment.js')}}"></script>
-    <script src="{{asset('/js/chart js/dist/chart.umd.js')}}"></script>
+    <script src="{{asset('/js/chart-js/chart.umd.js')}}"></script>
+    <script src="{{asset('/js/chart-js-annotation/chartjs-plugin-annotation.min.js')}}"></script>
 
     @vite('resources/css/app.css')
 </head>
@@ -518,10 +519,8 @@
         </div>
     </div>
 
-    <script src="{{asset('/js/chart.js')}}"></scrip>
     <script src="{{ asset('/js/dashboard_user.js') }}"></scrip>
     <script src="{{ asset('/js/vitals_info.js') }}"></script>
-    <script src="{{ asset('/js/chartjs-plugin-annotation.min.js') }}"></script>
 
 </body>
 </html>
