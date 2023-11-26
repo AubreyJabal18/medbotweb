@@ -70,100 +70,42 @@ async function getReadings(by, value, id){
     return data['readings'];
 }
 
+let userId;
 var readingTrendsChart = null;
 
-function renderReadingTrendsChart(by, value, id){
+function renderBloodPressureReadingChart(by, value, id){
     getReadings(by, value, id).then((data) => {
         if(by == 'weekly'){
             labels = [];
             readings = [];
             systolics =[];
-            diastolics = [];
-            bloodSaturation =[];
-            temperature =[];
-            pulseRate =[];
+            diastolics =[];
+            mbps = [];
             for (const [key, value] of Object.entries(data)) {
                 labels.push(key);
                 readings.push(value);
             }
             for(let i = 0; i < readings.length; i++){
                 if(readings[i] != null){
-                    systolics.push(readings[i]['blood_pressure_systolic']);
+                    const mbp = readings[i]['blood_pressure_diastolic'] +
+                        (1 / 3) * (readings[i]['blood_pressure_systolic'] - readings[i]['blood_pressure_diastolic']);
+                    mbps.push(mbp);
                 }
                 else{
-                    systolics.push(0);
+                    mbps.push(0);
                 }
             }
-            for(let i = 0; i < readings.length; i++){
-                if(readings[i] != null){
-                    diastolics.push(readings[i]['blood_pressure_diastolic']);
-                }
-                else{
-                    diastolics.push(0);
-                }
-            }
-            for(let i = 0; i < readings.length; i++){
-                if(readings[i] != null){
-                    bloodSaturation.push(readings[i]['blood_saturation']);
-                }
-                else{
-                    bloodSaturation.push(0);
-                }
-            }
-            for(let i = 0; i < readings.length; i++){
-                if(readings[i] != null){
-                    temperature.push(readings[i]['temperature']);
-                }
-                else{
-                    temperature.push(0);
-                }
-            }
-            for(let i = 0; i < readings.length; i++){
-                if(readings[i] != null){
-                    pulseRate.push(readings[i]['pulse_rate']);
-                }
-                else{
-                    pulseRate.push(0);
-                }
-            }
+
             const readingTrendsData = {
                 labels: labels,
                 datasets: [
                     {
-                        label: 'Systolic',
-                        data: systolics,
+                    label: 'Blood Pressure',
+                        data: mbps,
                         fill: false,
                         borderColor: 'rgb(75, 192, 192)',
                         tension: 0.1
                     },
-                    {
-                        label: 'Diastolic',
-                        data: diastolics,
-                        fill: false,
-                        borderColor: 'rgb(23, 202, 92)',
-                        tension: 0.1
-                    },
-                    {
-                        label: 'Blood Saturation',
-                        data: bloodSaturation,
-                        fill: false,
-                        borderColor: 'red',
-                        tension: 0.1
-                    },
-                    {
-                        label: 'Temperature',
-                        data: temperature,
-                        fill: false,
-                        borderColor: 'orange',
-                        tension: 0.1
-                    },
-                    {
-                        label: 'Pulse Rate',
-                        data: pulseRate,
-                        fill: false,
-                        borderColor: 'violet',
-                        tension: 0.1
-                    }
                     
                 ]
             };
@@ -175,13 +117,45 @@ function renderReadingTrendsChart(by, value, id){
                     plugins: {
                         annotation: {
                             annotations: {
-                                line1: {
-                                type: 'line',
-                                yMin: 60,
-                                yMax: 60,
-                                borderColor: 'rgb(255, 99, 132)',
-                                borderWidth: 2,
-                                }
+                               BpLowLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 30,
+                                    borderColor: 'rgb(0, 255, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Blood Pressure Low',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                BpNormalLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 60,
+                                    borderColor: 'rgb(255, 255, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Blood Pressure Normal',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                BpHighLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 120,
+                                    borderColor: 'rgb(255, 0, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Blood Pressure High',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
                             }
                         }
                     }
@@ -200,10 +174,8 @@ function renderReadingTrendsChart(by, value, id){
             labels = [];
             readings = [];
             systolics =[];
-            diastolics = [];
-            bloodSaturation =[];
-            temperature =[];
-            pulseRate =[];
+            diastolics =[];
+            mbps = [];
             console.log(data)
             for (const [key, value] of Object.entries(data)) {
                 labels.push(key);
@@ -211,83 +183,25 @@ function renderReadingTrendsChart(by, value, id){
             }
             for(let i = 0; i < readings.length; i++){
                 if(readings[i] != null){
-                    systolics.push(readings[i]['blood_pressure_systolic']);
+                    const mbp = readings[i]['blood_pressure_diastolic'] +
+                        (1 / 3) * (readings[i]['blood_pressure_systolic'] - readings[i]['blood_pressure_diastolic']);
+                    mbps.push(mbp);
                 }
                 else{
-                    systolics.push(0);
+                    mbps.push(0);
                 }
             }
-            for(let i = 0; i < readings.length; i++){
-                if(readings[i] != null){
-                    diastolics.push(readings[i]['blood_pressure_diastolic']);
-                }
-                else{
-                    diastolics.push(0);
-                }
-            }
-            for(let i = 0; i < readings.length; i++){
-                if(readings[i] != null){
-                    bloodSaturation.push(readings[i]['blood_saturation']);
-                }
-                else{
-                    bloodSaturation.push(0);
-                }
-            }
-            for(let i = 0; i < readings.length; i++){
-                if(readings[i] != null){
-                    temperature.push(readings[i]['temperature']);
-                }
-                else{
-                    temperature.push(0);
-                }
-            }
-            for(let i = 0; i < readings.length; i++){
-                if(readings[i] != null){
-                    pulseRate.push(readings[i]['pulse_rate']);
-                }
-                else{
-                    pulseRate.push(0);
-                }
-            }
+
             const readingTrendsData = {
                 labels: labels,
-                datasets: [
+                datasets:[
                     {
-                        label: 'Systolic',
-                        data: systolics,
+                    label: 'Blood Pressure',
+                        data: mbps,
                         fill: false,
                         borderColor: 'rgb(75, 192, 192)',
                         tension: 0.1
                     },
-                    {
-                        label: 'Diastolic',
-                        data: diastolics,
-                        fill: false,
-                        borderColor: 'rgb(23, 202, 92)',
-                        tension: 0.1
-                    },
-                    {
-                        label: 'Blood Saturation',
-                        data: bloodSaturation,
-                        fill: false,
-                        borderColor: 'red',
-                        tension: 0.1
-                    },
-                    {
-                        label: 'Temperature',
-                        data: temperature,
-                        fill: false,
-                        borderColor: 'orange',
-                        tension: 0.1
-                    },
-                    {
-                        label: 'Pulse Rate',
-                        data: pulseRate,
-                        fill: false,
-                        borderColor: 'violet',
-                        tension: 0.1
-                    }
-                    
                 ]
             };
             const readingTrendsConfig = {
@@ -306,10 +220,8 @@ function renderReadingTrendsChart(by, value, id){
             labels = [];
             readings = [];
             systolics =[];
-            diastolics = [];
-            bloodSaturation =[];
-            temperature =[];
-            pulseRate =[];
+            diastolics =[];
+            mbps = [];
             console.log(data)
             for (const [key, value] of Object.entries(data)) {
                 labels.push(key);
@@ -317,85 +229,28 @@ function renderReadingTrendsChart(by, value, id){
             }
             for(let i = 0; i < readings.length; i++){
                 if(readings[i] != null){
-                    systolics.push(readings[i]['blood_pressure_systolic']);
+                    const mbp = readings[i]['blood_pressure_diastolic'] +
+                        (1 / 3) * (readings[i]['blood_pressure_systolic'] - readings[i]['blood_pressure_diastolic']);
+                    mbps.push(mbp);
                 }
                 else{
-                    systolics.push(0);
+                    mbps.push(0);
                 }
             }
-            for(let i = 0; i < readings.length; i++){
-                if(readings[i] != null){
-                    diastolics.push(readings[i]['blood_pressure_diastolic']);
-                }
-                else{
-                    diastolics.push(0);
-                }
-            }
-            for(let i = 0; i < readings.length; i++){
-                if(readings[i] != null){
-                    bloodSaturation.push(readings[i]['blood_saturation']);
-                }
-                else{
-                    bloodSaturation.push(0);
-                }
-            }
-            for(let i = 0; i < readings.length; i++){
-                if(readings[i] != null){
-                    temperature.push(readings[i]['temperature']);
-                }
-                else{
-                    temperature.push(0);
-                }
-            }
-            for(let i = 0; i < readings.length; i++){
-                if(readings[i] != null){
-                    pulseRate.push(readings[i]['pulse_rate']);
-                }
-                else{
-                    pulseRate.push(0);
-                }
-            }
+
             const readingTrendsData = {
                 labels: labels,
                 datasets: [
                     {
-                        label: 'Systolic',
-                        data: systolics,
+                    label: 'Blood Pressure',
+                        data: mbps,
                         fill: false,
                         borderColor: 'rgb(75, 192, 192)',
                         tension: 0.1
-                    },
-                    {
-                        label: 'Diastolic',
-                        data: diastolics,
-                        fill: false,
-                        borderColor: 'rgb(23, 202, 92)',
-                        tension: 0.1
-                    },
-                    {
-                        label: 'Blood Saturation',
-                        data: bloodSaturation,
-                        fill: false,
-                        borderColor: 'red',
-                        tension: 0.1
-                    },
-                    {
-                        label: 'Temperature',
-                        data: temperature,
-                        fill: false,
-                        borderColor: 'orange',
-                        tension: 0.1
-                    },
-                    {
-                        label: 'Pulse Rate',
-                        data: pulseRate,
-                        fill: false,
-                        borderColor: 'violet',
-                        tension: 0.1
                     }
-                    
                 ]
             };
+
             const readingTrendsConfig = {
                 type: 'line',
                 data: readingTrendsData,
@@ -412,34 +267,945 @@ function renderReadingTrendsChart(by, value, id){
     
 }
 
+function renderBloodSaturationReadingChart(by, value, id){
+    getReadings(by, value, id).then((data) => {
+        if(by == 'weekly'){
+            labels = [];
+            readings = [];
+            bloodSaturation =[];
+            for (const [key, value] of Object.entries(data)) {
+                labels.push(key);
+                readings.push(value);
+            }
+            for(let i = 0; i < readings.length; i++){
+                if(readings[i] != null){
+                    bloodSaturation.push(readings[i]['blood_saturation']);
+                }
+                else{
+                    bloodSaturation.push(0);
+                }
+            }
+
+            const readingTrendsData = {
+                labels: labels,
+                datasets: [
+                    {
+                    label: 'Oxygen Saturation',
+                        data: bloodSaturation,
+                        fill: false,
+                        borderColor: 'red',
+                        tension: 0.1
+                    },
+                    
+                ]
+            };
+
+            const readingTrendsConfig = {
+                type: 'line',
+                data: readingTrendsData,
+                options: {
+                    plugins: {
+                        annotation: {
+                            annotations: {
+                               OsLowLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 30,
+                                    borderColor: 'rgb(0, 255, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Oxygen Saturation Low',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                OsNormalLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 60,
+                                    borderColor: 'rgb(255, 255, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Oxygen Saturation Normal',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                OsHighLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 120,
+                                    borderColor: 'rgb(255, 0, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Oxygen Saturation High',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                            }
+                        }
+                    }
+                }
+            };
+
+            if(readingTrendsChart != null){
+                readingTrendsChart.destroy();
+            }
+            readingTrendsChart = new Chart(
+                document.getElementById('reading-trends'),
+                readingTrendsConfig
+            )
+        }
+        else if(by == 'monthly'){
+            labels = [];
+            readings = [];
+            bloodSaturation =[];
+            for (const [key, value] of Object.entries(data)) {
+                labels.push(key);
+                readings.push(value);
+            }
+            for(let i = 0; i < readings.length; i++){
+                if(readings[i] != null){
+                    bloodSaturation.push(readings[i]['blood_saturation']);
+                }
+                else{
+                    bloodSaturation.push(0);
+                }
+            }
+
+            const readingTrendsData = {
+                labels: labels,
+                datasets: [
+                    {
+                    label: 'Oxygen Saturation',
+                        data: bloodSaturation,
+                        fill: false,
+                        borderColor: 'red',
+                        tension: 0.1
+                    },
+                    
+                ]
+            };
+
+            const readingTrendsConfig = {
+                type: 'line',
+                data: readingTrendsData,
+                options: {
+                    plugins: {
+                        annotation: {
+                            annotations: {
+                               OsLowLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 30,
+                                    borderColor: 'rgb(0, 255, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Oxygen Saturation Low',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                OsNormalLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 60,
+                                    borderColor: 'rgb(255, 255, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Oxygen Saturation Normal',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                OsHighLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 120,
+                                    borderColor: 'rgb(255, 0, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Oxygen Saturation High',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                            }
+                        }
+                    }
+                }
+            };
+            
+            if(readingTrendsChart != null){
+                readingTrendsChart.destroy();
+            }
+            readingTrendsChart = new Chart(
+                document.getElementById('reading-trends'),
+                readingTrendsConfig
+            )
+        }
+        else if(by == 'yearly'){
+            labels = [];
+            readings = [];
+            bloodSaturation =[];
+            for (const [key, value] of Object.entries(data)) {
+                labels.push(key);
+                readings.push(value);
+            }
+            for(let i = 0; i < readings.length; i++){
+                if(readings[i] != null){
+                    bloodSaturation.push(readings[i]['blood_saturation']);
+                }
+                else{
+                    bloodSaturation.push(0);
+                }
+            }
+
+            const readingTrendsData = {
+                labels: labels,
+                datasets: [
+                    {
+                    label: 'Oxygen Saturation',
+                        data: bloodSaturation,
+                        fill: false,
+                        borderColor: 'red',
+                        tension: 0.1
+                    },
+                    
+                ]
+            };
+
+            const readingTrendsConfig = {
+                type: 'line',
+                data: readingTrendsData,
+                options: {
+                    plugins: {
+                        annotation: {
+                            annotations: {
+                               OsLowLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 30,
+                                    borderColor: 'rgb(0, 255, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Oxygen Saturation Low',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                OsNormalLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 60,
+                                    borderColor: 'rgb(255, 255, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Oxygen Saturation Normal',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                OsHighLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 120,
+                                    borderColor: 'rgb(255, 0, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Oxygen Saturation High',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                            }
+                        }
+                    }
+                }
+            };
+
+            if(readingTrendsChart != null){
+                readingTrendsChart.destroy();
+            }
+            readingTrendsChart = new Chart(
+                document.getElementById('reading-trends'),
+                readingTrendsConfig
+            )
+        }
+    })
+    
+}
+
+function renderTemperatureReadingChart(by, value, id){
+    getReadings(by, value, id).then((data) => {
+        if(by == 'weekly'){
+            labels = [];
+            readings = [];
+            temperature =[];
+            for (const [key, value] of Object.entries(data)) {
+                labels.push(key);
+                readings.push(value);
+            }
+            for(let i = 0; i < readings.length; i++){
+                if(readings[i] != null){
+                    temperature.push(readings[i]['temperature']);
+                }
+                else{
+                    temperature.push(0);
+                }
+            }
+
+            const readingTrendsData = {
+                labels: labels,
+                datasets: [
+                    {
+                    label: 'Temperature',
+                        data: temperature,
+                        fill: false,
+                        borderColor: 'orange',
+                        tension: 0.1
+                    },
+                    
+                ]
+            };
+
+            const readingTrendsConfig = {
+                type: 'line',
+                data: readingTrendsData,
+                options: {
+                    plugins: {
+                        annotation: {
+                            annotations: {
+                               TempLowLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 30,
+                                    borderColor: 'rgb(0, 255, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Temperature Low',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                TempNormalLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 60,
+                                    borderColor: 'rgb(255, 255, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Temperature Normal',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                TempHighLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 120,
+                                    borderColor: 'rgb(255, 0, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Temperature High',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                            }
+                        }
+                    }
+                }
+            };
+
+            if(readingTrendsChart != null){
+                readingTrendsChart.destroy();
+            }
+            readingTrendsChart = new Chart(
+                document.getElementById('reading-trends'),
+                readingTrendsConfig
+            )
+        }
+        else if(by == 'monthly'){
+            labels = [];
+            readings = [];
+            temperature =[];
+            for (const [key, value] of Object.entries(data)) {
+                labels.push(key);
+                readings.push(value);
+            }
+            for(let i = 0; i < readings.length; i++){
+                if(readings[i] != null){
+                    temperature.push(readings[i]['temperature']);
+                }
+                else{
+                    temperature.push(0);
+                }
+            }
+
+            const readingTrendsData = {
+                labels: labels,
+                datasets: [
+                    {
+                    label: 'Temperature',
+                        data: temperature,
+                        fill: false,
+                        borderColor: 'orange',
+                        tension: 0.1
+                    },
+                    
+                ]
+            };
+
+            const readingTrendsConfig = {
+                type: 'line',
+                data: readingTrendsData,
+                options: {
+                    plugins: {
+                        annotation: {
+                            annotations: {
+                               TempLowLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 30,
+                                    borderColor: 'rgb(0, 255, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Temperature Low',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                TempNormalLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 60,
+                                    borderColor: 'rgb(255, 255, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Temperature Normal',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                TempHighLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 120,
+                                    borderColor: 'rgb(255, 0, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Temperature High',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                            }
+                        }
+                    }
+                }
+            };
+            
+            if(readingTrendsChart != null){
+                readingTrendsChart.destroy();
+            }
+            readingTrendsChart = new Chart(
+                document.getElementById('reading-trends'),
+                readingTrendsConfig
+            )
+        }
+        else if(by == 'yearly'){
+            labels = [];
+            readings = [];
+            temperature =[];
+            for (const [key, value] of Object.entries(data)) {
+                labels.push(key);
+                readings.push(value);
+            }
+            for(let i = 0; i < readings.length; i++){
+                if(readings[i] != null){
+                    temperature.push(readings[i]['temperature']);
+                }
+                else{
+                    temperature.push(0);
+                }
+            }
+
+            const readingTrendsData = {
+                labels: labels,
+                datasets: [
+                    {
+                    label: 'Temperature',
+                        data: temperature,
+                        fill: false,
+                        borderColor: 'orange',
+                        tension: 0.1
+                    },
+                    
+                ]
+            };
+
+            const readingTrendsConfig = {
+                type: 'line',
+                data: readingTrendsData,
+                options: {
+                    plugins: {
+                        annotation: {
+                            annotations: {
+                               TempLowLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 30,
+                                    borderColor: 'rgb(0, 255, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Temperature Low',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                TempNormalLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 60,
+                                    borderColor: 'rgb(255, 255, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Temperature Normal',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                TempHighLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 120,
+                                    borderColor: 'rgb(255, 0, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Temperature High',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                            }
+                        }
+                    }
+                }
+            };
+
+            if(readingTrendsChart != null){
+                readingTrendsChart.destroy();
+            }
+            readingTrendsChart = new Chart(
+                document.getElementById('reading-trends'),
+                readingTrendsConfig
+            )
+        }
+    })
+    
+}
+
+function renderPulseRateReadingChart(by, value, id){
+    getReadings(by, value, id).then((data) => {
+        if(by == 'weekly'){
+            labels = [];
+            readings = [];
+            pulseRate =[];
+            for (const [key, value] of Object.entries(data)) {
+                labels.push(key);
+                readings.push(value);
+            }
+            for(let i = 0; i < readings.length; i++){
+                if(readings[i] != null){
+                    pulseRate.push(readings[i]['pulse_rate']);
+                }
+                else{
+                    pulseRate.push(0);
+                }
+            }
+
+            const readingTrendsData = {
+                labels: labels,
+                datasets: [
+                    {
+                    label: 'Pulse Rate',
+                        data: temperature,
+                        fill: false,
+                        borderColor: 'violet',
+                        tension: 0.1
+                    },
+                    
+                ]
+            };
+
+            const readingTrendsConfig = {
+                type: 'line',
+                data: readingTrendsData,
+                options: {
+                    plugins: {
+                        annotation: {
+                            annotations: {
+                               PrLowLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 30,
+                                    borderColor: 'rgb(0, 255, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Pulse Rate Low',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                PrNormalLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 60,
+                                    borderColor: 'rgb(255, 255, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Pulse Rate Normal',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                PrHighLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 120,
+                                    borderColor: 'rgb(255, 0, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Pulse Rate High',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                            }
+                        }
+                    }
+                }
+            };
+
+            if(readingTrendsChart != null){
+                readingTrendsChart.destroy();
+            }
+            readingTrendsChart = new Chart(
+                document.getElementById('reading-trends'),
+                readingTrendsConfig
+            )
+        }
+        else if(by == 'monthly'){
+            labels = [];
+            readings = [];
+            pulseRate =[];
+            for (const [key, value] of Object.entries(data)) {
+                labels.push(key);
+                readings.push(value);
+            }
+            for(let i = 0; i < readings.length; i++){
+                if(readings[i] != null){
+                    pulseRate.push(readings[i]['pulse_rate']);
+                }
+                else{
+                    pulseRate.push(0);
+                }
+            }
+
+            const readingTrendsData = {
+                labels: labels,
+                datasets: [
+                    {
+                    label: 'Pulse Rate',
+                        data: temperature,
+                        fill: false,
+                        borderColor: 'violet',
+                        tension: 0.1
+                    },
+                    
+                ]
+            };
+
+            const readingTrendsConfig = {
+                type: 'line',
+                data: readingTrendsData,
+                options: {
+                    plugins: {
+                        annotation: {
+                            annotations: {
+                               PrLowLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 30,
+                                    borderColor: 'rgb(0, 255, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Pulse Rate Low',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                PrNormalLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 60,
+                                    borderColor: 'rgb(255, 255, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Pulse Rate Normal',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                PrHighLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 120,
+                                    borderColor: 'rgb(255, 0, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Pulse Rate High',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                            }
+                        }
+                    }
+                }
+            };
+            
+            if(readingTrendsChart != null){
+                readingTrendsChart.destroy();
+            }
+            readingTrendsChart = new Chart(
+                document.getElementById('reading-trends'),
+                readingTrendsConfig
+            )
+        }
+        else if(by == 'yearly'){
+            labels = [];
+            readings = [];
+            pulseRate =[];
+            for (const [key, value] of Object.entries(data)) {
+                labels.push(key);
+                readings.push(value);
+            }
+            for(let i = 0; i < readings.length; i++){
+                if(readings[i] != null){
+                    pulseRate.push(readings[i]['pulse_rate']);
+                }
+                else{
+                    pulseRate.push(0);
+                }
+            }
+
+            const readingTrendsData = {
+                labels: labels,
+                datasets: [
+                    {
+                    label: 'Pulse Rate',
+                        data: temperature,
+                        fill: false,
+                        borderColor: 'violet',
+                        tension: 0.1
+                    },
+                    
+                ]
+            };
+
+            const readingTrendsConfig = {
+                type: 'line',
+                data: readingTrendsData,
+                options: {
+                    plugins: {
+                        annotation: {
+                            annotations: {
+                               PrLowLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 30,
+                                    borderColor: 'rgb(0, 255, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Pulse Rate Low',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                PrNormalLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 60,
+                                    borderColor: 'rgb(255, 255, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Pulse Rate Normal',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                PrHighLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 120,
+                                    borderColor: 'rgb(255, 0, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Pulse Rate High',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                            }
+                        }
+                    }
+                }
+            };
+
+            if(readingTrendsChart != null){
+                readingTrendsChart.destroy();
+            }
+            readingTrendsChart = new Chart(
+                document.getElementById('reading-trends'),
+                readingTrendsConfig
+            )
+        }
+    })
+    
+}
+
+const reading_bpField = document.getElementById('reading_bp');
+const reading_bsField = document.getElementById('reading_bs');
+const reading_tempField = document.getElementById('reading_temp');
+const reading_prField = document.getElementById('reading_pr');
+const reading_titleField = document.getElementById('reading_title');
+
+function deactivateAllReadingFields() {
+    reading_bpField.classList.remove('active');
+    reading_bsField.classList.remove('active');
+    reading_tempField.classList.remove('active');
+    reading_prField.classList.remove('active');
+}
+
+function updateChart(parameter, id) {
+    currentParameter = 'blood_pressure';
+    by = trends_selectField.value;
+    value = '';
+    if(by == 'weekly'){
+        value = trends_weekField.value; 
+    }
+    else if(by == 'monthly'){
+        value = trends_monthField.value;
+    }
+    else if(by == 'yeerly'){
+        value = trends_yearField.value;
+    }
+    deactivateAllReadingFields();
+
+    if (parameter === 'blood_pressure') {
+        renderBloodPressureReadingChart(by, value, id);
+    } else if (parameter === 'blood_saturation') {
+        renderBloodSaturationReadingChart(by, value, id);
+    } else if (parameter === 'temperature') {
+        renderTemperatureReadingChart(by, value, id);
+    } else if (parameter === 'pulse_rate') {
+        renderPulseRateReadingChart(by, value, id);
+    }
+}
+
+reading_bpField.addEventListener('click', function () {
+    getUser().then((id) => {
+        updateChart('blood_pressure', id);
+    });
+    reading_bpField.classList.add('active');
+    reading_titleField.textContent = 'Blood Pressure';
+});
+
+reading_bsField.addEventListener('click', function () {
+    getUser().then((id) => {
+        updateChart('blood_saturation', id);
+    });
+    reading_bsField.classList.add('active');
+    reading_titleField.textContent = 'Oxygen Saturation';
+});
+
+reading_tempField.addEventListener('click', function () {
+    getUser().then((id) => {
+        updateChart('temperature', id);
+    });
+    reading_tempField.classList.add('active');
+    reading_titleField.textContent = 'Temperature';
+});
+
+reading_prField.addEventListener('click', function () {
+    getUser().then((id) => {
+        updateChart('pulse_rate', id);
+    });
+    reading_prField.classList.add('active');
+    reading_titleField.textContent = 'Pulse Rate';
+});
+
 trends_weekField.addEventListener('change', function(){
     trends_monthField.value = '';
     trends_yearField.value = '';
     getUser().then((id) => {
-        renderReadingTrendsChart('weekly', trends_weekField.value, id);
-    })
-})
+        renderBloodPressureReadingChart('weekly', trends_weekField.value, id);
+    });
+});
 
 trends_monthField.addEventListener('change', function(){
     trends_weekField.value = '';
     trends_yearField.value = '';
     getUser().then((id) => {
-        renderReadingTrendsChart('monthly', trends_monthField.value, id);
-    })
-})
+        renderBloodPressureReadingChart('monthly', trends_monthField.value, id);
+    });
+});
 
 trends_yearField.addEventListener('change', function(){
     trends_weekField.value = '';
     trends_monthField.value = '';
     getUser().then((id) => {
-        renderReadingTrendsChart('yearly', trends_yearField.value, id);
-    })
-})
+        renderBloodPressureReadingChart('yearly', trends_yearField.value, id);
+    });
+});
+
 
 getUser().then((id) => {
-    renderReadingTrendsChart('weekly', moment().year() + '-W' + moment().week(), id)
+    userId = id;
+    renderBloodPressureReadingChart('weekly', moment().year() + '-W' + moment().week(), id);
+});
 
-})
+
 
 //readings rating of patient//
 
