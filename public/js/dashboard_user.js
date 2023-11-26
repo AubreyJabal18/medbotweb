@@ -1110,7 +1110,7 @@ const reading_tempField = document.getElementById('reading_temp');
 const reading_prField = document.getElementById('reading_pr');
 const reading_titleField = document.getElementById('reading_title');
 
-function deactivateAllFields() {
+function deactivateAllReadingFields() {
     reading_bpField.classList.remove('active');
     reading_bsField.classList.remove('active');
     reading_tempField.classList.remove('active');
@@ -1119,17 +1119,27 @@ function deactivateAllFields() {
 
 function updateChart(parameter, id) {
     currentParameter = 'blood_pressure';
-    
-    deactivateAllFields();
+    by = trends_selectField.value;
+    value = '';
+    if(by == 'weekly'){
+        value = trends_weekField.value; 
+    }
+    else if(by == 'monthly'){
+        value = trends_monthField.value;
+    }
+    else if(by == 'yeerly'){
+        value = trends_yearField.value;
+    }
+    deactivateAllReadingFields();
 
     if (parameter === 'blood_pressure') {
-        renderBloodPressureReadingChart('weekly', moment().year() + '-W' + moment().week(), id);
+        renderBloodPressureReadingChart(by, value, id);
     } else if (parameter === 'blood_saturation') {
-        renderBloodSaturationReadingChart('weekly', moment().year() + '-W' + moment().week(), id);
+        renderBloodSaturationReadingChart(by, value, id);
     } else if (parameter === 'temperature') {
-        renderTemperatureReadingChart('weekly', moment().year() + '-W' + moment().week(), id);
+        renderTemperatureReadingChart(by, value, id);
     } else if (parameter === 'pulse_rate') {
-        renderPulseRateReadingChart('weekly', moment().year() + '-W' + moment().week(), id);
+        renderPulseRateReadingChart(by, value, id);
     }
 }
 
