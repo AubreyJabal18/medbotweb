@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient Dashboard</title>
     <script src="{{asset('/js/moment.js')}}"></script>
+    <script src="{{asset('/js/chart-js/chart.umd.js')}}"></script>
+    <script src="{{asset('/js/chart-js-annotation/chartjs-plugin-annotation.min.js')}}"></script>
+    
     @vite('resources/css/app.css')
 </head>
 <body>
@@ -456,6 +459,18 @@
         <div class="flex flex-row px-10 pt-14">
             <p class="font-roboto font-bold text-black text-lg lg:text-xl">BROWSE RESULT</p>
         </div>
+        <div class="flex items-center justify-center my-2">
+			<div class="flex flex-row items-center justify-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit w-fit border border-gray-300">
+				<img src="{{asset('images/dashboard/Blue.png')}}" alt="" class="w-6 h-6 md:w-8 md:h-8 mr-2">
+				<p class="font-medium text-base md:text-lg text-black mr-2 md:mr-5"> - Low</p>
+
+				<img src="{{asset('images/dashboard/Green.png')}}" alt="" class="w-6 h-6 md:w-8 md:h-8 mr-2">
+				<p class="font-medium text-base md:text-lg text-black mr-2 md:mr-5"> - Normal</p>
+
+				<img src="{{asset('images/dashboard/Red.png')}}" alt="" class="w-6 h-6 md:w-8 md:h-8 mr-2">
+				<p class="font-medium text-base md:text-lg text-black"> - High</p>
+			</div>
+		</div>
         
         <div class="flex flex-col justify-center py-5 lg:px-32 w-full items-center">
             <div class="w-[90%] flex flex-col items-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-full relative">
@@ -477,8 +492,20 @@
                     <input  type="text" class="hidden" name="user-id" id="user-id" value="{{$user->id}}">
                 </canvas>
 
-                <img src="{{asset('images/dashboard/card_bg_1.svg')}}" alt="" class="absolute h-[30%] lg:h-[70%] bottom-0 left-0">
-                <img src="{{asset('images/dashboard/card_bg_2.svg')}}" alt="" class="absolute h-[30%] lg:h-[70%] bottom-0 right-0">  
+                <div class="grid grid-cols-2 lg:grid-cols-4 pt-4 gap-y-1 gap-x-1 lg:gap-x-2">
+                    <button id="reading_bp" name="reading_bp" class="flex flex-row font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-8 py-1 bg-[#59AEDD] text-white">
+                        <img src="{{asset('images/dashboard/blood_pressure.svg')}}" alt="Blood Pressure" class="flex h-6 w-7 mr-4">BP
+                    </button>
+                    <button id="reading_bs" name="reading_bs" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-6 py-1 bg-[#EB7373] text-white">
+                        <img src="{{asset('images/dashboard/blood_saturation.svg')}}" alt="Blood Saturation" class="flex h-5 w-8 mr-6 mt-0.5">OS
+                    </button>
+                    <button id="reading_temp" name="reading_temp" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-5 py-1 bg-[#697269] text-white ">
+                        <img src="{{asset('images/dashboard/temperature.svg')}}" alt="Temperature" class="flex h-5 w-8 mr-3  mt-0.5">TEMP
+                    </button>
+                    <button id="reading_pr" name="reading_pr" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-8 py-1 bg-[#93D396] text-white">
+                        <img src="{{asset('images/dashboard/pulse_rate.svg')}}" alt="Pulse Rate" class="flex h-5 w-7 mr-6 mt-0.5">PR
+                    </button>
+                </div>
             </div> 
         </div>
 
@@ -520,7 +547,6 @@
         </div>
     </div>
 
-    <script src="{{asset('/js/chart.js')}}"></script>
     <script src="{{ asset('/js/professional_patients.js') }}"></script>
     <script src="{{ asset('/js/vitals_info.js') }}"></script>
 </body>

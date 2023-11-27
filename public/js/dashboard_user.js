@@ -103,10 +103,9 @@ function renderBloodPressureReadingChart(by, value, id){
                     label: 'Blood Pressure',
                         data: mbps,
                         fill: false,
-                        borderColor: 'rgb(75, 192, 192)',
+                        borderColor: 'rgb(230,230,0)',
                         tension: 0.1
                     },
-                    
                 ]
             };
 
@@ -117,12 +116,12 @@ function renderBloodPressureReadingChart(by, value, id){
                     plugins: {
                         annotation: {
                             annotations: {
-                               BpLowLine: {
+                                BpLowLine: {
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 30,
-                                    borderColor: 'rgb(0, 255, 0)',
+                                    value: 10,
+                                    borderColor: 'rgb(75, 192, 192)',
                                     borderWidth: 2,
                                     label: {
                                         content: 'Blood Pressure Low',
@@ -135,7 +134,7 @@ function renderBloodPressureReadingChart(by, value, id){
                                     mode: 'horizontal',
                                     scaleID: 'y',
                                     value: 60,
-                                    borderColor: 'rgb(255, 255, 0)',
+                                    borderColor: 'rgb(0, 255, 0)',
                                     borderWidth: 2,
                                     label: {
                                         content: 'Blood Pressure Normal',
@@ -147,7 +146,7 @@ function renderBloodPressureReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 120,
+                                    value: 101,
                                     borderColor: 'rgb(255, 0, 0)',
                                     borderWidth: 2,
                                     label: {
@@ -199,7 +198,7 @@ function renderBloodPressureReadingChart(by, value, id){
                     label: 'Blood Pressure',
                         data: mbps,
                         fill: false,
-                        borderColor: 'rgb(75, 192, 192)',
+                        borderColor: 'rgb(230,230,0)',
                         tension: 0.1
                     },
                 ]
@@ -207,6 +206,53 @@ function renderBloodPressureReadingChart(by, value, id){
             const readingTrendsConfig = {
                 type: 'line',
                 data: readingTrendsData,
+                options: {
+                    plugins: {
+                        annotation: {
+                            annotations: {
+                                BpLowLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 10,
+                                    borderColor: 'rgb(75, 192, 192)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Blood Pressure Low',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                BpNormalLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 60,
+                                    borderColor: 'rgb(0, 255, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Blood Pressure Normal',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                BpHighLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 101,
+                                    borderColor: 'rgb(255, 0, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Blood Pressure High',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                            }
+                        }
+                    }
+                }
             };
             if(readingTrendsChart != null){
                 readingTrendsChart.destroy();
@@ -245,15 +291,62 @@ function renderBloodPressureReadingChart(by, value, id){
                     label: 'Blood Pressure',
                         data: mbps,
                         fill: false,
-                        borderColor: 'rgb(75, 192, 192)',
+                        borderColor: 'rgb(230,230,0)',
                         tension: 0.1
-                    }
+                    },
                 ]
             };
 
             const readingTrendsConfig = {
                 type: 'line',
                 data: readingTrendsData,
+                options: {
+                    plugins: {
+                        annotation: {
+                            annotations: {
+                                BpLowLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 10,
+                                    borderColor: 'rgb(75, 192, 192)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Blood Pressure Low',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                BpNormalLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 60,
+                                    borderColor: 'rgb(0, 255, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Blood Pressure Normal',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                BpHighLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 101,
+                                    borderColor: 'rgb(255, 0, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Blood Pressure High',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                            }
+                        }
+                    }
+                }
             };
             if(readingTrendsChart != null){
                 readingTrendsChart.destroy();
@@ -296,7 +389,6 @@ function renderBloodSaturationReadingChart(by, value, id){
                         borderColor: 'red',
                         tension: 0.1
                     },
-                    
                 ]
             };
 
@@ -311,8 +403,8 @@ function renderBloodSaturationReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 30,
-                                    borderColor: 'rgb(0, 255, 0)',
+                                    value: 10,
+                                    borderColor: 'rgb(75, 192, 192)',
                                     borderWidth: 2,
                                     label: {
                                         content: 'Oxygen Saturation Low',
@@ -324,8 +416,8 @@ function renderBloodSaturationReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 60,
-                                    borderColor: 'rgb(255, 255, 0)',
+                                    value: 95,
+                                    borderColor: 'rgb(0,255,0)',
                                     borderWidth: 2,
                                     label: {
                                         content: 'Oxygen Saturation Normal',
@@ -337,11 +429,11 @@ function renderBloodSaturationReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 120,
-                                    borderColor: 'rgb(255, 0, 0)',
+                                    value: 101,
+                                    borderColor: 'rgb(225,0,0)',
                                     borderWidth: 2,
                                     label: {
-                                        content: 'Oxygen Saturation High',
+                                        content: 'Oxygen Saturation Normal',
                                         enabled: true,
                                         position: 'left',
                                     },
@@ -398,12 +490,12 @@ function renderBloodSaturationReadingChart(by, value, id){
                     plugins: {
                         annotation: {
                             annotations: {
-                               OsLowLine: {
+                                OsLowLine: {
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 30,
-                                    borderColor: 'rgb(0, 255, 0)',
+                                    value: 10,
+                                    borderColor: 'rgb(75, 192, 192)',
                                     borderWidth: 2,
                                     label: {
                                         content: 'Oxygen Saturation Low',
@@ -415,8 +507,8 @@ function renderBloodSaturationReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 60,
-                                    borderColor: 'rgb(255, 255, 0)',
+                                    value: 95,
+                                    borderColor: 'rgb(0,255,0)',
                                     borderWidth: 2,
                                     label: {
                                         content: 'Oxygen Saturation Normal',
@@ -428,11 +520,11 @@ function renderBloodSaturationReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 120,
-                                    borderColor: 'rgb(255, 0, 0)',
+                                    value: 101,
+                                    borderColor: 'rgb(225,0,0)',
                                     borderWidth: 2,
                                     label: {
-                                        content: 'Oxygen Saturation High',
+                                        content: 'Oxygen Saturation Normal',
                                         enabled: true,
                                         position: 'left',
                                     },
@@ -489,12 +581,12 @@ function renderBloodSaturationReadingChart(by, value, id){
                     plugins: {
                         annotation: {
                             annotations: {
-                               OsLowLine: {
+                                OsLowLine: {
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 30,
-                                    borderColor: 'rgb(0, 255, 0)',
+                                    value: 10,
+                                    borderColor: 'rgb(75, 192, 192)',
                                     borderWidth: 2,
                                     label: {
                                         content: 'Oxygen Saturation Low',
@@ -506,8 +598,8 @@ function renderBloodSaturationReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 60,
-                                    borderColor: 'rgb(255, 255, 0)',
+                                    value: 95,
+                                    borderColor: 'rgb(0,255,0)',
                                     borderWidth: 2,
                                     label: {
                                         content: 'Oxygen Saturation Normal',
@@ -519,11 +611,11 @@ function renderBloodSaturationReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 120,
-                                    borderColor: 'rgb(255, 0, 0)',
+                                    value: 101,
+                                    borderColor: 'rgb(225,0,0)',
                                     borderWidth: 2,
                                     label: {
-                                        content: 'Oxygen Saturation High',
+                                        content: 'Oxygen Saturation Normal',
                                         enabled: true,
                                         position: 'left',
                                     },
@@ -590,8 +682,8 @@ function renderTemperatureReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 30,
-                                    borderColor: 'rgb(0, 255, 0)',
+                                    value: 10,
+                                    borderColor: 'rgb(75, 192, 192)',
                                     borderWidth: 2,
                                     label: {
                                         content: 'Temperature Low',
@@ -603,8 +695,8 @@ function renderTemperatureReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 60,
-                                    borderColor: 'rgb(255, 255, 0)',
+                                    value: 33,
+                                    borderColor: 'rgb(0,255,0)',
                                     borderWidth: 2,
                                     label: {
                                         content: 'Temperature Normal',
@@ -616,7 +708,7 @@ function renderTemperatureReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 120,
+                                    value: 38,
                                     borderColor: 'rgb(255, 0, 0)',
                                     borderWidth: 2,
                                     label: {
@@ -677,12 +769,12 @@ function renderTemperatureReadingChart(by, value, id){
                     plugins: {
                         annotation: {
                             annotations: {
-                               TempLowLine: {
+                                TempLowLine: {
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 30,
-                                    borderColor: 'rgb(0, 255, 0)',
+                                    value: 32,
+                                    borderColor: 'rgb(75, 192, 192)',
                                     borderWidth: 2,
                                     label: {
                                         content: 'Temperature Low',
@@ -694,8 +786,8 @@ function renderTemperatureReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 60,
-                                    borderColor: 'rgb(255, 255, 0)',
+                                    value: 10,
+                                    borderColor: 'rgb(0,255,0)',
                                     borderWidth: 2,
                                     label: {
                                         content: 'Temperature Normal',
@@ -707,7 +799,7 @@ function renderTemperatureReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 120,
+                                    value: 38,
                                     borderColor: 'rgb(255, 0, 0)',
                                     borderWidth: 2,
                                     label: {
@@ -768,12 +860,12 @@ function renderTemperatureReadingChart(by, value, id){
                     plugins: {
                         annotation: {
                             annotations: {
-                               TempLowLine: {
+                                TempLowLine: {
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 30,
-                                    borderColor: 'rgb(0, 255, 0)',
+                                    value: 10,
+                                    borderColor: 'rgb(75, 192, 192)',
                                     borderWidth: 2,
                                     label: {
                                         content: 'Temperature Low',
@@ -785,8 +877,8 @@ function renderTemperatureReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 60,
-                                    borderColor: 'rgb(255, 255, 0)',
+                                    value: 33,
+                                    borderColor: 'rgb(0,255,0)',
                                     borderWidth: 2,
                                     label: {
                                         content: 'Temperature Normal',
@@ -798,7 +890,7 @@ function renderTemperatureReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 120,
+                                    value: 38,
                                     borderColor: 'rgb(255, 0, 0)',
                                     borderWidth: 2,
                                     label: {
@@ -865,12 +957,12 @@ function renderPulseRateReadingChart(by, value, id){
                     plugins: {
                         annotation: {
                             annotations: {
-                               PrLowLine: {
+                                PrLowLine: {
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 30,
-                                    borderColor: 'rgb(0, 255, 0)',
+                                    value: 10,
+                                    borderColor: 'rgb(75, 192, 192)',
                                     borderWidth: 2,
                                     label: {
                                         content: 'Pulse Rate Low',
@@ -883,7 +975,7 @@ function renderPulseRateReadingChart(by, value, id){
                                     mode: 'horizontal',
                                     scaleID: 'y',
                                     value: 60,
-                                    borderColor: 'rgb(255, 255, 0)',
+                                    borderColor: 'rgb(0, 255, 0)',
                                     borderWidth: 2,
                                     label: {
                                         content: 'Pulse Rate Normal',
@@ -895,7 +987,7 @@ function renderPulseRateReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 120,
+                                    value: 101,
                                     borderColor: 'rgb(255, 0, 0)',
                                     borderWidth: 2,
                                     label: {
@@ -956,12 +1048,12 @@ function renderPulseRateReadingChart(by, value, id){
                     plugins: {
                         annotation: {
                             annotations: {
-                               PrLowLine: {
+                                PrLowLine: {
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 30,
-                                    borderColor: 'rgb(0, 255, 0)',
+                                    value: 10,
+                                    borderColor: 'rgb(75, 192, 192)',
                                     borderWidth: 2,
                                     label: {
                                         content: 'Pulse Rate Low',
@@ -974,7 +1066,7 @@ function renderPulseRateReadingChart(by, value, id){
                                     mode: 'horizontal',
                                     scaleID: 'y',
                                     value: 60,
-                                    borderColor: 'rgb(255, 255, 0)',
+                                    borderColor: 'rgb(0, 255, 0)',
                                     borderWidth: 2,
                                     label: {
                                         content: 'Pulse Rate Normal',
@@ -986,7 +1078,7 @@ function renderPulseRateReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 120,
+                                    value: 101,
                                     borderColor: 'rgb(255, 0, 0)',
                                     borderWidth: 2,
                                     label: {
@@ -1047,12 +1139,12 @@ function renderPulseRateReadingChart(by, value, id){
                     plugins: {
                         annotation: {
                             annotations: {
-                               PrLowLine: {
+                                PrLowLine: {
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 30,
-                                    borderColor: 'rgb(0, 255, 0)',
+                                    value: 10,
+                                    borderColor: 'rgb(75, 192, 192)',
                                     borderWidth: 2,
                                     label: {
                                         content: 'Pulse Rate Low',
@@ -1065,7 +1157,7 @@ function renderPulseRateReadingChart(by, value, id){
                                     mode: 'horizontal',
                                     scaleID: 'y',
                                     value: 60,
-                                    borderColor: 'rgb(255, 255, 0)',
+                                    borderColor: 'rgb(0, 255, 0)',
                                     borderWidth: 2,
                                     label: {
                                         content: 'Pulse Rate Normal',
@@ -1077,7 +1169,7 @@ function renderPulseRateReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 120,
+                                    value: 101,
                                     borderColor: 'rgb(255, 0, 0)',
                                     borderWidth: 2,
                                     label: {
@@ -1108,7 +1200,7 @@ const reading_bpField = document.getElementById('reading_bp');
 const reading_bsField = document.getElementById('reading_bs');
 const reading_tempField = document.getElementById('reading_temp');
 const reading_prField = document.getElementById('reading_pr');
-const reading_titleField = document.getElementById('reading_title');
+// const reading_titleField = document.getElementById('reading_title');
 
 function deactivateAllReadingFields() {
     reading_bpField.classList.remove('active');
@@ -1148,7 +1240,7 @@ reading_bpField.addEventListener('click', function () {
         updateChart('blood_pressure', id);
     });
     reading_bpField.classList.add('active');
-    reading_titleField.textContent = 'Blood Pressure';
+    // reading_titleField.textContent = 'Blood Pressure';
 });
 
 reading_bsField.addEventListener('click', function () {
@@ -1156,7 +1248,7 @@ reading_bsField.addEventListener('click', function () {
         updateChart('blood_saturation', id);
     });
     reading_bsField.classList.add('active');
-    reading_titleField.textContent = 'Oxygen Saturation';
+    // reading_titleField.textContent = 'Oxygen Saturation';
 });
 
 reading_tempField.addEventListener('click', function () {
@@ -1164,7 +1256,7 @@ reading_tempField.addEventListener('click', function () {
         updateChart('temperature', id);
     });
     reading_tempField.classList.add('active');
-    reading_titleField.textContent = 'Temperature';
+    // reading_titleField.textContent = 'Temperature';
 });
 
 reading_prField.addEventListener('click', function () {
@@ -1172,7 +1264,7 @@ reading_prField.addEventListener('click', function () {
         updateChart('pulse_rate', id);
     });
     reading_prField.classList.add('active');
-    reading_titleField.textContent = 'Pulse Rate';
+    // reading_titleField.textContent = 'Pulse Rate';
 });
 
 trends_weekField.addEventListener('change', function(){
