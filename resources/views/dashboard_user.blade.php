@@ -455,6 +455,18 @@
         <div class="flex flex-row px-10 pt-14">
             <p class="font-roboto font-bold text-black text-lg lg:text-xl">BROWSE RESULT</p>
         </div>
+        <div class="flex items-center justify-center my-2">
+			<div class="flex flex-row items-center justify-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit w-fit border border-gray-300">
+				<img src="{{asset('images/dashboard/Blue.png')}}" alt="" class="w-6 h-6 md:w-8 md:h-8 mr-2">
+				<p class="font-medium text-base md:text-lg text-black mr-2 md:mr-5"> - Low</p>
+
+				<img src="{{asset('images/dashboard/Green.png')}}" alt="" class="w-6 h-6 md:w-8 md:h-8 mr-2">
+				<p class="font-medium text-base md:text-lg text-black mr-2 md:mr-5"> - Normal</p>
+
+				<img src="{{asset('images/dashboard/Red.png')}}" alt="" class="w-6 h-6 md:w-8 md:h-8 mr-2">
+				<p class="font-medium text-base md:text-lg text-black"> - High</p>
+			</div>
+		</div>
         
         <div class="flex flex-col justify-center py-5 lg:px-32 w-full items-center">
             <div class="w-[90%] flex flex-col items-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300 md:w-4/5 lg:w-full relative">
@@ -472,7 +484,6 @@
                     <input class="flex  border-2 rounded-full border-[#969696] mt-2 px-2 md:space-x-3 lg:space-x-4 bg-white " type="week" id="trends_week" name="value">
                 </div>
 
-                <i class = "flex font-roboto text-base lg:text-lg  py-1 px-12 mt-4 lg:mt-8" id="reading_title">Blood Pressure</i>   
                 <canvas id="reading-trends" class="mt-4 w-[96%] flex drop-shadow-lg shadow-lg rounded-lg bg-white z-10 h-fit">
                     <input  type="text" class="hidden" name="user-id" id="user-id" value="{{$user->id}}">
                 </canvas>
