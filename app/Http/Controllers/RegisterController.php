@@ -82,12 +82,12 @@ class RegisterController extends Controller
         
         $faker = Factory::create();
         // $randomString = $faker -> lexify('???');
-        $randomString = strtoupper($faker->randomLetter . $faker->randomLetter . $faker->randomLetter);
+        $randomAlphanumeric = strtoupper($faker->randomLetter . $faker->randomDigit);
         // $randomNumber = $faker->randomNumber(3);
 
         $user = User::create($user_form);
         $municipality_firstLetter = strtoupper(substr( $request->municipality, 0, 3));
-        $user->id_number = '5B2-'.$municipality_firstLetter.'PZT-'.$randomString;
+        $user->id_number = '5B2-'.$municipality_firstLetter.'PZT-'.$randomAlphanumeric;
         $user->save();
        
 
@@ -177,12 +177,12 @@ class RegisterController extends Controller
 
         $faker = Factory::create();
         // $randomString = $faker -> lexify('???');
-        $randomString = strtoupper($faker->randomLetter . $faker->randomLetter . $faker->randomLetter);
+        $randomAlphanumeric = strtoupper($faker->randomLetter . $faker->randomDigit);
         // $randomNumber = $faker->randomNumber(3);
 
         $user = User::create($user_form);
         $municipality_firstLetter = strtoupper(substr( $request->municipality, 0, 3));
-        $user->id_number = '5B2-'.$municipality_firstLetter.'HCP-'.$randomString;
+        $user->id_number = '5B2-'.$municipality_firstLetter.'HCP-'.$randomAlphanumeric;
         $user->save();
 
         if($request->hasFile('profile')){
