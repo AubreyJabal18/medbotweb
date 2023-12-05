@@ -60,13 +60,24 @@ class RegisterController extends Controller
             return back()->withInput();
         }
 
+        $idNumber = '';
+        $faker = Factory::create();
+        while(True){
+            $randomString = $faker -> lexify('???');
+            $municipality_firstLetter = strtoupper(substr( $request->municipality, 0, 3));
+            $idNumber = '5B2-'.$municipality_firstLetter.'PZT-'.$randomString;
+            $test_user = User::where('id_number', $idNumber)->first();
+            if($test_user == null){
+                break;
+            }
+        }
         $password = Str::random(12);
         $user_form = [
             'last_name' => $request->last_name,
             'first_name' => $request->first_name,
             'suffix' => $request->suffix,
             'honorific' => null,
-            'id_number' => 'medbot2',
+            'id_number' => $idNumber,
             'type' => 'patient',
             'sex' => $request->sex,
             'birthday' => $request->birthday,
@@ -80,17 +91,8 @@ class RegisterController extends Controller
             'answer' => $request->answer
         ];
         
-        $faker = Factory::create();
-        // $randomString = $faker -> lexify('???');
-        $randomString = strtoupper($faker->randomLetter . $faker->randomLetter . $faker->randomLetter);
-        // $randomNumber = $faker->randomNumber(3);
-
         $user = User::create($user_form);
-        $municipality_firstLetter = strtoupper(substr( $request->municipality, 0, 3));
-        $user->id_number = '5B2-'.$municipality_firstLetter.'PZT-'.$randomString;
-        $user->save();
        
-
         if($request->hasFile('profile')){
             $profile_path = $this->UploadFile($request->file('profile'), $user->id, 'profiles');
             $user->profile = $profile_path;
