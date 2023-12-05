@@ -488,9 +488,12 @@
                     <input  type="text" class="hidden" name="user-id" id="user-id" value="{{$user->id}}">
                 </canvas>
 
-                <div class="grid grid-cols-2 lg:grid-cols-4 pt-4 gap-y-1 gap-x-1 lg:gap-x-2">
-                    <button id="reading_bp" name="reading_bp" class="flex flex-row font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-8 py-1 bg-[#59AEDD] text-white">
-                        <img src="{{asset('images/dashboard/blood_pressure.svg')}}" alt="Blood Pressure" class="flex h-6 w-7 mr-4">BP
+                <div class="grid grid-cols-2 lg:grid-cols-5 pt-4 gap-y-1 gap-x-1 lg:gap-x-2">
+                    <button id="reading_sys" name="reading_sys" class="flex flex-row font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-8 py-1 bg-[#59AEDD] text-white">
+                        <img src="{{asset('images/dashboard/blood_pressure.svg')}}" alt="Systolic" class="flex h-6 w-7 mr-4">Systolic
+                    </button>
+                    <button id="reading_dias" name="reading_dias" class="flex flex-row font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-8 py-1 bg-[#59AEDD] text-white">
+                        <img src="{{asset('images/dashboard/blood_pressure.svg')}}" alt="Diastolic" class="flex h-6 w-7 mr-4">Diastolic
                     </button>
                     <button id="reading_bs" name="reading_bs" class="flex font-roboto font-light text-sm md:text-base rounded-xl border focus:outline-none focus:shadow-outline px-6 py-1 bg-[#EB7373] text-white">
                         <img src="{{asset('images/dashboard/blood_saturation.svg')}}" alt="Blood Saturation" class="flex h-5 w-8 mr-6 mt-0.5">OS
