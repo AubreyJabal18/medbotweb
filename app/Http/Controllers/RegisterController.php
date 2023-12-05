@@ -88,6 +88,12 @@ class RegisterController extends Controller
         $user = User::create($user_form);
         $municipality_firstLetter = strtoupper(substr( $request->municipality, 0, 3));
         $user->id_number = '5B2-'.$municipality_firstLetter.'PZT-'.$randomAlphanumeric;
+        while(true){
+            $test_user = User::where('id_number', generatedString);
+            if($test_user){
+              break;
+            }
+        }
         $user->save();
        
 
