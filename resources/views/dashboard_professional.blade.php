@@ -249,5 +249,12 @@
     <script src="{{asset('/js/dashboard_professional.js')}}"></script>
     <script src="{{asset('/js/dashboard_admin.js')}}"></script>
 
+    <script>
+        anything = {{ Js::from(session()->get('id')) }}
+        if(anything != null){
+            window.open('get/qrcode_new_register?id='+anything)
+        }
+    </script>
+
 </body>
 </html>
