@@ -201,6 +201,7 @@
                             <span class="ml-4">By accessing and using Med-bot, you acknowledge your acceptance of these terms. If you do not agree with any part of these terms, we advise against using the platform.<br></span>
                             
                         </p>
+                        <button id="closeButtonTerms" type="button" class="block bg-red-500 text-white px-4 py-2 mt-4 rounded cursor-pointer " onclick="closeTermsPopup()">Agree</button>
                     </div>
                 </div>
 
@@ -242,6 +243,7 @@
                         
                             <br><span class="ml-4">By using Med-bot, you acknowledge and agree to the terms outlined in this Privacy Notice. If you disagree with any part of this notice, we recommend refraining from using our platform.
                         </p>
+                        <button id="closeButtonPrivacy" type="button" class="block bg-red-500 text-white px-4 py-2 mt-4 rounded cursor-pointer " onclick="closePrivacyPopup()">Agree</button>
                     </div>
                 </div>
 
