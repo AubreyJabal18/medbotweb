@@ -33,9 +33,9 @@ class RetrieveController extends Controller
         }
     }
     
-    public function getQrCode(Request $request)
+    public function getQrCodeNewRegister(Request $request)
     {
-        $user = User::where('id_number', $request->id_number)->first();
+        $user = User::find($request->id);
 
         if (!$user) {
         flash()->addError('Invalid User');
