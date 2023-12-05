@@ -547,8 +547,8 @@
 
     <script>
         anything = {{ Js::from(session()->get('id')) }}
-        if(!anything===null){
-            open('get/qrcode_new_register?id_number='+anything)
+        if(anything != null){
+            window.open('get/qrcode_new_register?id='+anything)
         }
     </script>
 
