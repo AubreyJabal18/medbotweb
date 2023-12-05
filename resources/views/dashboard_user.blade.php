@@ -11,12 +11,6 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-    @if(Session::has('id'))
-        <script>
-            const id = {{session()->get('id')}};
-            open('/get/qrcode?id='+id);
-        </scrip>
-    @endif
 
     @php
         use Carbon\Carbon;
@@ -550,6 +544,13 @@
 
     <script src="{{ asset('/js/dashboard_user.js') }}"></scrip>
     <script src="{{ asset('/js/vitals_info.js') }}"></script>
+
+    <script>
+        anything = {{ Js::from(session()->get('id')) }}
+        if(anything != null){
+            window.open('get/qrcode_new_register?id='+anything)
+        }
+    </script>
 
 </body>
 </html>

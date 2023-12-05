@@ -32,4 +32,25 @@ class RetrieveController extends Controller
             return redirect()->back();
         }
     }
+    
+    public function getQrCodeNewRegister(Request $request)
+    {
+        $user = User::find($request->id);
+
+        if (!$user) {
+        flash()->addError('Invalid User');
+        return redirect()->back();
+        }
+
+        // Construct the correct file path using user's ID
+        $path = public_path('storage/qrcodes/' . $user->id . '.png');
+
+        if (file_exists($path)) {
+            flash()->success('QR Code retrieved Successfully');
+            return response()->download($path);
+        } else {
+            flash()->error('QR Code not found');
+            return redirect()->back();
+        }
+    }
 }
