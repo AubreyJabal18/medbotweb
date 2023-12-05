@@ -31,7 +31,7 @@ Route::get('/register/user', [RedirectController::class, 'redirectToRegisterUser
 
 Route::get('/dashboard', [RedirectController::class, 'redirectToDashboard']);
 
-Route::get('/get/qrcode', [FetchController::class, 'getQrCode']);
+Route::get('/get/qrcode_new_register', [FetchController::class, 'getQrCode']);
 
 Route::post('/register/user/process', [RegisterController::class, 'registerUser']);
 
