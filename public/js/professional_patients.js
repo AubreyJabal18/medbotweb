@@ -68,26 +68,22 @@ async function getReadings(by, value, id){
 let userId;
 var readingTrendsChart = null;
 
-function renderBloodPressureReadingChart(by, value, id){
+function renderSystolicReadingChart(by, value, id){
     getReadings(by, value, id).then((data) => {
         if(by == 'weekly'){
             labels = [];
             readings = [];
             systolics =[];
-            diastolics =[];
-            mbps = [];
             for (const [key, value] of Object.entries(data)) {
                 labels.push(key);
                 readings.push(value);
             }
             for(let i = 0; i < readings.length; i++){
                 if(readings[i] != null){
-                    const mbp = readings[i]['blood_pressure_diastolic'] +
-                        (1 / 3) * (readings[i]['blood_pressure_systolic'] - readings[i]['blood_pressure_diastolic']);
-                    mbps.push(mbp);
+                    systolics.push(readings[i]['blood_pressure_systolic']);
                 }
                 else{
-                    mbps.push(0);
+                    systolics.push(0);
                 }
             }
 
@@ -95,10 +91,10 @@ function renderBloodPressureReadingChart(by, value, id){
                 labels: labels,
                 datasets: [
                     {
-                    label: 'Blood Pressure',
-                        data: mbps,
+                    label: 'Blood Pressure Systolic',
+                        data: systolics,
                         fill: false,
-                        borderColor: 'rgb(230,230,0)',
+                        borderColor: 'rgb(255,20,147)',
                         tension: 0.1
                     },
                 ]
@@ -111,11 +107,11 @@ function renderBloodPressureReadingChart(by, value, id){
                     plugins: {
                         annotation: {
                             annotations: {
-                                BpLowLine: {
+                                SysLowLine: {
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 10,
+                                    value: 0,
                                     borderColor: 'rgb(75, 192, 192)',
                                     borderWidth: 2,
                                     label: {
@@ -124,11 +120,11 @@ function renderBloodPressureReadingChart(by, value, id){
                                         position: 'left',
                                     },
                                 },
-                                BpNormalLine: {
+                                SysNormalLine: {
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 60,
+                                    value: 90,
                                     borderColor: 'rgb(0, 255, 0)',
                                     borderWidth: 2,
                                     label: {
@@ -137,11 +133,11 @@ function renderBloodPressureReadingChart(by, value, id){
                                         position: 'left',
                                     },
                                 },
-                                BpHighLine: {
+                                SysHighLine: {
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 101,
+                                    value: 121,
                                     borderColor: 'rgb(255, 0, 0)',
                                     borderWidth: 2,
                                     label: {
@@ -168,36 +164,32 @@ function renderBloodPressureReadingChart(by, value, id){
             labels = [];
             readings = [];
             systolics =[];
-            diastolics =[];
-            mbps = [];
-            console.log(data)
             for (const [key, value] of Object.entries(data)) {
                 labels.push(key);
                 readings.push(value);
             }
             for(let i = 0; i < readings.length; i++){
                 if(readings[i] != null){
-                    const mbp = readings[i]['blood_pressure_diastolic'] +
-                        (1 / 3) * (readings[i]['blood_pressure_systolic'] - readings[i]['blood_pressure_diastolic']);
-                    mbps.push(mbp);
+                    systolics.push(readings[i]['blood_pressure_systolic']);
                 }
                 else{
-                    mbps.push(0);
+                    systolics.push(0);
                 }
             }
 
             const readingTrendsData = {
                 labels: labels,
-                datasets:[
+                datasets: [
                     {
-                    label: 'Blood Pressure',
-                        data: mbps,
+                    label: 'Blood Pressure Systolic',
+                        data: systolics,
                         fill: false,
-                        borderColor: 'rgb(230,230,0)',
+                        borderColor: 'rgb(255,20,147)',
                         tension: 0.1
                     },
                 ]
             };
+
             const readingTrendsConfig = {
                 type: 'line',
                 data: readingTrendsData,
@@ -205,11 +197,11 @@ function renderBloodPressureReadingChart(by, value, id){
                     plugins: {
                         annotation: {
                             annotations: {
-                                BpLowLine: {
+                                SysLowLine: {
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 10,
+                                    value: 0,
                                     borderColor: 'rgb(75, 192, 192)',
                                     borderWidth: 2,
                                     label: {
@@ -218,11 +210,11 @@ function renderBloodPressureReadingChart(by, value, id){
                                         position: 'left',
                                     },
                                 },
-                                BpNormalLine: {
+                                SysNormalLine: {
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 60,
+                                    value: 90,
                                     borderColor: 'rgb(0, 255, 0)',
                                     borderWidth: 2,
                                     label: {
@@ -231,11 +223,11 @@ function renderBloodPressureReadingChart(by, value, id){
                                         position: 'left',
                                     },
                                 },
-                                BpHighLine: {
+                                SysHighLine: {
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 101,
+                                    value: 121,
                                     borderColor: 'rgb(255, 0, 0)',
                                     borderWidth: 2,
                                     label: {
@@ -261,21 +253,16 @@ function renderBloodPressureReadingChart(by, value, id){
             labels = [];
             readings = [];
             systolics =[];
-            diastolics =[];
-            mbps = [];
-            console.log(data)
             for (const [key, value] of Object.entries(data)) {
                 labels.push(key);
                 readings.push(value);
             }
             for(let i = 0; i < readings.length; i++){
                 if(readings[i] != null){
-                    const mbp = readings[i]['blood_pressure_diastolic'] +
-                        (1 / 3) * (readings[i]['blood_pressure_systolic'] - readings[i]['blood_pressure_diastolic']);
-                    mbps.push(mbp);
+                    systolics.push(readings[i]['blood_pressure_systolic']);
                 }
                 else{
-                    mbps.push(0);
+                    systolics.push(0);
                 }
             }
 
@@ -283,8 +270,193 @@ function renderBloodPressureReadingChart(by, value, id){
                 labels: labels,
                 datasets: [
                     {
-                    label: 'Blood Pressure',
-                        data: mbps,
+                    label: 'Blood Pressure Systolic',
+                        data: systolics,
+                        fill: false,
+                        borderColor: 'rgb(255,20,147)',
+                        tension: 0.1
+                    },
+                ]
+            };
+
+            const readingTrendsConfig = {
+                type: 'line',
+                data: readingTrendsData,
+                options: {
+                    plugins: {
+                        annotation: {
+                            annotations: {
+                                SysLowLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 0,
+                                    borderColor: 'rgb(75, 192, 192)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Blood Pressure Low',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                SysNormalLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 90,
+                                    borderColor: 'rgb(0, 255, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Blood Pressure Normal',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                SysHighLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 121,
+                                    borderColor: 'rgb(255, 0, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Blood Pressure High',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                            }
+                        }
+                    }
+                }
+            };
+            if(readingTrendsChart != null){
+                readingTrendsChart.destroy();
+            }
+            readingTrendsChart = new Chart(
+                document.getElementById('reading-trends'),
+                readingTrendsConfig
+            )
+        }
+    })
+    
+}
+
+function renderDiastolicReadingChart(by, value, id){
+    getReadings(by, value, id).then((data) => {
+        if(by == 'weekly'){
+            labels = [];
+            readings = [];
+            diastolics =[];
+            for (const [key, value] of Object.entries(data)) {
+                labels.push(key);
+                readings.push(value);
+            }
+            for(let i = 0; i < readings.length; i++){
+                if(readings[i] != null){
+                    diastolics.push(readings[i]['blood_pressure_diastolic']);
+                }
+                else{
+                    diastolics.push(0);
+                }
+            }
+
+            const readingTrendsData = {
+                labels: labels,
+                datasets: [
+                    {
+                    label: 'Blood Pressure Diastolic',
+                        data: diastolics,
+                        fill: false,
+                        borderColor: 'rgb(230,230,0)',
+                        tension: 0.1
+                    },
+                ]
+            };
+
+            const readingTrendsConfig = {
+                type: 'line',
+                data: readingTrendsData,
+                options: {
+                    plugins: {
+                        annotation: {
+                            annotations: {
+                                DiasLowLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 0,
+                                    borderColor: 'rgb(75, 192, 192)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Blood Pressure Low',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                DiasNormalLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 60,
+                                    borderColor: 'rgb(0, 255, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Blood Pressure Normal',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                DiasHighLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 81,
+                                    borderColor: 'rgb(255, 0, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Blood Pressure High',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                            }
+                        }
+                    }
+                }
+            };
+
+            if(readingTrendsChart != null){
+                readingTrendsChart.destroy();
+            }
+            readingTrendsChart = new Chart(
+                document.getElementById('reading-trends'),
+                readingTrendsConfig
+            )
+        }
+        else if(by == 'monthly'){
+            labels = [];
+            readings = [];
+            diastolics =[];
+            for (const [key, value] of Object.entries(data)) {
+                labels.push(key);
+                readings.push(value);
+            }
+            for(let i = 0; i < readings.length; i++){
+                if(readings[i] != null){
+                    diastolics.push(readings[i]['blood_pressure_diastolic']);
+                }
+                else{
+                    diastolics.push(0);
+                }
+            }
+
+            const readingTrendsData = {
+                labels: labels,
+                datasets: [
+                    {
+                    label: 'Blood Pressure Diastolic',
+                        data: diastolics,
                         fill: false,
                         borderColor: 'rgb(230,230,0)',
                         tension: 0.1
@@ -303,7 +475,7 @@ function renderBloodPressureReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 10,
+                                    value: 0,
                                     borderColor: 'rgb(75, 192, 192)',
                                     borderWidth: 2,
                                     label: {
@@ -329,7 +501,96 @@ function renderBloodPressureReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 101,
+                                    value: 81,
+                                    borderColor: 'rgb(255, 0, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Blood Pressure High',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                            }
+                        }
+                    }
+                }
+            };
+            if(readingTrendsChart != null){
+                readingTrendsChart.destroy();
+            }
+            readingTrendsChart = new Chart(
+                document.getElementById('reading-trends'),
+                readingTrendsConfig
+            )
+        }
+        else if(by == 'yearly'){
+            labels = [];
+            readings = [];
+            diastolics =[];
+            for (const [key, value] of Object.entries(data)) {
+                labels.push(key);
+                readings.push(value);
+            }
+            for(let i = 0; i < readings.length; i++){
+                if(readings[i] != null){
+                    diastolics.push(readings[i]['blood_pressure_diastolic']);
+                }
+                else{
+                    diastolics.push(0);
+                }
+            }
+
+            const readingTrendsData = {
+                labels: labels,
+                datasets: [
+                    {
+                    label: 'Blood Pressure Diastolic',
+                        data: diastolics,
+                        fill: false,
+                        borderColor: 'rgb(230,230,0)',
+                        tension: 0.1
+                    },
+                ]
+            };
+
+            const readingTrendsConfig = {
+                type: 'line',
+                data: readingTrendsData,
+                options: {
+                    plugins: {
+                        annotation: {
+                            annotations: {
+                                BpLowLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 0,
+                                    borderColor: 'rgb(75, 192, 192)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Blood Pressure Low',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                BpNormalLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 60,
+                                    borderColor: 'rgb(0, 255, 0)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Blood Pressure Normal',
+                                        enabled: true,
+                                        position: 'left',
+                                    },
+                                },
+                                BpHighLine: {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y',
+                                    value: 81,
                                     borderColor: 'rgb(255, 0, 0)',
                                     borderWidth: 2,
                                     label: {
@@ -398,7 +659,7 @@ function renderBloodSaturationReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 10,
+                                    value: 0,
                                     borderColor: 'rgb(75, 192, 192)',
                                     borderWidth: 2,
                                     label: {
@@ -489,7 +750,7 @@ function renderBloodSaturationReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 10,
+                                    value: 0,
                                     borderColor: 'rgb(75, 192, 192)',
                                     borderWidth: 2,
                                     label: {
@@ -580,7 +841,7 @@ function renderBloodSaturationReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 10,
+                                    value: 0,
                                     borderColor: 'rgb(75, 192, 192)',
                                     borderWidth: 2,
                                     label: {
@@ -677,7 +938,7 @@ function renderTemperatureReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 10,
+                                    value: 0,
                                     borderColor: 'rgb(75, 192, 192)',
                                     borderWidth: 2,
                                     label: {
@@ -768,7 +1029,7 @@ function renderTemperatureReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 32,
+                                    value: 0,
                                     borderColor: 'rgb(75, 192, 192)',
                                     borderWidth: 2,
                                     label: {
@@ -781,7 +1042,7 @@ function renderTemperatureReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 10,
+                                    value: 33,
                                     borderColor: 'rgb(0,255,0)',
                                     borderWidth: 2,
                                     label: {
@@ -859,7 +1120,7 @@ function renderTemperatureReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 10,
+                                    value: 0,
                                     borderColor: 'rgb(75, 192, 192)',
                                     borderWidth: 2,
                                     label: {
@@ -956,7 +1217,7 @@ function renderPulseRateReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 10,
+                                    value: 0,
                                     borderColor: 'rgb(75, 192, 192)',
                                     borderWidth: 2,
                                     label: {
@@ -1047,7 +1308,7 @@ function renderPulseRateReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 10,
+                                    value: 0,
                                     borderColor: 'rgb(75, 192, 192)',
                                     borderWidth: 2,
                                     label: {
@@ -1138,7 +1399,7 @@ function renderPulseRateReadingChart(by, value, id){
                                     type: 'line',
                                     mode: 'horizontal',
                                     scaleID: 'y',
-                                    value: 10,
+                                    value: 0,
                                     borderColor: 'rgb(75, 192, 192)',
                                     borderWidth: 2,
                                     label: {
@@ -1191,21 +1452,23 @@ function renderPulseRateReadingChart(by, value, id){
     
 }
 
-const reading_bpField = document.getElementById('reading_bp');
+const reading_sysField = document.getElementById('reading_sys');
+const reading_diasField = document.getElementById('reading_dias');
 const reading_bsField = document.getElementById('reading_bs');
 const reading_tempField = document.getElementById('reading_temp');
 const reading_prField = document.getElementById('reading_pr');
 // const reading_titleField = document.getElementById('reading_title');
 
 function deactivateAllReadingFields() {
-    reading_bpField.classList.remove('active');
+    reading_sysField.classList.remove('active');
+    reading_diasField.classList.remove('active');
     reading_bsField.classList.remove('active');
     reading_tempField.classList.remove('active');
     reading_prField.classList.remove('active');
 }
 
 function updateChart(parameter, id) {
-    currentParameter = 'blood_pressure';
+    currentParameter = 'blood_pressure_systolic';
     by = trends_selectField.value;
     value = '';
     if(by == 'weekly'){
@@ -1219,8 +1482,10 @@ function updateChart(parameter, id) {
     }
     deactivateAllReadingFields();
 
-    if (parameter === 'blood_pressure') {
-        renderBloodPressureReadingChart(by, value, id);
+    if (parameter === 'blood_pressure_systolic') {
+        renderSystolicReadingChart(by, value, id);
+    } else if (parameter === 'blood_pressure_diastolic') {
+        renderDiastolicReadingChart(by, value, id);
     } else if (parameter === 'blood_saturation') {
         renderBloodSaturationReadingChart(by, value, id);
     } else if (parameter === 'temperature') {
@@ -1230,11 +1495,19 @@ function updateChart(parameter, id) {
     }
 }
 
-reading_bpField.addEventListener('click', function () {
+reading_sysField.addEventListener('click', function () {
     getUser().then((id) => {
-        updateChart('blood_pressure', id);
+        updateChart('blood_pressure_systolic', id);
     });
-    reading_bpField.classList.add('active');
+    reading_sysField.classList.add('active');
+    // reading_titleField.textContent = 'Blood Pressure';
+});
+
+reading_diasField.addEventListener('click', function () {
+    getUser().then((id) => {
+        updateChart('blood_pressure_diastolic', id);
+    });
+    reading_diasField.classList.add('active');
     // reading_titleField.textContent = 'Blood Pressure';
 });
 
@@ -1266,7 +1539,7 @@ trends_weekField.addEventListener('change', function(){
     trends_monthField.value = '';
     trends_yearField.value = '';
     getUser().then((id) => {
-        renderBloodPressureReadingChart('weekly', trends_weekField.value, id);
+        renderSystolicReadingChart('weekly', trends_weekField.value, id);
     });
 });
 
@@ -1274,7 +1547,7 @@ trends_monthField.addEventListener('change', function(){
     trends_weekField.value = '';
     trends_yearField.value = '';
     getUser().then((id) => {
-        renderBloodPressureReadingChart('monthly', trends_monthField.value, id);
+        renderSystolicReadingChart('monthly', trends_monthField.value, id);
     });
 });
 
@@ -1282,15 +1555,16 @@ trends_yearField.addEventListener('change', function(){
     trends_weekField.value = '';
     trends_monthField.value = '';
     getUser().then((id) => {
-        renderBloodPressureReadingChart('yearly', trends_yearField.value, id);
+        renderSystolicReadingChart('yearly', trends_yearField.value, id);
     });
 });
 
 
 getUser().then((id) => {
     userId = id;
-    renderBloodPressureReadingChart('weekly', moment().year() + '-W' + moment().week(), id);
+    renderSystolicReadingChart('weekly', moment().year() + '-W' + moment().week(), id);
 });
+
 
 //readings rating of patient//
 
