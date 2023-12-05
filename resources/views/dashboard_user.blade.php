@@ -234,7 +234,7 @@
                 <div id="temperature-info" class="relative flex flex-row items-center border-2 border-solid rounded-lg w-full h-full border-blue-400 shadow-lg shadow-cyan-500/50 mb-8 px-2 py-2">
             @endif
 
-                <img src="{{asset('images/dashboard/temperature.svg')}}" alt="" class="w-1/4 h-fit">
+                <img src="{{asset('images/dashboard/Temperature.svg')}}" alt="" class="w-1/4 h-fit">
                 <div class="flex flex-col text-center w-3/4">
                     <p class="font-bold text-xl lg:text-2xl">Temperature</p>
 
