@@ -176,21 +176,21 @@
                                 <br>1. Patients<br>
 
                                 <span class="ml-4">1.1. Consent to Monitoring</span><br>
-                                <span class="ml-8">1.1.1 Patients consent to the continuous monitoring of their blood vital signs through the Med-bot IoT system.</span><br>
+                                <span class="ml-8">1.1.1 Patients consent to the continuous monitoring of their vital signs through the Med-bot IoT system.</span><br>
                                 
                                 <br><span class="ml-4">1.2. Data Usage</span><br>
                                 <span class="ml-8">1.2.1 Patient data collected by the system will be used solely for the purpose of monitoring and improving healthcare outcomes.</span><br>
                                 
                                 <br><span class="ml-4">1.3 Privacy and Confidentiality</span><br>
                                 <span class="ml-8">1.3.1 The system ensures the privacy and confidentiality of patient data, and it will not be shared with third parties without explicit consent, except as required by law.</span><br>
-                                
+                                    
                                 <br><span class="ml-4">1.4 System Usage</span><br>
                                 <span class="ml-8">1.4.1 Patients agree to use the system responsibly and report any concerns or issues with the functionality promptly.</span><br>
                                 
                                 <br><span class="ml-4">1.5 Emergency Situations</span><br>
                                 <span class="ml-8">1.5.1 In emergency situations, healthcare professionals may access patient data to provide timely and appropriate medical assistance.</span><br>
                                 <br>
-                                <span class="ml-4">By accessing and using Med-bot, you acknowledge your acceptance of these terms. If you do not agree with any part of these terms, we advise against using the platform.<br></span>
+                                <span class="ml-4">By accessing and using Med-bot, you acknowledge your acceptance of these terms.<br></span>
                                 
                             </p>
                             <button id="closeButtonTerms" type="button" class="block bg-blue-500 text-white px-4 py-2 mt-4 rounded cursor-pointer mx-auto" onclick="closeTermsPopup()">Agree</button>
