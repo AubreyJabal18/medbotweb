@@ -228,12 +228,9 @@
                                 <span class="ml-4">We employ industry-standard security measures to protect your information from unauthorized access, disclosure, alteration, and destruction.<br>
                             
                                 <br>**Your Choices:**<br>
-                                <span class="ml-4">You have the right to review, update, and delete your personal information. You can manage your privacy preferences through your account settings.<br>
-                            
-                                <br>**Contact Us:**<br>
-                                <span class="ml-4">If you have any questions or concerns about our Privacy Notice or data practices, please [contact us](#) for assistance.<br>
-                            
-                                <br><span class="ml-4">By using Med-bot, you acknowledge and agree to the terms outlined in this Privacy Notice. If you disagree with any part of this notice, we recommend refraining from using our platform.
+                                <span class="ml-4">You have the right to review, and update your personal information. You can manage your privacy preferences through your account settings.<br>
+                          
+                                <br><span class="ml-4">By using Med-bot, you acknowledge and agree to the terms outlined in this Privacy Notice.
                             </p>
                             <button id="closeButtonPrivacy" type="button" class="block bg-blue-500 text-white px-4 py-2 mt-4 rounded cursor-pointer mx-auto" onclick="closePrivacyPopup()">Agree</button>
                         </div>
