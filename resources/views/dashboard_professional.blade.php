@@ -48,7 +48,7 @@
                 </div>
             </div> 
         </div>
-        <p class="flex font-bold font-roboto text-black/80 text-xl md:text-xl lg:text-2xl py-5 md:py-7 lg:py-4 justify-center md:justify-start md:px-10">Patient's Statistics</p>
+        <p class="flex font-bold font-roboto text-black/80 text-xl md:text-xl lg:text-2xl py-5 md:py-12 lg:py-4 justify-center md:justify-start md:px-10">Patient's Statistics</p>
         
         <div class="w-full flex flex-col md:flex-row items-center mb-5 md:my-5 md:mx-3 md:gap-2">
             <div class="w-[90%] flex flex-col items-center p-2 rounded-xl drop-shadow-lg shadow-lg h-fit border border-gray-300">
@@ -66,21 +66,23 @@
                     @foreach($latest_readings as $reading)
                         <div class="table-row-group">
                             <div class="table-row font-roboto font-normal text-black text-sm md:text-base ">
-                                <div class="table-cell text-center py-1">{{$reading->user->id_number}}</div>
+                                <div class="table-cell text-center py-1">{{$reading->user->last_name}}, {{$reading->user->first_name}} {{$reading->user->suffix}}</div>
                                 <div class="table-cell text-center py-1">{{$reading->user->sex}}</div>
                                 <div class="table-cell text-center py-1">{{$reading->user->barangay}}, {{$reading->user->municipality}}</div>
                                 <div class="table-cell text-center py-1">{{\Carbon\Carbon::parse($reading->created_at)->format('M d, Y (H:i:s)')}}</div>
                             </div>
                         </div>
                     @endforeach
-                    @if(count($latest_readings) < 5)
-                        @for($i = count($latest_readings); $i <= 5; $i++)
+                    @if(count($latest_readings) < 10)
+                        @for($i = count($latest_readings); $i <= 9; $i++)
                             <div class="table-row-group">
                                 <div class="table-row font-roboto font-normal text-black text-sm md:text-base ">
                                     <div class="table-cell text-center py-1">---</div>
                                     <div class="table-cell text-center py-1">---</div>
                                     <div class="table-cell text-center py-1">---</div>
                                     <div class="table-cell text-center py-1">---</div>
+                                   
+                
                                 </div>
                             </div>
                         @endfor
