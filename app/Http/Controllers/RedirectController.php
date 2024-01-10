@@ -45,7 +45,7 @@ class RedirectController extends Controller
             }
             else if(Auth::user()->type == 'professional'){
                 $user = Auth::user();
-                $latest_readings = Reading::with('user')->latest()->get()->unique('user_id')->take(5);
+                $latest_readings = Reading::with('user')->latest()->get()->unique('user_id')->take(10);
                 $patient_count = User::where('type', 'patient')->count();
                 $professional_count = User::where('type', 'professional')->count();
                 return view('dashboard_professional', [
@@ -60,7 +60,7 @@ class RedirectController extends Controller
                 $users = User::where('type', 'patient')->orWhere('type', 'professional')->get();
                 $patient_count = User::where('type', 'patient')->count();
                 $professional_count = User::where('type', 'professional')->count();
-                $latest_users = User::where('type', 'patient')->orWhere('type', 'professional')->latest()->get()->take(5);
+                $latest_users = User::where('type', 'patient')->orWhere('type', 'professional')->latest()->get()->take(10);
                 return view('dashboard_admin', [
                     'user' => $user,
                     'users' => $users,
