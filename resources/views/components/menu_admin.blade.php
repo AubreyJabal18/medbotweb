@@ -19,7 +19,7 @@
         <a href="/restore/deleted_user">
             <div class="group flex flex-row p-2 space-x-5 hover:bg-blue-300">
                 <img src="{{asset('images/dashboard/restore.png')}}" alt="" class = "h-6 w-6">
-                <p class="font-roboto group-hover:text-white">Restore Deleted User</p>
+                <p class="font-roboto group-hover:text-white">Restore Archived User</p>
             </div>
         </a>
 
